@@ -5,10 +5,10 @@ import org.junit.runner.*;
 public class Main {
 
     public static void main(String[] args) {
-//        JUnitCore.main("");
+       JUnitCore.main("Main");
     }
     @Test
-    public void testNoop() {
+    public void testSolution() {
         Assert.assertTrue(true);
     }
 }
