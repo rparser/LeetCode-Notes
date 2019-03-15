@@ -1,6 +1,14 @@
+import com.leetcode.solution.*;
+import org.junit.*;
+import org.junit.runner.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+//        JUnitCore.main("");
+    }
+    @Test
+    public void testNoop() {
+        Assert.assertTrue(true);
     }
 }
