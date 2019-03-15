@@ -19,8 +19,6 @@ public class _387FirstUniqueCharacterinaString {
         return -1;
     }
 
-
-
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._387FirstUniqueCharacterinaString");
     }
