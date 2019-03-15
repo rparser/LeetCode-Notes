@@ -3,6 +3,9 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
+//Time Complexity: O(M×N). The rectangular grid given to us is of size M \times NM×N and we process each cell just once.
+//Space Complexity: O(MXN).
+
 public class _62UniquePaths {
     public int uniquePaths(int m, int n) {
         int[][] res = new int[m][n]; //二维数组保存每点的可能
