@@ -4,6 +4,7 @@ import org.junit.*;
 import org.junit.runner.*;
 import java.util.HashMap;
 
+// 遍历两次，第一次添加进hashmap，第二次从hashmap中取出值为1的
 //Time complexity : O(N) since we go through the string of length N two times.
 //Space complexity : O(N) since we have to keep a hash map with N elements.
 
