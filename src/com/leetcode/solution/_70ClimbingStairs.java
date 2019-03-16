@@ -16,7 +16,7 @@ public class _70ClimbingStairs {
         return A[n-1];
     }
 
-    public int climbStairs3Steps(int n) {
+    public int climbStairs3Steps(int n) { //三步走法
         int[] A=new int[n];
         A[0]=1;
         if(n==1)
@@ -24,7 +24,7 @@ public class _70ClimbingStairs {
         A[1]=2;
         A[2]=4;
         for(int i=3;i<n;i++) {
-            A[i] = A[i - 1] + A[i - 2] + A[i - 3];
+            A[i] = A[i - 1] + A[i - 2] + A[i - 3]; //增加i-3
             System.out.println("i= "+i+"    "+A[i]);
         }
         return A[n-1];
