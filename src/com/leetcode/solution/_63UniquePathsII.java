@@ -13,7 +13,7 @@ public class _63UniquePathsII {
         int m = obstacleGrid.length; //how many rows
         int n = obstacleGrid[0].length; //how many columns
 
-        if(obstacleGrid[0][0] != 1 ) obstacleGrid[0][0]=1; //节省空间，利用同一个数组计算，如果起点非1则起点有1可能走法（不动）
+        if (obstacleGrid[0][0] != 1) obstacleGrid[0][0] = 1; //节省空间，利用同一个数组计算，如果起点非1则起点有1可能走法（不动）
         for (int i = 1; i < m; i++) {
             obstacleGrid[i][0] = obstacleGrid[i][0] == 1 ? 0 : obstacleGrid[i - 1][0]; //最左一列，均为1，除非上面出现障碍
         }
@@ -31,9 +31,10 @@ public class _63UniquePathsII {
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._63UniquePathsII");
     }
+
     @Test
     public void testSolution() {
-        int[][] input=new int[][]{{0,0,0},{0,1,0},{0,0,0}};
-        Assert.assertEquals(2,uniquePathsWithObstacles(input));
+        int[][] input = new int[][]{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        Assert.assertEquals(2, uniquePathsWithObstacles(input));
     }
 }

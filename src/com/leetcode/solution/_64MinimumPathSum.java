@@ -21,7 +21,7 @@ public class _64MinimumPathSum {
         }
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                grid[i][j] = Math.min(grid[i - 1][j] +grid[i][j] , grid[i][j - 1] + grid[i][j]);
+                grid[i][j] = Math.min(grid[i - 1][j] + grid[i][j], grid[i][j - 1] + grid[i][j]);
             } //每一点，是左侧或上方+本点的值，取最小值
         }
         return grid[m - 1][n - 1];
@@ -30,11 +30,12 @@ public class _64MinimumPathSum {
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._64MinimumPathSum");
     }
+
     @Test
     public void testSolution() {
-        int[][] input=new int[][]{{0,0,0},{0,1,0},{0,0,0}};
-        int[][] input2=new int[][]{{0,1,2},{3,4,5},{6,7,8}};
-        Assert.assertEquals(0,minPathSum(input));
-        Assert.assertEquals(16,minPathSum(input2));
+        int[][] input = new int[][]{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        int[][] input2 = new int[][]{{0, 1, 2}, {3, 4, 5}, {6, 7, 8}};
+        Assert.assertEquals(0, minPathSum(input));
+        Assert.assertEquals(16, minPathSum(input2));
     }
 }

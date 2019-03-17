@@ -20,14 +20,14 @@ public class _62UniquePaths {
         }
         return res[m - 1][n - 1];
     }
-    
+
     public int uniquePathsCombination(int m, int n) {
-        double count=1;
-        int min=Math.min(m,n); //取小值
-        for(int i=1;i<=min-1;i++){
-            count=count*(m+n-i-1)/i;//先乘再除，乘从后计算，除从前计算
+        double count = 1;
+        int min = Math.min(m, n); //取小值
+        for (int i = 1; i <= min - 1; i++) {
+            count = count * (m + n - i - 1) / i;//先乘再除，乘从后计算，除从前计算
         }
-        return (int)count;
+        return (int) count;
     }
     //Permutation排列 Combination组合
     //组合C(n,k)=n!/k!(n-k)!
@@ -36,8 +36,10 @@ public class _62UniquePaths {
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._62UniquePaths");
     }
+
     @Test
     public void testSolution() {
-        Assert.assertEquals(3,uniquePaths(3,2));
+        Assert.assertEquals(3, uniquePaths(3, 2));
+        Assert.assertEquals(3, uniquePathsCombination(3, 2));
     }
 }

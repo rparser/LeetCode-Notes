@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
 import java.util.stream.*;
+
 import org.junit.*;
 import org.junit.runner.*;
 
@@ -20,10 +21,11 @@ public class _592FractionAddition {
                 f2 = Stream.of(frac2.split("/")).mapToInt(Integer::parseInt).toArray();
 //        System.out.println(f1[0]+"f1");
 //        System.out.println(f2[0]+"f2");
-        int numer = f1[0]*f2[1] + f1[1]*f2[0], denom = f1[1]*f2[1]; //Numerator分子 and denominator分母
+        int numer = f1[0] * f2[1] + f1[1] * f2[0], denom = f1[1] * f2[1]; //Numerator分子 and denominator分母
         String sign = ""; //正负数标志
-        if (numer < 0) sign = "-"; numer *= -1; //如果为负数
-        return sign + numer/gcd(numer, denom) + "/" + denom/gcd(numer, denom); // 返回字符串
+        if (numer < 0) sign = "-";
+        numer *= -1; //如果为负数
+        return sign + numer / gcd(numer, denom) + "/" + denom / gcd(numer, denom); // 返回字符串
     }
 
     // Computes gcd using Euclidean(U-cli-deen) algorithm, Greatest common divisor 最大公约数
@@ -34,9 +36,10 @@ public class _592FractionAddition {
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._592FractionAddition");
     }
+
     @Test
     public void testSolution() {
         Assert.assertEquals(
-                "0/1",fractionAddition("-1/2+1/2"));
+                "0/1", fractionAddition("-1/2+1/2"));
     }
 }
