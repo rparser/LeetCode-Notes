@@ -9,12 +9,12 @@ public class stringToSet {
     }
 
 
-
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.common.stringToSet");
     }
+
     @Test
     public void testSolution() {
-        Assert.assertEquals(0,0);
+        Assert.assertEquals(0, 0);
     }
 }
