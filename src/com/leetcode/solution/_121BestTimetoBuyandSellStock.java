@@ -1,6 +1,5 @@
 package com.leetcode.solution;
 
-
 import org.junit.*;
 import org.junit.runner.*;
 
