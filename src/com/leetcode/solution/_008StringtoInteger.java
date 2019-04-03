@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-public class _8StringtoInteger {
+public class _008StringtoInteger {
     public int myAtoi(String str) {
 
         if (str == null || str.length() < 1)
@@ -46,7 +46,7 @@ public class _8StringtoInteger {
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._8StringtoInteger");
+        JUnitCore.main("com.leetcode.solution._008StringtoInteger");
     }
 
     @Test

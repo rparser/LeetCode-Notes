@@ -1,4 +1,4 @@
 package com.leetcode.solution;
 
-public class _78Subsets {
+public class _078Subsets {
 }

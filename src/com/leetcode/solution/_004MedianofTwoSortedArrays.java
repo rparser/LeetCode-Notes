@@ -26,7 +26,7 @@ import org.junit.runner.*;
  * (5+6)/2=5.5
  **/
 
-public class _4MedianofTwoSortedArrays {
+public class _004MedianofTwoSortedArrays {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n1 = nums1.length;
         int n2 = nums2.length;
@@ -79,7 +79,7 @@ public class _4MedianofTwoSortedArrays {
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._4MedianofTwoSortedArrays");
+        JUnitCore.main("com.leetcode.solution._004MedianofTwoSortedArrays");
     }
 
     @Test

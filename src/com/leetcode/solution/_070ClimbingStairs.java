@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-public class _70ClimbingStairs {
+public class _070ClimbingStairs {
     public int climbStairs(int n) {
         int[] A = new int[n]; //用来记录到每一步有多少种走法
         A[0] = 1;
@@ -31,7 +31,7 @@ public class _70ClimbingStairs {
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._70ClimbingStairs");
+        JUnitCore.main("com.leetcode.solution._070ClimbingStairs");
     }
 
     @Test

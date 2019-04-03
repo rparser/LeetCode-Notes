@@ -6,7 +6,7 @@ import org.junit.runner.*;
 //Time Complexity: O(M×N). The rectangular grid given to us is of size M \times NM×N and we process each cell just once.
 //Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
 
-public class _63UniquePathsII {
+public class _063UniquePathsII {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         if (obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0) //null or 0 row or 0 column
             return 0;
@@ -29,7 +29,7 @@ public class _63UniquePathsII {
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._63UniquePathsII");
+        JUnitCore.main("com.leetcode.solution._063UniquePathsII");
     }
 
     @Test
