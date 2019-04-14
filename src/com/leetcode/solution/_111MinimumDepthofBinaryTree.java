@@ -2,9 +2,9 @@ package com.leetcode.solution;
 
 import java.util.*;
 
-/** BFS遍历
- *  Queue
- *
+/**
+ * BFS遍历
+ * Queue
  */
 
 public class _111MinimumDepthofBinaryTree {
@@ -37,6 +37,7 @@ public class _111MinimumDepthofBinaryTree {
         int val;
         TreeNode left;
         TreeNode right;
+
         TreeNode(int x) {
             val = x;
         }
