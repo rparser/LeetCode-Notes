@@ -30,14 +30,14 @@ public class LogOrder {
 
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.AmazonOA.reorderLogFiles");
+        JUnitCore.main("com.leetcode.AmazonOA.LogOrder");
     }
 
     @Test
     public void testSolution() {
         int numberOfBOxes = 6;
 
-        List<String> boxList = Arrays.asList("ykc 82 01","eo first qpx","09z cat hamster","06f 12 25 6","az0 first qpx","236 cat dog rabbit snake");
+        List<String> boxList = Arrays.asList("ykc 82 01", "eo first qpx", "09z cat hamster", "06f 12 25 6", "az0 first qpx", "236 cat dog rabbit snake");
         Assert.assertEquals(7, reorderLogFiles(numberOfBOxes, boxList));
     }
 }

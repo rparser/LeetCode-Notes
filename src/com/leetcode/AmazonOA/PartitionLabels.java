@@ -31,11 +31,11 @@ public class PartitionLabels {
 
     @Test
     public void testSolution() {
-        List<Character> inputList = Arrays.asList('a','b','a','b','c','b','a','c','a','d','e','f','e','g','d','e','h','i','j','h','k','l','i','j');
-        Assert.assertEquals( Arrays.asList(9,7,8), partitionLabels(inputList));
-        List<Character> inputList2 = Arrays.asList('a','b','c');
-        Assert.assertEquals( Arrays.asList(1,1,1), partitionLabels(inputList2));
-        List<Character> inputList3 = Arrays.asList('a','b','c','a');
-        Assert.assertEquals( Arrays.asList(4), partitionLabels(inputList3));
+        List<Character> inputList = Arrays.asList('a', 'b', 'a', 'b', 'c', 'b', 'a', 'c', 'a', 'd', 'e', 'f', 'e', 'g', 'd', 'e', 'h', 'i', 'j', 'h', 'k', 'l', 'i', 'j');
+        Assert.assertEquals(Arrays.asList(9, 7, 8), partitionLabels(inputList));
+        List<Character> inputList2 = Arrays.asList('a', 'b', 'c');
+        Assert.assertEquals(Arrays.asList(1, 1, 1), partitionLabels(inputList2));
+        List<Character> inputList3 = Arrays.asList('a', 'b', 'c', 'a');
+        Assert.assertEquals(Arrays.asList(4), partitionLabels(inputList3));
     }
 }
