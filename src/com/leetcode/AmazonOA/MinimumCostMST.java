@@ -5,6 +5,7 @@ import org.junit.runner.*;
 
 import java.util.*;
 
+//mst修路 input list roadsAvaliable 已经包含了之后的 list costnewroadconstruct里所有的路， 我当时没时间了，直接把costnewroadconstruct 里所有的路从roadsAvaliable里删除了，然后再做union find。要不永远都会返回0.
 public class MinimumCostMST {
 
     int getMinimumCostToConstruct(int numTotalAvailableCities, int numTotalAvailableRoads, List<List<Integer>> roadsAvailable,
