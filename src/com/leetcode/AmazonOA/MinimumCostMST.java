@@ -53,6 +53,46 @@ public class MinimumCostMST {
         return sum;
     }
 
+    int getMinimumCostToConstruct2(int numTotalAvailableCities, int numTotalAvailableRoads, List<List<Integer>> roadsAvailable,
+                                  int numOfRoadsToRepair , List<List<Integer>> costNewRoadsConstruct) {
+        if (numTotalAvailableCities < 2) return 0;
+        List<List<Integer>> roadsList=new ArrayList<>(roadsAvailable);
+        for(List<Integer> road:costNewRoadsConstruct){
+            roadsList.remove(Arrays.asList(road.get(0), road.get(1)));
+            roadsList.remove(Arrays.asList(road.get(1), road.get(0)));
+        }
+        UnionFindSet ufSet = new UnionFindSet(numTotalAvailableCities);
+        int existingRoad = 0;
+        for (List<Integer> road : roadsList) {
+            int city1 = road.get(0);
+            int city2 = road.get(1);
+            if (ufSet.Find(city1) != ufSet.Find(city2)) {
+                ufSet.Union(city1, city2);
+                existingRoad++;
+            }
+        }
+        PriorityQueue<NewRoadCost> pq = new PriorityQueue<>(numOfRoadsToRepair, Comparator.comparingInt(a -> a.cost));
+        for (List<Integer> newRoad : costNewRoadsConstruct) {
+            NewRoadCost newRoadCost = new NewRoadCost(newRoad.get(0), newRoad.get(1), newRoad.get(2));
+            pq.offer(newRoadCost);
+        }
+        List<NewRoadCost> mst = new ArrayList<>();
+        while (pq.size() > 0 && mst.size() + existingRoad < numTotalAvailableCities - 1) {
+            NewRoadCost newRoadTemp = pq.poll();
+            int city1 = newRoadTemp.city1;
+            int city2 = newRoadTemp.city2;
+            if (ufSet.Find(city1) != ufSet.Find(city2)) {
+                ufSet.Union(city1, city2);
+                mst.add(newRoadTemp);
+            }
+        }
+        if (mst.size() + existingRoad < numTotalAvailableCities - 1) return -1;
+        int sum = 0;
+        for (NewRoadCost newRoad : mst) sum += newRoad.cost;
+        return sum;
+    }
+
+
     class NewRoadCost {
         int city1;
         int city2;
@@ -119,11 +159,17 @@ public class MinimumCostMST {
 
     @Test
     public void testSolution() {
-        int numTotalAvailableCities = 6;
-        int numTotalAvailableRoads = 3;
-        List<List<Integer>> roadsAvailable = Arrays.asList(Arrays.asList(1, 4), Arrays.asList(4, 5), Arrays.asList(2, 3));
-        int numNewRoadsConstruct = 4;
-        List<List<Integer>> costNewRoadsConstruct = Arrays.asList(Arrays.asList(1, 2, 5), Arrays.asList(1, 3, 10), Arrays.asList(1, 6, 2), Arrays.asList(5, 6, 5));
-        Assert.assertEquals(7, getMinimumCostToConstruct(numTotalAvailableCities, numTotalAvailableRoads, roadsAvailable, numNewRoadsConstruct, costNewRoadsConstruct));
+//        int numTotalAvailableCities = 6;
+//        int numTotalAvailableRoads = 3;
+//        List<List<Integer>> roadsAvailable = Arrays.asList(Arrays.asList(1, 4), Arrays.asList(4, 5), Arrays.asList(2, 3));
+//        int numNewRoadsConstruct = 4;
+//        List<List<Integer>> costNewRoadsConstruct = Arrays.asList(Arrays.asList(1, 2, 5), Arrays.asList(1, 3, 10), Arrays.asList(1, 6, 2), Arrays.asList(5, 6, 5));
+//        Assert.assertEquals(7, getMinimumCostToConstruct(numTotalAvailableCities, numTotalAvailableRoads, roadsAvailable, numNewRoadsConstruct, costNewRoadsConstruct));
+        int numTotalAvailableCities2 = 5;
+        int numTotalAvailableRoads2 = 2;
+        List<List<Integer>> roadsAvailable2 = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(2, 3), Arrays.asList(3, 4),Arrays.asList(4, 5),Arrays.asList(5, 1));
+        int numOfRoadsToRepair  = 4;
+        List<List<Integer>> costNewRoadsConstruct2 = Arrays.asList(Arrays.asList(1, 2, 30), Arrays.asList(1, 5, 40), Arrays.asList(3, 4, 25));
+        Assert.assertEquals(55, getMinimumCostToConstruct2(numTotalAvailableCities2, numTotalAvailableRoads2, roadsAvailable2, numOfRoadsToRepair , costNewRoadsConstruct2));
     }
 }

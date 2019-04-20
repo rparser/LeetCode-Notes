@@ -35,7 +35,7 @@ public class TwoSum {
     @Test
     public void testSolution() {
         int truckSpace = 90;
-        List<Integer> packageSpace = Arrays.asList(1, 40, 20, 10, 25, 35, 60);
-        Assert.assertEquals(Arrays.asList(1,2), IDsOfPackages(truckSpace, packageSpace));
+        List<Integer> packageSpace = Arrays.asList(1, 40, 30,20, 10, 25, 35, 60);
+        Assert.assertEquals(Arrays.asList(1,3), IDsOfPackages(truckSpace, packageSpace));
     }
 }
