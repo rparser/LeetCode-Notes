@@ -5,6 +5,13 @@ import org.junit.runner.*;
 
 import java.util.*;
 
+/**
+ * 归类易位构词anagram字符串
+ * <p>
+ * 利用质数积
+ * 每个map.key显示有多少个什么字母组成这个字符串，map.value是0，1，2对应List<List<String>>里不同的位置
+ */
+
 public class _049GroupAnagrams {
     public static List<List<String>> groupAnagrams(String[] strs) {
         int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,

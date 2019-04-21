@@ -3,12 +3,12 @@ package com.leetcode.solution;
 /**
  * 合并两个已排序数组
  * 1. 必须设置不变的prehead指针，prev指针会一直后移，并把prev.next内容加入
- *
- *  Time complexity : O(n+m)
+ * <p>
+ * Time complexity : O(n+m)
  * Because exactly one of l1 and l2 is incremented on each loop iteration,
  * the while loop runs for a number of iterations equal to the sum of the lengths of the two lists.
  * All other work is constant, so the overall complexity is linear.
- *
+ * <p>
  * Space complexity : O(1)
  * The iterative approach only allocates a few pointers, so it has a constant overall memory footprint.
  */
@@ -36,6 +36,7 @@ public class _021MergeTwoSortedLists {
     public class ListNode {
         int val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

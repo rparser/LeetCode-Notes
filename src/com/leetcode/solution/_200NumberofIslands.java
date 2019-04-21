@@ -2,7 +2,6 @@ package com.leetcode.solution;
 
 /**
  * DFS 解法：把每个为1的点的相邻点全变成0
- *
  */
 
 public class _200NumberofIslands {

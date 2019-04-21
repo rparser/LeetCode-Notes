@@ -3,17 +3,25 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
+/**
+ * 动态规划，走楼梯问题，包括两步三步
+ * <p>
+ * Time complexity :O(n). Single loop upto n.
+ * <p>
+ * Space complexity :O(n). dp array of size n is used.
+ */
+
 public class _070ClimbingStairs {
     public int climbStairs(int n) {
-        int[] A = new int[n]; //用来记录到每一步有多少种走法
-        A[0] = 1;
+        int[] result = new int[n]; //用来记录到每一步有多少种走法
+        result[0] = 1;
         if (n == 1)
             return 1;
-        A[1] = 2;
+        result[1] = 2;
         for (int i = 2; i < n; i++) {
-            A[i] = A[i - 1] + A[i - 2];
+            result[i] = result[i - 1] + result[i - 2];
         }
-        return A[n - 1];
+        return result[n - 1];
     }
 
     public int climbStairs3Steps(int n) { //三步走法
@@ -40,11 +48,11 @@ public class _070ClimbingStairs {
         A[0] = 1;
         if (n == 1)
             return 1;
-        if (Integer.parseInt(Integer.toString(dict[0]) + Integer.toString(dict[1])) < 26)
+        if (Integer.parseInt(dict[0] + Integer.toString(dict[1])) < 26)
             A[1] = 2;
         else A[1] = 1;
         for (int i = 2; i < n; i++) {
-            if (Integer.parseInt(Integer.toString(dict[i - 1]) + Integer.toString(dict[i])) < 26)
+            if (Integer.parseInt((dict[i - 1]) + Integer.toString(dict[i])) < 26)
                 A[i] = A[i - 2] + A[i - 1];
             else A[i] = A[i - 1];
         }

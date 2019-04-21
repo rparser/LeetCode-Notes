@@ -5,12 +5,17 @@ import org.junit.runner.*;
 
 import java.util.*;
 
+/**
+ * 求所有可能子集（无重复数字）
+ * <p>
+ * Time complexity :O(n*2^n).
+ * Space complexity :O(n).
+ */
+
 public class _078Subsets {
     public List<List<Integer>> subsets(int[] S) {
-//        Arrays.sort(S);
         int totalNumber = 1 << S.length; //位运算 1<<n -> 1=2^n
-        System.out.println(totalNumber);
-        List<List<Integer>> collection = new ArrayList<>(totalNumber);
+        List<List<Integer>> result = new ArrayList<>(totalNumber);
         for (int i = 0; i < totalNumber; i++) { //i从0到2^n-1 (31,63 - 二进制全为1)，一共2^n种可能
             List<Integer> tempSet = new LinkedList<>();
             for (int j = 0; j < S.length; j++) {
@@ -19,9 +24,9 @@ public class _078Subsets {
                     tempSet.add(S[j]); //是则加入tempSet
                 }
             }
-            collection.add(tempSet); // tempSet加入collection
+            result.add(tempSet); // tempSet加入collection
         }
-        return collection;
+        return result;
     }
 
     public static void main(String[] args) {

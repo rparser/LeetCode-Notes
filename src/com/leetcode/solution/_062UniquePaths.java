@@ -3,8 +3,12 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-//Time Complexity: O(M×N). The rectangular grid given to us is of size M \times NM×N and we process each cell just once.
-//Space Complexity: O(MXN).
+/**
+ * 动态规划，求左上走到右下的可能
+ * <p>
+ * Time Complexity: O(M×N). The rectangular grid given to us is of size M×N and we process each cell just once.
+ * Space Complexity: O(MXN).
+ */
 
 public class _062UniquePaths {
     public int uniquePaths(int m, int n) {

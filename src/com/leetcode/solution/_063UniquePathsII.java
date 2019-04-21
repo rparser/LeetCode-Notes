@@ -3,8 +3,12 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-//Time Complexity: O(M×N). The rectangular grid given to us is of size M \times NM×N and we process each cell just once.
-//Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
+/**
+ * 动态规划，相比62为有障碍物的左上到右下
+ * <p>
+ * Time Complexity: O(M×N). The rectangular grid given to us is of size M×N and we process each cell just once.
+ * Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
+ */
 
 public class _063UniquePathsII {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {

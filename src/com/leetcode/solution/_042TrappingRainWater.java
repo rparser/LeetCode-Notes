@@ -2,10 +2,9 @@ package com.leetcode.solution;
 
 /**
  * 水槽存水问题
- * 
+ * <p>
  * Time complexity: O(n). Single iteration of O(n).
  * Space complexity: O(1) extra space. Only constant space required for left, right, left_max and right_max.
- *
  */
 
 public class _042TrappingRainWater {

@@ -3,8 +3,12 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-//Time Complexity: O(M×N). The rectangular grid given to us is of size M \times NM×N and we process each cell just once.
-//Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
+/**
+ * 动态规划，采蘑菇权重问题，相比62，63加入权重
+ * <p>
+ * Time Complexity: O(M×N). The rectangular grid given to us is of size M×N and we process each cell just once.
+ * Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
+ */
 
 public class _064MinimumPathSum {
     public int minPathSum(int[][] grid) {
