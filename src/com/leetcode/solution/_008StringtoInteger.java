@@ -3,18 +3,24 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
+/**
+ * 字符串变成整数
+ *
+ * 先去掉空格，再检查是否空值，再检查正负号，只得到数字（去掉字母）
+ */
+
 public class _008StringtoInteger {
     public int myAtoi(String str) {
 
+        // 检查空格
+        str = str.trim();
+
+        // 检查null
         if (str == null || str.length() < 1)
             return 0;
 
-        // trim white spaces
-        str = str.trim();
-
+        // 检查正负号
         boolean flag = true;
-
-        // check negative or positive
         int i = 0;
         if (str.charAt(0) == '-') {
             flag = false;
@@ -23,11 +29,10 @@ public class _008StringtoInteger {
             flag = true;
             i++;
         }
-        // use double to store result
-        double result = 0;
 
-        // calculate value
-        while (str.length() > i && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+        // 保存结果
+        double result = 0;
+        while (str.length() > i && str.charAt(i) >= '0' && str.charAt(i) <= '9') { // 去掉非数字
             result = result * 10 + (str.charAt(i) - '0');
             i++;
         }
@@ -35,7 +40,7 @@ public class _008StringtoInteger {
         if (flag == false)
             result = -result;
 
-        // handle max and min
+        // 检查取值范围
         if (result > Integer.MAX_VALUE)
             return Integer.MAX_VALUE;
 
