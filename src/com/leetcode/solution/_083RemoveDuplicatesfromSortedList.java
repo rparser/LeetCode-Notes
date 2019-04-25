@@ -2,6 +2,7 @@ package com.leetcode.solution;
 
 /**
  * 删除排序链表的重复值
+ * 参考084
  * <p>
  * Time complexity : O(n).
  * Because each node in the list is checked exactly once to determine if it is a duplicate or not,
