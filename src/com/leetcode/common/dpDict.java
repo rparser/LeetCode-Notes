@@ -1,6 +1,7 @@
 package com.leetcode.common;
 
 import java.util.*;
+import java.util.stream.*;
 
 public class dpDict {
     //    public int dpDict(int[] dict) {
@@ -31,7 +32,15 @@ public class dpDict {
         int c2 = test2.get(test2.size() - 1);
         c2 = 101;
         System.out.println(test2.get(test2.size() - 1));
+
+        HashMap<Integer,Integer> map=new HashMap<>();
+        map.put(10,1);
+        map.put(9,0);
+        map.put(12,2);
+        map.put(11,0);
+        Map<Integer,Integer> collect=map.entrySet().stream()
+                .filter(x -> x.getValue() > 0)
+                .collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+        System.out.println(collect);
     }
-
-
 }
