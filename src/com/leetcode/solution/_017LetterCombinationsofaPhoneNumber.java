@@ -22,14 +22,12 @@ public class _017LetterCombinationsofaPhoneNumber {
         put("9", "wxyz");
     }};
 
-    List<String> result = new ArrayList<String>();
+    List<String> result = new ArrayList<>();
 
     public void backtrack(String combination, String next_digits) {
         // if there is no more digits to check
-        if (next_digits.length() == 0) {
-            // the combination is done
-            result.add(combination);
-        }
+        if (next_digits.length() == 0) result.add(combination);
+
         // if there are still digits to check
         else {
             // iterate over all letters which map
