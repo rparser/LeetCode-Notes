@@ -17,7 +17,7 @@ public class _005LongestPalindromicSubstring {
             for (int j = 0; j < length; j++) {
                 if (s.charAt(i) == reverse.charAt(j)) {
                     if (i == 0 || j == 0) {
-                        arr[i][j] = 1;
+                        arr[i][j] = 1; // 当 i = 0 或者 j = 0 的时候单独分析，字符相等的话 arr [ i ][ j ] 就赋为 1 。
                     } else {
                         arr[i][j] = arr[i - 1][j - 1] + 1;
                     }
@@ -42,7 +42,7 @@ public class _005LongestPalindromicSubstring {
             for (int j = length - 1; j >= 0; j--) {
                 if (s.charAt(i) == reverse.charAt(j)) {
                     if (i == 0 || j == 0) {
-                        arr2[j] = 1;
+                        arr2[j] = 1; // 当 i = 0 或者 j = 0 的时候单独分析，字符相等的话 arr [ i ][ j ] 就赋为 1 。
                     } else {
                         arr2[j] = arr2[j - 1] + 1;
                     }
@@ -60,5 +60,24 @@ public class _005LongestPalindromicSubstring {
                 }
             }
         return s.substring(maxEnd - maxLen + 1, maxEnd + 1);
+    }
+
+    /**
+     * 暴力解法 O(N^2), O(N)
+     */
+
+    public String longestPalindrome7(String s) {
+        int n = s.length();
+        String result = "";
+        boolean[] P = new boolean[n];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= i; j--) {
+                P[j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || P[j - 1]);
+                if (P[j] && j - i + 1 > result.length()) {
+                    result = s.substring(i, j + 1);
+                }
+            }
+        }
+        return result;
     }
 }
