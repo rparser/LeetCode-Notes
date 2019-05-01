@@ -1,0 +1,136 @@
+Array and Strings
+008	String to Integer (atoi)
+003 Longest Substring Without Repeating Characters
+011	Container With Most Water
+048	Rotate Image
+049	同构分类 Group Anagrams
+015	3Sum 016 3Sum Closest
+165	Compare Version Numbers
+238	Product of Array Except Self
+268	Missing Number
+012	Integer to Roman 013 Roman to Integer 273 Integer to English Words
+076	Minimum Window Substring
+387	First Unique Character in a String
+020	Valid Parentheses
+028	Implement strStr()
+OA:
+001 Two Sum
+819	Most Common Word
+937	Reorder Log Files
+Onsite:
+042 Trapping Rain Water
+
+LinkedList
+002 链表加法 Add Two Numbers
+021 双表合并 Merge Two Sorted Lists 023 K表合并 Merge k Sorted Lists
+341 Flatten Nested List Iterator
+206 翻转链表 Reverse Linked List 092 翻转范围 Reverse Linked List II 025 翻转K组 Reverse Nodes in k-Group
+143 Reorder List
+086	Partition List
+328 Odd Even Linked List
+369	Plus One Linked List
+234	检测回文 Palindrome Linked List
+019	Remove Nth Node From End of List
+083	删除重复值 Remove Duplicates from Sorted List
+339	权值总和 Nested List Weight Sum
+599	Minimum Index Sum of Two Lists
+430	Flatten a Multilevel Doubly Linked List
+160	Intersection of Two Linked Lists
+203	Remove Linked List Elements
+707	Design Linked List
+1019 Next Greater Node In Linked List
+141	检测有环 Linked List Cycle
+148	链表排序 Sort List
+Onsite:
+138 Copy List With Random Pointer
+
+Tree and Graph
+675	Cut Off Trees for Golf Event
+297 Serialize and Deserialize Binary Tree
+207 Course Schedule
+127 Word Ladder 126	Word Ladder II
+545 Boundary of Binary Tree
+733	Flood Fill
+124 Binary Tree Maximum Path Sum
+543 Diameter of Binary Tree
+314 Binary Tree Vertical Order Traversal
+993 Cousins in Binary Tree
+662 Maximum Width of Binary Tree
+449	Serialize and Deserialize BST
+236 最近公共祖先 Lowest Common Ancestor of a Binary Tree 235 BST最近公共祖先 Lowest Common Ancestor of a Binary Search Tree
+098	BST验证 Validate Binary Search Tree
+572 Subtree of Another Tree
+863 All Nodes Distance K in Binary Tree
+101 Symmetric Tree
+428 Serialize and Deserialize N-ary Tree
+173 Binary Search Tree Iterator
+208 Implement Trie (Prefix Tree)
+508 Most Frequent Subtree Sum
+652 Find Duplicate Subtrees
+199 Binary Tree Right Side View
+105 Construct Binary Tree from Preorder and Inorder Traversal 106 Construct Binary Tree from Inorder and Postorder Traversal
+366 Find Leaves of Binary Tree
+333 Largest BST Subtree
+272 Closest Binary Search Tree Value II
+099 Recover Binary Search Tree
+637 Average of Levels in Binary Tree
+096 Unique Binary Search Trees
+110 Balanced Binary Tree
+250 Count Univalue Subtrees
+987 Vertical Order Traversal of a Binary Tree
+104 BST最大深度 Maximum Depth of Binary Tree
+261 Graph Valid Tree
+979 Distribute Coins in Binary Tree
+100 同一棵树 Same Tree
+114 Flatten Binary Tree to Linked List
+145 后序遍历 Binary Tree Postorder Traversal 094 前序遍历 Binary Tree Inorder Traversal
+095 Unique Binary Search Trees II
+538 Convert BST to Greater Tree
+108 Convert Sorted Array to Binary Search Tree
+226 Invert Binary Tree
+654 Maximum Binary Tree 559 Maximum Depth of N-ary Tree
+701 插入  Insert into a Binary Search Tree
+Phone:
+103	Zigzag树 Binary Tree Zigzag Level Order Traversal 102 Binary Tree Level Order Traversal
+200	Number of Islands
+
+
+Recursion:
+017 背包电话 Letter Combinations of a Phone Number
+079	Word Search 212	Word Search II
+022	Generate Parentheses
+
+
+Sorting and Searching
+004 Median of Two Sorted Arrays
+033 Search in Rotated Sorted Array 081 Search in Rotated Sorted Array II
+253	Meeting Rooms II
+347	前K常见值 Top K Frequent Elements
+056	Merge Intervals
+215	第K大值 Kth Largest Element in an Array
+167	Two Sum II - Input array is sorted
+OA:
+973	距离原点K K Closest Points to Origin
+
+DP
+121	Best Time to Buy and Sell Stock 188	Best Time to Buy and Sell Stock IV 122 Best Time to Buy and Sell Stock II
+139 Word Break 140 Word Break II
+053	Maximum Subarray
+322	Coin Change 518 Coin Change 2
+OA:
+005	Longest Palindromic Substring
+
+Design
+295	Find Median from Data Stream
+155	Min Stack
+348	Design Tic-Tac-Toe
+642 Design Search Autocomplete System
+895	Maximum Frequency Stack
+Onsite:
+146	LRU Cache
+
+Others
+957	Prison Cells After N Days
+007	Reverse Integer
+763	Partition Labels
+176	Second Highest Salary
