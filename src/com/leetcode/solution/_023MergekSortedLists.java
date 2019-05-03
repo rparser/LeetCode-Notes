@@ -24,18 +24,18 @@ public class _023MergekSortedLists {
         PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
 
         ListNode dummy = new ListNode(0);
-        ListNode tail = dummy;
+        ListNode curr = dummy;
 
         for (ListNode node : lists)
             if (node != null)
                 queue.add(node);
 
         while (!queue.isEmpty()) {
-            tail.next = queue.poll();
-            tail = tail.next;
+            curr.next = queue.poll();
+            curr = curr.next;
 
-            if (tail.next != null)
-                queue.add(tail.next);
+            if (curr.next != null)
+                queue.add(curr.next);
         }
         return dummy.next;
     }
