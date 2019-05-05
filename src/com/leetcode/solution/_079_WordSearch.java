@@ -1,8 +1,9 @@
 package com.leetcode.solution;
 
 /**
- * 图中单词查找
+ * 图中单词查找, 参考212word search II
  * 参考200岛屿
+ * 递归解法，1，注意不能返回走，用used；2，查找四个方向递归
  * <p>
  * Time complexity :O(m*n*4^l). l为单词长度
  * Space complexity :O(m*n+l).
