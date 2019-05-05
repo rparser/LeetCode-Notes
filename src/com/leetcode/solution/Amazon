@@ -10,7 +10,7 @@ Array and Strings
 268	Missing Number
 012	Integer to Roman 013 Roman to Integer 273 Integer to English Words
 076	Minimum Window Substring
-387	First Unique Character in a String
+387	首不重字符 First Unique Character in a String
 020	括号验证 Valid Parentheses
 028	Implement strStr()
 OA:
