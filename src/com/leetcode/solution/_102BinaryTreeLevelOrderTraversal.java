@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * 树分层遍历
+ * 一个Queue保存每层的节点，先计算当前Queue大小，然后依次pop出节点，再offer子节点
  * <p>
  * Time complexity : O(N) since each node is processed exactly once.
  * Space complexity : O(N) to keep the output structure which contains N node values.
