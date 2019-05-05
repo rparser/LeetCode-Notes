@@ -14,13 +14,13 @@ public class _102BinaryTreeLevelOrderTraversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
-        LinkedList<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             int size = queue.size(); //设定当前层有几个节点
             LinkedList<Integer> currLevel = new LinkedList<>();
             for (int i = 0; i < size; i++) {
-                TreeNode node = queue.pop();
+                TreeNode node = queue.poll();
                 currLevel.add(node.val); //把queue里小于size的结果加入当前层list
                 if (node.left != null) queue.offer(node.left);
                 if (node.right != null) queue.offer(node.right);
