@@ -11,7 +11,7 @@ Array and Strings
 012	Integer to Roman 013 Roman to Integer 273 Integer to English Words
 076	Minimum Window Substring
 387	First Unique Character in a String
-020	Valid Parentheses
+020	括号验证 Valid Parentheses
 028	Implement strStr()
 OA:
 001 Two Sum
