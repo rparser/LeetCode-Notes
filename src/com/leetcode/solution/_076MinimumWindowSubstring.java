@@ -34,7 +34,7 @@ public class _076MinimumWindowSubstring {
                 sArr[leftChar]--; //移除最左侧符合的字符
                 left = findNextStrIdx(left + 1, s, tArr); //找下一个t中存在的字符
             }
-            right = findNextStrIdx(right + 1, s, tArr);
+            right = findNextStrIdx(right + 1, s, tArr); //右侧移动寻找
         }
         return result;
     }
