@@ -9,7 +9,7 @@ import java.util.*;
  * Space complexity: O(1)
  */
 
-public class _0153Sum {
+public class _015_3Sum {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums); //先排序

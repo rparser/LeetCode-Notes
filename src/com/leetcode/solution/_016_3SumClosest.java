@@ -9,7 +9,7 @@ import java.util.*;
  * Space complexity: O(1)
  */
 
-public class _0163SumClosest {
+public class _016_3SumClosest {
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int result = nums[0] + nums[1] + nums[2];
