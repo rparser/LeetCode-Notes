@@ -3,8 +3,8 @@ package com.leetcode.solution;
 import java.util.*;
 
 /**
- *  有向图课程
- *
+ * 有向图课程
+ * <p>
  * [2,0]为上2课必须先上0
  */
 

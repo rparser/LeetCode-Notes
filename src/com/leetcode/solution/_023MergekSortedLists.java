@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  * 合并K排序链表
- *
- *Time complexity : O(Nlogk) where k is the number of linked lists.
- *
+ * <p>
+ * Time complexity : O(Nlogk) where k is the number of linked lists.
+ * <p>
  * The comparison cost will be reduced to O(logk) for every pop and insertion to priority queue.
  * But finding the node with the smallest value just costs O(1) time.
  * There are N nodes in the final linked list.
@@ -14,7 +14,6 @@ import java.util.*;
  * O(n) Creating a new linked list costs O(n) space.
  * O(k) The code above present applies in-place method which cost O(1) space.
  * And the priority queue (often implemented with heaps) costs O(k) space (it's far less than N in most situations).
- *
  */
 
 public class _023MergekSortedLists {

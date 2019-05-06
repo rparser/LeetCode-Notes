@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  * 括号生成
- *
+ * <p>
  * Time Complexity : O(4^n/sqrt(n)), Catalan number Each valid sequence has at most n steps during the backtracking procedure.
- *
+ * <p>
  * Space Complexity : O(4^n/sqrt(n)) as described above, and using O(n) space to store the sequence.
  */
 
