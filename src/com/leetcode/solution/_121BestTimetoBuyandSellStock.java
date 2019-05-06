@@ -5,12 +5,12 @@ import org.junit.runner.*;
 
 public class _121BestTimetoBuyandSellStock {
 
-/**
- * 购买股票,单项数组
- *
- * Time complexity : O(n). Only a single pass is needed.
- * Space complexity : O(1). Only two variables are used.
- */
+    /**
+     * 购买股票,单项数组
+     * <p>
+     * Time complexity : O(n). Only a single pass is needed.
+     * Space complexity : O(1). Only two variables are used.
+     */
 
     public int maxProfit(int[] prices) {
         int minPrice = Integer.MAX_VALUE; //minPrice初始化为最大值

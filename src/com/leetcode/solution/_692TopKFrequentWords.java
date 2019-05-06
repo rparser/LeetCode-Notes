@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * K最常见单词
- *
+ * <p>
  * Time Complexity: O(NlogN), where NN is the length of words.
  * We count the frequency of each word in O(N) time, then we sort the given words in O(NlogN) time.
  * Space Complexity: O(N), the space used to store our candidates.
@@ -25,23 +25,22 @@ public class _692TopKFrequentWords {
 
     /**
      * Heap解法
-     *Time Complexity: O(Nlogk), where N is the length of words.
+     * Time Complexity: O(Nlogk), where N is the length of words.
      * We count the frequency of each word in O(N) time, then we add NN words to the heap, each in O(logk) time.
      * Finally, we pop from the heap up to kk times. As k≤N, this is O(Nlogk) in total.
      * Space Complexity: O(N), the space used to store our count.
-     *
      */
 
     public List<String> topKFrequentHeap(String[] words, int k) {
         Map<String, Integer> count = new HashMap<>();
-        for (String word: words) {
+        for (String word : words) {
             count.put(word, count.getOrDefault(word, 0) + 1);
         }
         PriorityQueue<String> heap = new PriorityQueue<>(
                 (w1, w2) -> count.get(w1).equals(count.get(w2)) ?
-                        w2.compareTo(w1) : count.get(w1) - count.get(w2) );
+                        w2.compareTo(w1) : count.get(w1) - count.get(w2));
 
-        for (String word: count.keySet()) {
+        for (String word : count.keySet()) {
             heap.offer(word);
             if (heap.size() > k) heap.poll();
         }
