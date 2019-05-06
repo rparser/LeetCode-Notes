@@ -13,11 +13,10 @@ public class _007ReverseInteger {
     public int reverse(int x) {
         int rev = 0; // 翻转后的数字
         while (x != 0) { // 整数部分不等于0，即剩余值大于10
-            int pop = x % 10; // 求当前整数的余数
-            x /= 10; // 求整数部分
-            if (rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0; // 如果大于最大值
-            if (rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0; // 或小于最小值返回0
-            rev = rev * 10 + pop;
+            int newRev = rev * 10 + x % 10; //已转换好的部分
+            if ((newRev - x % 10) / 10 != rev) return 0; //逆操作验证是否overflow
+            rev = newRev;
+            x /= 10;
         }
         return rev;
     }

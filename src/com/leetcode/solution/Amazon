@@ -115,7 +115,7 @@ OA:
 
 DP
 121	Best Time to Buy and Sell Stock 188	Best Time to Buy and Sell Stock IV 122 Best Time to Buy and Sell Stock II
-139 Word Break 140 Word Break II
+139 分割单词 Word Break 140 Word Break II
 053	Maximum Subarray
 322	Coin Change 518 Coin Change 2
 OA:
@@ -134,6 +134,6 @@ Onsite:
 
 Others
 957	监狱开灯 Prison Cells After N Days
-007	Reverse Integer
+007	翻转整数 Reverse Integer
 763	Partition Labels
 176	Second Highest Salary
