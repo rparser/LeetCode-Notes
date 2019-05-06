@@ -2,6 +2,21 @@ package com.leetcode.solution;
 
 import java.util.*;
 
+/**
+ * 字符串字母分组,每个字母最多一次
+ *
+ * Input: S = "ababcbacadefegdehijhklij"
+ * Output: [9,7,8]
+ * Explanation:
+ * The partition is "ababcbaca", "defegde", "hijhklij".
+ * This is a partition so that each letter appears in at most one part.
+ * A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
+ *
+ * Time Complexity: O(N), where NN is the length of S.
+ * Space Complexity: O(N).
+ *
+ */
+
 public class _763PartitionLabels {
     public List<Integer> partitionLabels(String S) {
         int[] last = new int[26]; // 记录字母最后的位置
