@@ -5,8 +5,8 @@ Array and Strings
 048	旋转矩阵 Rotate Image
 049	同构分类 Group Anagrams
 015	三加和 3Sum 016 3加和最接近 3Sum Closest
-165	Compare Version Numbers
-238	Product of Array Except Self
+165	比较版本号 Compare Version Numbers
+238	数组积除本身 Product of Array Except Self
 268	Missing Number
 012	罗马字符 Integer to Roman 013 Roman to Integer 数字变英文 273 Integer to English Words
 076	最短子串有target Minimum Window Substring
@@ -49,7 +49,7 @@ Tree and Graph
 297 序列化树 Serialize and Deserialize Binary Tree
 207 先修课程 Course Schedule
 127 单词变换 Word Ladder 126	Word Ladder II
-545 Boundary of Binary Tree
+545 树边界 Boundary of Binary Tree
 733	Flood Fill
 124 Binary Tree Maximum Path Sum
 543 Diameter of Binary Tree
@@ -92,7 +92,7 @@ Tree and Graph
 701 插入  Insert into a Binary Search Tree
 Phone:
 103	Zigzag树遍历 Binary Tree Zigzag Level Order Traversal 102 普通分层遍历 Binary Tree Level Order Traversal
-200	Number of Islands
+200	岛屿数目 Number of Islands
 
 
 Recursion:
@@ -102,11 +102,11 @@ Recursion:
 
 
 Sorting and Searching
-004 Median of Two Sorted Arrays
-033 Search in Rotated Sorted Array 081 Search in Rotated Sorted Array II
-253	Meeting Rooms II
+004 有序数组中值 Median of Two Sorted Arrays
+033 翻转数组查找 Search in Rotated Sorted Array 081 Search in Rotated Sorted Array II
+253	会议室安排 Meeting Rooms II
 347	前K常见值 Top K Frequent Elements
-056	Merge Intervals
+056	合并间隔 Merge Intervals
 215	第K大值 Kth Largest Element in an Array
 167	Two Sum II - Input array is sorted
 OA:
@@ -114,7 +114,7 @@ OA:
 
 
 DP
-121	Best Time to Buy and Sell Stock 188	Best Time to Buy and Sell Stock IV 122 Best Time to Buy and Sell Stock II
+121	股票 Best Time to Buy and Sell Stock 188	Best Time to Buy and Sell Stock IV 122 Best Time to Buy and Sell Stock II
 139 分割单词 Word Break 140 Word Break II
 053	Maximum Subarray
 322	Coin Change 518 Coin Change 2
@@ -124,10 +124,10 @@ OA:
 
 Design
 295	Find Median from Data Stream
-155	Min Stack
-348	Design Tic-Tac-Toe
+155	最小stack Min Stack
+348	设计TTT Design Tic-Tac-Toe
 642 Design Search Autocomplete System
-895	Maximum Frequency Stack
+895	Stack最常见值 Maximum Frequency Stack
 Onsite:
 146	LRU Cache
 
