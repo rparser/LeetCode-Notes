@@ -1,65 +1,37 @@
 package com.leetcode.solution;
 
 /**
+ * Try all possible i and find the longest palindromic string whose center is i (odd case) and i / i + 1 (even case).
+ *
+ * Time complexity: O(n^2)
+ *
+ * Space complexity: O(1)
  * 最长回文子串
  */
 
 public class _005LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
-        int length = s.length();
-        if (length == 0) return "";
-        String reverse = new StringBuffer(s).reverse().toString();
-
-        int[][] arr = new int[length][length]; // 存储j行最长长度
-        int maxLen = 0;
-        int maxEnd = 0;
-        for (int i = 0; i < length; i++)
-            for (int j = 0; j < length; j++) {
-                if (s.charAt(i) == reverse.charAt(j)) {
-                    if (i == 0 || j == 0) {
-                        arr[i][j] = 1; // 当 i = 0 或者 j = 0 的时候单独分析，字符相等的话 arr [ i ][ j ] 就赋为 1 。
-                    } else {
-                        arr[i][j] = arr[i - 1][j - 1] + 1;
-                    }
-                }
-                if (arr[i][j] > maxLen) {
-                    int beforeRev = length - 1 - j;
-                    if (beforeRev + arr[i][j] - 1 == i) { //判断下标是否对应
-                        maxLen = arr[i][j];
-                        maxEnd = i;
-                    }
-                }
+        if (s == null || s.length() < 1) return "";
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) { //以每个字母作为中心点
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) { //end, start为之前存储的最大起点终点
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
+        }
+        return s.substring(start, end + 1);
+    }
 
-
-        /**
-         * 一维数组解法
-         */
-        int[] arr2 = new int[length]; // 存储j行最长长度
-        int maxLen2 = 0;
-        int maxEnd2 = 0;
-        for (int i = 0; i < length; i++)
-            for (int j = length - 1; j >= 0; j--) {
-                if (s.charAt(i) == reverse.charAt(j)) {
-                    if (i == 0 || j == 0) {
-                        arr2[j] = 1; // 当 i = 0 或者 j = 0 的时候单独分析，字符相等的话 arr [ i ][ j ] 就赋为 1 。
-                    } else {
-                        arr2[j] = arr2[j - 1] + 1;
-                    }
-                    //之前二维数组，每次用的是不同的列，所以不用置 0 。
-                } else {
-                    arr2[j] = 0;
-                }
-                if (arr2[j] > maxLen) {
-                    int beforeRev = length - 1 - j;
-                    if (beforeRev + arr2[j] - 1 == i) { // 判断下标是否对应
-                        maxLen2 = arr2[j];
-                        maxEnd2 = i;
-                    }
-
-                }
-            }
-        return s.substring(maxEnd - maxLen + 1, maxEnd + 1);
+    private int expandAroundCenter(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) { //如果一样各移动一位
+            L--;
+            R++;
+        }
+        return R - L - 1; //返回长度
     }
 
     /**
