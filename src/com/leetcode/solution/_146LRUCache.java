@@ -62,18 +62,18 @@ public class _146LRUCache {
 
     public void put(int key, int value) {
         if (!map.containsKey(key)) {
-            if (map.size() >= capacity) {
+            if (map.size() >= capacity) { //超过容量
                 map.remove(end.key);
                 removeNode(end);
             }
             Node cur = new Node(key, value);
-            map.put(key, cur);
-            setHead(cur);
+            map.put(key, cur); //加入map
+            setHead(cur); //放到head
         } else {//update value
             Node cur = map.get(key);
             cur.val = value;
-            removeNode(cur);
-            setHead(cur);
+            removeNode(cur); //删除原有node
+            setHead(cur); //放到head
         }
     }
 
