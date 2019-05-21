@@ -5,71 +5,79 @@ import java.util.*;
 import org.junit.*;
 import org.junit.runner.*;
 
+/**
+ * 思路： use a HashMap + doubly linked List: (head)..(pre)<—>(cur)<—>(next)..(end)
+ *            Always set the head for the most recent accessed node.
+ *            watch edge case like 1 node in list. Deleting head/tail, we need to set head/tail simultaneously.
+ * Complexity: Time O(1) Space O(N)
+ *
+ */
+
 public class _146LRUCache {
-    final Node head = new Node(0, 0);
-    final Node tail = new Node(0, 0);
-    final Map<Integer, Node> map;
-    final int capacity;
+    //instance variable
+    private Node head = null;
+    private Node end = null;
+    HashMap<Integer, Node> map = new HashMap<>(); //<val, node in list>
+    private int capacity;
+
+    class Node {
+        Node pre;
+        Node next;
+        int val;
+        int key;//need key fields for look back to delete in Map
+
+        public Node(int key, int value) {
+            this.val = value;
+            this.key = key;
+        }
+    }
+
+    private void removeNode(Node n) {
+        Node preN = n.pre;
+        Node nextN = n.next;
+        if (n == head) head = nextN;//watch case of deleting head & end
+        if (n == end) end = preN;//
+        if (preN != null) preN.next = nextN;
+        if (nextN != null) nextN.pre = preN;
+    }
+
+    private void setHead(Node n) {//head is most recent val
+        n.next = head;
+        n.pre = null;
+        if (head != null) head.pre = n;
+        head = n;
+        if (end == null) end = head;//actually when only head in list
+    }
 
     public _146LRUCache(int capacity) {
         this.capacity = capacity;
-        map = new HashMap(capacity);
-        head.next = tail;
-        tail.prev = head;
     }
 
     public int get(int key) {
-        int res = -1;
-        if (map.containsKey(key)) {
-            Node n = map.get(key);
-            remove(n);
-            insertToHead(n);
-            res = n.value;
-        }
-        return res;
+        if (!map.containsKey(key)) return -1;
+        Node cur = map.get(key);
+        removeNode(cur);
+        setHead(cur);
+        return cur.val;
     }
 
     public void put(int key, int value) {
-        if (map.containsKey(key)) {
-            Node n = map.get(key);
-            remove(n);
-            n.value = value;
-            insertToHead(n);
-        } else {
-
-            if (map.size() == capacity) {
-                map.remove(tail.prev.key);
-                remove(tail.prev);
+        if (!map.containsKey(key)) {
+            if (map.size() >= capacity) {
+                map.remove(end.key);
+                removeNode(end);
             }
-
-            Node n = new Node(key, value);
-            insertToHead(n);
-            map.put(key, n);
+            Node cur = new Node(key, value);
+            map.put(key, cur);
+            setHead(cur);
+        } else {//update value
+            Node cur = map.get(key);
+            cur.val = value;
+            removeNode(cur);
+            setHead(cur);
         }
     }
 
-    private void remove(Node n) {
-        n.prev.next = n.next;
-        n.next.prev = n.prev;
-    }
-
-    private void insertToHead(Node n) {
-        Node headNext = head.next;
-        head.next = n;
-        headNext.prev = n;
-        n.prev = head;
-        n.next = headNext;
-    }
-
-    class Node {
-        Node prev, next;
-        int key, value;
-
-        Node(int k, int v) {
-            key = k;
-            value = v;
-        }
-    }
 
 // LinkedHashMap方法
 //    public int getLhm(int key) {
