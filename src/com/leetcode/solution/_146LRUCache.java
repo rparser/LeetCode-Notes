@@ -7,10 +7,9 @@ import org.junit.runner.*;
 
 /**
  * 思路： use a HashMap + doubly linked List: (head)..(pre)<—>(cur)<—>(next)..(end)
- *            Always set the head for the most recent accessed node.
- *            watch edge case like 1 node in list. Deleting head/tail, we need to set head/tail simultaneously.
+ * Always set the head for the most recent accessed node.
+ * watch edge case like 1 node in list. Deleting head/tail, we need to set head/tail simultaneously.
  * Complexity: Time O(1) Space O(N)
- *
  */
 
 public class _146LRUCache {
@@ -32,6 +31,10 @@ public class _146LRUCache {
         }
     }
 
+    public _146LRUCache(int capacity) {
+        this.capacity = capacity;
+    }
+
     private void removeNode(Node n) {
         Node preN = n.pre;
         Node nextN = n.next;
@@ -47,10 +50,6 @@ public class _146LRUCache {
         if (head != null) head.pre = n;
         head = n;
         if (end == null) end = head;//actually when only head in list
-    }
-
-    public _146LRUCache(int capacity) {
-        this.capacity = capacity;
     }
 
     public int get(int key) {
@@ -77,7 +76,6 @@ public class _146LRUCache {
             setHead(cur);
         }
     }
-
 
 // LinkedHashMap方法
 //    public int getLhm(int key) {
