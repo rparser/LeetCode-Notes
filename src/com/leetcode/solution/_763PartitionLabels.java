@@ -12,7 +12,7 @@ import java.util.*;
  * This is a partition so that each letter appears in at most one part.
  * A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
  * <p>
- * Time Complexity: O(N), where NN is the length of S.
+ * Time Complexity: O(N), where N is the length of S.
  * Space Complexity: O(N).
  */
 
