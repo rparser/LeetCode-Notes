@@ -11,6 +11,33 @@ import java.util.*;
  */
 
 public class _103BinaryTreeZigzagLevelOrderTraversal {
+    public List<List<Integer>> zigzagLevelOrderbest(TreeNode root) { //BFS
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+        Queue<TreeNode> q = new LinkedList<>();
+        int level = 0;
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            result.add(new ArrayList<>());
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = q.poll();
+                result.get(level).add(cur.val);
+                if (cur.left != null) {
+                    q.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    q.offer(cur.right);
+                }
+            }
+            if (level % 2 == 1)
+                Collections.reverse(result.get(level));
+            level++;
+        }
+        return result;
+    }
+
+
     public List<List<Integer>> zigzagLevelOrderPrint(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
