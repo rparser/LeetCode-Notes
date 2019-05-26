@@ -14,6 +14,8 @@ import org.junit.runner.*;
  * <p>
  * Space complexity: O(1).
  * We only need constant memory to store 99 local variables, so the space complexity is O(1).
+ * <p>
+ * https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2471/very-concise-ologminmn-iterative-solution-with-detailed-explanation
  **/
 
 /**
@@ -36,38 +38,21 @@ public class _004_MedianofTwoSortedArrays {
             return findMedianSortedArrays(nums2, nums1); //默认为nums1数组不大于nums2数组
 
         int k = (n1 + n2 + 1) / 2; // ie, n1=2 , n2 = 3, n1+n2+1=6(even) , k = 3 ; n1=2, n2=2, n1+n2+1=5, k=5/2=2 (left of mid)
-        System.out.println("k= " + k);
         int left = 0;
         int right = n1;
 
         while (left < right) {
-            int m1 = left + (right - left) / 2;
-            System.out.println("firstm1= " + m1);
-            int m2 = k - m1;
-            System.out.println("firstm2= " + m2);
-            if (nums1[m1] < nums2[m2 - 1]) {
-                System.out.println("left= " + left);
-                System.out.println("nums1[m1]= " + nums1[m1]);
-                System.out.println("nums2[m2 - 1]= " + nums2[m2 - 1]);
-                left = m1 + 1;
-                System.out.println("newest left= " + left);
-                System.out.println("newest right= " + right);
+            int mid1 = left + (right - left) / 2;
+            int mid2 = k - mid1;
+            if (nums1[mid1] < nums2[mid2 - 1]) {
+                left = mid1 + 1;
             } else {
-                System.out.println("right= " + right);
-                System.out.println("nums1[m1]= " + nums1[m1]);
-                System.out.println("nums2[m2 - 1]= " + nums2[m2 - 1]);
-                right = m1;
-                System.out.println("newest left= " + left);
-                System.out.println("newest right= " + right);
+                right = mid1;
             }
         }
 
         int m1 = left;
         int m2 = k - left;
-
-        System.out.println("m1= " + m1);
-        System.out.println("m2= " + m2);
-
         int c1 = Math.max(m1 <= 0 ? Integer.MIN_VALUE : nums1[m1 - 1],
                 m2 <= 0 ? Integer.MIN_VALUE : nums2[m2 - 1]);
 
@@ -76,9 +61,28 @@ public class _004_MedianofTwoSortedArrays {
 
         int c2 = Math.min(m1 >= n1 ? Integer.MAX_VALUE : nums1[m1],
                 m2 >= n2 ? Integer.MAX_VALUE : nums2[m2]);
-
         return (c1 + c2) * 0.5; //为偶数时 求中值和中值下一个值
     }
+
+    public double findMedianSortedArraysIterative(int[] nums1, int[] nums2) {
+        int m = nums1.length, n = nums2.length;
+        if (m < n) return findMedianSortedArraysIterative(nums2, nums1);
+        if (n == 0) return (nums1[(m - 1) / 2] + nums1[m / 2]) / 2.0;
+        int left = 0, right = 2 * n;
+        while (left <= right) { // Try Cut 2
+            int mid2 = (left + right) / 2; // Calculate Cut 1 accordingly
+            int mid1 = m + n - mid2;
+            double L1 = mid1 == 0 ? Double.MIN_VALUE : nums1[(mid1 - 1) / 2]; // Get L1, R1, L2, R2 respectively
+            double L2 = mid2 == 0 ? Double.MIN_VALUE : nums2[(mid2 - 1) / 2];
+            double R1 = mid1 == m * 2 ? Double.MAX_VALUE : nums1[mid1 / 2];
+            double R2 = mid2 == n * 2 ? Double.MAX_VALUE : nums2[mid2 / 2];
+            if (L1 > R2) left = mid2 + 1; // A1's lower half is too big; need to move C1 left (C2 right)
+            else if (L2 > R1) right = mid2 - 1; // A2's lower half too big; need to move C2 left.
+            else return (Math.max(L1, L2) + Math.min(R1, R2)) / 2; // Otherwise, that's the right cut.
+        }
+        return -1;
+    }
+
 
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._004_MedianofTwoSortedArrays");
