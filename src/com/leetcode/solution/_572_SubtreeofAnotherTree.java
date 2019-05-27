@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 /**
  * 是否为子树
- * 100的父题目
+ * 100的父题目+s空返F，st同反T，迭代看s子树
  * Time complexity: O(max(n, m))
  * Space complexity: O(max(n, m))
  */
