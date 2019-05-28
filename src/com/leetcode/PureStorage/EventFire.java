@@ -1,4 +1,4 @@
-package com.leetcode.AmazonOA;
+package com.leetcode.PureStorage;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -70,13 +70,13 @@ public class EventFire {
         isFired = true;
     }
 
-    public void reg_cbtest(CallBack cb){
+    public void reg_cbtest(CallBack cb) {
         lock.lock();
-        if(!isFired){
+        if (!isFired) {
             lock.unlock(); //why not here
             eventQueue.offer(cb);
             lock.unlock();//why here
-        }else{
+        } else {
             lock.unlock();//why here
             cb.call();
             //lock.unlock();  why not here
@@ -183,4 +183,26 @@ public class EventFire {
         }
     }
 
+
+    //最后的解
+    public void reg_cblast(CallBack cb) {
+        lock.lock();
+        if (fired) {
+            lock.unlock();
+            cb.call();
+        } else {
+            eventQueue.add(cb);
+            lock.unlock();
+        }
+    }
+
+    public void event_fired() {
+        lock.lock();
+        fired = true;
+        lock.unlock();
+
+        while (!eventQueue.isEmpty()) {
+            eventQueue.remove().call();
+        }
+    }
 }

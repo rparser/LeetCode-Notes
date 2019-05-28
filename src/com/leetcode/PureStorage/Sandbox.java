@@ -1,4 +1,4 @@
-package com.leetcode.AmazonOA;
+package com.leetcode.PureStorage;
 
 import org.junit.Assert;
 import org.junit.Test;
