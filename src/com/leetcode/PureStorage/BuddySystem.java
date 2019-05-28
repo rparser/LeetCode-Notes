@@ -24,12 +24,12 @@ public class BuddySystem {
             }
             int leftBuddy = left + (left % 2 == 1 ? -1 : 1);
             int rightBuddy = right + (right % 2 == 1 ? -1 : 1);
-            int leftBit = matrix[curLevel][left] * matrix[curLevel][leftBuddy];
+            int leftBit = matrix[curLevel][left] * matrix[curLevel][leftBuddy]; //上一层的值
             int rightBit = matrix[curLevel][right] * matrix[curLevel][rightBuddy];
             curLevel--;
             left /= 2;
             right /= 2;
-            if (leftBit == 0) {
+            if (leftBit == 0) { //上一层为0则弃掉不计算
                 left++;
             }
             if (rightBit == 0) {
