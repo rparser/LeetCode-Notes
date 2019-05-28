@@ -51,12 +51,12 @@ public class EventFire {
         }
     }
 
-    //方法2
+    //正常无lock
     Queue<CallBack> eventQueue = new LinkedList<>();
     boolean isFired = false;
 
     public void reg_cb(CallBack cb) {
-        if (!isFired) {
+        if (!isFired) {//还没有加入queue就fire()了导致被留在了queue
             eventQueue.offer(cb);
         } else {
             cb.call();
@@ -69,15 +69,16 @@ public class EventFire {
         }
         isFired = true;
     }
-
+    //无锁的问题 if say register finished if check(isFired = false) and then fire is run and finished(isFired = true),
+    // then cb in register is left in the queue without anyone running.
     public void reg_cbtest(CallBack cb) {
         lock.lock();
         if (!isFired) {
-            lock.unlock(); //why not here
+            lock.unlock(); //why not here (相当于没有加入)
             eventQueue.offer(cb);
-            lock.unlock();//why here
+            lock.unlock();//why here (最后要释放)
         } else {
-            lock.unlock();//why here
+            lock.unlock();//why here (无用时就要释放)
             cb.call();
             //lock.unlock();  why not here
         }
@@ -110,16 +111,6 @@ public class EventFire {
     }
 
     //intern,有什么风险？
-    public void reg_cbintern(CallBack cb) {
-        lock.lock();
-        if (!isFired) {
-            eventQueue.offer(cb);
-            lock.unlock();
-        } else {
-            lock.unlock();
-            cb.call();
-        }
-    }
 
     public void fireintern() {
         lock.lock();
@@ -175,7 +166,7 @@ public class EventFire {
 
     public void firegood() {
         isFired = true;
-        lock.lock();
+        lock.lock(); //此时尝试获取lock,没拿到会wait,等register进入队列
         lock.unlock();
         while (!eventQueue.isEmpty()) {
             CallBack cb = eventQueue.poll();
