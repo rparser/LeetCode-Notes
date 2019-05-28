@@ -15,7 +15,7 @@ public class EventFire {
             this.name = name;
         }
 
-        public void call() {
+        public void call() { //cb.call()里如果不能控制，call回register,在lock里做的call，lock又不是reentrant，就导致deadlock了
             System.out.println("CallBack Event " + this.name + "is running now");
         }
     }
@@ -69,6 +69,21 @@ public class EventFire {
         }
         isFired = true;
     }
+
+    public void reg_cbtest(CallBack cb){
+        lock.lock();
+        if(!isFired){
+            lock.unlock(); //why not here
+            eventQueue.offer(cb);
+            lock.unlock();//why here
+        }else{
+            lock.unlock();//why here
+            cb.call();
+            //lock.unlock();  why not here
+        }
+
+    }
+
     //比如先执行fired=true再lock，之后要求分析这样会不会有问题。
     //with lock
     public void reg_cbwithlock(CallBack cb) {

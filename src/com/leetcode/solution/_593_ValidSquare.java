@@ -14,6 +14,32 @@ import java.util.*;
  * 计算list中有效的正方形
  */
 
+/**
+ * x2y2     x3y3
+ * _________
+ * |        |
+ * |        |
+ * |        |
+ * |        |
+ * |________|
+ * x0y0     x1y1
+ * <p>
+ * (y10/x10)*(y20/x20)=-1
+ * y10^2+x10^2=y20^2+x20^2
+ * <p>
+ * y10/x10=x02/y20
+ * x02=y10*y20/x10
+ * y10^2+x10^2=y20^2+(y10^2*y20^2/x10^2)
+ * y10^2+x10^2=(y20^2*x10^2/x10^2)+(y10^2*y20^2/x10^2)
+ * y10^2+x10^2=(y20^2*x10^2+y10^2*y20^2)/x10^2
+ * y10^2+x10^2=(y20^2)*(x10^2+y10^2)/x10^2
+ * y20^2=x10^2
+ * y20=x10 or x01, y2-y0=x1-x0 ,y2=x1-x0+y0 or y2=x0-x1+y0
+ * Similarly，x20=y01 or y10,x2=y0-y1+x0 or x2=y1-y0+x0
+ * y31=x01 or x10 -> y3=x0-x1+y1 or y3=x1-x0+y1 //顺序相反
+ * x31=y10 or y01 ->  x3=y1-y0+x1 or x3=y0-y1+x1
+ */
+
 public class _593_ValidSquare {
     public boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {
         HashMap<Double, Integer> map = new HashMap<>(); //距离，存在的个数
@@ -43,19 +69,64 @@ public class _593_ValidSquare {
     }
 
     public List allValidSquare(List<int[]> input) {
-        HashMap<Double, List<String>> map = new HashMap<>(); //距离，存在的个数
-        List<List<String>> result = new ArrayList<>();
+        HashMap<String, Integer> map = new LinkedHashMap<>(); //位置，个数
+        for (int i = 0; i < input.size(); i++) {
+//            if(mapX.containsKey(input.get(i)[0]))
+//                mapX.get(input.get(i)[0]).add(i);
+//            else{
+//                mapX.put(input.get(i)[0],new ArrayList<>());
+//                mapX.get(input.get(i)[0]).add(i);
+//            }
+//
+//            if(mapY.containsKey(input.get(i)[0]))
+//                mapY.get(input.get(i)[0]).add(i);
+//            else{
+//                mapY.put(input.get(i)[0],new ArrayList<>());
+//                mapY.get(input.get(i)[0]).add(i);
+//            }
+//            if (map.containsKey(input.get(i)[0] + "," + input.get(i)[1]))
+//                map.get(input.get(i)[0] + "," + input.get(i)[1]);
+//            else {
+//                map.put(input.get(i)[0] + "," + input.get(i)[1], i);
+//                map.get(input.get(i)[0] + "," + input.get(i)[1]);
+//            }
+            map.put(input.get(i)[0] + "," + input.get(i)[1], i);
+        }
+        Set<String> result = new HashSet<>();
         for (int i = 0; i < input.size(); i++) { //n^2复杂度
             for (int j = i + 1; j < input.size(); j++) {
-                double distIj = dist(input.get(i), input.get(j));
-                if (map.containsKey(distIj)) map.get(distIj).add(i + "," + j);
-                else {
-                    map.put(distIj, new ArrayList<>());
-                    map.get(distIj).add(i + "," + j);
+                int x0 = input.get(i)[0];
+                int y0 = input.get(i)[1];
+                int x1 = input.get(j)[0];
+                int y1 = input.get(j)[1];
+                int x2 = (y0 - y1) + x0;
+                int y2 = (x1 - x0) + y0;
+                int x3 = (y0 - y1) + x1;
+                int y3 = (x1 - x0) + y1;
+                for (String s : map.keySet()) System.out.println(s);
+                if (map.containsKey(x2 + "," + y2) && map.containsKey(x3 + "," + y3) && map.get(x2 + "," + y2) != i
+                        && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j) {
+                    int[] arr = new int[]{i, j, map.get(x2 + "," + y2), map.get(x3 + "," + y3)};
+                    Arrays.sort(arr);
+                    StringBuilder curFind = new StringBuilder();
+                    for (int k : arr) curFind.append(",").append(k);
+                    result.add(curFind.toString());
+                }
+                x2 = -(y0 - y1) + x0;
+                y2 = -(x1 - x0) + y0;
+                x3 = -(y0 - y1) + x1;
+                y3 = -(x1 - x0) + y1;
+                if (map.containsKey(x2 + "," + y2) && map.containsKey(x3 + "," + y3) && map.get(x2 + "," + y2) != i
+                        && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j)   {
+                    int[] arr = new int[]{i, j, map.get(x2 + "," + y2), map.get(x3 + "," + y3)};
+                    Arrays.sort(arr);
+                    StringBuilder curFind = new StringBuilder();
+                    for (int k : arr) curFind.append(",").append(k);
+                    result.add(curFind.toString());
                 }
             }
         }
-        return result;
+        return new ArrayList<>(result);
     }
 
     public static void main(String[] args) {
@@ -64,6 +135,12 @@ public class _593_ValidSquare {
 
     @Test
     public void testSolution() {
-        Assert.assertEquals(4, validSquare(null, null, null, null));
+        List<int[]> input = new ArrayList<>();
+        input.add(new int[]{1134, -2539});
+        input.add(new int[]{-792, -1897});
+        input.add(new int[]{492, -1255});
+        input.add(new int[]{492, -1255});
+        input.add(new int[]{-150, -3181});
+        Assert.assertEquals(new ArrayList<>(), allValidSquare(input));
     }
 }
