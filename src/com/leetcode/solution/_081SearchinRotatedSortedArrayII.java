@@ -6,13 +6,15 @@ package com.leetcode.solution;
  * <p>
  * Time complexity : O(log(N)).
  * Space complexity : O(1).
+ * <p>
+ * 先判断mid和low关系再if target和mid和low关系
  */
 
 public class _081SearchinRotatedSortedArrayII {
     public boolean search(int[] nums, int target) {
         int low = 0, high = nums.length - 1;
         while (low <= high) {
-            int mid = (low + high) / 2;
+            int mid = low + (high - low) / 2;
             if (nums[mid] == target) return true;
             if (nums[mid] == nums[low]) low++;  // 如果low-mid均为重复值
             else if (nums[mid] > nums[low]) { // 否则如果mid > low，即翻转在后半部分
