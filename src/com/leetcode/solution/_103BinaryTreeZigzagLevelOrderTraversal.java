@@ -8,6 +8,7 @@ import java.util.*;
  * <p>
  * Time complexity : O(N) since each node is processed exactly once.
  * Space complexity : O(N) to keep the output structure which contains N node values.
+ * 模板while,for(每层)，取当前点，值加入结果，有子树加入队列，判断行数决定反向
  */
 
 public class _103BinaryTreeZigzagLevelOrderTraversal {
@@ -15,54 +16,24 @@ public class _103BinaryTreeZigzagLevelOrderTraversal {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
         Queue<TreeNode> q = new LinkedList<>();
-        int level = 0;
+        int level = 0;//当前行
         q.offer(root);
         while (!q.isEmpty()) {
             int size = q.size();
             result.add(new ArrayList<>());
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) { //处理每一行
                 TreeNode cur = q.poll();
                 result.get(level).add(cur.val);
-                if (cur.left != null) {
-                    q.offer(cur.left);
-                }
-                if (cur.right != null) {
-                    q.offer(cur.right);
-                }
+                if (cur.left != null) q.offer(cur.left);
+                if (cur.right != null) q.offer(cur.right);
             }
-            if (level % 2 == 1)
+            if (level % 2 == 1) //第1行及每单数行要顺序反过来（root为0行）
                 Collections.reverse(result.get(level));
             level++;
         }
         return result;
     }
-
-
-    public List<List<Integer>> zigzagLevelOrderPrint(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return result;
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size(); //设定当前层有几个节点
-            LinkedList<Integer> currLevel = new LinkedList<>();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.pop();
-                currLevel.add(node.val); //把queue里小于size的结果加入当前层list
-                if (node.left != null) queue.offer(node.left);
-                if (node.right != null) queue.offer(node.right);
-            }
-            result.add(currLevel); //当前层list加入result
-        }
-
-        for (int i = 0; i < result.size(); i++) {
-            if (i % 2 != 0) { //奇数行翻转
-                Collections.reverse(result.get(i));
-            }
-        }
-        return result;
-    }
-
+    
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
