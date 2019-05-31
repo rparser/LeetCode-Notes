@@ -33,7 +33,7 @@ public class _103BinaryTreeZigzagLevelOrderTraversal {
         }
         return result;
     }
-    
+
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
