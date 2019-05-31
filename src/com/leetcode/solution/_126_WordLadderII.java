@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import java.util.*;
 
 /**
- * Solution #2 BFS + DFS with Optimization
+ * BFS + DFS with Optimization
  * 优化的方法是在第一步BFS的过程中, 利用一个hash map记录start到每一个结点的最短距离.
  * <p>
  * 那么在第二步DFS的过程中, 我们就不需要一个一个的尝试, 不行了还得回溯. 我们可以利用那个distance的hash map,
