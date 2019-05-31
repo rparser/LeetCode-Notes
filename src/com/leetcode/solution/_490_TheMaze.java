@@ -22,16 +22,16 @@ import java.util.*;
  * 6. during any queue.poll(), if it's destination, return true
  * 7. if loop is finished, return false
  * <p>
- * visited数组。模板while,for(每层：步数)，当前值到达则返回，走过则跳过，标记走过，for六步，next查跳跃值，有跳跃则刷新，加入队列。跳跃值函数int getBoardValue(int[][] board, int num)
+ * visited数组。模板while，当前值到达则返回，for四个方向，当在范围内且可到达while走到底，退一步，如果没visited，加入queue变visited
  */
 
 public class _490_TheMaze {
     public boolean hasPath(int[][] maze, int[] start, int[] dest) {
-        boolean[][] visited = new boolean[maze.length][maze[0].length];
         Queue<int[]> queue = new LinkedList<>();
         queue.add(start);
-        visited[start[0]][start[1]] = true;
         int[][] dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+        boolean[][] visited = new boolean[maze.length][maze[0].length];
+        visited[start[0]][start[1]] = true;
 
         while (!queue.isEmpty()) {
             int[] pos = queue.poll();
@@ -44,7 +44,7 @@ public class _490_TheMaze {
                     x += dirs[k][0];
                     y += dirs[k][1];
                 }
-                x -= dirs[k][0];
+                x -= dirs[k][0]; //退一步回到可行的位置
                 y -= dirs[k][1];
                 if (!visited[x][y]) {
                     queue.add(new int[]{x, y});
