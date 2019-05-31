@@ -8,37 +8,35 @@ import java.util.*;
  * <p>
  * Time Complexity: O(n*26^l) -> O(n*26^l/2), l = len(word), n=|wordList|
  * Space Complexity: O(n)
+ * 模板while,for(每层：步数)，当前单词变字符数组，每个字母可以变任意字母2loop,原词则cont，新单词词典找到则返回，找不到则cont，找到但不是从词典删除加入队列,还原单词
  */
 
 public class _127_WordLadder {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> dict = new HashSet<>(wordList);
-
-        if (!dict.contains(endWord)) return 0;
-
-        Queue<String> queue = new ArrayDeque<>();
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (!wordSet.contains(endWord)) return 0;
+        Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
-
         int length = beginWord.length();
         int steps = 0;
 
         while (!queue.isEmpty()) {
-            ++steps; //加入步数
-            for (int s = queue.size(); s > 0; --s) { //处理本层节点
+            steps++; //加入步数
+            for (int s = queue.size(); s > 0; s--) { //处理本层节点
                 String currWord = queue.poll();
                 char[] currWordChars = currWord.toCharArray();
-                for (int i = 0; i < length; i++) {
+                for (int i = 0; i < length; i++) { //每个字母都可以变
                     char currChar = currWordChars[i]; //保存这个字母
-                    for (char c = 'a'; c <= 'z'; ++c) {
+                    for (char c = 'a'; c <= 'z'; c++) {
                         if (c == currChar) continue; //如果是原值则跳出
-                        currWordChars[i] = c; //否则设置为新单词
-                        String t = new String(currWordChars);
+                        currWordChars[i] = c;
+                        String t = new String(currWordChars); //否则设置为新单词
                         if (t.equals(endWord)) return steps + 1; //如果找到则返回
-                        if (!dict.contains(t)) continue; //如果字典里找不到则跳出
-                        dict.remove(t); //如果词典里找到，移除这个单词
+                        if (!wordSet.contains(t)) continue; //如果词典里找不到则跳出,找到
+                        wordSet.remove(t); //如果词典里找到，移除这个单词
                         queue.offer(t); //把这个单词加入queue
                     }
-                    currWordChars[i] = currChar; //重新放回
+                    currWordChars[i] = currChar; //重新还原单词
                 }
             }
         }
