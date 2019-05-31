@@ -7,11 +7,11 @@ package com.leetcode.solution;
  * Space Complexity: O(N). This is because the maximum amount of space utilized by the recursion stack would be N since the height of a skewed binary tree could be N.
  */
 
-public class _236LowestCommonAncestorofaBinaryTree {
+public class _236_LowestCommonAncestorofaBinaryTree {
 
     private TreeNode ans;
 
-    public _236LowestCommonAncestorofaBinaryTree() {
+    public _236_LowestCommonAncestorofaBinaryTree() {
         // Variable to store LCA node.
         this.ans = null;
     }
