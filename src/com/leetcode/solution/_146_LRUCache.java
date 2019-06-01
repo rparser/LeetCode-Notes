@@ -12,11 +12,10 @@ import org.junit.runner.*;
  * Complexity: Time O(1) Space O(N)
  */
 
-public class _146LRUCache {
-    //instance variable
+public class _146_LRUCache {
     private Node head = null;
     private Node end = null;
-    HashMap<Integer, Node> map = new HashMap<>(); //<val, node in list>
+    HashMap<Integer, Node> map = new HashMap<>(); //<val: node in list>
     private int capacity;
 
     class Node {
@@ -31,7 +30,7 @@ public class _146LRUCache {
         }
     }
 
-    public _146LRUCache(int capacity) {
+    public _146_LRUCache(int capacity) {
         this.capacity = capacity;
     }
 
@@ -63,17 +62,17 @@ public class _146LRUCache {
     public void put(int key, int value) {
         if (!map.containsKey(key)) {
             if (map.size() >= capacity) { //超过容量
-                map.remove(end.key);
-                removeNode(end);
+                map.remove(end.key); //map删除end
+                removeNode(end); //node删除end
             }
             Node cur = new Node(key, value);
             map.put(key, cur); //加入map
-            setHead(cur); //放到head
-        } else {//update value
+            setHead(cur); //新key放到head
+        } else { //没有超过容量
             Node cur = map.get(key);
             cur.val = value;
             removeNode(cur); //删除原有node
-            setHead(cur); //放到head
+            setHead(cur); //新key放到head
         }
     }
 
@@ -90,7 +89,7 @@ public class _146LRUCache {
 //    }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._146LRUCache");
+        JUnitCore.main("com.leetcode.solution._146_LRUCache");
     }
 
     @Test
