@@ -6,13 +6,13 @@ package com.leetcode.solution;
  * DFS 解法：把每个为1的点的相邻点全变成0
  * Time complexity : O(M×N) where MM is the number of rows and N is the number of columns.
  * Space complexity : worst case O(M×N) in case that the grid map is filled with lands where DFS goes by M×N deep.
+ *
+ * 694子问题
  */
 
 public class _200NumberofIslands {
     private void dfs(char[][] grid, int r, int c) {
-        if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] == '0') { //该点为0或超出范围，立刻中断返回
-            return;
-        }
+
         grid[r][c] = '0'; //把该点变成0
         dfs(grid, r - 1, c); // 遍历周围四个点
         dfs(grid, r + 1, c);

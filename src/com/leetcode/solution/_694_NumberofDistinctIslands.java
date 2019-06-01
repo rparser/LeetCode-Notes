@@ -2,33 +2,36 @@ package com.leetcode.solution;
 
 import java.util.*;
 
+/**
+ * 岛屿形状统计
+ * 相对于200，增加set记录岛屿形状
+ */
+
 public class _694_NumberofDistinctIslands {
-    public void dfs(int[][] grid, int i, int j, int baseX, int baseY, Set<String> set) {
-        int m = grid.length, n = grid[0].length;
-        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == 0)
+    private void dfs(int[][] grid, int r, int c, int baseX, int baseY, Set<String> set) {
+        if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] == 0) { //该点为0或超出范围，立刻中断返回
             return;
-        set.add((i - baseX) + "_" + (j - baseY)); //encode变为字符串,记录相对岛屿形状
-        grid[i][j] = 0;
-        dfs(grid, i + 1, j, baseX, baseY, set);
-        dfs(grid, i - 1, j, baseX, baseY, set);
-        dfs(grid, i, j - 1, baseX, baseY, set);
-        dfs(grid, i, j + 1, baseX, baseY, set);
+        }
+        set.add((r - baseX) + "_" + (c - baseY)); //比200多的：encode变为字符串,记录相对岛屿形状
+        grid[r][c] = 0;
+        dfs(grid, r + 1, c, baseX, baseY, set);
+        dfs(grid, r - 1, c, baseX, baseY, set);
+        dfs(grid, r, c - 1, baseX, baseY, set);
+        dfs(grid, r, c + 1, baseX, baseY, set);
     }
 
     public int numDistinctIslands(int[][] grid) {
-        if (grid == null || grid.length < 1 || grid[0].length < 1)
-            return 0;
-        int m = grid.length, n = grid[0].length;
-        Set<String> res = new HashSet<>();
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                Set<String> set = new HashSet<>();
-                if (grid[i][j] == 1) { //左上角起始
-                    dfs(grid, i, j, i, j, set);
-                    res.add(set.toString());
+        if (grid == null || grid.length < 1 || grid[0].length < 1) return 0; //如果空
+        Set<String> result = new HashSet<>(); //比200多的，记录结果
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                Set<String> set = new HashSet<>(); //比200多的，记录形状
+                if (grid[r][c] == 1) {
+                    dfs(grid, r, c, r, c, set);
+                    result.add(set.toString());
                 }
             }
         }
-        return res.size();
+        return result.size();
     }
 }
