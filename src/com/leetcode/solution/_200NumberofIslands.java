@@ -9,7 +9,7 @@ package com.leetcode.solution;
  */
 
 public class _200NumberofIslands {
-    void dfs(char[][] grid, int r, int c) {
+    private void dfs(char[][] grid, int r, int c) {
         if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] == '0') { //该点为0或超出范围，立刻中断返回
             return;
         }
