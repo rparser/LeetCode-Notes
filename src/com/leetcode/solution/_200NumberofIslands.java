@@ -21,9 +21,7 @@ public class _200NumberofIslands {
     }
 
     public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
+        if (grid == null || grid.length == 0) return 0; //如果空集
         int num_islands = 0; //岛屿数结果从零计算
         for (int r = 0; r < grid.length; ++r) {
             for (int c = 0; c < grid[0].length; ++c) { //遍历每个点
