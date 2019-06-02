@@ -26,15 +26,13 @@ public class _023MergekSortedLists {
         ListNode curr = dummy;
 
         for (ListNode node : lists)
-            if (node != null)
-                queue.add(node);
+            if (node != null) queue.offer(node);
 
         while (!queue.isEmpty()) {
-            curr.next = queue.poll();
+            curr.next = queue.poll(); //取出node
             curr = curr.next;
 
-            if (curr.next != null)
-                queue.add(curr.next);
+            if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
         }
         return dummy.next;
     }
