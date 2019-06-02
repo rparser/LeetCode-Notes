@@ -14,6 +14,7 @@ import java.util.*;
  * O(n) Creating a new linked list costs O(n) space.
  * O(k) The code above present applies in-place method which cost O(1) space.
  * And the priority queue (often implemented with heaps) costs O(k) space (it's far less than N in most situations).
+ * 链表pq依次offer list(Comparator.comparingInt(o -> o.val)),while非空，next=poll,cur=next,if(next非空)则offer(next)
  */
 
 public class _023MergekSortedLists {
