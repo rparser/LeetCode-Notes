@@ -9,6 +9,7 @@ package com.leetcode.solution;
  * <p>
  * Complexity：  Time O(n)
  * Space O(h)
+ * 模板dfs,int(TreeNode)函数，左右max(0,递归(root.left),更新max=max(max,left+right+root)，返回root+max(left,right)
  */
 
 public class _124_BinaryTreeMaximumPathSum {
