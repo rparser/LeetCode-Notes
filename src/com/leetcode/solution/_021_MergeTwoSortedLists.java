@@ -13,7 +13,7 @@ package com.leetcode.solution;
  * The iterative approach only allocates a few pointers, so it has a constant overall memory footprint.
  */
 
-public class _021MergeTwoSortedLists {
+public class _021_MergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // 必须设置不变的head 因为prev指针在不断后移 可能随时被修改
         ListNode prehead = new ListNode(-1);
