@@ -3,39 +3,31 @@ package com.leetcode.solution;
 import java.util.*;
 
 
-public class _347TopKFrequentElements {
+public class _347_TopKFrequentElements {
     public List<Integer> topKFrequent(int[] nums, int k) {
         // build hash map : character and how often it appears
         HashMap<Integer, Integer> count = new HashMap<>();
-        for (int n : nums) {
-            count.put(n, count.getOrDefault(n, 0) + 1);
-        }
+        for (int n : nums) count.put(n, count.getOrDefault(n, 0) + 1); // num : count
 
-        // init heap 'the less frequent element first'
-//        PriorityQueue<Integer> heap =
-//                new PriorityQueue<>((n1, n2) -> count.get(n1) - count.get(n2));
-        PriorityQueue<Integer> heap =
+        PriorityQueue<Integer> queue =
                 new PriorityQueue<>(Comparator.comparingInt(count::get));
 
-        // keep k top frequent elements in the heap
+        // keep k top frequent elements in the queue
         for (int n : count.keySet()) {
-            heap.add(n);
-            if (heap.size() > k)
-                heap.poll();
+            queue.add(n);
+            if (queue.size() > k) queue.poll(); //只保留k-size的queue
         }
 
         // build output list
         List<Integer> top_k = new LinkedList<>();
-        while (!heap.isEmpty())
-            top_k.add(heap.poll());
+        while (!queue.isEmpty()) top_k.add(queue.poll());
         Collections.reverse(top_k);
         return top_k;
     }
 
     public List<Integer> topKFrequentON(int[] nums, int k) {
-
         List<Integer>[] bucket = new List[nums.length + 1];
-        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
 
         for (int n : nums) {
             frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
