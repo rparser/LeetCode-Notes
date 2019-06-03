@@ -2,6 +2,10 @@ package com.leetcode.solution;
 
 import java.util.*;
 
+/**
+ * 最常用K点
+ * map(num:count)，按照count加入pq,只保留k-size，
+ */
 
 public class _347_TopKFrequentElements {
     public List<Integer> topKFrequent(int[] nums, int k) {
