@@ -4,54 +4,56 @@ import java.util.*;
 
 public class _773_SlidingPuzzle {
     public int slidingPuzzle(int[][] board) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < board.length; ++i) {
-            for (int j = 0; j < board[i].length; ++j) {
-                sb.append(board[i][j]);
+        int kRows = board.length;
+        int kCols = board[0].length;
+        StringBuilder startSb = new StringBuilder();
+        StringBuilder goalSb = new StringBuilder();
+        int num = 0;
+        for (int i = 0; i < kRows; ++i)
+            for (int j = 0; j < kCols; ++j) {
+                startSb.append(board[i][j]);
+                goalSb.append(num);
+                num++;
             }
-        }
 
-        String init = sb.toString();
-        Queue<String> queue = new LinkedList<>();
-        queue.add(init);
+        String start = startSb.toString();
+        String goal = goalSb.toString();
+        goal = "123450";
+        if (start.equals(goal)) return 0;
+
+        int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}; //four directions
+
         Set<String> visited = new HashSet<>();
-        visited.add(init);
-        /*
-        index map
-        [0,1,2],
-        [3,4,5]
-        */
-        int[][] dirs = {
-                {1, 3},  // 0 can to 1 and 3
-                {0, 2, 4},
-                {1, 5},
-                {0, 4},
-                {1, 3, 5},
-                {2, 4}
-        };
+        visited.add(start);
 
         int steps = 0;
-        while (!queue.isEmpty()) {
-            Queue<String> nextQueue = new LinkedList<>();
-            while (!queue.isEmpty()) {
-                String cur = queue.poll();
-                if ("123450".equals(cur)) {
-                    return steps;
-                }
-                int zeroIndex = cur.indexOf('0');
-                for (int nextIndex : dirs[zeroIndex]) {
-                    char[] arr = cur.toCharArray();
-                    arr[zeroIndex] = arr[nextIndex];
-                    arr[nextIndex] = '0';
-                    String next = new String(arr);
-                    if (!visited.contains(next)) {
-                        nextQueue.add(next);
-                        visited.add(next);
-                    }
+        Queue<String> q = new LinkedList<>();
+        q.add(start);
+        while (!q.isEmpty()) {
+            ++steps;
+            int size = q.size();
+            while (size-- > 0) {
+                String s = q.poll();
+                int p = s.indexOf('0');
+                int y = p / kCols;
+                int x = p % kCols;
+                for (int i = 0; i < 4; ++i) {
+                    int tx = x + dirs[i][0];
+                    int ty = y + dirs[i][1];
+                    if (tx < 0 || ty < 0 || tx >= kCols || ty >= kRows) continue;
+                    int pp = ty * kCols + tx;
+                    String t = s;
+                    char ch[] = t.toCharArray();
+                    char temp = ch[p];
+                    ch[p] = ch[pp];
+                    ch[pp] = temp;
+                    t = new String(ch);
+                    if (visited.contains(t)) continue;
+                    if (t.equals(goal)) return steps;
+                    visited.add(t);
+                    q.add(t);
                 }
             }
-            queue = nextQueue;
-            steps++;
         }
         return -1;
     }
