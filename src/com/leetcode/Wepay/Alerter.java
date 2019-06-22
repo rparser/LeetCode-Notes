@@ -33,7 +33,7 @@ public class Alerter {
             inputsIndex++;
         }
 
-        // Then we scan the inputs twice, to get the average sliding window. check 1point3acres for more.
+        // Then we scan the inputs twice, to get the average sliding window.
         float[] aveSlidingWindow = new float[len - windowSize + 1];
         inputsIndex = 0;
         windowIndex = 0;
@@ -65,7 +65,7 @@ public class Alerter {
             float ave = aveSlidingWindow[inputsIndex];
 
             if (!map.containsKey(maxInputsIndex)) {
-                map.put(maxInputsIndex, new ArrayList<Float>());
+                map.put(maxInputsIndex, new ArrayList<>());
                 map.get(maxInputsIndex).add(ave);
             } else {
                 map.get(maxInputsIndex).add(ave);
