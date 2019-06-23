@@ -6,30 +6,23 @@ import java.util.*;
 public class Alerter {
     public Boolean alerter(List<Integer> inputs,
                            int windowSize,
-                           float allowedIncrease){
+                           float allowedIncrease) {
 
         // First check some special cases
         int len = inputs.size();
-        if (len == 0)
-            return false;
+        if (len == 0) return false;
 
         // we first scan the nums, and get the maximum sliding window,
         // but which stores inputsIndex, because there may be duplicate elements
-        int[] maxSlidingWindow = new int[len - windowSize + 1];
+        int[] maxWindow = new int[len - windowSize + 1];
         int inputsIndex = 0;
         int windowIndex = 0;
-        Deque<Integer> dq = new LinkedList<>();
+        Deque<Integer> deque = new LinkedList<>();
         while (inputsIndex < len) {
-            while (!dq.isEmpty() && dq.peek() < inputsIndex - windowSize + 1) {
-                dq.poll();
-            }
-            while (!dq.isEmpty() && inputs.get(dq.peekLast()) < inputs.get(inputsIndex)) {
-                dq.pollLast();
-            }
-            dq.addLast(inputsIndex);
-            if (inputsIndex >= windowSize - 1)
-                maxSlidingWindow[windowIndex++] = dq.peek();
-
+            while (!deque.isEmpty() && deque.peek() < inputsIndex - windowSize + 1) deque.poll();
+            while (!deque.isEmpty() && inputs.get(deque.peekLast()) < inputs.get(inputsIndex)) deque.pollLast();
+            deque.addLast(inputsIndex);
+            if (inputsIndex >= windowSize - 1) maxWindow[windowIndex++] = deque.peek();
             inputsIndex++;
         }
 
@@ -37,18 +30,17 @@ public class Alerter {
         float[] aveSlidingWindow = new float[len - windowSize + 1];
         inputsIndex = 0;
         windowIndex = 0;
-        dq.clear();
+        deque.clear();
         int sum = 0;
         while (inputsIndex < len) {
-            while (!dq.isEmpty() && dq.peek() < inputsIndex - windowSize + 1) {
-                sum -= inputs.get(dq.poll());
-            }
-            dq.addLast(inputsIndex);
+            while (!deque.isEmpty() && deque.peek() < inputsIndex - windowSize + 1) sum -= inputs.get(deque.poll());
+
+            deque.addLast(inputsIndex);
             sum += inputs.get(inputsIndex);
             if (inputsIndex >= windowSize - 1) {
                 float ave = (float) sum / (float) windowSize;
                 DecimalFormat newFormat = new DecimalFormat("#.##");
-                ave =  Float.valueOf(newFormat.format(ave));
+                ave = Float.valueOf(newFormat.format(ave));
                 aveSlidingWindow[windowIndex++] = ave;
             }
             inputsIndex++;
@@ -60,16 +52,15 @@ public class Alerter {
         // Create a hashmap, for each individual maximum inputsIndex, map it to the average in all windows it appears
         HashMap<Integer, List<Float>> map = new HashMap<>();
         inputsIndex = 0;
-        for (;inputsIndex < len - windowSize + 1; inputsIndex++) {
-            int maxInputsIndex = maxSlidingWindow[inputsIndex];
+        for (; inputsIndex < len - windowSize + 1; inputsIndex++) {
+            int maxInputsIndex = maxWindow[inputsIndex];
             float ave = aveSlidingWindow[inputsIndex];
 
             if (!map.containsKey(maxInputsIndex)) {
                 map.put(maxInputsIndex, new ArrayList<>());
                 map.get(maxInputsIndex).add(ave);
-            } else {
+            } else
                 map.get(maxInputsIndex).add(ave);
-            }
         }
 
         // We check if the first condition meets
