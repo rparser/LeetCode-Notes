@@ -13,8 +13,10 @@ public class _067_AddBinary {
         while (i >= 0 || j >= 0) {
             int sum = inc;
             inc = 0;//set back inc
-            if (i >= 0) sum += a.charAt(i--) - '0';
-            if (j >= 0) sum += b.charAt(j--) - '0';
+            if (i >= 0) sum += a.charAt(i) - '0';
+            if (j >= 0) sum += b.charAt(j) - '0';
+            i--;
+            j--;
             if (sum >= 2) inc = 1;
             res.append(sum % 2);//only have 3 2 1 0
         }
