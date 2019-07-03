@@ -10,7 +10,7 @@ package com.leetcode.solution;
  * Space Complexity: O(∣S∣+∣T∣). ∣S∣ when the window size is equal to the entire string S. ∣T∣ when T has all unique characters.
  */
 
-public class _076MinimumWindowSubstring {
+public class _076_MinimumWindowSubstring {
     public String minWindow(String s, String t) {
         if (s == null || t == null || s.length() == 0 || t.length() == 0) return "";
         int count = 0;
