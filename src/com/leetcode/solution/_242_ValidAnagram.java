@@ -14,9 +14,9 @@ public class _242_ValidAnagram {
             counter[s.charAt(i) - 'a']++;
             counter[t.charAt(i) - 'a']--;
         }
-        for (int count : counter) {
+        for (int count : counter)
             if (count != 0) return false;
-        }
+
         return true;
     }
 }

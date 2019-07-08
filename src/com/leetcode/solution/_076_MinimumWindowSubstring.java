@@ -10,6 +10,12 @@ import java.util.*;
  * ∣T∣ represents the length of string T.
  * <p>
  * Space Complexity: O(∣S∣+∣T∣). ∣S∣ when the window size is equal to the entire string S. ∣T∣ when T has all unique characters.
+ * <p>
+ * 1. Use two pointers: start and end to represent a window.
+ * 2. Move end to find a valid window.
+ * 3. When a valid window is found, move start to find a smaller window.
+ * *define counter  =  t.length() *when map.get(c) > 0, counter--, and we remove c's count in map
+ * *watch valid case: counter == 0 *return: if len not updated, we not find window
  */
 
 public class _076_MinimumWindowSubstring {
