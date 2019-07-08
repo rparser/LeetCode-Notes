@@ -7,9 +7,7 @@ package com.leetcode.solution;
 
 public class _152_MaximumProductSubarray {
     public int maxProduct(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
+        if (nums == null || nums.length == 0) return 0;
         int max = nums[0], min = nums[0], result = nums[0];
         for (int i = 1; i < nums.length; i++) {
             int temp = max;
