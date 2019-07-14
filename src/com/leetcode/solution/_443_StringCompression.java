@@ -4,6 +4,7 @@ import org.junit.*;
 import org.junit.runner.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,6 +17,9 @@ import java.util.List;
 
 public class _443_StringCompression {
     public int compress(char[] chars) {
+//        String str;
+//        char[] chars = str.toCharArray();
+//        str = new String(chars);
         int n = chars.length;
         int cur = 0; //当前处理字符的索引，最后是压缩串的长度
         for (int i = 0; i < n; ) {
