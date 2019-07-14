@@ -12,11 +12,12 @@ import java.util.*;
 
 public class _150_EvaluateReversePolishNotation {
     public int evalRPN(String[] tokens) {
-        Stack<Integer> stack = new Stack<>();
+        if (tokens.length == 0) return 0;
+        Stack<Integer> stack = new Stack<>(); // 第一个数有可能最后操作所以要FILO
 
-        for (int i = 0; i < tokens.length; i++) {
-            switch (tokens[i]) {
-                case "+":
+        for (String str : tokens) {
+            switch (str) {
+                case "+": //如果是符号，则要计算后再push入
                     stack.push(stack.pop() + stack.pop());
                     break;
 
@@ -34,7 +35,7 @@ public class _150_EvaluateReversePolishNotation {
                     break;
 
                 default:
-                    stack.push(Integer.parseInt(tokens[i]));
+                    stack.push(Integer.parseInt(str));
             }
         }
         return stack.pop();
