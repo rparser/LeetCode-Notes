@@ -32,36 +32,32 @@ public class _068_TextJustification {
 
         for (int index = 0; index < words.length; ) {
             StringBuilder buff = new StringBuilder();
-            int count = words[index].length();
+            int count = words[index].length(); // 本行单词长度
             int last = index + 1;
-            while (last < words.length && count + 1 + words[last].length() <= maxWidth) {
-                count += 1 + words[last].length();
+            while (last < words.length && count + 1 + words[last].length() <= maxWidth) { // 1为空格
+                count += 1 + words[last].length(); //加到最后一个单词，或长度超出
                 last++;
             }
 
             int diff = last - index - 1;
-            if (last == words.length || diff == 0) {
-                for (int i = index; i < last; i++) {
-                    buff.append(words[i] + ' ');
-                }
-                buff.deleteCharAt(buff.length() - 1);
-                for (int i = buff.length() + 1; i <= maxWidth; i++) {
-                    buff.append(' ');
-                }
+            if (last == words.length || diff == 0) { //如果没有排满，空格放到最后
+                for (int i = index; i < last; i++) buff.append(words[i] + ' '); //如果是最后一行，加到最后一个单词
+                buff.deleteCharAt(buff.length() - 1); //最后一个单词后会多一个空格，要去掉空格
+                for (int i = buff.length() + 1; i <= maxWidth; i++) buff.append(' '); //再补齐空格
             } else {
-                int spaces = (maxWidth - count) / diff;
-                int left = (maxWidth - count) % diff;
+                int spaces = (maxWidth - count) / diff; //各自分配几个空格
+                int left = (maxWidth - count) % diff; //余下几个不可分配的空格
                 for (int i = index; i < last; i++) {
-                    buff.append(words[i]);
-                    if (i < last - 1) {
-                        for (int j = 0; j <= spaces + (i - index < left ? 1 : 0); j++) {
+                    buff.append(words[i]); //添加单词
+                    if (i < last - 1) { //
+                        for (int j = 0; j <= spaces + (i - index < left ? 1 : 0); j++) { //看分配几个空格（是不是前left个）
                             buff.append(' ');
                         }
                     }
                 }
             }
             res.add(buff.toString());
-            index = last;
+            index = last; // 开始下一行
         }
         return res;
     }
