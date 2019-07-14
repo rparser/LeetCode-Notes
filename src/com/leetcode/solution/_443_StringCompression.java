@@ -14,7 +14,7 @@ import java.util.List;
 // 否则就修改字符串中的元素，并且在个数大于1的时候同时写入计数。
 // 值得注意的是在最后还需要检查一下计数是不是大于1，如果大于1则还要额外再写入计数。
 
-public class _443StringCompression {
+public class _443_StringCompression {
 //    public int compress(char[] chars) {
 //        int n = chars.length;
 //        int cur = 0; // 当前处理字符的索引，最后是压缩串的长度
@@ -77,7 +77,7 @@ public class _443StringCompression {
 
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._443StringCompression");
+        JUnitCore.main("com.leetcode.solution._443_StringCompression");
     }
 
     @Test
