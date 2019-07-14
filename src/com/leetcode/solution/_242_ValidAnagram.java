@@ -9,7 +9,7 @@ public class _242_ValidAnagram {
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) return false;
 
-        int[] counter = new int[26];
+        int[] counter = new int[26]; // 问有没有特殊字符？确定是否从a开始
         for (int i = 0; i < s.length(); i++) {
             counter[s.charAt(i) - 'a']++;
             counter[t.charAt(i) - 'a']--;
