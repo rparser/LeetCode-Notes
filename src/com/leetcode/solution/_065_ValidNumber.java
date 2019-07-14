@@ -37,7 +37,7 @@ public class _065_ValidNumber {
             } else if (s.charAt(i) == '.') {
                 if (hasPoint)
                     return false;
-                hasPoint = true; // first char can be '.'
+                hasPoint = true; // first char can be '.' 如果第一个字符不能为.则要加入if判断是否为第一否则返回false
             } else if (s.charAt(i) == '-' || s.charAt(i) == '+') {
                 if (i != 0)
                     return false;
