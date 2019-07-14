@@ -14,8 +14,8 @@ public class _226_InvertBinaryTree {
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
         if (root.left == null && root.right == null) return root;
-        TreeNode left = invertTree(root.left);
-        TreeNode right = invertTree(root.right);
+        TreeNode left = invertTree(root.left); //如果左右不为空
+        TreeNode right = invertTree(root.right); //1-23-4567 先翻转45再翻转67再翻转23
         root.left = right;
         root.right = left;
         return root;
