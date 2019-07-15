@@ -13,7 +13,7 @@ import java.util.HashMap;
  * Space complexity : O(N) since we have to keep a hash map with N elements.
  */
 
-public class _387FirstUniqueCharacterinaString {
+public class _387_FirstUniqueCharacterinaString {
     public int firstUniqChar(String s) {
         HashMap<Character, Integer> count = new HashMap<>();
         for (char c : s.toCharArray()) {//遍历第一次：遍历字符串
@@ -26,7 +26,7 @@ public class _387FirstUniqueCharacterinaString {
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._387FirstUniqueCharacterinaString");
+        JUnitCore.main("com.leetcode.solution._387_FirstUniqueCharacterinaString");
     }
 
     @Test
