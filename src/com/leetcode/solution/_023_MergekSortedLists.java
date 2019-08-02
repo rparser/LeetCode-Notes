@@ -17,7 +17,7 @@ import java.util.*;
  * 链表pq依次offer list(Comparator.comparingInt(o -> o.val)),while非空，next=poll,cur=next,if(next非空)则offer(next)
  */
 
-public class _023MergekSortedLists {
+public class _023_MergekSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
 
