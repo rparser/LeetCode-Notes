@@ -30,27 +30,10 @@ public class _056MergeIntervals {
             if (currentInterval[0] <= lastInterval[1]) {
                 lastInterval[0] = Math.min(lastInterval[0], currentInterval[0]);
                 lastInterval[1] = Math.max(lastInterval[1], currentInterval[1]);
-            } else {
-                result.add(currentInterval); // 否则没有交叠，加入新的间隔
-            }
+            } else result.add(currentInterval); // 否则没有交叠，加入新的间隔
         }
         int[][] res = new int[result.size()][2];
         res = result.toArray(res);
         return res;
-    }
-
-    public class Interval {
-        int start;
-        int end;
-
-        Interval() {
-            start = 0;
-            end = 0;
-        }
-
-        Interval(int s, int e) {
-            start = s;
-            end = e;
-        }
     }
 }
