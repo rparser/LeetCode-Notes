@@ -17,7 +17,7 @@ import java.util.*;
  * Otherwise, we must allocate linear space to store a copy of intervals and sort that.
  */
 
-public class _056MergeIntervals {
+public class _056_MergeIntervals {
     public int[][] merge(int[][] intervals) {
         if (intervals.length == 0 || intervals[0].length == 0) return new int[][]{};
         List<int[]> result = new ArrayList<>();
