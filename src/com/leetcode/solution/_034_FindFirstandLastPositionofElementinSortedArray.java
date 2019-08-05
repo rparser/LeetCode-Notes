@@ -11,13 +11,15 @@ package com.leetcode.solution;
 public class _034_FindFirstandLastPositionofElementinSortedArray {
     // returns leftmost (or rightmost) index at which `target` should be
     // inserted in sorted array `nums` via binary search.
+    // if left is true, then we "recurse" on the left subarray on ties. Otherwise, we go right.
     private int extremeInsertionIndex(int[] nums, int target, boolean left) {
         int lo = 0;
         int hi = nums.length;
         while (lo < hi) {
-            int mid = (lo + hi) / 2;
+            int mid = lo + (hi - lo) / 2;
+            //如果中值大于目标值OR（中值为目标值AND left为true），target在左侧
             if (nums[mid] > target || (left && target == nums[mid])) hi = mid;
-            else lo = mid + 1;
+            else lo = mid + 1; //否则target在右侧
         }
         return lo;
     }
@@ -30,7 +32,7 @@ public class _034_FindFirstandLastPositionofElementinSortedArray {
         // is actually in `nums`.
         if (leftIdx == nums.length || nums[leftIdx] != target) return targetRange;
         targetRange[0] = leftIdx;
-        targetRange[1] = extremeInsertionIndex(nums, target, false) - 1;
+        targetRange[1] = extremeInsertionIndex(nums, target, false) - 1; //求出最右侧(left=false)
 
         return targetRange;
     }
