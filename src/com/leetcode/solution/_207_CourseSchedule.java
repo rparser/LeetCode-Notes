@@ -16,8 +16,8 @@ public class _207_CourseSchedule {
 
         for (int[] i : prerequisites) {
             inDegree[i[0]]++; //依次设置inDegree
-            if (graph.containsKey(i[1])) //如果图里已有，则加入列表
-                graph.get(i[1]).add(i[0]);
+            if (graph.containsKey(i[1]))
+                graph.get(i[1]).add(i[0]); //如果图里已有，则加入列表
             else {
                 ArrayList<Integer> list = new ArrayList<>(); //否则创建新list，加入i值，再加入到graph里
                 list.add(i[0]);
