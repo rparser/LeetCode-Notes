@@ -9,7 +9,7 @@ import java.util.*;
  */
 
 public class _207_CourseSchedule {
-    public boolean canFinish(int numCourses, int[][] prerequisites) { //requisite (re-kwi-zit)
+    public boolean canFinishBFS(int numCourses, int[][] prerequisites) { //requisite (re-kwi-zit)
         int[] inDegree = new int[numCourses]; //顶点inDegree值 (当前课需要几门先上的课)
         if (prerequisites == null || prerequisites.length == 0) return true;
         HashMap<Integer, List<Integer>> graph = new HashMap<>(); //num->list, 上了num后可以上哪些课
@@ -41,5 +41,34 @@ public class _207_CourseSchedule {
         for (int i = 0; i < numCourses; i++) //如果有不为0的返回false
             if (inDegree[i] != 0) return false;
         return true;
+    }
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < numCourses; ++i)
+            graph.add(new ArrayList<>());
+
+        for (int[] i : prerequisites) {
+            int course = i[0];
+            int prerequisite = i[1];
+            graph.get(course).add(prerequisite);
+        }
+
+        int[] visited = new int[numCourses];
+        for (int i = 0; i < numCourses; ++i)
+            if (dfs(i, graph, visited)) return false;
+        return true;
+    }
+
+    private boolean dfs(int curr, ArrayList<ArrayList<Integer>> graph, int[] visited) {
+        if (visited[curr] == 1) return true;
+        if (visited[curr] == 2) return false;
+        visited[curr] = 1;
+
+        for (int next : graph.get(curr))
+            if (dfs(next, graph, visited)) return true;
+
+        visited[curr] = 2;
+        return false;
     }
 }
