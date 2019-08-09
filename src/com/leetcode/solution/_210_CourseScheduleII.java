@@ -15,9 +15,9 @@ public class _210_CourseScheduleII {
         }
 
         int[] visited = new int[numCourses]; //已访问列表(0未访问，1正在访问，2已访问)
-        List<Integer> ans = new ArrayList<>(); 
+        List<Integer> ans = new ArrayList<>();
         for (int i = 0; i < numCourses; ++i)
-            if (dfs(i, graph, visited, ans)) return new int[0];
+            if (dfs(i, graph, visited, ans)) return new int[0]; //出现环则返回新数组
 
         return ans.stream().mapToInt(i -> i).toArray();
     }
