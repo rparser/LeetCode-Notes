@@ -8,20 +8,20 @@ import java.util.*;
  * [2,0]为上2课必须先上0
  */
 
-public class _207CourseSchedule {
+public class _207_CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) { //requisite (re-kwi-zit)
         int[] inDegree = new int[numCourses]; //顶点inDegree值 (当前课需要几门先上的课)
         if (prerequisites == null || prerequisites.length == 0) return true;
         HashMap<Integer, List<Integer>> graph = new HashMap<>(); //num->list, 上了num后可以上哪些课
 
-        for (int i = 0; i < prerequisites.length; i++) {
-            inDegree[prerequisites[i][0]]++; //依次设置inDegree
-            if (graph.containsKey(prerequisites[i][1])) //如果图里已有，则加入列表
-                graph.get(prerequisites[i][1]).add(prerequisites[i][0]);
+        for (int[] i : prerequisites) {
+            inDegree[i[0]]++; //依次设置inDegree
+            if (graph.containsKey(i[1])) //如果图里已有，则加入列表
+                graph.get(i[1]).add(i[0]);
             else {
                 ArrayList<Integer> list = new ArrayList<>(); //否则创建新list，加入i值，再加入到graph里
-                list.add(prerequisites[i][0]);
-                graph.put(prerequisites[i][1], list);
+                list.add(i[0]);
+                graph.put(i[1], list);
             }
         }
 
