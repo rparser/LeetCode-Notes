@@ -2,6 +2,10 @@ package com.leetcode.solution;
 
 import java.util.Stack;
 
+/**
+参考144
+ */
+
 public class _255_VerifyPreorderSequenceinBinarySearchTree {
     public boolean verifyPreorder(int[] preorder) {
         int size = 0;
