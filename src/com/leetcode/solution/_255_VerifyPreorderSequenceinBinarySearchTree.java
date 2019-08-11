@@ -14,4 +14,17 @@ public class _255_VerifyPreorderSequenceinBinarySearchTree {
         }
         return true;
     }
+
+    public boolean verifyPreorderStack(int[] preorder) {
+        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> inorder = new Stack<>();
+
+        for (int node : preorder) {
+            if (!inorder.isEmpty() && node < inorder.peek()) return false; // 新值不能比排序后的小
+            while (!stack.isEmpty() && node > stack.peek()) // stack有值且新值大于peek，则要清空stack加入inorder
+                inorder.push(stack.pop());
+            stack.push(node);
+        }
+        return true;
+    }
 }
