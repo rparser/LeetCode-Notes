@@ -10,7 +10,7 @@ package com.leetcode.solution;
  * 694子问题
  */
 
-public class _200NumberofIslands {
+public class _200_NumberofIslands {
     private void dfs(char[][] grid, int r, int c) {
 
         grid[r][c] = '0'; //把该点变成0
