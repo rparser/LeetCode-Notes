@@ -10,7 +10,7 @@ package com.leetcode.solution;
  */
 
 
-public class _138CopyListwithRandomPointer {
+public class _138_CopyListwithRandomPointer {
     public Node copyRandomList(Node head) {
 
         if (head == null) return null;
