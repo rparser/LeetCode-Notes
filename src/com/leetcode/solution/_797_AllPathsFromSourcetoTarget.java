@@ -18,14 +18,14 @@ public class _797_AllPathsFromSourcetoTarget {
     }
 
     private void dfs(List<List<Integer>> res, int[][] graph, int cur, List<Integer> path) {
-        if (cur == graph.length - 1) {
+        if (cur == graph.length - 1) { //到达终点则return
             res.add(new ArrayList<>(path));
             return;
         }
         for (int next : graph[cur]) {
-            path.add(next);
+            path.add(next); //加入可能方向往下递归
             dfs(res, graph, next, path);
-            path.remove(path.size() - 1);
+            path.remove(path.size() - 1); //回溯删除最近添加的
         }
     }
 }
