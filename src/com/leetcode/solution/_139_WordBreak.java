@@ -2,37 +2,27 @@ package com.leetcode.solution;
 
 import java.util.*;
 
+/**
+ * 思路：Sub-problem is to check if s[j...i） 是否在dict中，double for loop to track,
+ * eg:leetcode dp[0(j)]&&contains key s[0-3(i=4)], set dp[4] = true
+ *                     dp[4(j)]&& contains key s[4-7(i=8)], return dp[8(n)]
+ * 关键字：DP,substring[start,end)
+ * Complexity：O(N^2) for DP
+ */
+
 public class _139_WordBreak {
     public boolean wordBreak(String s, List<String> wordDict) {
-        return false;
-    }
-
-    public List<String> findAllConcatenatedWordsInADict(String[] words) {
-        Set<String> allWords = new HashSet<>();
-        List<String> result = new ArrayList<>();
-        for(String word : words){
-            allWords.add(word);
-        }
-
-        for(String word : words){
-            if(checkConcatenated(word, 0, allWords, 0)){
-                result.add(word);
-            }
-        }
-        return result;
-    }
-
-    private boolean checkConcatenated(String word, int index, Set<String> words, int currentWordNum){
-        if(index >= word.length() && currentWordNum >= 2){
-            return true;
-        }
-        for(int i = index; i < word.length(); i++){
-            if(words.contains(word.substring(index, i + 1))){
-                if(checkConcatenated(word, i + 1, words, currentWordNum + 1)){
-                    return true;
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1];//dp[i+1] means the current s[0...i] check
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {//s[j,i)
+                    dp[i] = true;
+                    break;
                 }
             }
         }
-        return false;
+        return dp[n];
     }
 }
