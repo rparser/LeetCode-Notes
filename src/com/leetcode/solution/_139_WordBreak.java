@@ -33,7 +33,7 @@ public class _139_WordBreak {
 
     public boolean wordBreakDP(String s, List<String> wordDict) {
         int n = s.length();
-        boolean[] dp = new boolean[n + 1];//dp[i+1] means the current s[0...i] check
+        boolean[] dp = new boolean[n + 1]; //dp[i+1] means the current s[0...i] check
         dp[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
