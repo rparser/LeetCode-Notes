@@ -2,6 +2,13 @@ package com.leetcode.solution;
 
 import java.util.*;
 
+/**
+ * O(n * m) + O(n * num) runtime, O(n) space
+ * where n is the length of the string
+ * m is the length of the longest string in the dictionary
+ * num is the number of solutions
+ */
+
 public class _140_WordBreakII {
     private HashMap<String, List<String>> map = new HashMap<>();
 
