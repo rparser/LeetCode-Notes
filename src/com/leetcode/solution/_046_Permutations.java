@@ -21,7 +21,7 @@ public class _046_Permutations {
             res.add(new ArrayList<>(path));
             return;
         }
-        for (int i = 0; i < nums.length; i++) { 
+        for (int i = 0; i < nums.length; i++) {
             if (used[i])
                 continue; //skip added element, eg: 123,back to point 1(added) 2(added) skip, then add 3, get123
             path.add(nums[i]); //i element placed in current recursion level = path.length,写着便于理解
