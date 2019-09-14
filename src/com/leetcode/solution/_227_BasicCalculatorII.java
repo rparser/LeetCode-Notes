@@ -1,26 +1,29 @@
 package com.leetcode.solution;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
- * 时间复杂度 O(N)
- * 空间复杂度 O(1)
- * 之前用stack, 但是这里其实只有两种优先级，所以， 每次遇到一个数的时候，可以先保存在一个prev变量中，然后如果遇到乘号或者除号，
- * 就对prev和当前的数做计算， 如果遇到加号或者减号，那么之前的乘号和除号的结果就已经结束了，可以合并到一个total里面。
- * 这里，提取数的小技巧和之前写的略有不同。 遇到一个digit以后，直接在里面在循环一次把所有的digit都遍历完。
- * 感觉这样写逻辑更加简单一点， 因为这样当前的数立刻就提取完了， 然后直接对这个数做处理会比较简单一点。
+ * Time O(N)
+ * Space O(N)
+ * - use stack to store number after operation. initialize sign as '+'
+ * - calculating current val = val * 10 + char
+ * - when meet next sign, perform operation of last sign on current number(+,-*,/)
+ * - finally sum up number in stack
+ * eg: 2+33*2
+ * (here) sign = +, val = 33, then sign = *
  */
 
 public class _227_BasicCalculatorII {
     public int calculate(String s) {
         if (s == null || s.length() == 0) return 0;
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
+
         char sign = '+';
         int cur = 0;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (Character.isDigit(c)) cur = cur * 10 + (c - '0');
-            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) {
+            if (Character.isDigit(c)) cur = cur * 10 + (c - '0'); //如果是数字
+            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) { //如果是字母或是最后一位
                 if (sign == '+') stack.push(cur);
                 if (sign == '-') stack.push(-cur);
                 if (sign == '*') stack.push(stack.pop() * cur);
