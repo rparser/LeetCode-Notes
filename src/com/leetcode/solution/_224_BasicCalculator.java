@@ -31,21 +31,21 @@ public class _224_BasicCalculator {
             } else if (c == '-') {
                 result += sign * number;
                 sign = -1; //后面的为负数
-                number = 0;
+                number = 0; //reset current number
             } else if (c == '(') {
                 stack.push(result);
                 stack.push(sign);
-                result = 0;
-                sign = 1;
+                result = 0; //reset result
+                sign = 1; //reset sign
             } else if (c == ')') {
-                result += sign * number;
+                result += sign * number; //当前括号内的result
                 number = result;
                 sign = stack.pop();
                 result = stack.pop();
             }
         }
 
-        result += sign * number;
+        result += sign * number; // last sign and number
         return result;
     }
 }
