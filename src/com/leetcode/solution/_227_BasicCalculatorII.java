@@ -23,7 +23,7 @@ public class _227_BasicCalculatorII {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isDigit(c)) cur = cur * 10 + (c - '0'); //如果是数字
-            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) { //如果是字母或是最后一位
+            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) { //如果是字母，如果是最后一位也要push进
                 if (sign == '+') stack.push(cur);
                 if (sign == '-') stack.push(-cur);
                 if (sign == '*') stack.push(stack.pop() * cur);
@@ -33,8 +33,8 @@ public class _227_BasicCalculatorII {
             }
         }
 
-        int res = 0;
-        for (Integer i : stack) res += i;
-        return res;
+        int result = 0;
+        for (Integer i : stack) result += i;
+        return result;
     }
 }
