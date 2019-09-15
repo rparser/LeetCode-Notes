@@ -20,32 +20,32 @@ public class _224_BasicCalculator {
         Deque<Integer> stack = new ArrayDeque<>(); // to store last value and sign before any parentheses
         int result = 0; // current result within one priority (in the same parentheses)
         int sign = 1; //当前正负
-        int number = 0; //当前数值
+        int cur = 0; //当前数值
 
         for (char c : s.toCharArray()) {
-            if (Character.isDigit(c)) number = number * 10 + (c - '0');
+            if (Character.isDigit(c)) cur = cur * 10 + (c - '0');
             else if (c == '+') {
-                result += sign * number;
+                result += sign * cur;
                 sign = 1; //后面的为正数
-                number = 0;
+                cur = 0;
             } else if (c == '-') {
-                result += sign * number;
+                result += sign * cur;
                 sign = -1; //后面的为负数
-                number = 0; //reset current number
+                cur = 0; //reset current number
             } else if (c == '(') {
                 stack.push(result);
                 stack.push(sign);
                 result = 0; //reset result
                 sign = 1; //reset sign
             } else if (c == ')') {
-                result += sign * number; //当前括号内的result
-                number = result;
+                result += sign * cur; //当前括号内的result
+                cur = result;
                 sign = stack.pop();
                 result = stack.pop();
             }
         }
 
-        result += sign * number; // last sign and number
+        result += sign * cur; // last sign and number
         return result;
     }
 }
