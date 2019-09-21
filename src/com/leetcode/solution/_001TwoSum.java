@@ -15,9 +15,8 @@ public class _001TwoSum {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i]; //以此在map加入数字，并查找补值，如果有补值则返回
-            if (map.containsKey(complement)) {
-                return new int[]{map.get(complement), i};
-            }
+            if (map.containsKey(complement)) return new int[]{map.get(complement), i}; // 找到则返回，否则加入map
+            
             map.put(nums[i], i);
         }
         throw new IllegalArgumentException("No two sum solution");
