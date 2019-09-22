@@ -7,7 +7,7 @@ package com.leetcode.solution;
  * Space complexity: O(1) extra space. Only constant space required for left, right, left_max and right_max.
  */
 
-public class _042TrappingRainWater {
+public class _042_TrappingRainWater {
     public int trap(int[] height) {
         int res = 0;
         int left = 0;
