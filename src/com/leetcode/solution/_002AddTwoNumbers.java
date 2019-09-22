@@ -24,9 +24,10 @@ public class _002AddTwoNumbers {
             if (p != null) p = p.next;
             if (q != null) q = q.next;
         }
-        if (carry == 1) { // 如果最后还有一位
-            curr.next = new ListNode(carry);
-        }
+
+        // 如果最后还有一位
+        if (carry == 1) curr.next = new ListNode(carry);
+
         return result.next;
     }
 
