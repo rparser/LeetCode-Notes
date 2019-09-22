@@ -38,17 +38,15 @@ public class _004_MedianofTwoSortedArrays {
             return findMedianSortedArrays(nums2, nums1); //默认为nums1数组不大于nums2数组
 
         int k = (n1 + n2 + 1) / 2; // ie, n1=2 , n2 = 3, n1+n2+1=6(even) , k = 3 ; n1=2, n2=2, n1+n2+1=5, k=5/2=2 (left of mid)
+        // k是个数，偶数k-1为左中位数，奇数k为正中位数
         int left = 0;
         int right = n1;
 
         while (left < right) {
             int mid1 = left + (right - left) / 2;
             int mid2 = k - mid1;
-            if (nums1[mid1] < nums2[mid2 - 1]) {
-                left = mid1 + 1;
-            } else {
-                right = mid1;
-            }
+            if (nums1[mid1] < nums2[mid2 - 1]) left = mid1 + 1;
+            else right = mid1;
         }
 
         int m1 = left;
