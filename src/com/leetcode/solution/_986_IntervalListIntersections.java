@@ -9,7 +9,7 @@ import java.util.*;
 
 public class _986_IntervalListIntersections {
     public int[][] intervalIntersection(int[][] A, int[][] B) {
-        List<int[]> res = new ArrayList<>();
+        List<int[]> result = new ArrayList<>();
         int i = 0, j = 0;
 
         while (i < A.length && j < B.length) {
@@ -18,12 +18,12 @@ public class _986_IntervalListIntersections {
             // hi - the endpoint of the intersection
             int lo = Math.max(A[i][0], B[j][0]);
             int hi = Math.min(A[i][1], B[j][1]);
-            if (lo <= hi) res.add(new int[]{lo, hi});
+            if (lo <= hi) result.add(new int[]{lo, hi});
 
             // Remove the interval with the smallest endpoint
             if (A[i][1] < B[j][1]) i++;
             else j++;
         }
-        return res.toArray(new int[res.size()][]);
+        return result.toArray(new int[result.size()][]);
     }
 }
