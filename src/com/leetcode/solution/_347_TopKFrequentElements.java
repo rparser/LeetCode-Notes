@@ -30,26 +30,22 @@ public class _347_TopKFrequentElements {
     }
 
     public List<Integer> topKFrequentON(int[] nums, int k) {
-        List<Integer>[] bucket = new List[nums.length + 1];
-        Map<Integer, Integer> frequencyMap = new HashMap<>();
-
-        for (int n : nums) {
-            frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
-        }
-
-        for (int key : frequencyMap.keySet()) {
-            int frequency = frequencyMap.get(key);
-            if (bucket[frequency] == null) {
-                bucket[frequency] = new ArrayList<>();
-            }
-            bucket[frequency].add(key);
-        }
-
+        Map<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer>[] bucket = new ArrayList[nums.length + 1]; //建立一个有num.length+1个List的数组bucket
         List<Integer> res = new ArrayList<>();
+        for (int num : nums) map.put(num, map.getOrDefault(num, 0) + 1); //统计个数
 
-        for (int pos = bucket.length - 1; pos >= 0 && res.size() < k; pos--) {
-            if (bucket[pos] != null) {
-                res.addAll(bucket[pos]);
+        for (int key : map.keySet()) {
+            int frequency = map.get(key);
+            if (bucket[frequency] == null)
+                bucket[frequency] = new ArrayList<>();
+            bucket[frequency].add(key); //此时，bucket数组里，每个点0-n，都记录了这个数字出现多少次，比如bucket[fr]代表出现fr次的数字有哪些
+        }
+
+        for (int pos = bucket.length - 1; pos >= 0; pos--) { //从大到小
+            if (bucket[pos] != null) { //如果这个值有值，则依次加入结果集合
+                for (int i = 0; i < bucket[pos].size() && res.size() < k; i++)
+                    res.add(bucket[pos].get(i));
             }
         }
         return res;
