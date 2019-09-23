@@ -10,7 +10,7 @@ import java.util.*;
  * Space Complexity : O(4^n/sqrt(n)) as described above, and using O(n) space to store the sequence.
  */
 
-public class _022GenerateParentheses {
+public class _022_GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
         backtrack(result, "", 0, 0, n);

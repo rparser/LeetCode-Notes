@@ -16,8 +16,8 @@ import java.util.*;
 
 public class _017_LetterCombinationsofaPhoneNumber {
     private Map<String, String> phone = new HashMap<String, String>() {{
-//        put("0","0");
-//        put("1","1");
+        put("0","0");
+        put("1","1");
         put("2", "abc");
         put("3", "def");
         put("4", "ghi");
@@ -26,26 +26,21 @@ public class _017_LetterCombinationsofaPhoneNumber {
         put("7", "pqrs");
         put("8", "tuv");
         put("9", "wxyz");
-
     }};
-
     List<String> result = new ArrayList<>();
 
     private void backtrack(String current, String next_digits) {
         if (next_digits.length() == 0) result.add(current);  // if there is no more digits to check
-
             // if there are still digits to check
         else {
-            // iterate over all letters which map
-            // the next available digit
-            String digit = next_digits.substring(0, 1);
-            String letters = phone.get(digit);
-            System.out.println("   letters=" + letters);
-            for (int i = 0; i < letters.length(); i++) {
-                String letter = phone.get(digit).substring(i, i + 1);
-                // append the current letter to the combination
-                // and proceed to the next digits
-                System.out.println(current + "    digit=" + digit + "   letter=" + letter);
+            // iterate over all letters which map the next available digit
+            String digit = next_digits.substring(0, 1); //当前数字
+            String letters = phone.get(digit); //当前数字对应字母集
+//            System.out.println("   letters=" + letters);
+            for (int i = 0; i < letters.length(); i++) { //对当前每个字母做backtrack
+                String letter = phone.get(digit).substring(i, i + 1); //当前数字对应字母集的挨个字母
+                // append the current letter to the combination and proceed to the next digits
+//                System.out.println(current + "    digit=" + digit + "   letter=" + letter);
                 backtrack(current + letter, next_digits.substring(1));
             }
         }
