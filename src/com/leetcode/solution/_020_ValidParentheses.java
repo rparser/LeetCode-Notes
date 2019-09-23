@@ -12,13 +12,13 @@ import java.util.*;
  * we will end up pushing all the brackets onto the stack. e.g. ((((((((((.
  */
 
-public class _020ValidParentheses {
+public class _020_ValidParentheses {
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
+            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') { //左半括号推入stack
                 stack.push(s.charAt(i));
-            } else if (s.charAt(i) == ')' || s.charAt(i) == ']' || s.charAt(i) == '}') {
+            } else if (s.charAt(i) == ')' || s.charAt(i) == ']' || s.charAt(i) == '}') { //右半括号弹出查看
                 if (stack.isEmpty()) return false; //说明没有open则返回否
                 char cur = stack.pop(); //弹出第一个，看是否为对应的open
                 if (cur == '(' && s.charAt(i) != ')') return false; //不是对应的open也返回否
