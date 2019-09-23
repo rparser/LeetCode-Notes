@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-public class _206ReverseLinkedList {
+public class _206_ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode prev = null;

@@ -11,22 +11,35 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 
 
-public class _973KClosestPointstoOrigin {
-
+public class _973_KClosestPointstoOrigin {
     public int[][] kClosest(int[][] points, int K) {
         int N = points.length;
         int[] distToOrigin = new int[N];
-        for (int i = 0; i < N; ++i)
-            distToOrigin[i] = calculateDist(points[i]);
+        int[][] result = new int[K][2]; //结果集
+        for (int i = 0; i < N; i++) distToOrigin[i] = calculateDist(points[i]); //到原点距离
 
         Arrays.sort(distToOrigin);
-        int distK = distToOrigin[K - 1];
+        int distK = distToOrigin[K - 1]; //第K个大小
+
+        int t = 0;
+        for (int i = 0; i < N && t < K; i++)
+            if (calculateDist(points[i]) <= distK) //如果小于第K个则加入
+                result[t++] = points[i];
+        return result;
+    }
+
+    public int[][] kClosestPQ(int[][] points, int K) {
+        if (points == null || points.length == 0 || K < 1) return points;
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> calculateDist(b) - calculateDist(a));
+        for (int[] point : points) {
+            pq.add(point);
+            if (pq.size() > K) pq.poll();
+        }
 
         int[][] result = new int[K][2];
-        int t = 0;
-        for (int i = 0; i < N; ++i)
-            if (calculateDist(points[i]) <= distK)
-                result[t++] = points[i];
+        for (int i = 0; i < K; i++) result[i] = pq.poll();
+
         return result;
     }
 
