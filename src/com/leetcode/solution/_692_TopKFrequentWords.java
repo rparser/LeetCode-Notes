@@ -10,12 +10,12 @@ import java.util.*;
  * Space Complexity: O(N), the space used to store our candidates.
  */
 
-public class _692TopKFrequentWords {
+public class _692_TopKFrequentWords {
     public List<String> topKFrequent(String[] words, int k) {
         Map<String, Integer> count = new HashMap<>();
-        for (String word : words) {
+        for (String word : words)
             count.put(word, count.getOrDefault(word, 0) + 1);
-        }
+
         List<String> candidates = new ArrayList<>(count.keySet());
         candidates.sort((w1, w2) -> count.get(w1).equals(count.get(w2)) ?
                 w1.compareTo(w2) : count.get(w2) - count.get(w1));
@@ -33,21 +33,21 @@ public class _692TopKFrequentWords {
 
     public List<String> topKFrequentHeap(String[] words, int k) {
         Map<String, Integer> count = new HashMap<>();
-        for (String word : words) {
-            count.put(word, count.getOrDefault(word, 0) + 1);
-        }
-        PriorityQueue<String> heap = new PriorityQueue<>(
+        for (String word : words)
+            count.put(word, count.getOrDefault(word, 0) + 1); //统计频率
+
+        PriorityQueue<String> pq = new PriorityQueue<>(
                 (w1, w2) -> count.get(w1).equals(count.get(w2)) ?
-                        w2.compareTo(w1) : count.get(w1) - count.get(w2));
+                        w2.compareTo(w1) : count.get(w1) - count.get(w2)); //如果相等则比较字母顺序
 
         for (String word : count.keySet()) {
-            heap.offer(word);
-            if (heap.size() > k) heap.poll();
-        }
+            pq.offer(word);
+            if (pq.size() > k) pq.poll();
+        } //保持K个
 
-        List<String> ans = new ArrayList<>();
-        while (!heap.isEmpty()) ans.add(heap.poll());
-        Collections.reverse(ans);
-        return ans;
+        List<String> result = new ArrayList<>();
+        while (!pq.isEmpty()) result.add(pq.poll());
+        Collections.reverse(result);
+        return result;
     }
 }
