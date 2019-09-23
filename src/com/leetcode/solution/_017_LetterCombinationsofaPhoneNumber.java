@@ -14,7 +14,7 @@ import java.util.*;
  * Space complexity : O(3^N×4^M) since one has to keep 3^Nx4^M solutions.
  */
 
-public class _017LetterCombinationsofaPhoneNumber {
+public class _017_LetterCombinationsofaPhoneNumber {
     private Map<String, String> phone = new HashMap<String, String>() {{
 //        put("0","0");
 //        put("1","1");
