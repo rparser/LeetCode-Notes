@@ -55,6 +55,39 @@ public class _076_MinimumWindowSubstring {
         return start;
     }
 
+    public String minWindowtest(String s, String t) {
+        HashMap<Character, Integer> map = new HashMap<>(); //<char, count of char in t>
+        int start = 0, end = 0; //two pointers, one point to tail and one head
+        int minStart = 0; //track the start pos of min string
+        int minLen = Integer.MAX_VALUE; //the length of min string
+        int counter = t.length(); // counter represents the number of chars of t to be found in s.
+
+        for (char c : s.toCharArray()) map.put(c, 0);  /* initialize the hash map here */
+        for (char c : t.toCharArray()) {
+            if (map.containsKey(c)) map.put(c, map.get(c) + 1); //必须有此字母，找到则+1
+            else return ""; //如果没有此字母则返回空
+        }
+        while (end < s.length()) {
+            char cur = s.charAt(end);
+            if (map.get(cur) > 0) counter--; // modify counter here： if cur is in t
+            map.put(cur, map.get(cur) - 1); //找到一个就-1，所以无关字母会是负值（初始值为0）
+            while (counter == 0) { /* counter condition --find a valid window */
+                /* update minLen here if finding minimum*/
+                if (minLen > end - start + 1) {
+                    minStart = start;
+                    minLen = end - start + 1;
+                }
+                //set back map and counter & start前移直到不合法
+                char c2 = s.charAt(start);
+                map.put(c2, map.get(c2) + 1); //退一个则一个+1
+                if (map.get(c2) > 0) counter++;//出现>0的值，则意味着去掉了重要字母
+                start++;
+            }
+            end++;
+        }
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
+    }
+
     //Wepay例子
 
     public String minWindow2(String s, Set<Character> t) {
