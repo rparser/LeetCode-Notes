@@ -10,7 +10,7 @@ package com.leetcode.solution;
  * 先找二分翻转点，四情况：无翻转，翻转点为目标，右侧(target < nums[0])，左侧
  */
 
-public class _033SearchinRotatedSortedArray {
+public class _033_SearchinRotatedSortedArray {
     private int[] nums;
     private int target;
 

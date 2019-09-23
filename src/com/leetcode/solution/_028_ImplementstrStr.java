@@ -4,7 +4,7 @@ package com.leetcode.solution;
  * 实现indexOf()
  */
 
-public class _028ImplementstrStr {
+public class _028_ImplementstrStr {
     public int strStr(String haystack, String needle) {
         if (needle.isEmpty()) return 0; // edge case: "",""=>0  "a",""=>0
         for (int i = 0; i <= haystack.length() - needle.length(); i++) { // 直到找到两个长度差值
