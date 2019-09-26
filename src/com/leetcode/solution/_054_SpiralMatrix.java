@@ -6,7 +6,7 @@ import java.util.*;
  * 向上的行是u，向下的行是d，向左的列是l，向右的列是r。
  * k是spiral的当前索引，不断往后走。
  * 控制结束的是这4个方向的索引的大小比较。
- * Time Complexity: O(N), where NN is the total number of elements in the input matrix. We add every element in the matrix to our final answer.
+ * Time Complexity: O(N), where N is the total number of elements in the input matrix. We add every element in the matrix to our final answer.
  * Space Complexity: O(N), the information stored in ans.
  */
 
