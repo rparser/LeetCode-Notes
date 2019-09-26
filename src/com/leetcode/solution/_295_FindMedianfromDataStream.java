@@ -10,15 +10,9 @@ import java.util.*;
  */
 
 public class _295_FindMedianfromDataStream {
-    /**
-     * initialize your data structure here.
-     */
     PriorityQueue<Integer> minHeap = null;
     PriorityQueue<Integer> maxHeap = null;
 
-    /**
-     * initialize your data structure here.
-     */
     public _295_FindMedianfromDataStream() {
         minHeap = new PriorityQueue<>();
         maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
@@ -28,17 +22,15 @@ public class _295_FindMedianfromDataStream {
         minHeap.offer(num);
         maxHeap.offer(minHeap.poll());
 
-        if (minHeap.size() < maxHeap.size()) {
+        if (minHeap.size() < maxHeap.size())
             minHeap.offer(maxHeap.poll());
-        }
     }
 
     public double findMedian() {
-        if (minHeap.size() > maxHeap.size()) {
+        if (minHeap.size() > maxHeap.size())
             return minHeap.peek();
-        } else {
+        else
             return (minHeap.peek() + maxHeap.peek()) / 2.0;
-        }
     }
 
 /**
