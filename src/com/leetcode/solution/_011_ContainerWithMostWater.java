@@ -8,7 +8,7 @@ package com.leetcode.solution;
  */
 
 
-public class _011ContainerWithMostWater {
+public class _011_ContainerWithMostWater {
     public int maxArea(int[] height) {
         int maxarea = 0, left = 0, right = height.length - 1;
         while (left < right) {
