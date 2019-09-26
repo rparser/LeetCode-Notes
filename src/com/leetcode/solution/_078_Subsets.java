@@ -12,7 +12,7 @@ import java.util.*;
  * Space complexity :O(n).
  */
 
-public class _078Subsets {
+public class _078_Subsets {
     public List<List<Integer>> subsets(int[] S) {
         int totalNumber = 1 << S.length; //位运算 1<<n -> 1=2^n
         List<List<Integer>> result = new ArrayList<>(totalNumber);
