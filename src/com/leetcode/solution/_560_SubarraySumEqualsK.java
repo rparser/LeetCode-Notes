@@ -10,7 +10,7 @@ import java.util.*;
  * 1loop，建map<当前sum，能达到这个sum的可能数>,把每个sum加入map，用containsKey(sum-k)得到result
  */
 
-public class _560SubarraySumEqualsK {
+public class _560_SubarraySumEqualsK {
     public int subarraySum(int[] nums, int k) {
         int result = 0, sum = 0;
         HashMap<Integer, Integer> map = new HashMap<>(); //<当前sum，能达到这个sum的可能数>
