@@ -11,7 +11,7 @@ import java.util.*;
  * 模板while,for(每层)，取当前点，值加入结果，有子树加入队列，判断行数决定反向
  */
 
-public class _103BinaryTreeZigzagLevelOrderTraversal {
+public class _103_BinaryTreeZigzagLevelOrderTraversal {
     public List<List<Integer>> zigzagLevelOrderbest(TreeNode root) { //BFS
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
