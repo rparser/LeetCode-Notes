@@ -49,7 +49,7 @@ public class _269_AlienDictionary {
         for (char c : degree.keySet())
             if (degree.get(c) == 0)
                 queue.add(c);//eg:[zx,zy], c: z,x
-        
+
         while (!queue.isEmpty()) {
             char cur = queue.remove();
             res.append(cur);
