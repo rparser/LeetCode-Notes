@@ -10,7 +10,7 @@ import java.util.*;
  * Space complexity : O(N) to keep the output structure which contains N node values.
  */
 
-public class _102BinaryTreeLevelOrderTraversal {
+public class _102_BinaryTreeLevelOrderTraversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
