@@ -1,7 +1,5 @@
 package com.leetcode.solution;
 
-import java.util.*;
-
 /**
  * 中序遍历
  * <p>
@@ -9,10 +7,10 @@ import java.util.*;
  * Space complexity : The worst case space required is O(n), and in the average case it's O(logn) where nn is number of nodes.
  */
 
-public class _094BinaryTreeInorderTraversal {
+public class _094_BinaryTreeInorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode curr = root;
         while (curr != null || !stack.isEmpty()) {
             while (curr != null) {
@@ -25,6 +23,17 @@ public class _094BinaryTreeInorderTraversal {
         }
         return res;
     }
+
+    void helper(TreeNode root, List<Integer> res) {
+        if (root != null) {
+            if (root.left != null)
+                helper(root.left, res);
+            res.add(root.val);
+            if (root.right != null)
+                helper(root.right, res);
+        }
+    }
+
 
     public class TreeNode {
         int val;
