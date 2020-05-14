@@ -11,57 +11,75 @@ import java.util.*;
  * Complexity: time: O(n) space: O(n)
  */
 
-public class _269_AlienDictionary {
+class Solution {
+
     public String alienOrder(String[] words) {
-        HashMap<Character, Set<Character>> map = new HashMap<>();//<c, char after c>
-        HashMap<Character, Integer> degree = new HashMap<>();//<c, # of char before c>
+        HashMap<Character, Set<Character>> graph = new HashMap();
         StringBuilder res = new StringBuilder();
-        //initialize degree map
-        for (String s : words) {
-            char[] word = s.toCharArray();
-            for (char c : word) degree.put(c, 0);
-        }
-        //compare adjacent string & fill map
         for (int i = 0; i < words.length - 1; i++) {
-            String cur = words[i];
-            String next = words[i + 1];
-            int len = Math.min(cur.length(), next.length());
+            // 这里改成这样就是为了防止 abc
+            int len = Math.max(words[i].length(), words[i + 1].length());
+
             for (int j = 0; j < len; j++) {
-                char c1 = cur.charAt(j);
-                char c2 = next.charAt(j);
-                if (c1 != c2) {
-                    Set<Character> set = new HashSet<>();//watch 'Set' declaration
-                    if (map.containsKey(c1)) set = map.get(c1);
-                    if (!set.contains(c2)) {
-                        set.add(c2);
-                        map.put(c1, set);
-                        degree.put(c2, degree.get(c2) + 1);
-                    }
-                    break;//rest comparision is meaningless & not record it!
-                } else
-                    //edge case - no order: ["wrtkj","wrt"] 1:next stop at end 2: cur still have lefts
-                    if (j + 1 == next.length() && j + 1 < cur.length())
-                        return "";
+                // 这里是个坑 要防止 abc -> ab 这种情况
+                if (j >= words[i].length()) break;
+                if (j >= words[i+1].length()) return "";
+
+                if (words[i].charAt(j) == words[i + 1].charAt(j)) {
+                    continue;
+                }
+                Set<Character> set = graph.computeIfAbsent(words[i].charAt(j), k -> new HashSet<>());
+                set.add(words[i + 1].charAt(j));
+                graph.put(words[i].charAt(j), set);
+                break;
             }
         }
-        //BFS - use Queue to pop char in order
-        Queue<Character> queue = new LinkedList<Character>();
-        for (char c : degree.keySet())
-            if (degree.get(c) == 0)
-                queue.add(c);//eg:[zx,zy], c: z,x
+
+        // --------------------------------------------------这一下是拓扑排序----------------------------
+
+        LinkedList<Character> queue = new LinkedList();
+        // 入度初始化
+        int[] inDegree = new int[26];
+
+        int numChar = 0;
+        Arrays.fill(inDegree, -1);
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                inDegree[c - 'a'] = 0;
+            }
+        }
+        // 入度为0的先学习 想成一个课程表
+        //
+        for (Character key : graph.keySet()) {
+            for (Character value: graph.get(key)) {
+                inDegree[value - 'a']++;
+            }
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (inDegree[i] == 0) {
+                queue.add((char) (i + 'a'));
+            }
+            if (inDegree[i] != -1) {
+                numChar++;
+            }
+        }
 
         while (!queue.isEmpty()) {
-            char cur = queue.remove();
-            res.append(cur);
-            if (map.containsKey(cur)) {
-                for (char c : map.get(cur)) {
-                    degree.put(c, degree.get(c) - 1);
-                    if (degree.get(c) == 0) queue.add(c);//add next char
+            Character firstChar = queue.poll();
+            res.append(firstChar);
+            if (graph.containsKey(firstChar)) {
+                for (Character nextChar : graph.get(firstChar)) {
+                    inDegree[nextChar - 'a']--;
+                    if (inDegree[nextChar - 'a'] == 0) {
+                        queue.add(nextChar);
+                    }
                 }
             }
         }
-        //avoid loops. only < possible -- eg: ["qd","ab"] res = qa
-        if (res.length() != degree.size()) return "";
+        if (res.length() != numChar) {
+            return "";
+        }
         return res.toString();
     }
 }
