@@ -44,4 +44,63 @@ class Solution {
         result += cur;
         return result;
     }
+
+    public static int calculate(String s) {
+        Deque<Integer> stack = new ArrayDeque<>(); // to store last value and sign before any parentheses
+        int result = 0; // current result within one priority (in the same parentheses)
+        int sign = 1; //当前正负
+        int cur = 0; //当前数值
+        int flag = 1;
+        String[] strs = s.split(" ");
+
+        for (String str : strs) {
+            switch (str) {
+                case "add": //如果是符号，则要计算后再push入
+                    sign = 1;
+                    flag = 1;
+                    stack.push(sign);
+                    stack.push(flag);
+                    break;
+
+                case "sub":
+                    sign = -1;
+                    flag = -1;
+                    stack.push(sign);
+                    stack.push(flag);
+                    break;
+
+                case "(":
+                    stack.push(result);
+                    cur = 0;
+                    break;
+
+                case ")":
+                    flag = stack.pop();
+                    sign = stack.pop();
+                    result = stack.pop();
+                    if (!stack.isEmpty()) {
+                        if (stack.peek() == -1) {
+                            stack.pop();
+                            flag = 1;
+                            stack.push(1);
+                        }
+                    }
+                    cur += result;
+                    break;
+
+                default:
+                    if (!stack.isEmpty()) {
+                        flag = stack.pop();
+                        sign = stack.pop();
+                    }
+                    cur += flag * sign * Integer.parseInt(str);
+
+                    flag = 1;
+                    stack.push(sign);
+                    stack.push(flag);
+            }
+        }
+        result += cur;
+        return result;
+    }
 }

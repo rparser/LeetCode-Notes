@@ -8,7 +8,6 @@ import java.util.*;
  * 说明该room可以结束接下来被当前会议区间使用。最后返回堆的大小就是所需的房间数。
  */
 
-
 public class _253_MeetingRoomsII {
     public int minMeetingRooms(int[][] intervals) {
         int n = intervals.length;
@@ -24,13 +23,17 @@ public class _253_MeetingRoomsII {
         int i = 0, j = 0, cur = 0;
         // 看成上下车, 每次上车都看下是否有乘客已经下车了,下车几个
         // 本题可以看成车上同时最多有多少个乘客
-        while(i < n){
+        int tmp = 0;
+        while(i < n){ // i和j相等
             if(begin[i] < end[j]){ //此时是乘客上车
                 cur++;
+                if(cur == 1 && begin[i] != 0) System.out.println(tmp + " to " + begin[i]);
                 i++;
             }else{ //此时乘客下车
                 cur--;
+                if(cur == 0) tmp = end[j];
                 j++;
+
             }
             result = Math.max(result, cur);
         }
