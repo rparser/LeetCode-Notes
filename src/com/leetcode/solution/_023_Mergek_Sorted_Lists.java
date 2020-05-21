@@ -19,6 +19,36 @@ import java.util.*;
 
 public class _023_MergekSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0)
+            return null;
+        return helper(lists, 0, lists.length - 1);
+    }
+
+    //通过mid将数组一分为二，并不断缩小规模，当规模为1时返回并开始合并
+    //通过合并两个链表，不断增大其规模，整体看就是不断缩小-最后不断扩大的过程
+    private ListNode helper(ListNode[] lists, int begin, int end) {
+        if (begin == end) return lists[begin];
+
+        int mid = begin + (end - begin) / 2;
+        ListNode left = helper(lists, begin, mid);
+        ListNode right = helper(lists, mid + 1, end);
+        return merge(left, right);
+    }
+
+    //合并两个有序链表
+    private ListNode merge(ListNode l1, ListNode l2) {
+        // if anyone is longer
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        if (l1.val < l2.val) {
+            l1.next = merge(l1.next, l2);
+            return l1;
+        }
+        l2.next = merge(l1, l2.next);
+        return l2;
+    }
+
+    public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
 
         PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
