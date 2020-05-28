@@ -28,4 +28,25 @@ public class _020_ValidParentheses {
         }
         return stack.isEmpty();
     }
+
+    public static List<Integer> check(String input) {
+        char[] c = input.toCharArray();
+        int value = 0;
+        int i = 0, j = 0;
+        List<Integer> list = new ArrayList<>();
+        while (i < c.length) {
+            if (c[i] == '$') {
+                j = i + 1;
+                while (j < c.length && Character.isDigit(c[j]) || c[j] == ' ') {
+                    j++;
+                }
+                if (j != i + 1) {
+                    list.add(Integer.parseInt(input.substring(i + 1, j).trim()));
+                    System.out.println(Integer.parseInt(input.substring(i + 1, j).trim()));
+                }
+            }
+            i++;
+        }
+        return list;
+    }
 }
