@@ -7,12 +7,14 @@ class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> res = new ArrayList<>();
         int index = 0, n = intervals.length;
-        //找到新区间的放置位置，最后一个右边界小于新区间左边界的旧区间的后面
+        //找到新区间的放置位置，最后一个右边界小于新区间左边界的旧区间的后面(此时无重叠)
         while (index < n && newInterval[0] > intervals[index][1]) {
-            res.add(intervals[index++]);
+            res.add(intervals[index]);
+            index++;
         }
         //temp记录合并后新区间的左右边界值
-        int temp[] = new int[]{newInterval[0], newInterval[1]};
+        int[] temp = {newInterval[0], newInterval[1]};
+        //如果有重叠
         while (index < n && newInterval[1] >= intervals[index][0]) {
             temp[0] = Math.min(temp[0], intervals[index][0]);
             temp[1] = Math.max(temp[1], intervals[index][1]);

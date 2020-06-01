@@ -10,46 +10,21 @@ import java.util.*;
 
 public class _046_Permutations {
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        boolean[] used = new boolean[nums.length]; //track if the digit already used
-        dfs(res, new ArrayList<>(), nums, used, 0);
-        return res;
-    }
-
-    public void dfs(List<List<Integer>> res, List<Integer> path, int[] nums, boolean[] used, int level) {
-        if (level == nums.length) {
-            res.add(new ArrayList<>(path));
-            return;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if (used[i])
-                continue; //skip added element, eg: 123,back to point 1(added) 2(added) skip, then add 3, get123
-            path.add(nums[i]); //i element placed in current recursion level = path.length,写着便于理解
-            used[i] = true; //marked used
-            dfs(res, path, nums, used, level + 1);
-            path.remove(path.size() - 1); //return to last decision point
-            used[i] = false;
-        }
-    }
-
-    public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
-        if (first == n)  // if all integers are used up
-            output.add(new ArrayList<Integer>(nums));
-        for (int i = first; i < n; i++) {
-            Collections.swap(nums, first, i); // place i-th integer first in the current permutation
-            backtrack(n, nums, output, first + 1); // use next integers to complete the permutations
-            Collections.swap(nums, first, i); // backtrack
-        }
-    }
-
-    public List<List<Integer>> permutebacktrack(int[] nums) {
-        List<List<Integer>> result = new LinkedList<>();
-        // convert nums into list since the output is a list of lists
-        ArrayList<Integer> nums_lst = new ArrayList<>();
-        for (int num : nums) nums_lst.add(num);
-
-        int n = nums.length;
-        backtrack(n, nums_lst, result, 0);
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(result, new ArrayList<>(), nums);
         return result;
+    }
+
+    private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums) {
+        // 如果已经完成了
+        if (tempList.size() == nums.length) result.add(new ArrayList<>(tempList));
+        else {
+            for (int i = 0; i < nums.length; i++) {
+                if (tempList.contains(nums[i])) continue; // element already exists, skip
+                tempList.add(nums[i]);
+                backtrack(result, tempList, nums);
+                tempList.remove(tempList.size() - 1);
+            }
+        }
     }
 }

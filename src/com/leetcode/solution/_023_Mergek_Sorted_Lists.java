@@ -18,6 +18,27 @@ import java.util.*;
  */
 
 public class _023_MergekSortedLists {
+    //方法一PQ
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+
+        for (ListNode node : lists)
+            if (node != null) queue.offer(node);
+
+        while (!queue.isEmpty()) {
+            curr.next = queue.poll(); //取出node
+            curr = curr.next;
+
+            if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
+        }
+        return dummy.next;
+    }
+    //方法二分治
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0)
             return null;
@@ -46,26 +67,6 @@ public class _023_MergekSortedLists {
         }
         l2.next = merge(l1, l2.next);
         return l2;
-    }
-
-    public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0) return null;
-
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
-
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
-
-        for (ListNode node : lists)
-            if (node != null) queue.offer(node);
-
-        while (!queue.isEmpty()) {
-            curr.next = queue.poll(); //取出node
-            curr = curr.next;
-
-            if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
-        }
-        return dummy.next;
     }
 
     public class ListNode {

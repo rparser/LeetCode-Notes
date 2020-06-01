@@ -17,17 +17,19 @@ public class _301_RemoveInvalidParentheses {
     public List<String> removeInvalidParentheses(String s) {
         int rmL = 0, rmR = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') rmL++;
+            if (s.charAt(i) == '(') rmL++; //左括号可能无效
             else if (s.charAt(i) == ')') {
-                if (rmL > 0) rmL--;
-                else rmR++;
+                if (rmL > 0) rmL--; //左括号还有剩余则有效
+                else rmR++;  //没有匹配的左括号，此时右括号肯定无效
             }
         }
         Set<String> res = new HashSet<>();
+        //rmL左括号无效的个数,rmR右括号无效的个数
         dfs(s, 0, res, new StringBuilder(), rmL, rmR, 0);
         return new ArrayList<>(res);
     }
 
+    //open 为剩余的开括号(
     public void dfs(String s, int i, Set<String> res, StringBuilder sb, int rmL, int rmR, int open) {
         int len = sb.length();//decision point
         if (open < 0 || rmL < 0 || rmR < 0) return;//rmL rmR limit the max removal boundary,

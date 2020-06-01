@@ -17,7 +17,7 @@ class Solution {
         HashMap<Character, Set<Character>> graph = new HashMap();
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < words.length - 1; i++) {
-            // 这里改成这样就是为了防止 abc
+            // 这里改成这样就是为了防止 abc > ab
             int len = Math.max(words[i].length(), words[i + 1].length());
 
             for (int j = 0; j < len; j++) {
@@ -49,7 +49,6 @@ class Solution {
             }
         }
         // 入度为0的先学习 想成一个课程表
-        //
         for (Character key : graph.keySet()) {
             for (Character value: graph.get(key)) {
                 inDegree[value - 'a']++;

@@ -10,6 +10,7 @@ public class _953_VerifyinganAlienDictionary {
 
     public boolean isAlienSorted(String[] words, String order) {
         for (int i = 0; i < order.length(); i++)
+            //得出每个字母的排名
             mapping[order.charAt(i) - 'a'] = i;
         for (int i = 1; i < words.length; i++)
             if (compare(words[i - 1], words[i]) > 0)
@@ -18,10 +19,12 @@ public class _953_VerifyinganAlienDictionary {
     }
 
     int compare(String s1, String s2) {
-        int n = s1.length(), m = s2.length(), cmp = 0;
-        for (int i = 0, j = 0; i < n && j < m && cmp == 0; i++, j++) {
-            cmp = mapping[s1.charAt(i) - 'a'] - mapping[s2.charAt(j) - 'a'];
+        int n = s1.length(), m = s2.length(), compared = 0;
+        for (int i = 0, j = 0; i < n && j < m && compared == 0; i++, j++) {
+            // 如果compared不为0，即跳出for loop返回比较过的值
+            compared = mapping[s1.charAt(i) - 'a'] - mapping[s2.charAt(j) - 'a'];
         }
-        return cmp == 0 ? n - m : cmp;
+        // 如果compared==0，未分出胜负，则返回长度，否则返回比较过的值
+        return compared == 0 ? n - m : compared;
     }
 }
