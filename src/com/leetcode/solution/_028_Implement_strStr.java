@@ -43,5 +43,4 @@ public class _028_ImplementstrStr {
         }
         return -1;
     }
-
 }

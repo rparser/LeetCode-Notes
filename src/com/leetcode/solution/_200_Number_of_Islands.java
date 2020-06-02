@@ -2,17 +2,17 @@ package com.leetcode.solution;
 
 /**
  * 岛屿数目
- * <p>
  * DFS 解法：把每个为1的点的相邻点全变成0
  * Time complexity : O(M×N) where MM is the number of rows and N is the number of columns.
  * Space complexity : worst case O(M×N) in case that the grid map is filled with lands where DFS goes by M×N deep.
- *
  * 694子问题
  */
 
 public class _200_NumberofIslands {
     private void dfs(char[][] grid, int r, int c) {
-
+        if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] == '0') { //超出范围或该点为0
+            return;
+        }
         grid[r][c] = '0'; //把该点变成0
         dfs(grid, r - 1, c); // 遍历周围四个点
         dfs(grid, r + 1, c);
@@ -26,7 +26,7 @@ public class _200_NumberofIslands {
         for (int r = 0; r < grid.length; ++r) {
             for (int c = 0; c < grid[0].length; ++c) { //遍历每个点
                 if (grid[r][c] == '1') { //如果该点为陆地
-                    num_islands++; //岛屿数+1
+                    num_islands++; //岛屿数为0
                     dfs(grid, r, c); //dfs搜索周围的点
                 }
             }

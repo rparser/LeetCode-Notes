@@ -20,8 +20,8 @@ public class _043_MultiplyStrings {
             }
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < m + n; i++)
-            if (!(sb.length() == 0 && pos[i] == 0)) sb.append(pos[i]); //avoid "00"
+        for (int i : pos)
+            if (!(sb.length() == 0 && i == 0)) sb.append(i); //avoid "00"
         return sb.length() == 0 ? "0" : sb.toString();
     }
 }

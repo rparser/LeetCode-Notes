@@ -11,7 +11,7 @@ public class _121BestTimetoBuyandSellStock {
      * Time complexity : O(n). Only a single pass is needed.
      * Space complexity : O(1). Only two variables are used.
      */
-
+    // 买卖一次
     public int maxProfit(int[] prices) {
         int minPrice = Integer.MAX_VALUE; //minPrice初始化为最大值
         int maxProfit = 0;
