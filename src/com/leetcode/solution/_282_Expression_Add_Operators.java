@@ -8,24 +8,22 @@ class Solution {
     private void addOperatorsHelper(String num, int target, List<String> result
             , StringBuilder path, int start, long eval, long pre) {
         if (start == num.length()) {
-            if (target == eval) {
+            if (target == eval)
                 result.add(path.toString());
-            }
             return;
-
         }
+
         for (int i = start; i < num.length(); i++) {
             // 数字不能以 0 开头
-            if (num.charAt(start) == '0' && i > start) {
+            if (num.charAt(start) == '0' && i > start)
                 break;
-            }
+
             long cur = Long.parseLong(num.substring(start, i + 1));
             int len = path.length();
             if (start == 0) {
                 addOperatorsHelper(num, target, result, path.append(cur), i + 1, cur, cur);
                 path.setLength(len);
             } else {
-
                 // 加当前值
                 addOperatorsHelper(num, target, result, path.append("+").append(cur), i + 1, eval + cur, cur);
                 path.setLength(len);

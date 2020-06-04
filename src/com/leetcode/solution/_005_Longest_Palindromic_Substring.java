@@ -2,9 +2,7 @@ package com.leetcode.solution;
 
 /**
  * Try all possible i and find the longest palindromic string whose center is i (odd case) and i / i + 1 (even case).
- *
  * Time complexity: O(n^2)
- *
  * Space complexity: O(1)
  * 最长回文子串
  */

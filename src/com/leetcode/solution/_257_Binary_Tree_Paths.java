@@ -12,13 +12,18 @@ class Solution {
         if (node == null) return;
         int len = sb.length(); //保存当前长度
         sb.append(node.val);
-        if (node.left == null && node.right == null) list.add(sb.toString());
+        if (node.left == null && node.right == null)
+            list.add(sb.toString());
         else {
             sb.append("->");
             dfs(list, sb, node.left);
             dfs(list, sb, node.right);
         }
         sb.setLength(len); //恢复长度
-        // When using StringBuilder, We can just keep track of the length of the StringBuilder before we append anything to it before recursion and afterwards set the length back. Another trick is when to append the "->", since we don't need the last arrow at the end of the string, we only append it before recurse to the next level of the tree.
+        // When using StringBuilder, We can just keep track of the
+        // length of the StringBuilder before we append anything to it before recursion
+        // and afterwards set the length back. Another trick is when to append the "->",
+        // since we don't need the last arrow at the end of the string,
+        // we only append it before recurse to the next level of the tree.
     }
 }

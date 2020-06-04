@@ -3,7 +3,8 @@ package com.leetcode.solution;
 /**
  * 颜色换顺序
  * 三指针
- * 3 pointer： 'i' point to the current position ,'left' point to the position right after 0, 'right' point to the position right before 2.
+ * 3 pointer： 'i' point to the current position ,
+ * 'left' point to the position right after 0, 'right' point to the position right before 2.
  */
 
 public class _075_SortColors {

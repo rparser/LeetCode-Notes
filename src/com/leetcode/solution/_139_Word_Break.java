@@ -11,6 +11,21 @@ import java.util.*;
  */
 
 public class _139_WordBreak {
+    public boolean wordBreakDP(String s, List<String> wordDict) {
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1]; //dp[i+1] means the current s[0...i] check
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {//s[j,i)
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[n];
+    }
+
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> wordDictSet = new HashSet<>(wordDict);
         Queue<Integer> queue = new LinkedList<>();
@@ -29,20 +44,5 @@ public class _139_WordBreak {
             }
         }
         return false;
-    }
-
-    public boolean wordBreakDP(String s, List<String> wordDict) {
-        int n = s.length();
-        boolean[] dp = new boolean[n + 1]; //dp[i+1] means the current s[0...i] check
-        dp[0] = true;
-        for (int i = 1; i <= s.length(); i++) {
-            for (int j = 0; j < i; j++) {
-                if (dp[j] && wordDict.contains(s.substring(j, i))) {//s[j,i)
-                    dp[i] = true;
-                    break;
-                }
-            }
-        }
-        return dp[n];
     }
 }

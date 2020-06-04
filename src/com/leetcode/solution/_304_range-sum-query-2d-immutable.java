@@ -2,7 +2,7 @@
 class NumMatrix {
     int[][] matrix;
     int[][] dp;
-
+    //每次查询时间 O(1)O(1) 空间复杂度：O(mn)O(mn)
     public NumMatrix(int[][] matrix) {
         this.matrix = matrix;
         if (matrix != null && matrix.length != 0) {
@@ -28,25 +28,19 @@ class NumMatrix {
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        if (dp == null || dp.length == 0) {
-            return 0;
-        }
+        if (dp == null || dp.length == 0) return 0;
         //左边部分
         int left = 0;
         //上边部分
         int top = 0;
-        //左上部分
+        //左上部分，左上部分计算两次加回来
         int leftTop = 0;
-        if (col1 != 0) {
+        if (col1 != 0)
             left = dp[row2][col1 - 1];
-        }
-        if (row1 != 0) {
+        if (row1 != 0)
             top = dp[row1 - 1][col2];
-        }
-
-        if (col1 != 0 && row1 != 0) {
+        if (col1 != 0 && row1 != 0)
             leftTop = dp[row1 - 1][col1 - 1];
-        }
         return dp[row2][col2] - left - top + leftTop;
     }
 }

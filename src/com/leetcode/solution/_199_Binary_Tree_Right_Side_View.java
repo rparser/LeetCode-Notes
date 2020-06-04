@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import java.util.*;
 
 /**
- * 思路1： BFS, use level order traverlsal. key is to track each level size, and add the 1ast one to list.
+ * 思路1： BFS, use level order traverlsal. key is to track each level size, and add the last one to list.
  */
 
 public class _199_BinaryTreeRightSideView {

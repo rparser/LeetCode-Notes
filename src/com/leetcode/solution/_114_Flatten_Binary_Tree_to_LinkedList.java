@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
 public class _114_FlattenBinaryTreetoLinkedList {
+    //递归
     public void flatten(TreeNode root) {
         if(root == null){
             return ;

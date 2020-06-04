@@ -23,7 +23,8 @@ public class _140_WordBreakII {
             if (wordDict.contains(subWord)) { //如果找到了新单词
                 List<String> subWordBreak = wordBreak(s.substring(0, i), wordDict); //看能不能找到前面
                 if (subWordBreak.size() != 0) //如果找到前面
-                    for (String subSubWord : subWordBreak) res.add(subSubWord + " " + subWord); //加入结果
+                    for (String subSubWord : subWordBreak)
+                        res.add(subSubWord + " " + subWord); //加入结果
             }
         }
         map.put(s, res);

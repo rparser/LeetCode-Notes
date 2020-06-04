@@ -14,7 +14,8 @@ public class _340_LongestSubstringwithAtMostKDistinctCharacters {
         if (n * k == 0) return 0;
         int left = 0, right = 0; // sliding window left and right pointers
         int max_len = 1;
-        HashMap<Character, Integer> map = new HashMap<>(); //hashmap character -> its rightmost position in the sliding window
+        //hashmap character -> its rightmost position in the sliding window
+        HashMap<Character, Integer> map = new HashMap<>();
 
         while (right < n) {
             map.put(s.charAt(right), right++); // add new character and move right pointer

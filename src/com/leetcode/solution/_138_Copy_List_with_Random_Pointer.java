@@ -12,13 +12,11 @@ package com.leetcode.solution;
 
 public class _138_CopyListwithRandomPointer {
     public Node copyRandomList(Node head) {
-
         if (head == null) return null;
 
         // Creating a new weaved list of original and copied nodes.
         Node cur = head;
         while (cur != null) {
-
             // Cloned node
             Node copyNode = new Node(cur.val, null, null);
 
@@ -31,7 +29,6 @@ public class _138_CopyListwithRandomPointer {
         }
 
         cur = head;
-
         // Now link the random pointers of the new nodes created.
         // Iterate the newly created list and use the original nodes' random pointers,
         // to assign references to random pointers for cloned nodes.

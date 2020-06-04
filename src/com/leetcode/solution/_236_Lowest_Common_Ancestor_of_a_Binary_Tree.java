@@ -15,34 +15,41 @@ import java.util.*;
  */
 
 public class _236_LowestCommonAncestorofaBinaryTree {
+    //递归
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        Queue<TreeNode> stack = new LinkedList<>(); //队列存结果
+        if (root == null || root == p || root == q) return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null) return right;
+        if (right == null) return left;
+        return root;
+    }
+
+    //迭代
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        Queue<TreeNode> queue = new LinkedList<>(); //队列存结果
         Map<TreeNode, TreeNode> parent = new HashMap<>(); //key : value - node, node的父节点
 
         parent.put(root, null);
-        stack.offer(root);
+        queue.offer(root);
 
         while (!parent.containsKey(p) || !parent.containsKey(q)) { //直到p,q的都压入
-
-            TreeNode node = stack.poll();
-
+            TreeNode node = queue.poll();
             if (node.left != null) {
                 parent.put(node.left, node);
-                stack.offer(node.left);
+                queue.offer(node.left);
             }
             if (node.right != null) {
                 parent.put(node.right, node);
-                stack.offer(node.right);
+                queue.offer(node.right);
             }
         }
-
         Set<TreeNode> ancestors = new HashSet<>(); //存祖先节点
 
         while (p != null) { //先把p祖先节点都加入
             ancestors.add(p);
             p = parent.get(p);
         }
-
         while (!ancestors.contains(q)) //q再往上找，直到出现的第一个即为LCA
             q = parent.get(q);
         return q;

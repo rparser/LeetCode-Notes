@@ -8,7 +8,7 @@ class Solution {
             for (int col = 0; col < cols; col++) {
                 // 要得到这么多个元素
                 for (int i = 0; i < times; i++) {
-                    res[row][col]+=A[row][i]*B[i][col];
+                    res[row][col] += A[row][i] * B[i][col];
                 }
             }
         }

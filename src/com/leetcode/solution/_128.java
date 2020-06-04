@@ -1,6 +1,7 @@
 //头尾都设成最长长度 O(n)
 class Solution {
     public int longestConsecutive(int[] nums) {
+        //用一个 HashMap ，存储以当前 key 为边界的连续序列的长度。可以再结合代码理解一下
         HashMap<Integer, Integer> map = new HashMap<>();
         int max = 0;
         for (int i = 0; i < nums.length; i++) {

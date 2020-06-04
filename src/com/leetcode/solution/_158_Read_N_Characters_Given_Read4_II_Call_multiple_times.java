@@ -18,9 +18,8 @@ public class Solution extends Reader4 {
                     break;
             }
 
-            while (index < n && i < size) {
+            while (index < n && i < size)
                 buf[index++] = temp[i++];
-            }
 
             if (i == size) {
                 // 说明临时字符数组中的内容已经读完，size置零以便执行下一次read4操作
@@ -28,7 +27,6 @@ public class Solution extends Reader4 {
                 size = 0;
             }
         }
-
         return index;
     }
 }
