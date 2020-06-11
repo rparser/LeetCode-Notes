@@ -39,7 +39,8 @@ public class _347_TopKFrequentElements {
             int frequency = map.get(key);
             if (bucket[frequency] == null)
                 bucket[frequency] = new ArrayList<>();
-            bucket[frequency].add(key); //此时，bucket数组里，每个点0-n，都记录了这个数字出现多少次，比如bucket[fr]代表出现fr次的数字有哪些
+            //此时，bucket数组里，每个点0-n，都记录了这个数字出现多少次，比如bucket[fr]代表出现fr次的数字有哪些
+            bucket[frequency].add(key);
         }
 
         for (int pos = bucket.length - 1; pos >= 0; pos--) { //从大到小

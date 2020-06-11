@@ -1,6 +1,5 @@
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-
         // 开辟两个指针，且第二个指针距离第一个指针为n+1，
         // 因为要删除节点，必须获得该待删除节点的前一个节点。。。。。
         ListNode node1 = head;

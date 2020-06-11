@@ -1,6 +1,6 @@
 class MinStack {
     int min = Integer.MAX_VALUE;
-    Stack<Integer> stack = new Stack<Integer>();
+    Deque<Integer> stack = new ArrayDeque<>();
 
     public void push(int x) {
         //当前值更小

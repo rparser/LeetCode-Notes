@@ -30,13 +30,14 @@ public class _127_WordLadder {
                     for (char c = 'a'; c <= 'z'; c++) {
                         if (c == currChar) continue; //如果是原值则跳出
                         currWordChars[i] = c;
-                        String t = new String(currWordChars); //否则设置为新单词
-                        if (t.equals(endWord)) return steps + 1; //如果找到则返回
-                        if (!wordSet.contains(t)) continue; //如果词典里找不到则跳出,找到
-                        wordSet.remove(t); //如果词典里找到，移除这个单词
-                        queue.offer(t); //把这个单词加入queue
+                        String newStr = new String(currWordChars); //否则设置为新单词
+                        if (newStr.equals(endWord)) return steps + 1; //如果找到则返回
+                        if (wordSet.contains(newStr)) {//如果词典找到说明还没用过
+                            wordSet.remove(newStr);//移除这个单词
+                            queue.add(newStr);//把这个单词加入queue
+                        }
                     }
-                    currWordChars[i] = currChar; //重新还原单词
+                    currWordChars[i] = currChar; //重新还原单词，还原很重要
                 }
             }
         }

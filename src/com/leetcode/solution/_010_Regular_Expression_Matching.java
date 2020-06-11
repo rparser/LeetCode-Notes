@@ -14,10 +14,10 @@ public class _010_RegularExpressionMatching {
         dp[0][0] = true;
         //p字符串的第2个字符是否等于'*',此时j元素需要0个，所以s不变p减除两个字符
         //handle 1st row dealing a*b* - 0 presence, mark such * true
-        for (int j = 1; j < dp[0].length; j++) {
+        for (int j = 1; j < dp[0].length; j++)
             if (p.charAt(j - 1) == '*')
                 dp[0][j] = dp[0][j - 2];
-        }
+
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j < dp[0].length; j++) {
                 char sc = s.charAt(i - 1);
