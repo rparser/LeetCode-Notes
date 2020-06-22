@@ -57,9 +57,7 @@ public class BuddySystem {
                 //如果上级已经是1则不需要计算跳出
                 if (arr[(pIdx - 1) / 2] == 1) break;
                 //否则计算sibling
-                int sibling;
-                if (pIdx % 2 == 1) sibling = pIdx + 1;
-                else sibling = pIdx - 1;
+                int sibling = pIdx + (pIdx % 2 == 1 ? 1 : -1);
                 //如果sibling为0，则自己变为1也没用，跳出
                 if (sibling <= n && arr[sibling] == 0) break;
                 else arr[(pIdx - 1) / 2] = 1;
@@ -69,6 +67,14 @@ public class BuddySystem {
         System.out.println(Arrays.toString(arr));
     }
 
+    public static boolean continousEight1s(int[] arr){
+        int n = arr.length;
+        int level = (int)(Math.log(n + 1) / Math.log(2)) + 1;
+        if(level < 3) return false;
+        if((n - 2 ^ level) < 8) return false;
+        // 第一层是1则下面全是1 或是从倒数第4层算起 时间复杂度一样都为2^k因为每行数量都是上面所有的数量和-1
+        return true;
+    }
     public static void clearBit(int[][] matrix, int offset, int length) {
         int curLevel = matrix.length - 1;
         int left = offset;

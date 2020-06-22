@@ -1,4 +1,4 @@
-package com.leetcode.solution;
+package com.leetcode.PureStorage;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,8 +8,8 @@ import java.util.*;
 
 /**
  * 有效正方形
- * Time complexity : O(1)O(1). A fixed number of comparisons are done.
- * Space complexity : O(1)O(1). No extra space required.
+ * Time complexity : O(1). A fixed number of comparisons are done.
+ * Space complexity : O(1). No extra space required.
  * <p>
  * 计算list中有效的正方形
  */
@@ -40,7 +40,7 @@ import java.util.*;
  * x31=y10 or y01 ->  x3=y1-y0+x1 or x3=y0-y1+x1
  */
 
-public class _593_ValidSquare {
+public class Valid_Square {
     public boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {
         HashMap<Double, Integer> map = new HashMap<>(); //距离，存在的个数
         double dist12 = dist(p1, p2);
@@ -68,8 +68,9 @@ public class _593_ValidSquare {
         return (p2[1] - p1[1]) * (p2[1] - p1[1]) + (p2[0] - p1[0]) * (p2[0] - p1[0]);
     }
 
-    public List allValidSquare(List<int[]> input) {
-        HashMap<String, Integer> map = new LinkedHashMap<>(); //位置，个数
+    public List<String> allValidSquare(List<int[]> input) {
+        //先考虑下面的加入到set， map可以记录是第几个点
+        HashMap<String, Integer> map = new LinkedHashMap<>(); //位置，第几个点
         for (int i = 0; i < input.size(); i++) {
 //            if(mapX.containsKey(input.get(i)[0]))
 //                mapX.get(input.get(i)[0]).add(i);
@@ -92,6 +93,11 @@ public class _593_ValidSquare {
 //            }
             map.put(input.get(i)[0] + "," + input.get(i)[1], i);
         }
+        //加入到set
+        Set<String> stringSet = new HashSet<>();
+        for (int[] s : input)
+            stringSet.add(s[0] + "," +s[1]);
+
         Set<String> result = new HashSet<>();
         for (int i = 0; i < input.size(); i++) { //n^2复杂度
             for (int j = i + 1; j < input.size(); j++) {
@@ -104,10 +110,12 @@ public class _593_ValidSquare {
                 int x3 = (y0 - y1) + x1;
                 int y3 = (x1 - x0) + y1;
                 for (String s : map.keySet()) System.out.println(s);
+                // 改成set，找到则代表有此值
                 if (map.containsKey(x2 + "," + y2) && map.containsKey(x3 + "," + y3) && map.get(x2 + "," + y2) != i
                         && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j) {
+                    //
                     int[] arr = new int[]{i, j, map.get(x2 + "," + y2), map.get(x3 + "," + y3)};
-                    Arrays.sort(arr);
+//                    Arrays.sort(arr); 也许可以不用sort
                     StringBuilder curFind = new StringBuilder();
                     for (int k : arr) curFind.append(",").append(k);
                     result.add(curFind.toString());
@@ -117,9 +125,9 @@ public class _593_ValidSquare {
                 x3 = -(y0 - y1) + x1;
                 y3 = -(x1 - x0) + y1;
                 if (map.containsKey(x2 + "," + y2) && map.containsKey(x3 + "," + y3) && map.get(x2 + "," + y2) != i
-                        && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j)   {
+                        && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j) {
                     int[] arr = new int[]{i, j, map.get(x2 + "," + y2), map.get(x3 + "," + y3)};
-                    Arrays.sort(arr);
+//                    Arrays.sort(arr); 也许可以不用sort
                     StringBuilder curFind = new StringBuilder();
                     for (int k : arr) curFind.append(",").append(k);
                     result.add(curFind.toString());
