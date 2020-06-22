@@ -1,10 +1,12 @@
+import java.util.*;
+
 class Solution {
     public boolean backspaceCompare(String S, String T) {
         return toRes(S).equals(toRes(T));
     }
 
     private String toRes(String s) {
-        Stack<Character> stack = new Stack<Character>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (char c : s.toCharArray()) {
             if (c != '#')
                 stack.push(c);
