@@ -135,6 +135,7 @@ public class EventFire {
     }
 
     public void fireintern2() {
+        isFired = true;
         lock.lock();
         lock.unlock();
         isFired = true;
@@ -153,13 +154,17 @@ public class EventFire {
      * 然后聊了聊如果要求keep order有什么想法，用两个queue，然后交换queue的时候lock，他说you are on a good track
      * 然后聊了聊不加锁实现thread safe，主要思路就是在register，在判断了isFired之后进去的时候判断queue为不为空，可以知道其他thread有没有call fired，并且有没有执行完。
      */
+
+
+    //// Version 3: Critical session is queue, we need to make sure there are no two threads entered critical session
+    // and do action to it at the same time. For invoke, we have no control over it.
     public void reg_cbgood(CallBack cb) {
-        lock.lock();
+        lock.lock(); //here
         if (!isFired) {
             eventQueue.offer(cb);
-            lock.unlock();
+            lock.unlock(); //here
         } else {
-            lock.unlock();
+            lock.unlock(); //here
             cb.call();
         }
     }
@@ -196,4 +201,31 @@ public class EventFire {
             eventQueue.remove().call();
         }
     }
+
+    //合理的无锁
+    public void fire() {
+        fired = true;
+        while(!eventQueue.isEmpty()) {
+            CallBack c = eventQueue.pollLast();
+            c.call();
+        }
+    }
+
+    public void register(CallBack cb) {
+        if (!fired) {
+            eventQueue.offerFirst(cb);
+            if (fired) {
+                // 1. loop is still running, so, event_fired will run your   - yes // remove cb from queue, run(cb)
+                // 2. loop finished, it already ran your callback - yes // check queue empty
+                // 3. loop finished, it did not run your callback - yes // run(cb);
+                if(!eventQueue.isEmpty()) {
+                    CallBack cb = eventQueue.pollLast();
+                    cb.call();
+                }
+            }
+        } else {
+            call.invoke();
+        }
+    }
+
 }
