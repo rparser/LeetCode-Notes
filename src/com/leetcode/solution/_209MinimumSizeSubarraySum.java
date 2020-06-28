@@ -5,18 +5,28 @@ import org.junit.runner.*;
 
 public class _209MinimumSizeSubarraySum {
     public int minSubArrayLen(int s, int[] nums) {
-        int start = 0;
-        int end = 0;
+        int len = nums.length;
+        int result = Integer.MAX_VALUE;
+
+        int left = 0;
+        int right = 0;
         int curr_sum = 0;
-        int res = nums.length + 1;
-        while (end < nums.length) {
-            while (curr_sum < s && end < nums.length) curr_sum += nums[end++]; //如果sum小于要求值，则end向后移一位，且在sum更新+
-            while (curr_sum >= s && start < nums.length) {     //当sum大于要求值
-                if (end - start < res) res = end - start;//如果新的res比之前的小，则更新
-                curr_sum -= nums[start++];//start要向后移来缩小res大小
+
+        while (right < len) {
+            //先找到>=s的，如果还没找到，则righ向后移一位，且在sum更新
+            while (curr_sum < s && right < len) {
+                curr_sum += nums[right];
+                right++;
+            }
+            //找到后,left向右以排除看是否还大于
+            while (curr_sum >= s && left < len) {
+                // 更新result
+                result = Math.min(right - left, result);
+                curr_sum -= nums[left];//start要向后移来缩小res大小
+                left++;
             }
         }
-        return res > nums.length ? 0 : res;
+        return result == Integer.MAX_VALUE ? 0 : result;
     }
 
     public static void main(String[] args) {
