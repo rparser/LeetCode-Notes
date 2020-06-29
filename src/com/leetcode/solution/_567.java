@@ -1,6 +1,9 @@
+import java.util.Arrays;
+
 //利用滑窗机制，确定开始位置和结束位置，之间为窗口。
 // 先使用数组对s1中出现的字符数进行统计，再使用滑窗遍历s2数组，确定是否符合题目要求。
 class Solution {
+    // s1是短的pattern
     public boolean checkInclusion(String s1, String s2) {
         int len1 = s1.length(), len2 = s2.length();
         if (len1 == 0) return true;
