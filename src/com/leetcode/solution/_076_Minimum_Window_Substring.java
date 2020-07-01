@@ -4,11 +4,9 @@ import java.util.*;
 
 /**
  * 最短子串有target串
- * <p>
  * Time Complexity: O(∣S∣+∣T∣) where |S| and |T| represent the lengths of strings S and T.
  * In the worst case we might end up visiting every element of string S twice, once by left pointer and once by right pointer.
  * ∣T∣ represents the length of string T.
- * <p>
  * Space Complexity: O(∣S∣+∣T∣). ∣S∣ when the window size is equal to the entire string S. ∣T∣ when T has all unique characters.
  * <p>
  * 1. Use two pointers: start and end to represent a window.
@@ -19,6 +17,44 @@ import java.util.*;
  */
 
 public class _076_MinimumWindowSubstring {
+    public static String minWindowMap(String str, String pattern) {
+        int left = 0, matched = 0, minLength = Integer.MAX_VALUE, resSubStringStart = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (char chr : pattern.toCharArray())
+            map.put(chr, map.getOrDefault(chr, 0) + 1);
+
+        // try to extend the range [windowStart, windowEnd]
+        for (int right = 0; right < str.length(); right++) {
+            char rightChar = str.charAt(right);
+            if (map.containsKey(rightChar)) {
+                map.put(rightChar, map.get(rightChar) - 1);
+                if (map.get(rightChar) >= 0) // 小于0意味着需要的字母但是多余了
+                    matched++;
+            }
+            // 如果字母够了，立刻左移left
+            // shrink the window if we can, finish as soon as we remove a matched character
+            while (matched == pattern.length()) {
+                //找到更短的则记录 resSubStringStart
+                if (right - left + 1 < minLength) {
+                    minLength = right - left + 1;
+                    resSubStringStart = left;
+                }
+
+                char leftChar = str.charAt(left);
+                if (map.containsKey(leftChar)) {
+                    // note that we could have redundant matching characters, therefore we'll decrement the
+                    // matched count only when a useful occurrence of a matched character is going out of the window
+                    if (map.get(leftChar) == 0)
+                        matched--;
+
+                    map.put(leftChar, map.get(leftChar) + 1);
+                }
+                left++;
+            }
+        }
+        return minLength == Integer.MAX_VALUE ? "" : str.substring(resSubStringStart, resSubStringStart + minLength);
+    }
+
     public String minWindow(String s, String t) {
         if (s == null || t == null || s.length() == 0 || t.length() == 0 || t.length() > s.length()) return "";
         // 定义一个数字，用来记录字符串 t 中出现字符的频率，也就是窗口内需要匹配的字符和相应的频率

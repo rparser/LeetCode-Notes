@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class MyQueue232 {
     private Stack<Integer> in = null;
     private Stack<Integer> out = null;
@@ -18,18 +20,19 @@ public class MyQueue232 {
      * Removes the element from in front of queue and returns that element.
      */
     public int pop() {
-        if (out.empty()) {
+        if (out.isEmpty()) {
             int size = in.size();
             for (int i = 0; i < size; i++)
                 out.push(in.pop());
         }
-        return out.pop();
+        if(out.isEmpty()) return -1;
+        else return out.pop();
     }
     /**
      * Get the front element.
      */
     public int peek() {
-        if (out.empty()) {
+        if (out.isEmpty()) {
             int size = in.size();
             for (int i = 0; i < size; i++)
                 out.push(in.pop());

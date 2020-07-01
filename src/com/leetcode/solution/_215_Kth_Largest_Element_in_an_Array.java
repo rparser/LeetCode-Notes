@@ -35,9 +35,12 @@ public class _215_KthLargestElementinanArray {
 
         while (true) {
             int index = partition(nums, left, right);
-            if (index == target) return nums[index];
-            else if (index < target) left = index + 1;
-            else right = index - 1;
+            if (index == target)
+                return nums[index];
+            else if (index < target)
+                left = index + 1;
+            else
+                right = index - 1;
         }
     }
 
