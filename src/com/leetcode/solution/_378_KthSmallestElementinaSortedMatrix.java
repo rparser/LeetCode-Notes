@@ -16,10 +16,10 @@ public class _378_KthSmallestElementinaSortedMatrix {
         int lo = matrix[0][0], hi = matrix[matrix.length - 1][matrix[0].length - 1] + 1;//[lo, hi)
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
-            int count = 0, j = matrix[0].length - 1; //j为列数目-1
-            for (int[] i : matrix) {
-                while (j >= 0 && i[j] > mid) j--;
-                count += (j + 1); // 该行有多少大于mid，本行越小count越大
+            int count = 0, col = matrix[0].length - 1; //j为列数目-1
+            for (int[] row : matrix) {
+                while (col >= 0 && row[col] > mid) col--;
+                count += (col + 1); // 该行有多少大于mid，本行越小count越大
             }
             if (count < k) lo = mid + 1; //如果中位数个数小于k(前半段太稀疏)，数量不够，则k在后半段
             else hi = mid; //count过多前半段太密集，则k在前半段

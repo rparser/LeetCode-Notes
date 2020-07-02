@@ -1,3 +1,7 @@
+import com.leetcode.solution._103_BinaryTreeZigzagLevelOrderTraversal;
+
+import java.util.*;
+
 class Solution {
     public int maxDepthDfs(TreeNode root) {
         if (root == null) return 0;
@@ -22,5 +26,15 @@ class Solution {
             depth++;
         }
         return depth;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+       TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

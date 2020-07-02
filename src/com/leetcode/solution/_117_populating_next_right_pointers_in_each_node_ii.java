@@ -1,7 +1,3 @@
-//cur 指针利用 next 不停的遍历当前层。
-//        如果 cur 的孩子不为 null 就将它接到 tail 后边，然后更新tail。
-//        当 cur 为 null 的时候，再利用 dummy 指针得到新的一层的开始节点。
-//        dummy 指针在链表中经常用到，他只是为了处理头结点的情况，它并不属于当前链表。
 /**
  * 思路1: use BFS, easy but not constant space
  * Complexity: time O(N) space O(N) - queue
@@ -53,5 +49,25 @@ class Solution {
             }
         }
         return root;
+    }
+
+    class Node {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node() {}
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, Node _left, Node _right, Node _next) {
+            val = _val;
+            left = _left;
+            right = _right;
+            next = _next;
+        }
     }
 }

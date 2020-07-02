@@ -27,6 +27,7 @@ public class _103_BinaryTreeZigzagLevelOrderTraversal {
                 if (cur.left != null) q.offer(cur.left);
                 if (cur.right != null) q.offer(cur.right);
             }
+            // 也可以变为 if(rightToLeft) currentLevel.add(0, currentNode.val); 加入tmp list顶部
             if (level % 2 == 1) //第1行及每单数行要顺序反过来（root为0行）
                 Collections.reverse(result.get(level));
             level++;

@@ -15,18 +15,16 @@ public class _111MinimumDepthofBinaryTree {
         q.offer(root); // offer添加, poll弹出, peek查询
         while (!q.isEmpty()) {
             int size = q.size();
-            // for each level
             for (int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
-                if (node.left == null && node.right == null) { // 如果无子节点
+                if (node.left == null && node.right == null)  // 如果无子节点
                     return depth;
-                }
-                if (node.left != null) {
+
+                if (node.left != null)
                     q.offer(node.left);
-                }
-                if (node.right != null) {
+
+                if (node.right != null)
                     q.offer(node.right);
-                }
             }
             depth++;
         }
