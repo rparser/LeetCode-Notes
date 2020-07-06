@@ -5,7 +5,7 @@ package com.leetcode.solution;
  * 013罗马字母变数字
  */
 
-public class _012IntegertoRoman {
+public class _012_Integer_to_Roman {
     public String intToRoman(int num) {
         String[] M = {"", "M", "MM", "MMM"};
         String[] C = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};

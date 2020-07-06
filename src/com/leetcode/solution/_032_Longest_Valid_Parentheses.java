@@ -11,10 +11,13 @@ public class _032_LongestValidParentheses {
     public int longestValidParentheses(String s) {
         int result = 0, start = 0; //start为新括号的片段开始位置（之前已清空）
         Deque<Integer> stack = new ArrayDeque<>();
+
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') stack.push(i); //左括号则推入
+            if (s.charAt(i) == '(')
+                stack.push(i); //左括号则推入
             else {
-                if (stack.isEmpty()) start = i + 1; //如果右括号且stack空，证明此时都无效，需要从下一位开始
+                if (stack.isEmpty())
+                    start = i + 1; //如果右括号且stack空，证明此时都无效，需要从下一位开始
                 else {
                     stack.pop();
                     result = Math.max(result, stack.isEmpty() ? i - start + 1 : i - stack.peek());

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * add(num): O(logn)
- * findMedian(): O(logn)
+ * findMedian(): O(1)
  * <p>
  * https://www.programcreek.com/2015/01/leetcode-find-median-from-data-stream-java/
  */

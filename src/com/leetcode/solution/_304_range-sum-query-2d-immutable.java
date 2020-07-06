@@ -1,46 +1,19 @@
 //dp[row][col] = dp[row][col-1] + dp[row-1][col] - dp[row-1][col-1] + matrix[row][col]
 class NumMatrix {
-    int[][] matrix;
-    int[][] dp;
-    //每次查询时间 O(1)O(1) 空间复杂度：O(mn)O(mn)
-    public NumMatrix(int[][] matrix) {
-        this.matrix = matrix;
-        if (matrix != null && matrix.length != 0) {
-            dp = new int[matrix.length][matrix[0].length];
-            initialDp(matrix, dp);
-        }
-    }
+    private int[][] dp;
 
-    private void initialDp(int[][] matrix, int[][] dp) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (i == 0 && j == 0) {
-                    dp[i][j] = matrix[i][j];
-                } else if (i == 0) {
-                    dp[i][j] = matrix[i][j] + dp[i][j - 1];
-                } else if (j == 0) {
-                    dp[i][j] = matrix[i][j] + dp[i - 1][j];
-                } else {
-                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1] - dp[i - 1][j - 1] + matrix[i][j];
-                }
-            }
-        }
+    public NumMatrix(int[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0)
+            return;
+        // 设置多一个的理由：计算到[1,1]（第四个点），需要前面-1行的点总结出公式，但如果第0行-1就变负数
+        // 所以需要第一行第一列都为0才方便总结公式
+        dp = new int[matrix.length + 1][matrix[0].length + 1];
+        for (int r = 0; r < matrix.length; r++)
+            for (int c = 0; c < matrix[0].length; c++)
+                dp[r + 1][c + 1] = dp[r + 1][c] + dp[r][c + 1] + matrix[r][c] - dp[r][c];
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        if (dp == null || dp.length == 0) return 0;
-        //左边部分
-        int left = 0;
-        //上边部分
-        int top = 0;
-        //左上部分，左上部分计算两次加回来
-        int leftTop = 0;
-        if (col1 != 0)
-            left = dp[row2][col1 - 1];
-        if (row1 != 0)
-            top = dp[row1 - 1][col2];
-        if (col1 != 0 && row1 != 0)
-            leftTop = dp[row1 - 1][col1 - 1];
-        return dp[row2][col2] - left - top + leftTop;
+        return dp[row2 + 1][col2 + 1] - dp[row1][col2 + 1] - dp[row2 + 1][col1] + dp[row1][col1];
     }
 }

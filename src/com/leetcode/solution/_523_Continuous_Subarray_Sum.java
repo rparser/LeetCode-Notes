@@ -1,3 +1,5 @@
+import java.util.*;
+
 class _523_Continuous_Subarray_Sum {
     public boolean checkSubarraySum(int[] nums, int k) {
         /**
@@ -5,15 +7,18 @@ class _523_Continuous_Subarray_Sum {
          在索引y处, sum[0~y] = n*k + mod_y; 如果mod_x == mod_y且y-x > 1说明sum[x~y]
          即为一个符合要求的连续子数组, 一旦出现新的mod值出现在map中, 判断索引差是否大于1.
          **/
-
-        if (nums.length < 2) return false;
+        if (nums.length < 2)
+            return false;
         // 1) 当nums中有连续0, 无论k为何值都是正确的;
-        for (int i = 0; i < nums.length - 1; ++i)
-            if (nums[i] == 0 && nums[i + 1] == 0) return true;
+        for (int i = 0; i < nums.length - 1; i++)
+            if (nums[i] == 0 && nums[i + 1] == 0)
+                return true;
         // 除情况1之外出现k为0都是错误的;
-        if (k == 0) return false;
+        if (k == 0)
+            return false;
         // k为负数也是可能的, 但是要将其变为对应正数来求mod.
-        if (k < 0) k = -k;
+        if (k < 0)
+            k = -k;
 
         //用map来保存每个mod值对应的索引
         Map<Integer, Integer> map = new HashMap<>();
@@ -23,9 +28,12 @@ class _523_Continuous_Subarray_Sum {
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
             int mod = sum % k;
+
             if (map.containsKey(mod))
-                if (i - map.get(mod) > 1) return true;
-                else map.put(mod, i);// 不存在再更新
+                if (i - map.get(mod) > 1)
+                    return true;
+                else
+                    map.put(mod, i);// 不存在再更新
         }
         return false;
     }

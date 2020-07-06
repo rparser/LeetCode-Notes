@@ -12,6 +12,7 @@ import java.util.*;
  */
 
 public class _103_BinaryTreeZigzagLevelOrderTraversal {
+     // O(N) - O(N)
     public List<List<Integer>> zigzagLevelOrderbest(TreeNode root) { //BFS
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
@@ -23,47 +24,48 @@ public class _103_BinaryTreeZigzagLevelOrderTraversal {
             result.add(new ArrayList<>());
             for (int i = 0; i < size; i++) { //处理每一行
                 TreeNode cur = q.poll();
-                result.get(level).add(cur.val);
-                if (cur.left != null) q.offer(cur.left);
-                if (cur.right != null) q.offer(cur.right);
+
+                if (level % 2 == 0)
+                    result.get(level).add(cur.val);
+                else // 奇数则每次加到第一个（所以最右节点在第一个）
+                    result.get(level).add(0, cur.val);
+
+                if (cur.left != null)
+                    q.offer(cur.left);
+                if (cur.right != null)
+                    q.offer(cur.right);
             }
-            // 也可以变为 if(rightToLeft) currentLevel.add(0, currentNode.val); 加入tmp list顶部
-            if (level % 2 == 1) //第1行及每单数行要顺序反过来（root为0行）
-                Collections.reverse(result.get(level));
             level++;
         }
         return result;
     }
 
+    // O(N) - O(H) height
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return result;
-        LinkedList<TreeNode> list = new LinkedList<>();
-        boolean leftToRight = true;
-        list.add(root);
-        while (!list.isEmpty()) {
-            int size = list.size(); //设定当前层有几个节点
-            LinkedList<Integer> currLevel = new LinkedList<>();
-            if (leftToRight) { //判断本层是否是左到右
-                for (int i = 0; i < size; i++) {
-                    TreeNode node = list.remove(0);
-                    currLevel.add(node.val); //把queue里小于size的结果加入当前层list
-                    if (node.left != null) list.add(node.left); //先加左子再加右子
-                    if (node.right != null) list.add(node.right);
-                }
-            } else {
-                for (int i = 0; i < size; i++) {
-                    TreeNode node = list.remove(list.size() - 1);
-                    currLevel.add(node.val); //把queue里小于size的结果加入当前层list
-                    if (node.right != null) list.add(0, node.right);//先加右子再加左子，且加到头部0
-                    if (node.left != null) list.add(0, node.left);
+        if (root == null)
+            return new ArrayList<>();
 
-                }
-            }
-            result.add(currLevel); //当前层list加入result
-            leftToRight = !leftToRight;
+        List<List<Integer>> results = new ArrayList<>();
+        DFS(root, 0, results);
+        return results;
+    }
+
+    protected void DFS(TreeNode node, int level, List<List<Integer>> results) {
+        if (level >= results.size()) {
+            LinkedList<Integer> newLevel = new LinkedList<>();
+            newLevel.add(node.val);
+            results.add(newLevel);
+        } else {
+            if (level % 2 == 0)
+                results.get(level).add(node.val);
+            else // 奇数则每次加到第一个（所以最右节点在第一个）
+                results.get(level).add(0, node.val);
         }
-        return result;
+
+        if (node.left != null)
+            DFS(node.left, level + 1, results);
+        if (node.right != null)
+            DFS(node.right, level + 1, results);
     }
 
     public class TreeNode {

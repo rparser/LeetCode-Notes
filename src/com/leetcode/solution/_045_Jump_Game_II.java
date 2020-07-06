@@ -13,7 +13,8 @@ package com.leetcode.solution;
  * 而max则记录了路过的所有节点的，再跳一次能有多远，这个可以用来更新reached
  */
 
-public class _045_JumpGameII {
+public class _045_Jump_Game_II {
+    //O(N),O(1)
     public int jump(int[] nums) {
         int times = 0; //跳了多少次
         int reached = 0; //当前跳了times次时能到的最远范围

@@ -31,6 +31,6 @@ class Solution {
             divisor_tmp += divisor_tmp;
             div_count += div_count;
         }
-        return negetive ? 0 - res : res;
+        return negetive ? -res : res;
     }
 }
