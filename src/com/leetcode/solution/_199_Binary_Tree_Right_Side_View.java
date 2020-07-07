@@ -3,10 +3,10 @@ package com.leetcode.solution;
 import java.util.*;
 
 /**
- * 思路1： BFS, use level order traverlsal. key is to track each level size, and add the last one to list.
+ * 思路1： BFS, use level order traversal. key is to track each level size, and add the last one to list.
  */
 
-public class _199_BinaryTreeRightSideView {
+public class _199_Binary_Tree_Right_Side_View {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
@@ -18,9 +18,14 @@ public class _199_BinaryTreeRightSideView {
             int size = queue.size();
             for (int i = 0; i < size; i++) {// last element in current level
                 TreeNode curr = queue.remove();
-                if (i == size - 1) result.add(curr.val);
-                if (curr.left != null) queue.offer(curr.left);
-                if (curr.right != null) queue.offer(curr.right);
+                if (i == size - 1)
+                    result.add(curr.val);
+
+                if (curr.left != null)
+                    queue.offer(curr.left);
+
+                if (curr.right != null)
+                    queue.offer(curr.right);
             }
         }
         return result;

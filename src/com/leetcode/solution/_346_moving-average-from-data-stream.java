@@ -1,17 +1,20 @@
+import java.util.*;
+
 class MovingAverage {
-    private Queue<Integer> q;
+    // O(1), O(N)
+    private final Queue<Integer> q  = new LinkedList<>();
     private int sum;
-    private int size;
+    private final int size;
 
     public MovingAverage(int size) {
-        q = new LinkedList<Integer>();
         this.size = size;
     }
 
     public double next(int val) {
-        if (q.size() == size) {
+        // 大小达到size了则先remove再offer
+        if (q.size() == size)
             sum -= q.remove();
-        }
+
         q.offer(val);
         sum += val;
         return (double) sum / q.size();

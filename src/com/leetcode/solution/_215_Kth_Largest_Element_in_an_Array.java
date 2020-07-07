@@ -10,22 +10,8 @@ import java.util.*;
  */
 
 
-public class _215_KthLargestElementinanArray {
-    public int findKthLargestPQ(int[] nums, int k) {
-        // init heap 'the smallest element first'
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-        // keep k largest elements in the heap
-        for (int n : nums) {
-            pq.add(n);
-            if (pq.size() > k)
-                pq.poll();
-        }
-
-        // output
-        return pq.poll();
-    }
-
+public class _215_Kth_Largest_Element_in_an_Array {
+    // O(N) , O(1)
     public int findKthLargest(int[] nums, int k) {
         int len = nums.length;
         int left = 0;
@@ -75,5 +61,19 @@ public class _215_KthLargestElementinanArray {
         int temp = nums[index1];
         nums[index1] = nums[index2];
         nums[index2] = temp;
+    }
+
+    public int findKthLargestPQ(int[] nums, int k) {
+        // init heap 'the smallest element first'
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // keep k largest elements in the heap
+        for (int n : nums) {
+            pq.add(n);
+            if (pq.size() > k)
+                pq.poll();
+        }
+        // output
+        return pq.poll();
     }
 }

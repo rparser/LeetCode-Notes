@@ -40,16 +40,16 @@ public class _973_KClosestPointstoOrigin {
     public int[][] kClosest(int[][] points, int K) {
         partition(0, points.length - 1, points, K);
         int[][] ret = new int[K][2];
-        for (int i = 0; i < K; i++) {
-            ret[i] = points[i];
-        }
+        if (K >= 0)
+            System.arraycopy(points, 0, ret, 0, K);
         return ret;
     }
 
     private Random rd = new Random();
 
     private int partition(int st, int ed, int[][] points, int K) {
-        if (st >= ed) return st;
+        if (st >= ed)
+            return st;
 
         int id = rd.nextInt(ed - st + 1) + st;
         swap(id, ed, points);
@@ -63,13 +63,12 @@ public class _973_KClosestPointstoOrigin {
             }
         }
         swap(ed, ++j, points);
-        if (j == K - 1) return j;
-        else if (j < K - 1) {
+        if (j == K - 1)
+            return j;
+        else if (j < K - 1)
             return partition(j + 1, ed, points, K);
-        } else {
+        else
             return partition(st, j - 1, points, K);
-        }
-
     }
 
     private void swap(int a, int b, int[][] points) {

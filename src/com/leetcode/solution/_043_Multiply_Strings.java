@@ -21,7 +21,9 @@ public class _043_MultiplyStrings {
         }
         StringBuilder sb = new StringBuilder();
         for (int i : pos)
-            if (!(sb.length() == 0 && i == 0)) sb.append(i); //avoid "00"
+            if (!(sb.length() == 0 && i == 0))
+                sb.append(i); //avoid "00"
+
         return sb.length() == 0 ? "0" : sb.toString();
     }
 }

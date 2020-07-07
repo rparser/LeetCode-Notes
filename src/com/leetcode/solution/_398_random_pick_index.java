@@ -1,5 +1,7 @@
 //假设当前正要读取第n个数据，则我们以1/n的概率留下该数据，否则留下前n-1个数据中的一个。
 
+import java.util.*;
+
 class Solution {
     private int[] nums;
 
@@ -15,8 +17,10 @@ class Solution {
             if (nums[i] == target) {
                 //我们的目标对象中选取。
                 n++;
+                // 每次只保留一个数，当遇到第 i 个数时，以 1/i的概率保留它，(i-1)/i的概率保留原来的数。
                 //我们以1/n的概率留下该数据
-                if (r.nextInt() % n == 0) index = i;
+                if (r.nextInt() % n == 0)
+                    index = i;
             }
         return index;
     }

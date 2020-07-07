@@ -11,7 +11,8 @@ import java.util.*;
  * The size of the Set is upper bounded by the size of the string n and the size of the charset/alphabet m.
  */
 
-public class _003_LongestSubstringWithoutRepeatingCharacters {
+public class _003_Longest_Substring_Without_Repeating_Characters {
+    //O(N),O(N)
     public int lengthOfLongestSubstring(String s) {
         int n = s.length(), result = 0;
 

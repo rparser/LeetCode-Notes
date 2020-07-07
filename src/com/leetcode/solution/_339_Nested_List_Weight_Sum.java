@@ -7,7 +7,7 @@ import java.util.*;
  * 2.一个参数的方法返回两个参数的方法，设置为第一层，并不断递归
  */
 
-public class _339NestedListWeightSum {
+public class _339_Nested_List_Weight_Sum {
     public int depthSum(List<NestedInteger> nestedList) {
         return depthSum(nestedList, 1);  // 从第一层开始
     }
@@ -15,11 +15,10 @@ public class _339NestedListWeightSum {
     public int depthSum(List<NestedInteger> list, int depth) {
         int sum = 0; // 记录结果
         for (NestedInteger n : list) {
-            if (n.isInteger()) { // 如果只有一个数
+            if (n.isInteger())  // 如果只有一个数
                 sum += n.getInteger() * depth;
-            } else {
+            else
                 sum += depthSum(n.getList(), depth + 1);
-            }
         }
         return sum;
     }

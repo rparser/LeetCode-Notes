@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import org.junit.*;
 import org.junit.runner.*;
 
-public class _209MinimumSizeSubarraySum {
+public class _209_Minimum_Size_Subarray_Sum {
     public int minSubArrayLen(int s, int[] nums) {
         int len = nums.length;
         int result = Integer.MAX_VALUE;
@@ -13,7 +13,7 @@ public class _209MinimumSizeSubarraySum {
         int curr_sum = 0;
 
         while (right < len) {
-            //先找到>=s的，如果还没找到，则righ向后移一位，且在sum更新
+            //先找到>=s的，如果还没找到，则right向后移一位，且在sum更新
             while (curr_sum < s && right < len) {
                 curr_sum += nums[right];
                 right++;

@@ -10,7 +10,35 @@ package com.leetcode.solution;
  * 先找二分翻转点，四情况：无翻转，翻转点为目标，右侧(target < nums[0])，左侧
  */
 
-public class _033_SearchinRotatedSortedArray {
+public class _033_Search_in_Rotated_Sorted_Array {
+    public int search(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (nums[mid] == target)
+                return mid;
+            // 排除重复值,如果无重复值不需要这一句
+            if (nums[mid] == nums[low])
+                low++;
+                // 先判断mid和low关系再if target和mid和low关系
+                // 否则如果mid > low，即翻转在后半部分
+            else if (nums[mid] > nums[low]) {
+                if (target < nums[mid] && target >= nums[low])
+                    high = mid - 1; // 如果target值，在low和mid间，则在前半部分找（已排序好）
+                else
+                    low = mid + 1; // 否则在后半部分找
+                // 否则如果mid < low，即翻转在前半部分
+            } else {
+                if (target > nums[mid] && target <= nums[high])
+                    low = mid + 1; // 如果target值，在mid和high间，则在后半部分找（已排序好）
+                else
+                    high = mid - 1;    // 否则在前半部分找
+            }
+        }
+        return -1;
+    }
+
+
     private int[] nums;
     private int target;
 
@@ -36,7 +64,7 @@ public class _033_SearchinRotatedSortedArray {
         return 0;
     }
 
-    public int search(int[] nums, int target) {
+    public int searchSlow(int[] nums, int target) {
         this.nums = nums;
         this.target = target;
         int n = nums.length;

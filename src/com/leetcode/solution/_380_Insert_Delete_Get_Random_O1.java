@@ -11,7 +11,7 @@ import java.util.*;
  * map: replace the index(val) of last added element, and remove val(key)
  */
 
-public class _380_InsertDeleteGetRandomO1 {
+public class _380_Insert_Delete_Get_Random_O1 {
     Map<Integer, Integer> map;//<val, index in arrlist>
     List<Integer> list;//keep a record of value for get random
     int size;//map and list are the same size
@@ -20,7 +20,7 @@ public class _380_InsertDeleteGetRandomO1 {
     /**
      * Initialize your data structure here.
      */
-    public _380_InsertDeleteGetRandomO1() {
+    public _380_Insert_Delete_Get_Random_O1() {
         this.map = new HashMap<>();
         this.list = new ArrayList<>();
         this.size = 0;
@@ -31,7 +31,9 @@ public class _380_InsertDeleteGetRandomO1 {
      * Inserts a value to the set. Returns true if the set did not already contain the specified element.
      */
     public boolean insert(int val) {
-        if (map.containsKey(val)) return false;
+        if (map.containsKey(val))
+            return false;
+
         map.put(val, size);
         list.add(val);
         size++;

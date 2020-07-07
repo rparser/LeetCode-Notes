@@ -17,31 +17,12 @@ import java.util.*;
  * 链表pq依次offer list(Comparator.comparingInt(o -> o.val)),while非空，next=poll,cur=next,if(next非空)则offer(next)
  */
 
-public class _023_MergekSortedLists {
-    //方法一PQ
-    public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0) return null;
-
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
-
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
-
-        for (ListNode node : lists)
-            if (node != null) queue.offer(node);
-
-        while (!queue.isEmpty()) {
-            curr.next = queue.poll(); //取出node
-            curr = curr.next;
-
-            if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
-        }
-        return dummy.next;
-    }
+public class _023_Merge_k_Sorted_Lists {
     //方法二分治
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0)
             return null;
+
         return helper(lists, 0, lists.length - 1);
     }
 
@@ -59,8 +40,10 @@ public class _023_MergekSortedLists {
     //合并两个有序链表
     private ListNode merge(ListNode l1, ListNode l2) {
         // if anyone is longer
-        if (l1 == null) return l2;
-        if (l2 == null) return l1;
+        if (l1 == null)
+            return l2;
+        if (l2 == null)
+            return l1;
         if (l1.val < l2.val) {
             l1.next = merge(l1.next, l2);
             return l1;
@@ -76,5 +59,26 @@ public class _023_MergekSortedLists {
         ListNode(int x) {
             val = x;
         }
+    }
+
+    //方法一PQ
+    public ListNode mergeKListsPQ(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+
+        for (ListNode node : lists)
+            if (node != null) queue.offer(node);
+
+        while (!queue.isEmpty()) {
+            curr.next = queue.poll(); //取出node
+            curr = curr.next;
+
+            if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
+        }
+        return dummy.next;
     }
 }
