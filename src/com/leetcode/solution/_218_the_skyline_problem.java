@@ -4,7 +4,7 @@ import javafx.util.*;
 import java.util.*;
 
 
-class Solution {
+class _218_the_skyline_problem {
     // 扫描线Scan
     //时间复杂度：O(NlogN) ，其中 N 是建筑物的数目, 空间复杂度：O(N) 。需要额外 O(n) 的空间来保存结果。
     // 每个建筑物的几何信息用三元组 [Li，Ri，Hi] 表示
