@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _1360_number_of_days_between_two_dates {
     int[] _365M = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public int daysBetweenDates(String date1, String date2) {
