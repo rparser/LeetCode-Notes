@@ -1,3 +1,5 @@
+package com.leetcode.solution;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +9,42 @@ import java.util.Map;
  * 先使用数组对s1中出现的字符数进行统计，再使用滑窗遍历s2数组，确定是否符合题目要求。
  * 时间复杂度：O(l1 + (l2 - l1))
  **/
-class Solution {
+class _567_permutation_in_string {
+    // O(l1 + (l2 - l1)), O(l1)
+    public boolean checkInclusionMap(String pattern, String str) {
+        int left = 0, matched = 0;
+        Map<Character, Integer> charFrequencyMap = new HashMap<>();
+        for (char chr : pattern.toCharArray())
+            charFrequencyMap.put(chr, charFrequencyMap.getOrDefault(chr, 0) + 1);
+
+        // our goal is to match all the characters from the 'charFrequencyMap' with the current window
+        // try to extend the range [windowStart, windowEnd]
+        for (int right = 0; right < str.length(); right++) {
+            char rightChar = str.charAt(right);
+            if (charFrequencyMap.containsKey(rightChar)) {
+                // decrement the frequency of the matched character
+                charFrequencyMap.put(rightChar, charFrequencyMap.get(rightChar) - 1);
+                if (charFrequencyMap.get(rightChar) == 0) // character is completely matched
+                    matched++;
+            }
+
+            if (matched == charFrequencyMap.size())
+                return true;
+
+            if (right >= pattern.length() - 1) { // shrink the window by one character
+                char leftChar = str.charAt(left);
+                if (charFrequencyMap.containsKey(leftChar)) {
+                    if (charFrequencyMap.get(leftChar) == 0)
+                        matched--; // before putting the character back, decrement the matched count
+                    // put the character back for matching
+                    charFrequencyMap.put(leftChar, charFrequencyMap.get(leftChar) + 1);
+                }
+                left++;
+            }
+        }
+        return false;
+    }
+
     // s1是短的pattern
     public boolean checkInclusion(String s1, String s2) {
         int len1 = s1.length(), len2 = s2.length();
@@ -57,41 +94,6 @@ class Solution {
             // 如果end==start+len1，则说明while2遍历完成，未被break，因此返回true
             if (right == left + len1)
                 return true;
-        }
-        return false;
-    }
-
-
-    public boolean checkInclusionMap(String pattern, String str) {
-        int left = 0, matched = 0;
-        Map<Character, Integer> charFrequencyMap = new HashMap<>();
-        for (char chr : pattern.toCharArray())
-            charFrequencyMap.put(chr, charFrequencyMap.getOrDefault(chr, 0) + 1);
-
-        // our goal is to match all the characters from the 'charFrequencyMap' with the current window
-        // try to extend the range [windowStart, windowEnd]
-        for (int right = 0; right < str.length(); right++) {
-            char rightChar = str.charAt(right);
-            if (charFrequencyMap.containsKey(rightChar)) {
-                // decrement the frequency of the matched character
-                charFrequencyMap.put(rightChar, charFrequencyMap.get(rightChar) - 1);
-                if (charFrequencyMap.get(rightChar) == 0) // character is completely matched
-                    matched++;
-            }
-
-            if (matched == charFrequencyMap.size())
-                return true;
-
-            if (right >= pattern.length() - 1) { // shrink the window by one character
-                char leftChar = str.charAt(left);
-                if (charFrequencyMap.containsKey(leftChar)) {
-                    if (charFrequencyMap.get(leftChar) == 0)
-                        matched--; // before putting the character back, decrement the matched count
-                    // put the character back for matching
-                    charFrequencyMap.put(leftChar, charFrequencyMap.get(leftChar) + 1);
-                }
-                left++;
-            }
         }
         return false;
     }

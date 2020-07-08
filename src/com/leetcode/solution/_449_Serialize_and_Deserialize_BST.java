@@ -12,7 +12,7 @@ import java.util.*;
  * 反序列化：根据前序遍历序列递归新建二叉树。
  */
 
-public class _449_SerializeandDeserializeBST {
+public class _449_Serialize_and_Deserialize_BST {
     private static final String NULL = "X";
     private static final String SPLITOR = ",";
 
@@ -41,7 +41,8 @@ public class _449_SerializeandDeserializeBST {
 
     private TreeNode build(Queue<String> queue) {
         String p = queue.poll();
-        if (p.equals(NULL)) return null;
+        if (p.equals(NULL))
+            return null;
         TreeNode root = new TreeNode(Integer.parseInt(p));
         root.left = build(queue);
         root.right = build(queue);

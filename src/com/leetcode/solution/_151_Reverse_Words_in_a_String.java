@@ -7,7 +7,27 @@ package com.leetcode.solution;
  * 然后返回的时候再加上即可
  */
 
-public class _151_ReverseWordsinaString {
+public class _151_Reverse_Words_in_a_String {
+    // 双指针O(N), O(N)
+    public String reverseWordsTwoPointers(String s) {
+        s = s.trim(); // 删除首尾空格
+        int i = s.length() - 1, j = i;
+        StringBuilder res = new StringBuilder();
+        while (i >= 0) {
+            while (i >= 0 && s.charAt(i) != ' ')
+                i--; // 搜索首个空格
+
+            res.append(s, i + 1, j + 1).append(" "); // 添加单词, i在前j在后
+
+            while (i >= 0 && s.charAt(i) == ' ')
+                i--; // 跳过单词间空格
+
+            j = i; // j 指向下个单词的尾字符
+        }
+        return res.toString().trim(); // 转化为字符串并返回
+    }
+
+    // O(N), O(N)
     public String reverseWords(String s) {
         StringBuilder res = new StringBuilder();
         String[] words = s.trim().split("\\s+");

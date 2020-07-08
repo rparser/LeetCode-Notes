@@ -11,26 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 
 
-public class _973_KClosestPointstoOrigin {
-    public int[][] kClosestPQ(int[][] points, int K) {
-        if (points == null || points.length == 0 || K < 1) return points;
-
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> calculateDist(b) - calculateDist(a));
-        for (int[] point : points) {
-            pq.add(point);
-            if (pq.size() > K) pq.poll();
-        }
-
-        int[][] result = new int[K][2];
-        for (int i = 0; i < K; i++) result[i] = pq.poll();
-
-        return result;
-    }
-
-    public int calculateDist(int[] point) {
-        return point[0] * point[0] + point[1] * point[1];
-    }
-
+public class _973_K_Closest_Points_to_Origin {
     /**
      * Divide and Conquer
      * 参考215
@@ -75,5 +56,24 @@ public class _973_KClosestPointstoOrigin {
         int[] tmp = points[a];
         points[a] = points[b];
         points[b] = tmp;
+    }
+
+    public int[][] kClosestPQ(int[][] points, int K) {
+        if (points == null || points.length == 0 || K < 1) return points;
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> calculateDist(b) - calculateDist(a));
+        for (int[] point : points) {
+            pq.add(point);
+            if (pq.size() > K) pq.poll();
+        }
+
+        int[][] result = new int[K][2];
+        for (int i = 0; i < K; i++) result[i] = pq.poll();
+
+        return result;
+    }
+
+    public int calculateDist(int[] point) {
+        return point[0] * point[0] + point[1] * point[1];
     }
 }

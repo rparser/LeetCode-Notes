@@ -16,7 +16,7 @@ import java.util.*;
  * 那么，判断环就比较直接。 如果在访问某一个节点的时候, 如果一个节点正在访问，后序在这个遍历的过程中有回到这个正在访问的节点，那么一定是因为出现了环。 因为正常无环的有向图， 在DFS遍历的时候是不会访问到一个节点两次的。 整个遍历过程应该都是单向的.
  */
 
-public class _210_CourseScheduleII {
+public class _210_Course_Schedule_II {
     // DFS做法 时间复杂度: O(n+m)，其中n 为课程数，m为先修课程的要求数 空间复杂度: O(n+m)
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();

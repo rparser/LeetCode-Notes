@@ -1,4 +1,7 @@
-public class Solution {
+package com.leetcode.solution;
+
+public class _123_Best_Time_to_Buy_and_Sell_Stock_III {
+    //finite-state machine O(N),O(1)
     public int maxProfit(int[] prices) {
         int minPrice1 = Integer.MAX_VALUE;
         int maxProfit1 = 0; //max profit after 1st sell

@@ -7,7 +7,7 @@ import java.util.*;
  * 模板dfs,主函数遍历，首字母和ij等则&&dfs,boolean(r,c,index)函数，index到长度返T,点不同返F，取点修改为*记录已访问，四方向递归or(相等一个就行)，还原回*字母
  */
 
-public class _212_WordSearchII {
+public class _212_Word_Search_II {
     private void dfs(char[][] board, int r, int c, TrieNode node, List<String> list) {
         if (r < 0 || c < 0 || r >= board.length || c >= board[0].length) return;
 

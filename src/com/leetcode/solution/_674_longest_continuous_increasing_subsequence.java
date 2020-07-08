@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _674_longest_continuous_increasing_subsequence {
     // O(N), O(1)
     public int findLengthOfLCIS(int[] nums) {
         if (nums.length < 1)

@@ -14,7 +14,6 @@ public class _980_unique_paths_iii {
                 if (grid[i][j] == 0) stepNum++;
             }
         }
-
         return dfs(startX, startY, stepNum, grid);
     }
 

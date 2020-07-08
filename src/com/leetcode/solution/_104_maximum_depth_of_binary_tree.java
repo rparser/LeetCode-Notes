@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class _104_maximum_depth_of_binary_tree {
     // O(N) , O(N)
     public int maxDepthBFS(TreeNode root) {
         if (root == null) return 0;
