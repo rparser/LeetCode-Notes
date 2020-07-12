@@ -12,11 +12,11 @@ import org.junit.runner.*;
  * Complexity: Time O(1) Space O(N)
  */
 
-public class _146_LRUCache {
+public class _146_LRU_Cache {
     private Node head = null;
     private Node end = null;
     HashMap<Integer, Node> map = new HashMap<>(); //<val: node in list>
-    private int capacity;
+    private final int capacity;
 
     class Node {
         Node pre;
@@ -30,29 +30,13 @@ public class _146_LRUCache {
         }
     }
 
-    public _146_LRUCache(int capacity) {
+    public _146_LRU_Cache(int capacity) {
         this.capacity = capacity;
     }
 
-    private void removeNode(Node n) {
-        Node preN = n.pre;
-        Node nextN = n.next;
-        if (n == head) head = nextN;//watch case of deleting head & end
-        if (n == end) end = preN;//
-        if (preN != null) preN.next = nextN;
-        if (nextN != null) nextN.pre = preN;
-    }
-
-    private void setHead(Node n) {//head is most recent val
-        n.next = head;
-        n.pre = null;
-        if (head != null) head.pre = n;
-        head = n;
-        if (end == null) end = head;//actually when only head in list
-    }
-
     public int get(int key) {
-        if (!map.containsKey(key)) return -1;
+        if (!map.containsKey(key))
+            return -1;
         Node cur = map.get(key);
         removeNode(cur);
         setHead(cur);
@@ -74,6 +58,41 @@ public class _146_LRUCache {
             removeNode(cur); //删除原有node
             setHead(cur); //新key放到head
         }
+    }
+
+    // 需要做：取出前后节点，看是否是head或end然后交叉指向
+    private void removeNode(Node node) {
+        // 要取出前后节点
+        Node preN = node.pre;
+        Node nextN = node.next;
+        // 如果删除的是head，新head要指向下一个节点
+        if (node == head)
+            head = nextN;
+        // 如果删除的是end, 新end要指向前一个节点
+        if (node == end)
+            end = preN;
+        // 如果preN非空，证明删除点非head,前一个节点需要指向后一个
+        if (preN != null)
+            preN.next = nextN;
+        // 如果nextN非空，证明删除点非end,后一个节点需要指向前一个
+        if (nextN != null)
+            nextN.pre = preN;
+    }
+
+    //需要做：新node指到当前head,head.pre指回新node，head更新到新node
+    private void setHead(Node node) {
+        // 此时node在head前指向head
+        node.next = head;
+        node.pre = null;
+        // 如果head非null（证明不是第一个加进去的）
+        if (head != null)
+            // head.pre需要指回新node
+            head.pre = node;
+        // 然后把head pointer指到新node
+        head = node;
+        // 如果end为空证明此时是第一个加入的节点，则end和head需要指向同一个
+        if (end == null)
+            end = head;
     }
 
 // LinkedHashMap方法

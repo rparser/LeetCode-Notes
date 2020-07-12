@@ -10,15 +10,16 @@ package com.leetcode.solution;
  * Space: O(alphabet(26)*M*N) N is number of keys in trie
  */
 
-public class _208_ImplementTrie_PrefixTree {
+public class _208_Implement_Trie_Prefix_Tree {
+    // O(M=key_length), O(alphabet(26)*M*N)
     class TrieNode {
+        public boolean is_word;
+        public TrieNode[] children;
+
         public TrieNode() {
             children = new TrieNode[26];
             is_word = false;
         }
-
-        public boolean is_word;
-        public TrieNode[] children;
     }
 
     private TrieNode root;
@@ -26,29 +27,17 @@ public class _208_ImplementTrie_PrefixTree {
     /**
      * Initialize your data structure here.
      */
-    public _208_ImplementTrie_PrefixTree() {
+    public _208_Implement_Trie_Prefix_Tree() {
         root = new TrieNode();
-    }
-
-    /**
-     * Inserts a word into the trie.
-     */
-    public void insert(String word) {
-        TrieNode p = root;
-        for (int i = 0; i < word.length(); i++) {
-            int index = (int) (word.charAt(i) - 'a');
-            if (p.children[index] == null)
-                p.children[index] = new TrieNode();
-            p = p.children[index];
-        }
-        p.is_word = true;
     }
 
     /**
      * Returns if the word is in the trie.
      */
+    // Search和startsWith都call单独的find method
     public boolean search(String word) {
         TrieNode node = find(word);
+        // 如果is_word证明是单词
         return node != null && node.is_word;
     }
 
@@ -63,10 +52,28 @@ public class _208_ImplementTrie_PrefixTree {
     private TrieNode find(String prefix) {
         TrieNode p = root;
         for (int i = 0; i < prefix.length(); i++) {
-            int index = (int) (prefix.charAt(i) - 'a');
-            if (p.children[index] == null) return null;
+            int index = prefix.charAt(i) - 'a';
+            if (p.children[index] == null)
+                return null; //找不到就返回
+            // 找到符合这个prefix的TrieNode
             p = p.children[index];
         }
         return p;
+    }
+
+    /**
+     * Inserts a word into the trie.
+     */
+    public void insert(String word) {
+        TrieNode p = root;
+        for (int i = 0; i < word.length(); i++) {
+            int index = word.charAt(i) - 'a';
+            if (p.children[index] == null)
+                p.children[index] = new TrieNode();
+            // 新建一个TrieNode然后重新指向这个TrieNode
+            p = p.children[index];
+        }
+        // 在最后一步跳出for loop后添加is_word =true;
+        p.is_word = true;
     }
 }

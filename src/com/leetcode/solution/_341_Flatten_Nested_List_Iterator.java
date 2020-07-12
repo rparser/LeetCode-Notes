@@ -2,7 +2,7 @@ package com.leetcode.solution;
 
 import java.util.*;
 
-public class _341_FlattenNestedListIterator implements Iterator<Integer> {
+public class _341_Flatten_Nested_List_Iterator implements Iterator<Integer> {
     public interface NestedInteger {
         // @return true if this NestedInteger holds a single integer, rather than a nested list.
         public boolean isInteger();
@@ -16,30 +16,78 @@ public class _341_FlattenNestedListIterator implements Iterator<Integer> {
         public List<NestedInteger> getList();
     }
 
-    List<Integer> list = new ArrayList<>();
-    int pos = 0;//current position
+    Deque<List<NestedInteger>> elementStack = new ArrayDeque<>();
+    Deque<Integer> pointerStack = new ArrayDeque<>();
+    List<NestedInteger> curList;
+    //当前指针
+    int pointer = 0;
 
-    public _341_FlattenNestedListIterator(List<NestedInteger> nestedList) {
-        traverse(nestedList); //use arrayList to store nestedList
-    }
-
-    public void traverse(List<NestedInteger> nestedList) {
-        if (nestedList == null) return;
-        for (NestedInteger e : nestedList) {
-            if (e.isInteger())
-                list.add(e.getInteger());
-            else
-                traverse(e.getList()); //do recursion when meeting list element
-        }
+    public NestedIterator(List<NestedInteger> nestedList) {
+        curList = nestedList;
     }
 
     @Override
     public Integer next() {
-        return list.get(pos++);
+        // hasNext()后，指针一定是指在下一个Integer上的，所以直接取就好了
+        if (hasNext())
+            return curList.get(pointer++).getInteger();
+        else
+            return null;
     }
 
     @Override
     public boolean hasNext() {
-        return pos < list.size();
+        // next()会++pointer, 当pointer到curList尾部时，要跳出递归
+        while (pointer == curList.size() && !elementStack.isEmpty()) {
+            pointer = pointerStack.pop();
+            curList = elementStack.pop();
+        }
+        // 遍历完最后一个curList里的元素，返回false
+        if (pointer == curList.size())
+            return false;
+
+        // 判断是Integer还是List，如果是Integer
+        if (curList.get(pointer).isInteger())
+            return true;
+        // 如果是List
+        else {
+            // 元素要加进整个list
+            elementStack.push(curList);
+            // pointer要指向下一个数字
+            pointerStack.push(pointer + 1);
+            curList = curList.get(pointer).getList();
+            pointer = 0;
+            return hasNext();
+        }
+    }
+
+    private List<Integer> list;
+    private int index;
+
+    public NestedIterator预处理(List<NestedInteger> nestedList) {
+        list = integerIterator预处理(nestedList);
+        index = -1;
+    }
+
+    @Override
+    public Integer next预处理() {
+        if (this.hasNext预处理())  return list.get(++index);
+        return null;
+    }
+
+    @Override
+    public boolean hasNext预处理() {
+        return index + 1 < list.size();
+    }
+
+    private static List<Integer> integerIterator预处理(List<NestedInteger> nestedIntegerList) {
+        ArrayList<Integer> list = new ArrayList<>(nestedIntegerList.size());
+        for (NestedInteger tmp : nestedIntegerList) {
+            if (tmp.isInteger())
+                list.add(tmp.getInteger());
+            else
+                list.addAll(integerIterator预处理(tmp.getList()));
+        }
+        return list;
     }
 }

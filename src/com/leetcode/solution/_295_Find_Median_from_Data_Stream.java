@@ -8,12 +8,12 @@ import java.util.*;
  * <p>
  * https://www.programcreek.com/2015/01/leetcode-find-median-from-data-stream-java/
  */
-
-public class _295_FindMedianfromDataStream {
-    PriorityQueue<Integer> minHeap = null;
-    PriorityQueue<Integer> maxHeap = null;
-
-    public _295_FindMedianfromDataStream() {
+// 双PQ做法
+public class _295_Find_Median_from_Data_Stream {
+    PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
+    // add(num): O(logn), findMedian O(1), space O(N)
+    public _295_Find_Median_from_Data_Stream() {
         minHeap = new PriorityQueue<>();
         maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
     }
@@ -21,12 +21,13 @@ public class _295_FindMedianfromDataStream {
     public void addNum(int num) {
         minHeap.offer(num);
         maxHeap.offer(minHeap.poll());
-
+        // 如果min比max小，则要移过去一个
         if (minHeap.size() < maxHeap.size())
             minHeap.offer(maxHeap.poll());
     }
 
     public double findMedian() {
+        // 如果为奇数，min会多一个，则平均数
         if (minHeap.size() > maxHeap.size())
             return minHeap.peek();
         else

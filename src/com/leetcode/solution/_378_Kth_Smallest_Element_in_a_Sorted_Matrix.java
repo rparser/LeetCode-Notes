@@ -1,5 +1,8 @@
 package com.leetcode.solution;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * 所以在本题中我们就应该使用第二种方法，先找到数组的最大值和最小值，然后以此作为二叉搜索的左右两边，求出其中间值，
  * 然后看比该值小的有多少个，是否满足条件，如果满足条件就返回，不然就将左右边界修改为mid即可。
@@ -11,7 +14,7 @@ package com.leetcode.solution;
  * Space complexity: O(1)
  */
 
-public class _378_KthSmallestElementinaSortedMatrix {
+public class _378_Kth_Smallest_Element_in_a_Sorted_Matrix {
     public int kthSmallest(int[][] matrix, int k) {
         int lo = matrix[0][0], hi = matrix[matrix.length - 1][matrix[0].length - 1] + 1;//[lo, hi)
         while (lo < hi) {
@@ -25,5 +28,24 @@ public class _378_KthSmallestElementinaSortedMatrix {
             else hi = mid; //count过多前半段太密集，则k在前半段
         }
         return lo;
+    }
+
+    // 归并， O(klogn)归并 kk 次，每次堆中插入和弹出的操作时间复杂度均为logn , space O(n)
+    public int kthSmallestPQ(int[][] matrix, int k) {
+        // 最大堆
+        PriorityQueue<Integer> queue = new PriorityQueue<>(k, (o1, o2) -> o2 - o1);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (queue.size() < k)
+                    queue.add(matrix[i][j]);
+                else {
+                    if (queue.peek() > matrix[i][j]) {
+                        queue.poll();
+                        queue.add(matrix[i][j]);
+                    }
+                }
+            }
+        }
+        return queue.peek();
     }
 }
