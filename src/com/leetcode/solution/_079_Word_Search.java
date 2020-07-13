@@ -17,28 +17,33 @@ package com.leetcode.solution;
  * 模板dfs,主函数遍历，首字母和ij等则&&dfs,boolean(r,c,index)函数，index到长度返T,点不同返F，取点修改为*记录已访问，四方向递归or(相等一个就行)，还原回*字母
  */
 
-public class _079_WordSearch {
+public class _079_Word_Search {
+    // time O(mn*4^k) where k is the length of the string ,space O(4mn)
+    public boolean exist(char[][] board, String word) {
+        for (int i = 0; i < board.length; i++)
+            for (int j = 0; j < board[i].length; j++)
+                //先找到第一个字母, 没有charAt(0)也能通过，但加上后就不需要再进行下一步
+                if ((word.charAt(0) == board[i][j]) && dfsSearch(board, word, i, j, 0))
+                    return true;
+        // for loop离开还没找到就是false
+        return false;
+    }
+
     private boolean dfsSearch(char[][] board, String word, int r, int c, int index) {
-        if (index == word.length()) return true; //达到长度
-        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || word.charAt(index) != board[r][c]) //或不符合
+        // 达到长度则为true
+        if (index == word.length()) return true;
+        // 不符合
+        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || word.charAt(index) != board[r][c])
             return false;
-        board[r][c] = '*'; //or we can do board[i][j]^=255, to make it not a valid letter，代表已访问
-        boolean res = dfsSearch(board, word, r - 1, c, index + 1)
+        // *代表已访问
+        board[r][c] = '*';
+        // 四个方向
+        boolean result = dfsSearch(board, word, r - 1, c, index + 1)
                 || dfsSearch(board, word, r + 1, c, index + 1)
                 || dfsSearch(board, word, r, c - 1, index + 1)
                 || dfsSearch(board, word, r, c + 1, index + 1);
-        board[r][c] = word.charAt(index); //还原字符，recover by doing board[i][j]^=255
-        return res;
-    }
-
-    public boolean exist(char[][] board, String word) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                //fist half to save some search; index is for word
-                if ((word.charAt(0) == board[i][j]) && dfsSearch(board, word, i, j, 0))
-                    return true;
-            }
-        }
-        return false;
+        //如果result没有成功，到了这一步，则还原字符
+        board[r][c] = word.charAt(index);
+        return result;
     }
 }

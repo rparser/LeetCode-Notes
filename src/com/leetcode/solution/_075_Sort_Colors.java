@@ -7,20 +7,22 @@ package com.leetcode.solution;
  * 'left' point to the position right after 0, 'right' point to the position right before 2.
  */
 
-public class _075_SortColors {
-    public void sortColors(int[] nums) {
+public class _075_Sort_Colors {
+    //O(N), O(1)
+    public void sortColors1pass(int[] nums) {
+        //left左边和right右边是已经排好的
+        //i是正在排序的
         int i = 0, left = 0, right = nums.length - 1;
         while (i <= right) { //遍历完一次
             if (nums[i] == 0) {
                 swap(nums, i, left);
                 left++; //left以左都为0
-                i++;//left side is sorted already
+                i++; //left side is sorted already
             } else if (nums[i] == 2) {
                 swap(nums, i, right); //right以右都为2
                 right--;
-            } else {
-                i++;//skip 1
-            }
+            } else
+                i++; //skip 1
         }
     }
 
@@ -32,9 +34,9 @@ public class _075_SortColors {
 
     public void sortColors2pass(int[] nums) {
         int[] freq = new int[3];
-        for (int i = 0; i < nums.length; i++) {
-            freq[nums[i]] += 1;
-        }
+        for (int num : nums)
+            freq[num] += 1;
+
         int j = 0;//j is index in nums
         for (int i = 0; i < freq.length; i++) {
             int count = freq[i];

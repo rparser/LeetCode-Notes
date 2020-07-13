@@ -9,12 +9,15 @@ package com.leetcode.solution;
  * Space Complexity: O(1).
  */
 
-public class _007ReverseInteger {
+public class _007_Reverse_Integer {
     public int reverse(int x) {
         int rev = 0; // 翻转后的数字
         while (x != 0) { // 整数部分不等于0，即剩余值大于10
             int newRev = rev * 10 + x % 10; //已转换好的部分
-            if ((newRev - x % 10) / 10 != rev) return 0; //逆操作验证是否overflow
+            //逆操作验证是否overflow, 数字小不用考虑这步
+            if ((newRev - x % 10) / 10 != rev)
+                return 0;
+
             rev = newRev;
             x /= 10;
         }

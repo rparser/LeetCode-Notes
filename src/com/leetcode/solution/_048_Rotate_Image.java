@@ -7,7 +7,8 @@ package com.leetcode.solution;
  * Space complexity : O(1) since we do a rotation in place.
  */
 
-public class _048RotateImage {
+public class _048_Rotate_Image {
+    //O(N^2), O(1) 顺时针旋转90度
     public void rotate(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return;
         int top = 0;
@@ -15,7 +16,9 @@ public class _048RotateImage {
         int right = matrix.length - 1;
         int bottom = matrix.length - 1;
         int n = matrix.length;
-        while (n > 1) { //必须大于1，中间值不转
+        //必须大于1，中间值不转
+        while (n > 1) {
+            // 四个点交换顺序
             for (int i = 0; i < n - 1; i++) { //0是四个顶点，到n-1是顶点前一个点
                 int temp = matrix[top][left + i];
                 matrix[top][left + i] = matrix[bottom - i][left]; //一个四个边的对应
@@ -23,6 +26,7 @@ public class _048RotateImage {
                 matrix[bottom][right - i] = matrix[top + i][right];
                 matrix[top + i][right] = temp;
             }
+
             top++; //各自往里缩一行/列
             bottom--;
             left++;

@@ -10,25 +10,36 @@ import java.util.*;
  * Space Complexity: O(N), the information stored in ans.
  */
 
-public class _054_SpiralMatrix {
+public class _054_Spiral_Matrix {
+    // O(N), O(N)
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> spiral = new ArrayList<>();
         if (matrix.length < 1) return spiral;
         int m = matrix.length, n = matrix[0].length;
-        int u = 0, d = m - 1, l = 0, r = n - 1, k = 0;
+        int u = 0, d = m - 1, l = 0, r = n - 1;
         while (true) {
             // up
-            for (int col = l; col <= r; col++) spiral.add(k++, matrix[u][col]);
-            if (++u > d) break;
+            for (int col = l; col <= r; col++)
+                spiral.add(matrix[u][col]);
+            //当有任何一个不符合时,即需要跳出循环
+            // ++在前是为了比如3行4列，当时就要跳出否则还会再逆向算一次
+            if (++u > d)
+                break;
             // right
-            for (int row = u; row <= d; row++) spiral.add(k++, matrix[row][r]);
-            if (--r < l) break;
+            for (int row = u; row <= d; row++)
+                spiral.add(matrix[row][r]);
+            if (--r < l)
+                break;
             // down
-            for (int col = r; col >= l; col--) spiral.add(k++, matrix[d][col]);
-            if (--d < u) break;
+            for (int col = r; col >= l; col--)
+                spiral.add(matrix[d][col]);
+            if (--d < u)
+                break;
             // left
-            for (int row = d; row >= u; row--) spiral.add(k++, matrix[row][l]);
-            if (++l > r) break;
+            for (int row = d; row >= u; row--)
+                spiral.add(matrix[row][l]);
+            if (++l > r)
+                break;
         }
         return spiral;
     }

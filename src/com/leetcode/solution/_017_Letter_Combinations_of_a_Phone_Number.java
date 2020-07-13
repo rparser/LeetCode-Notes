@@ -14,10 +14,13 @@ import java.util.*;
  * Space complexity : O(3^N×4^M) since one has to keep 3^Nx4^M solutions.
  */
 
-public class _017_LetterCombinationsofaPhoneNumber {
-    private Map<String, String> phone = new HashMap<String, String>() {{
-        put("0","0");
-        put("1","1");
+public class _017_Letter_Combinations_of_a_Phone_Number {
+    // java 9可以如此生成map
+//    Map<String, String> map2 = Map.of("key1", "value1", "key2", "value2");
+    // O(3^N×4^M), O(3^N×4^M)
+    private final Map<String, String> phone = new HashMap<String, String>() {{
+        put("0", "0");
+        put("1", "1");
         put("2", "abc");
         put("3", "def");
         put("4", "ghi");
@@ -27,26 +30,29 @@ public class _017_LetterCombinationsofaPhoneNumber {
         put("8", "tuv");
         put("9", "wxyz");
     }};
-    List<String> result = new ArrayList<>();
 
-    private void backtrack(String current, String next_digits) {
-        if (next_digits.length() == 0) result.add(current);  // if there is no more digits to check
-            // if there are still digits to check
+
+    private void backtrack(String current, String digitsLeft, List<String> result) {
+        // 已不剩余
+        if (digitsLeft.length() == 0)
+            result.add(current);
         else {
-            // iterate over all letters which map the next available digit
-            String digit = next_digits.substring(0, 1); //当前数字
-            String letters = phone.get(digit); //当前数字对应字母集
-            for (int i = 0; i < letters.length(); i++) { //对当前每个字母做backtrack
-                String letter = phone.get(digit).substring(i, i + 1); //当前数字对应字母集的挨个字母
-                // append the current letter to the combination and proceed to the next digits
-                backtrack(current + letter, next_digits.substring(1));
+            // 取当前digitsLeft第一个数字对应的字母集
+            String digit = digitsLeft.substring(0, 1);
+            String letters = phone.get(digit);
+            for (int i = 0; i < letters.length(); i++) {
+                // 对每个字母依次加入递归
+                String letter = phone.get(digit).substring(i, i + 1);
+                backtrack(current + letter, digitsLeft.substring(1), result);
             }
         }
     }
 
     public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
         if (digits.length() != 0)
-            backtrack("", digits);
+            backtrack("", digits, result);
+
         return result;
     }
 
