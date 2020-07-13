@@ -11,7 +11,7 @@ import java.util.*;
  * 模板while,for(每层：步数)，当前单词变字符数组，每个字母可以变任意字母2loop,原词则cont，新单词词典找到则返回，找不到则cont，找到但不是从词典删除加入队列,还原单词
  */
 
-public class _127_WordLadder {
+public class _127_Word_Ladder {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) return 0;

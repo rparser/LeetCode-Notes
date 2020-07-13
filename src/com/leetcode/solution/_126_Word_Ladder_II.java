@@ -10,7 +10,7 @@ import java.util.*;
  * 在继续往下之前, check下一个结点的最短距离是否是当前结点最短距离加一. 是的话就继续, 不是的话就根本不需要visit那个结点了.
  */
 
-public class _126_WordLadderII {
+public class _126_Word_Ladder_II {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> result = new ArrayList<>();
         Set<String> dict = new HashSet<>(wordList);
@@ -36,11 +36,13 @@ public class _126_WordLadderII {
             for (int i = 0; i < size; i++) {
                 String curr = queue.poll();
                 graph.put(curr, new HashSet<>());
-                if (curr.equals(endWord)) return;
+                if (curr.equals(endWord))
+                    return;
+
                 char[] chs = curr.toCharArray();
                 for (int k = 0; k < chs.length; k++) {
                     char save = chs[k];
-                    for (char c = 'a'; c <= 'z'; c++) {
+                    for (char c = 'a'; c <= 'z'; c++)
                         if (c != save) {
                             chs[k] = c;
                             String nextWord = new String(chs);
@@ -54,7 +56,7 @@ public class _126_WordLadderII {
                             }
                             chs[k] = save;
                         }
-                    }
+
                 }
             }
         }

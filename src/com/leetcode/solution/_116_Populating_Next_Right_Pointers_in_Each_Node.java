@@ -11,7 +11,8 @@ import java.util.*;
  * Complexity: O(N)-time O(1)-space
  */
 
-public class _116_PopulatingNextRightPointersinEachNode {
+public class _116_Populating_Next_Right_Pointers_in_Each_Node {
+    // O(N), O(N)
     public Node connect(Node root) {
         if (root == null) return root;
         Queue<Node> nodes = new LinkedList<>();
@@ -31,7 +32,7 @@ public class _116_PopulatingNextRightPointersinEachNode {
         }
         return root;
     }
-
+    // O(N), O(1)
     public Node connect2(Node root) {
         if (root == null) return root;
         Node level_start = root;

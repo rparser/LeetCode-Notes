@@ -1,4 +1,6 @@
-public class Solution extends Reader4 {
+package com.leetcode.solution;
+
+public class _157_Read_N_Characters_Given_Read4 {
     /**
      * @param buf Destination buffer
      * @param n   Number of characters to read
@@ -9,9 +11,12 @@ public class Solution extends Reader4 {
         int temp;
         char[] tempArr = new char[4];
         int tempIndex = 0;
+
         while (count < n) {
             temp = read4(tempArr);
-            if (temp == 0) break;
+            if (temp == 0)
+                break;
+
             while (tempIndex < temp && count < n) {
                 buf[count] = tempArr[tempIndex];
                 tempIndex++;
@@ -20,5 +25,9 @@ public class Solution extends Reader4 {
             tempIndex = 0;
         }
         return count;
+    }
+
+    int read4(char[] buf) {
+        return 0;
     }
 }

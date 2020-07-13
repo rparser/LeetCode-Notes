@@ -1,4 +1,6 @@
-public class Solution extends Reader4 {
+package com.leetcode.solution;
+
+public class _158_Read_N_Characters_Given_Read4_II_Call_multiple_times {
     int size = 0;
     int i = 0;
     char[] temp = new char[4];
@@ -28,5 +30,9 @@ public class Solution extends Reader4 {
             }
         }
         return index;
+    }
+
+    int read4(char[] buf) {
+        return 0;
     }
 }

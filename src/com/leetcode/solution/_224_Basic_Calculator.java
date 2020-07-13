@@ -15,37 +15,45 @@ import java.util.*;
  * At the end, add sign * last number.
  */
 
-public class _224_BasicCalculator {
+public class _224_Basic_Calculator {
+    // ()+-数字没有乘除
+    //O(N), O(N)
     public int calculate(String s) {
-        Deque<Integer> stack = new ArrayDeque<>(); // to store last value and sign before any parentheses
-        int result = 0; // current result within one priority (in the same parentheses)
+        //保存之前的结果和正负
+        Deque<Integer> stack = new ArrayDeque<>();
+        // 当前同级别的总值
+        int result = 0;
         int sign = 1; //当前正负
-        int cur = 0; //当前数值
+        int temp = 0; //当前数值
 
         for (char c : s.toCharArray()) {
-            if (Character.isDigit(c)) cur = cur * 10 + (c - '0');
+            if (Character.isDigit(c)) temp = temp * 10 + (c - '0');
+                // 看到+号-号要把之前的临时cur * sign加进总值, cur清零等待符号后的计算
             else if (c == '+') {
-                result += sign * cur;
-                sign = 1; //后面的为正数
-                cur = 0;
+                result += sign * temp;
+                sign = 1;
+                temp = 0;
             } else if (c == '-') {
-                result += sign * cur;
-                sign = -1; //后面的为负数
-                cur = 0; //reset current number
+                result += sign * temp;
+                sign = -1;
+                temp = 0;
             } else if (c == '(') {
+                // 之前的result和sign放入stack储存，然后清零
                 stack.push(result);
                 stack.push(sign);
-                result = 0; //reset result
-                sign = 1; //reset sign
+                result = 0;
+                sign = 1;
             } else if (c == ')') {
-                result += sign * cur; //当前括号内的result
-                cur = result;
+                //result计算好用temp保存，然后取出存的result和符号
+                result += sign * temp;
+                temp = result;
+                // 结果后出
                 sign = stack.pop();
                 result = stack.pop();
             }
         }
-
-        result += sign * cur; // last sign and number
+        // 最后剩余的符号和数字
+        result += sign * temp;
         return result;
     }
 }

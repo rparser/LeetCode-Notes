@@ -1,3 +1,5 @@
+package com.leetcode.solution;
+
 /**
  * 思路1: use BFS, easy but not constant space
  * Complexity: time O(N) space O(N) - queue
@@ -5,7 +7,34 @@
  * pre travel current level by referring to root in the level above
  * Complexity: time O(N) space O(1)
  */
-class Solution {
+class _117_populating_next_right_pointers_in_each_node_ii {
+    // O(N), O(1)
+    public Node connect2(Node root) {
+        Node cur = root;
+        while (cur != null) {
+            Node dummy = new Node();
+            Node tail = dummy;
+            //遍历 cur 的当前层
+            while (cur != null) {
+                if (cur.left != null) {
+                    tail.next = cur.left;
+                    tail = tail.next;
+                }
+
+                if (cur.right != null) {
+                    tail.next = cur.right;
+                    tail = tail.next;
+                }
+
+                cur = cur.next;
+            }
+            //更新 cur 到下一层
+            cur = dummy.next;
+        }
+        return root;
+    }
+
+    // O(N), O(N)
     Node connect(Node root) {
         Node cur = root;
         while (cur != null) {
@@ -29,35 +58,14 @@ class Solution {
         return root;
     }
 
-    public Node connect2(Node root) {
-        Node dummy = new Node(0);
-        Node pre = dummy;//record next root
-        while (root != null) {
-            if (root.left != null) {
-                pre.next = root.left;
-                pre = pre.next;
-            }
-            if (root.right != null) {
-                pre.next = root.right;
-                pre = pre.next;
-            }
-            root = root.next;//reach end, update new root & reset dummy
-            if (root == null) {
-                root = dummy.next;
-                pre = dummy;
-                dummy.next = null;
-            }
-        }
-        return root;
-    }
-
     class Node {
         public int val;
         public Node left;
         public Node right;
         public Node next;
 
-        public Node() {}
+        public Node() {
+        }
 
         public Node(int _val) {
             val = _val;
