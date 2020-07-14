@@ -1,15 +1,15 @@
-class Solution {
-    //买卖多次
+package com.leetcode.solution;
+
+class _122_Best_Time_to_Buy_and_Sell_Stock_II {
+    //买卖多次 O(N), O(1)
     public int maxProfit(int[] prices) {
-        int result = 0, minPrice = Integer.MAX_VALUE;
+        int result = 0, prev = Integer.MAX_VALUE;
         for (int i : prices) {
-            // 小于则直接更新
-            if (i < minPrice) minPrice = i;
-            else {
+            if (i > prev) {
                 //大于则加入结果再更新
-                result += (i - minPrice);
-                minPrice = i;
+                result += (i - prev);
             }
+            prev = i;
         }
         return result;
     }

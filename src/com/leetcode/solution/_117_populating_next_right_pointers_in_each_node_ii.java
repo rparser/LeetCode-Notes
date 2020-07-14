@@ -12,22 +12,25 @@ class _117_populating_next_right_pointers_in_each_node_ii {
     public Node connect2(Node root) {
         Node cur = root;
         while (cur != null) {
+            //每层新建一个dummy
             Node dummy = new Node();
             Node tail = dummy;
             //遍历 cur 的当前层
             while (cur != null) {
                 if (cur.left != null) {
                     tail.next = cur.left;
-                    tail = tail.next;
+                    tail = cur.left;
                 }
 
                 if (cur.right != null) {
                     tail.next = cur.right;
-                    tail = tail.next;
+                    tail = cur.right;
                 }
-
+                // System.out.println(cur.val+"   "+tail.val);
+                // 会打印1,3 -> 2,5-> 3,7-> 4,0->5,0->7->0
                 cur = cur.next;
             }
+            //这里时cur一定是空值
             //更新 cur 到下一层
             cur = dummy.next;
         }

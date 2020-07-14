@@ -10,27 +10,30 @@ import org.junit.runner.*;
  * Space Complexity: O(MXN).
  */
 
-public class _062UniquePaths {
+public class _062_Unique_Paths {
     public int uniquePaths(int m, int n) {
         int[][] res = new int[m][n]; //二维数组保存每点的可能
+        // //任何0,x或x,0都只有一种可能：一个方向走
         for (int i = 0; i < m; i++)
-            res[i][0] = 1; //任何0,x或x,0都只有一种可能
+            res[i][0] = 1;
         for (int i = 0; i < n; i++)
             res[0][i] = 1;
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                res[i][j] = res[i - 1][j] + res[i][j - 1]; //每点的可能性为左边点可能性+上边点可能性
-            }
-        }
+        //每点的可能性为左边点可能性+上边点可能性
+        for (int i = 1; i < m; i++)
+            for (int j = 1; j < n; j++)
+                res[i][j] = res[i - 1][j] + res[i][j - 1];
+
+
         return res[m - 1][n - 1];
     }
 
     public int uniquePathsCombination(int m, int n) {
         double count = 1;
         int min = Math.min(m, n); //取小值
-        for (int i = 1; i <= min - 1; i++) {
+        // 因为m*n 实际是只能走m-1 和 n-1步，所以是C(m-1 + n -1 , min -1)
+        for (int i = 1; i <= min - 1; i++)
             count = count * (m + n - i - 1) / i;//先乘再除，乘从后计算，除从前计算
-        }
+
         return (int) count;
     }
     //Permutation排列 Combination组合
