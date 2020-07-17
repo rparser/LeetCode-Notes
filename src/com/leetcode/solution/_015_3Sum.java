@@ -25,13 +25,15 @@ public class _015_3Sum {
                     result.add(Arrays.asList(nums[i], nums[left], nums[right]));
                     left++;
                     right--;
-                    while (left < right && nums[left] == nums[left - 1]) left++;  // skip same result
-                    while (left < right && nums[right] == nums[right + 1]) right--;  // skip same result
-                } else if (nums[left] + nums[right] > target) { // 如果超过target, right要左移
+                    // skip same result
+                    while (left < right && nums[left] == nums[left - 1])
+                        left++;
+                    while (left < right && nums[right] == nums[right + 1])
+                        right--;
+                } else if (nums[left] + nums[right] > target)  // 如果超过target, right要左移
                     right--;
-                } else { //不到target,left右移
+                else  //不到target,left右移
                     left++;
-                }
             }
         }
         return result;

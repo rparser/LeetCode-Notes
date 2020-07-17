@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _029_Divide_Two_Integers {
     public int divide(int dividend, int divisor) {
         /** 除数为零就返回-1 按照测试样例的要求写的*/
         if (divisor == 0) return -1;

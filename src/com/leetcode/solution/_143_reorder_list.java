@@ -1,8 +1,10 @@
+package com.leetcode.solution;
+
 //第一步找中点的话，可以应用 19 题 的方法，快慢指针。快指针一次走两步，慢指针一次走一步，当快指针走到终点的话，慢指针会刚好到中点。
 // 如果节点个数是偶数的话，slow 走到的是左端点，利用这一点，我们可以把奇数和偶数的情况合并，不需要分开考虑。
 //第二步链表逆序的话，在 第 2 题 讨论过了，有迭代和递归的两种方式，迭代的话主要利用两个指针，依次逆转。
 // 第三步的话就很简单了，两个指针分别向后移动就可以。
-class Solution {
+class _143_reorder_list {
     public void reorderList(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return;
@@ -31,6 +33,7 @@ class Solution {
         }
 
     }
+
     private ListNode reverseList(ListNode head) {
         if (head == null) {
             return null;
@@ -47,6 +50,23 @@ class Solution {
             head = temp;
         }
         return tail;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }
 

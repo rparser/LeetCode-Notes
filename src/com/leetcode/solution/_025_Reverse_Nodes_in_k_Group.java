@@ -5,45 +5,59 @@ package com.leetcode.solution;
  * 参考206翻转链表
  */
 
-public class _025ReverseNodesinkGroup {
-    // 非递归
-    public static ListNode reverse(ListNode head, int k) {
+public class _025_Reverse_Nodes_in_k_Group {
+    // 非递归 O(N), O(1)
+    public ListNode reverseKGroup(ListNode head, int k) {
         if (k <= 1 || head == null)
             return head;
 
         ListNode current = head, previous = null;
         while (true) {
-            ListNode lastNodeOfPreviousPart = previous;
-            // after reversing the LinkedList 'current' will become the last node of the sub-list
+            // 比如1,2,3,4,5,6,7反转3 -5
+            // 此时previous是2要保存起来
+            ListNode lastNodeOfPreviousPart = previous; // points to the node at index 'p-1'
+            // lastNodeOfSubList 是3
             ListNode lastNodeOfSubList = current;
             ListNode next = null; // will be used to temporarily store the next node
-            // reverse 'k' nodes
+            //计数器，如果最后不需要反转则保留，否则直接进入下个for loop
+            ListNode count = current;
+            int counter = 0;
+            while (count != null && counter < k) {
+                count = count.next;
+                counter++;
+            }
+            if (counter != k)
+                break;
+            //一共run k次
             for (int i = 0; current != null && i < k; i++) {
                 next = current.next;
+                // current.next指向前一个值
                 current.next = previous;
+                //prev和current分别前进一位
                 previous = current;
                 current = next;
             }
 
-            // connect with the previous part
+            //此时previous是5，current是6
             if (lastNodeOfPreviousPart != null)
+                //此时2.next要指向5
                 lastNodeOfPreviousPart.next = previous; // 'previous' is now the first node of the sub-list
             else // this means we are changing the first node (head) of the LinkedList
                 head = previous;
 
             // connect with the next part
             lastNodeOfSubList.next = current;
-
+            //比92多的部分是如何退出
             if (current == null) // break, if we've reached the end of the LinkedList
                 break;
-            // prepare for the next sub-list
+            // 如果没退出，则指向下一个区间
             previous = lastNodeOfSubList;
         }
-
         return head;
     }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+
+    public ListNode reverseKGroup2(ListNode head, int k) {
         ListNode cur = head;
         int count = 0;
         while (count < k && cur != null) {

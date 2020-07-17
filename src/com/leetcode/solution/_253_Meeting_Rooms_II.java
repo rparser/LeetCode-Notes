@@ -9,12 +9,13 @@ import java.util.*;
  */
 
 
-public class _253_MeetingRoomsII {
+public class _253_Meeting_Rooms_II {
+    // O(nlogn), O(n)
     public int minMeetingRooms(int[][] intervals) {
         int n = intervals.length;
-        if(n < 1) return 0;
+        if (n < 1) return 0;
         int[] begin = new int[n], end = new int[n];
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             begin[i] = intervals[i][0];
             end[i] = intervals[i][1];
         }
@@ -24,11 +25,11 @@ public class _253_MeetingRoomsII {
         int i = 0, j = 0, cur = 0;
         // 看成上下车, 每次上车都看下是否有乘客已经下车了,下车几个
         // 本题可以看成车上同时最多有多少个乘客
-        while(i < n){
-            if(begin[i] < end[j]){ //此时是乘客上车
+        while (i < n) {
+            if (begin[i] < end[j]) { //此时是乘客上车
                 cur++;
                 i++;
-            }else{ //此时乘客下车
+            } else { //此时乘客下车
                 cur--;
                 j++;
             }

@@ -1,8 +1,10 @@
+package com.leetcode.solution;
+
 //dp[row][col] = dp[row][col-1] + dp[row-1][col] - dp[row-1][col-1] + matrix[row][col]
-class NumMatrix {
+class _304_range_sum_query_2d_immutable {
     private int[][] dp;
 
-    public NumMatrix(int[][] matrix) {
+    public _304_range_sum_query_2d_immutable(int[][] matrix) {
         if (matrix.length == 0 || matrix[0].length == 0)
             return;
         // 设置多一个的理由：计算到[1,1]（第四个点），需要前面-1行的点总结出公式，但如果第0行-1就变负数

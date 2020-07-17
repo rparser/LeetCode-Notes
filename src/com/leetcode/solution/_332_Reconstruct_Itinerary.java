@@ -6,6 +6,8 @@ import java.util.*;
 // 如果整个图是链式的，那么调用栈最深，空间复杂度应为 O(|E|)。
 
 class _332_Reconstruct_Itinerary {
+    private static final String START_CITY = "JFK";
+
     public List<String> findItinerary(List<List<String>> tickets) {
         // 因为逆序插入，所以用链表
         List<String> result = new LinkedList<>();
@@ -20,7 +22,7 @@ class _332_Reconstruct_Itinerary {
             //加入nextStop按字母排序
             nextStops.add(itinerary.get(1));
         }
-        visit(graph, "JFK", result);
+        visit(graph, START_CITY, result);
         return result;
     }
 

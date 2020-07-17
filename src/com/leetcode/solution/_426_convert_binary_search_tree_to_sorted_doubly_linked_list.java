@@ -1,12 +1,18 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.util.*;
+
+class _426_convert_binary_search_tree_to_sorted_doubly_linked_list {
     //    递归
     Node first;
     Node pre;
+
     //    用一个first指针指向表头，
 //    一个pre指针指向上一个节点（遍历完之后pre指针即指向表尾）。
-    public Node treeToDoublyList(Node root) {
+    public Node treeToDoublyListRecursive(Node root) {
         if (root == null) return null;
         helper(root);
+        //连接头尾
         first.left = pre;
         pre.right = first;
         return first;
@@ -20,19 +26,15 @@ class Solution {
 
         //访问当前节点
         //first若为空则赋值，first只赋值一次
-        if (first == null) {
+        if (first == null)
             first = node;
-        }
+
         //pre为空则赋值
-        if (pre == null) {
-            pre = node;
-        }
-        //否则将当前节点与pre连接，同时移动pre
-        else {
+        if (pre != null) {
             pre.right = node;
             node.left = pre;
-            pre = node;
         }
+        pre = node;
         //最后访问右子树
         helper(node.right);
     }
@@ -40,8 +42,6 @@ class Solution {
     // 迭代在中序遍历的基础上，
 //    用一个first指针指向表头，
 //    一个pre指针指向上一个节点（遍历完之后pre指针即指向表尾）。
-    Node first;
-    Node pre;
 
     public Node treeToDoublyList(Node root) {
         if (root == null) return null;
@@ -58,15 +58,11 @@ class Solution {
                     first = node;
                 }
                 //pre为空则赋值
-                if (pre == null) {
-                    pre = node;
-                }
-                //否则将当前节点与pre连接，同时移动pre
-                else {
+                if (pre != null) {
                     pre.right = node;
                     node.left = pre;
-                    pre = node;
                 }
+                pre = node;
                 root = node.right;
             }
         } while (!stack.isEmpty() || root != null);
@@ -74,5 +70,24 @@ class Solution {
         first.left = pre;
         pre.right = first;
         return first;
+    }
+
+    class Node {
+        public int val;
+        public Node left;
+        public Node right;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, Node _left, Node _right) {
+            val = _val;
+            left = _left;
+            right = _right;
+        }
     }
 }
