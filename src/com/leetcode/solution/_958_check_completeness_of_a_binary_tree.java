@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import java.util.*;
 
 class _958_check_completeness_of_a_binary_tree {
-    // O(N), O(N) 层序遍历,分别加入
+    //   层序遍历,分别加入
     // incomplete的标准是，层序遍历，null被间隔开来
     public boolean isCompleteTree(TreeNode root) {
         Deque<TreeNode> queue = new LinkedList<>();

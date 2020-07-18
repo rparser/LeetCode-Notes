@@ -8,14 +8,17 @@ import java.util.*;
  * Time complexity : O(N) in the worst case when the tree is BST or the "bad" element is a rightmost leaf.
  * Space complexity : O(N) to keep stack.
  */
-public class _098ValidateBinarySearchTree {
+public class _098_Validate_Binary_Search_Tree {
     long pre = Long.MIN_VALUE;
-    // inorder
+
+    // inorder O(N), O(N)
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
         // 访问左子树
-        if (!isValidBST(root.left)) return false;
-        // 访问当前节点：如果当前节点小于等于中序遍历的前一个节点，说明不满足BST，返回 false；否则继续遍历。
+        if (!isValidBST(root.left))
+            return false;
+        // 实际就是inorder遍历
+        // 当前节点必须大于inorder前一个节点，否则说明不满足BST，返回 false
         if (root.val <= pre) return false;
 
         pre = root.val;
@@ -23,9 +26,9 @@ public class _098ValidateBinarySearchTree {
         return isValidBST(root.right);
     }
 
-    public boolean isValidBST(TreeNode root) {
+    public boolean isValidBSTIterative(TreeNode root) {
         Deque<TreeNode> stack = new ArrayDeque<>();
-        long pre = Long.MIN_VALUE;
+        long inorder = Long.MIN_VALUE;
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
                 stack.push(root);
