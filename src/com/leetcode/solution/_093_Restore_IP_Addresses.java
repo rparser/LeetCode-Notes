@@ -7,16 +7,18 @@ import java.util.*;
  */
 
 public class _093_Restore_IP_Addresses {
+    // O(3*3*3) ~ O(1), O(19) ~ O(1)
     public List<String> restoreIpAddresses(String s) {
         List<String> res = new ArrayList<>();
         if (s.length() < 4 || s.length() > 12)
             return res;
-
+        // count为第几段
         dfs(s, "", res, 1);
         return res;
     }
 
     public void dfs(String s, String temp, List<String> res, int count) {
+        // 如果已经到第四段且当前有效
         if (count == 4 && isValid(s)) {
             res.add(temp + s);
             return;
