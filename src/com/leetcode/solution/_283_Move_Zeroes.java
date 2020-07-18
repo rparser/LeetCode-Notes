@@ -6,9 +6,11 @@ package com.leetcode.solution;
  * 第二次loop将[pos-end]补0
  * 关键字： insert position
  */
-public class _283_MoveZeroes {
+public class _283_Move_Zeroes {
+    // O(N), O(1)
     public void moveZeroes(int[] nums) {
-        if (nums.length < 1) return;
+        if (nums.length < 1)
+            return;
         //pos为从哪个index开始后面变0（有几个非0的数）
         int pos = 0;
         for (int i = 0; i < nums.length; i++)
@@ -18,6 +20,7 @@ public class _283_MoveZeroes {
                 pos++;
             }
         //后面填为0
-        for (int i = pos; i < nums.length; i++) nums[i] = 0;
+        for (int i = pos; i < nums.length; i++)
+            nums[i] = 0;
     }
 }

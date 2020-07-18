@@ -5,6 +5,7 @@ package com.leetcode.solution;
 //第二步链表逆序的话，在 第 2 题 讨论过了，有迭代和递归的两种方式，迭代的话主要利用两个指针，依次逆转。
 // 第三步的话就很简单了，两个指针分别向后移动就可以。
 class _143_reorder_list {
+    //O(N), O(1)
     public void reorderList(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return;

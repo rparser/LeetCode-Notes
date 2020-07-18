@@ -7,7 +7,7 @@ import java.util.*;
  * 思路： Key is to keep a used[i] array, mark the element already added. So we skip such ele in dfs
  * (can also be done through list.contains(i))
  */
-
+// O(n*n!)， O*(n)
 public class _046_Permutations {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -17,11 +17,14 @@ public class _046_Permutations {
 
     private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums) {
         // 如果已经完成了
-        if (tempList.size() == nums.length) result.add(new ArrayList<>(tempList));
+        if (tempList.size() == nums.length)
+            result.add(new ArrayList<>(tempList));
         else {
-            for (int i = 0; i < nums.length; i++) {
-                if (tempList.contains(nums[i])) continue; // element already exists, skip
-                tempList.add(nums[i]);
+            for (int num : nums) {
+                //去重
+                if (tempList.contains(num))
+                    continue; // element already exists, skip
+                tempList.add(num);
                 backtrack(result, tempList, nums);
                 tempList.remove(tempList.size() - 1);
             }

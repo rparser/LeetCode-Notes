@@ -25,13 +25,19 @@ public class _127_Word_Ladder {
             for (int s = queue.size(); s > 0; s--) { //处理本层节点
                 String currWord = queue.poll();
                 char[] currWordChars = currWord.toCharArray();
+
                 for (int i = 0; i < length; i++) { //每个字母都可以变
                     char currChar = currWordChars[i]; //保存这个字母
                     for (char c = 'a'; c <= 'z'; c++) {
-                        if (c == currChar) continue; //如果是原值则跳出
+                        if (c == currChar)
+                            continue; //如果是原值则跳出
+
                         currWordChars[i] = c;
                         String newStr = new String(currWordChars); //否则设置为新单词
-                        if (newStr.equals(endWord)) return steps + 1; //如果找到则返回
+
+                        if (newStr.equals(endWord))
+                            return steps + 1; //如果找到则返回
+
                         if (wordSet.contains(newStr)) {//如果词典找到说明还没用过
                             wordSet.remove(newStr);//移除这个单词
                             queue.add(newStr);//把这个单词加入queue
