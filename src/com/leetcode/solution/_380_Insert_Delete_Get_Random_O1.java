@@ -12,7 +12,8 @@ import java.util.*;
  */
 
 public class _380_Insert_Delete_Get_Random_O1 {
-    Map<Integer, Integer> map;//<val, index in arrlist>
+    // <val, index in arrlist>
+    Map<Integer, Integer> map;
     List<Integer> list;//keep a record of value for get random
     int size;//map and list are the same size
     Random rand;
@@ -27,9 +28,7 @@ public class _380_Insert_Delete_Get_Random_O1 {
         this.rand = new Random();
     }
 
-    /**
-     * Inserts a value to the set. Returns true if the set did not already contain the specified element.
-     */
+    // 插入分别加入map<val,size> 和 list, size++
     public boolean insert(int val) {
         if (map.containsKey(val))
             return false;
@@ -40,9 +39,7 @@ public class _380_Insert_Delete_Get_Random_O1 {
         return true;
     }
 
-    /**
-     * Removes a value from the set. Returns true if the set contained the specified element.
-     */
+    // 删除：把最新加的数（list最后一位），覆盖set要删除的数，然后删除list最后的数
     public boolean remove(int val) {
         if (map.containsKey(val)) {
             int last = list.get(size - 1);

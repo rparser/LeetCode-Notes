@@ -16,7 +16,7 @@ import java.util.*;
  * *watch valid case: counter == 0 *return: if len not updated, we not find window
  */
 
-public class _076_MinimumWindowSubstring {
+public class _076_Minimum_Window_Substring {
     public static String minWindowMap(String str, String pattern) {
         int left = 0, matched = 0, minLength = Integer.MAX_VALUE, resSubStringStart = 0;
         Map<Character, Integer> map = new HashMap<>();

@@ -9,14 +9,14 @@ import org.junit.runner.*;
  * 先去掉空格，再检查是否空值，再检查正负号，只得到数字（去掉字母）
  */
 
-public class _008StringtoInteger {
+public class _008_String_to_Integer {
+    //O(N), O(1)
     public int myAtoi(String str) {
-
         // 检查空格
         str = str.trim();
 
         // 检查null
-        if (str == null || str.length() < 1)
+        if (str.length() < 1)
             return 0;
 
         // 检查正负号
@@ -25,10 +25,8 @@ public class _008StringtoInteger {
         if (str.charAt(0) == '-') {
             flag = false;
             i++;
-        } else if (str.charAt(0) == '+') {
-            flag = true;
+        } else if (str.charAt(0) == '+')
             i++;
-        }
 
         // 保存结果
         double result = 0;
@@ -37,7 +35,7 @@ public class _008StringtoInteger {
             i++;
         }
 
-        if (flag == false)
+        if (!flag)
             result = -result;
 
         // 检查取值范围

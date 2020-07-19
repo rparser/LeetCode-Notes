@@ -8,8 +8,7 @@ import java.util.*;
  * Space complexity : O(k) since additional space is used only for a hashmap with at most k + 1 elements.
  */
 
-public class _340_LongestSubstringwithAtMostKDistinctCharacters {
-    // O(N)解法
+public class _340_Longest_Substring_with_At_Most_K_Distinct_Characters {
     /**
      * 为了达到 O(N) 的效率，我们可以使用LinkedHashMap，保证以下四种操作都可以在 O(1) 时间完成：HashMap不能保证返回最先插入对
      * 插入键
@@ -17,6 +16,7 @@ public class _340_LongestSubstringwithAtMostKDistinctCharacters {
      * 删除键
      * 返回最先 / 最后插入的键值对
      **/
+    // O(N) LinkedHashMap
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         int n = s.length();
         if (n * k == 0) return 0;
@@ -34,7 +34,7 @@ public class _340_LongestSubstringwithAtMostKDistinctCharacters {
             map.put(c, right);
             right++;
 
-            // slidewindow contains k + 1 characters
+            // slide window contains k + 1 characters
             if (map.size() > k) {
                 // 找到map里第一个entry
                 Map.Entry<Character, Integer> leftmost = map.entrySet().iterator().next();

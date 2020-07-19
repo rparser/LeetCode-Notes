@@ -9,21 +9,25 @@ import java.util.*;
  * 此时recursive调用dfs，如果没有visited过 - 新建一个node，否则直接从map中找到返回
  */
 
-public class _133_CloneGraph {
+public class _133_Clone_Graph {
+    // 已经处理 DFS O(N), O(N)
     private HashMap<Node, Node> map = new HashMap<>();
 
     public Node cloneGraph(Node node) {
         map.put(node, new Node(node.val, new ArrayList<>()));
 
         for (Node neighbor : node.neighbors) {
+            //不存在neighbor则递归add neighbor
             if (!map.containsKey(neighbor))
-                map.get(node).neighbors.add(cloneGraph(neighbor)); //不存在neighbor则递归add neighbor
-            else map.get(node).neighbors.add(map.get(neighbor)); //map已存在neighbor则直接加入neighbors
+                map.get(node).neighbors.add(cloneGraph(neighbor));
+                //map已存在neighbor则直接加入neighbors
+            else
+                map.get(node).neighbors.add(map.get(neighbor));
         }
         return map.get(node);
     }
 
-    public Node cloneGraph(Node node) {
+    public Node cloneGraphItrative(Node node) {
         if (node == null) return node;
         Queue<Node> queue = new LinkedList<>();
         Map<Integer, Node> map = new HashMap<>();
