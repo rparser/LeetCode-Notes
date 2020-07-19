@@ -14,7 +14,7 @@ import java.util.*;
  * 建queue BFS,map(node : parent of node)，while到pq都进入map,建set while存p所有祖先，while q祖先找第一出现的
  */
 
-public class _236_LowestCommonAncestorofaBinaryTree {
+public class _236_Lowest_Common_Ancestor_of_a_Binary_Tree {
     //递归
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) return root;
@@ -26,7 +26,7 @@ public class _236_LowestCommonAncestorofaBinaryTree {
     }
 
     //迭代
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestorIteative(TreeNode root, TreeNode p, TreeNode q) {
         Queue<TreeNode> queue = new LinkedList<>(); //队列存结果
         Map<TreeNode, TreeNode> parent = new HashMap<>(); //key : value - node, node的父节点
 
@@ -52,6 +52,7 @@ public class _236_LowestCommonAncestorofaBinaryTree {
         }
         while (!ancestors.contains(q)) //q再往上找，直到出现的第一个即为LCA
             q = parent.get(q);
+
         return q;
     }
 

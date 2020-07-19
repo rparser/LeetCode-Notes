@@ -29,8 +29,8 @@ import org.junit.runner.*;
  * 如果k小于等于len(groupA)，那么要找到的元素肯定在groupA.
  * 3. 回步骤1
  **/
-
-public class _004_MedianofTwoSortedArrays {
+// O(log(min(m,n))). O(1)
+public class _004_Median_of_Two_Sorted_Arrays {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n1 = nums1.length;
         int n2 = nums2.length;

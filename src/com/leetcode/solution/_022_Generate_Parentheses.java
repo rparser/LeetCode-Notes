@@ -7,10 +7,10 @@ import java.util.*;
  * <p>
  * Time Complexity : O(4^n/sqrt(n)), Catalan number Each valid sequence has at most n steps during the backtracking procedure.
  * <p>
- * Space Complexity : O(4^n/sqrt(n)) as described above, and using O(n) space to store the sequence.
+ * Space Complexity : O(n) as described above, and using O(n) space to store the sequence.
  */
 
-public class _022_GenerateParentheses {
+public class _022_Generate_Parentheses {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
         backtrack(result, "", 0, 0, n);
@@ -22,10 +22,11 @@ public class _022_GenerateParentheses {
             res.add(current);
             return;
         }
-
-        if (open < n) //open只要不到n就可以加
+        //open只要不到n就可以加
+        if (open < n)
             backtrack(res, current + "(", open + 1, close, n);
-        if (close < open) //close必须小于open才可以加
+        //close必须小于open才可以加
+        if (close < open)
             backtrack(res, current + ")", open, close + 1, n);
     }
 }

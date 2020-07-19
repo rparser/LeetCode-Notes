@@ -10,7 +10,8 @@ package com.leetcode.solution;
  */
 
 
-public class _138_CopyListwithRandomPointer {
+public class _138_Copy_List_with_Random_Pointer {
+    // O(N), O(1) 网状编织
     public Node copyRandomList(Node head) {
         if (head == null) return null;
 

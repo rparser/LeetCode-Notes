@@ -7,11 +7,14 @@ import java.util.*;
  * map(num:count)，按照count加入pq,只保留k-size，
  */
 
-public class _347_TopKFrequentElements {
+public class _347_Top_K_Frequent_Elements {
     public List<Integer> topKFrequentON(int[] nums, int k) {
+        //<数字，这个数字出现的次数>
         Map<Integer, Integer> map = new HashMap<>();
-        ArrayList<Integer>[] bucket = new ArrayList[nums.length + 1]; //建立一个有num.length+1个List的数组bucket
+        //建立一个有num.length+1个List的数组bucket
+        ArrayList<Integer>[] bucket = new ArrayList[nums.length + 1];
         List<Integer> res = new ArrayList<>();
+        //统计每个num出现的个数
         for (int num : nums)
             map.put(num, map.getOrDefault(num, 0) + 1); //统计个数
 
@@ -22,8 +25,8 @@ public class _347_TopKFrequentElements {
             //此时，bucket数组里，每个点0-n，都记录了这个数字出现多少次，比如bucket[fr]代表出现fr次的数字有哪些
             bucket[frequency].add(key);
         }
-
-        for (int pos = bucket.length - 1; pos >= 0; pos--)  //从大到小
+        // 从高频到低频
+        for (int pos = bucket.length - 1; pos >= 0; pos--)
             if (bucket[pos] != null)  //如果这个值有值，则依次加入结果集合
                 for (int i = 0; i < bucket[pos].size() && res.size() < k; i++)
                     res.add(bucket[pos].get(i));

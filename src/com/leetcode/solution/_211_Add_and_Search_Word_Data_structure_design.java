@@ -1,4 +1,6 @@
-class WordDictionary {
+package com.leetcode.solution;
+
+class _211_Add_and_Search_Word_Data_structure_design {
     public class TrieNode {
         public TrieNode[] children = new TrieNode[26];
         public boolean isWord;
@@ -28,8 +30,10 @@ class WordDictionary {
             for (int i = 0; i < node.children.length; i++)
                 if (node.children[i] != null && match(chs, k + 1, node.children[i]))
                     return true;
+
         } else
             return node.children[chs[k] - 'a'] != null && match(chs, k + 1, node.children[chs[k] - 'a']);
+
         return false;
     }
 }

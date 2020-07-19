@@ -1,7 +1,9 @@
-//  O(n), O(1)
-//我们将计算 last[d] = i，最后一次出现的数字 d（如果存在）的索引 \text ii。
-//然后，从左到右扫描数字时，如果将来有较大的数字，我们将用最大的数字交换；如果有多个这样的数字，我们将用最开始遇到的数字交换。
-class Solution {
+package com.leetcode.solution;
+
+class _670_maximum_swap {
+    // O(n), O(1)
+    // 从左向右扫描，找到某个数字x右侧比他x大最多的数字y,如果有很多y选最后一个y
+    // 1788，换最右的8也就是8781
     public int maximumSwap(int num) {
         char[] charsArray = Integer.toString(num).toCharArray();
         int[] last = new int[10];
@@ -16,6 +18,7 @@ class Solution {
                     charsArray[last[d]] = tmp;
                     return Integer.parseInt(new String(charsArray));
                 }
+
         return num;
     }
 }

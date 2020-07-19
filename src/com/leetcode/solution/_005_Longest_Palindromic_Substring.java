@@ -7,7 +7,8 @@ package com.leetcode.solution;
  * 最长回文子串
  */
 
-public class _005LongestPalindromicSubstring {
+public class _005_Longest_Palindromic_Substring {
+    // 中心扩展O(n^2), O(1)
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 1) return "";
         int start = 0, end = 0;
