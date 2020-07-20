@@ -17,20 +17,26 @@ import java.util.*;
  * Otherwise, we must allocate linear space to store a copy of intervals and sort that.
  */
 
-public class _056_MergeIntervals {
+public class _056_Merge_Intervals {
     public int[][] merge(int[][] intervals) {
-        if (intervals.length == 0 || intervals[0].length == 0) return new int[][]{};
+        if (intervals.length == 0 || intervals[0].length == 0)
+            return new int[][]{};
+
         List<int[]> result = new ArrayList<>();
         Arrays.sort(intervals, Comparator.comparingInt((a) -> (a[0])));
+        //先加入第一个区间
         result.add(intervals[0]);
+
         for (int i = 1; i < intervals.length; i++) {
             int[] lastInterval = result.get(result.size() - 1); // 取得结果最后一个间隔
             int[] currentInterval = intervals[i]; // 取得当前间隔
+
             // 如果当前间隔的起点小于之前间隔的终点，则出现“交叉”，则合并交叠
             if (currentInterval[0] <= lastInterval[1]) {
                 lastInterval[0] = Math.min(lastInterval[0], currentInterval[0]);
                 lastInterval[1] = Math.max(lastInterval[1], currentInterval[1]);
-            } else result.add(currentInterval); // 否则没有交叠，加入新的间隔
+            } else
+                result.add(currentInterval); // 否则没有交叠，加入新的间隔
         }
         int[][] res = new int[result.size()][2];
         res = result.toArray(res);

@@ -1,7 +1,6 @@
 package com.leetcode.solution;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 距离原点最近的K点
@@ -19,44 +18,45 @@ public class _973_K_Closest_Points_to_Origin {
      * Space Complexity: O(N).
      */
     public int[][] kClosest(int[][] points, int K) {
-        partition(0, points.length - 1, points, K);
-        int[][] ret = new int[K][2];
-        if (K >= 0)
-            System.arraycopy(points, 0, ret, 0, K);
-        return ret;
+        quickSort(points, 0, points.length - 1, K);
+        return Arrays.copyOfRange(points, 0, K);
     }
 
-    private Random rd = new Random();
-
-    private int partition(int st, int ed, int[][] points, int K) {
-        if (st >= ed)
-            return st;
-
-        int id = rd.nextInt(ed - st + 1) + st;
-        swap(id, ed, points);
-
-        int j = ed - 1, pivot = calculateDist(points[ed]);
-
-        for (int i = 0; i <= j; i++) {
-            if (calculateDist(points[i]) > pivot) {
-                swap(i, j--, points);
-                i--;
-            }
+    private void quickSort(int[][] a, int low, int high, int K) {
+        if (low < high) {
+            int pivot = partition(a, low, high);
+            if (pivot == K)
+                return;
+            if (pivot > K)
+                quickSort(a, low, pivot - 1, K);
+            else
+                quickSort(a, pivot + 1, high, K);
         }
-        swap(ed, ++j, points);
-        if (j == K - 1)
-            return j;
-        else if (j < K - 1)
-            return partition(j + 1, ed, points, K);
-        else
-            return partition(st, j - 1, points, K);
     }
 
-    private void swap(int a, int b, int[][] points) {
-        int[] tmp = points[a];
-        points[a] = points[b];
-        points[b] = tmp;
+
+    private int partition(int[][] a, int low, int high) {
+        int[] pivot = a[low];
+        int pivotDist = dist(pivot);
+
+        while (low < high) {
+            while (low < high && dist(a[high]) >= pivotDist)
+                high--;
+
+            a[low] = a[high];
+            while (low < high && dist(a[low]) <= pivotDist)
+                low++;
+
+            a[high] = a[low];
+        }
+        a[low] = pivot;
+        return low;
     }
+
+    private int dist(int[] a) {
+        return a[0] * a[0] + a[1] * a[1];
+    }
+
 
     public int[][] kClosestPQ(int[][] points, int K) {
         if (points == null || points.length == 0 || K < 1) return points;

@@ -12,9 +12,10 @@ package com.leetcode.solution;
  * 模板dfs,int(TreeNode)函数，左右max(0,递归(root.left),更新max=max(max,left+right+root)，返回root+max(left,right)
  */
 
-public class _124_BinaryTreeMaximumPathSum {
-    int maxPath = Integer.MIN_VALUE;
 
+public class _124_Binary_Tree_Maximum_Path_Sum {
+    int maxPath = Integer.MIN_VALUE;
+    // O(N), O(H)
     public int maxPathSum(TreeNode root) {
         dfsPath(root);
         return maxPath;
@@ -23,10 +24,14 @@ public class _124_BinaryTreeMaximumPathSum {
     //Path pass parent node only once
     //at every node, either add its left or right path or nth for n
     private int dfsPath(TreeNode root) {
-        if (root == null) return 0;
+        if (root == null)
+            return 0;
+
         int sum1 = Math.max(0, dfsPath(root.left)); // 0代表如果负值就不继续
         int sum2 = Math.max(0, dfsPath(root.right));
+
         maxPath = Math.max(maxPath, sum1 + sum2 + root.val); // update max_sum if it's better to start a new path
+
         return root.val + Math.max(sum1, sum2); //返回当前分支的长度
     }
 

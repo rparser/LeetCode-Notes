@@ -18,7 +18,7 @@ import java.util.*;
  */
 
 public class _023_Merge_k_Sorted_Lists {
-    //方法二分治
+    //方法二分治 O(KNlogk), O(logK)
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0)
             return null;
@@ -29,11 +29,14 @@ public class _023_Merge_k_Sorted_Lists {
     //通过mid将数组一分为二，并不断缩小规模，当规模为1时返回并开始合并
     //通过合并两个链表，不断增大其规模，整体看就是不断缩小-最后不断扩大的过程
     private ListNode helper(ListNode[] lists, int begin, int end) {
-        if (begin == end) return lists[begin];
+        if (begin == end)
+            return lists[begin];
 
         int mid = begin + (end - begin) / 2;
+
         ListNode left = helper(lists, begin, mid);
         ListNode right = helper(lists, mid + 1, end);
+
         return merge(left, right);
     }
 
@@ -44,10 +47,12 @@ public class _023_Merge_k_Sorted_Lists {
             return l2;
         if (l2 == null)
             return l1;
+
         if (l1.val < l2.val) {
             l1.next = merge(l1.next, l2);
             return l1;
         }
+
         l2.next = merge(l1, l2.next);
         return l2;
     }
@@ -61,7 +66,7 @@ public class _023_Merge_k_Sorted_Lists {
         }
     }
 
-    //方法一PQ
+    //方法一PQ O(KNlogk), O(k)
     public ListNode mergeKListsPQ(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
 
@@ -77,7 +82,8 @@ public class _023_Merge_k_Sorted_Lists {
             curr.next = queue.poll(); //取出node
             curr = curr.next;
 
-            if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
+            if (curr.next != null)
+                queue.offer(curr.next); //把剩余部分加回pq
         }
         return dummy.next;
     }

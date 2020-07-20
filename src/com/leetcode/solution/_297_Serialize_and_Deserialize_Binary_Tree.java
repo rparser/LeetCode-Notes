@@ -1,3 +1,7 @@
+package com.leetcode.solution;
+
+import java.util.*;
+
 /**
  * 思路： use 2 string marker: "X" for null - empty node, "," for spliter - spliting nodes
  * To Serialize, do pre-order traversal. Append node.val(sb可直接append数字) + spliter
@@ -7,10 +11,10 @@
  * Complexity: O(N) time travel all nodes
  */
 
-public class Codec {
-    //BFS
-    private final String nullN = "null";
-    private final String spliter = ",";
+public class _297_Serialize_and_Deserialize_Binary_Tree {
+    //递归前序遍历per-order O(N), O(N) [1,2,4,5,3,6,7]
+    private final String NULL = "#";
+    private final String SPLITTER = ",";
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
@@ -21,32 +25,42 @@ public class Codec {
 
     private void buildString(TreeNode node, StringBuilder sb) {
         if (node == null) {
-            sb.append(nullN).append(spliter);
+            sb.append(NULL).append(SPLITTER);
             return;
         }
-        sb.append(node.val).append(spliter);
+
+        sb.append(node.val).append(SPLITTER);
         buildString(node.left, sb);
         buildString(node.right, sb);
     }
 
     // Decodes your encoded data to tree.
     //将此时数据二叉树的先序遍历结果依次压入队列
-    public TreeNode deserialize(String data) {
-        Queue<String> nodes = new LinkedList<String>();
-        nodes.addAll(Arrays.asList(data.split(spliter)));
+    public TreeNode deserialize(String toProcess) {
+        Queue<String> nodes = new LinkedList<>(Arrays.asList(toProcess.split(SPLITTER)));
         return buildTree(nodes);
     }
 
     private TreeNode buildTree(Queue<String> nodes) {
         String val = nodes.remove();//return null
-        if (val.equals(nullN))
+        if (val.equals(NULL))
             return null;
         //若节点值不为空，将其由String转换回int
         //将其作为当前节点值新建当前节点
-        TreeNode node = new TreeNode(Integer.valueOf(val));//Integer.parseInt()
-        //递归调用连接当前节点的左右节点
+        TreeNode node = new TreeNode(Integer.parseInt(val));//Integer.parseInt()
+        //递归preorder,处理完左子树再处理右子树
         node.left = buildTree(nodes);
         node.right = buildTree(nodes);
         return node;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

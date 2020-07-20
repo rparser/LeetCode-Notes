@@ -21,6 +21,7 @@ public class _215_Kth_Largest_Element_in_an_Array {
 
         while (true) {
             int index = partition(nums, left, right);
+
             if (index == target)
                 return nums[index];
             else if (index < target)
@@ -63,19 +64,6 @@ public class _215_Kth_Largest_Element_in_an_Array {
         nums[index2] = temp;
     }
 
-    public int findKthLargestPQ(int[] nums, int k) {
-        // init heap 'the smallest element first'
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-        // keep k largest elements in the heap
-        for (int n : nums) {
-            pq.add(n);
-            if (pq.size() > k)
-                pq.poll();
-        }
-        // output
-        return pq.poll();
-    }
 
     //中位数的中位数 BFPRT O(N), O(nlogn)
     public int findKthSmallestNumber(int[] nums, int k) {
