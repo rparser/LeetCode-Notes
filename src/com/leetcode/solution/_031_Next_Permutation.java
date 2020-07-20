@@ -14,6 +14,7 @@ public class _031_Next_Permutation {
 
             while (j >= 0 && nums[j] <= nums[i])
                 j--;
+
             swap(nums, i, j);
         }
         reverse(nums, i + 1); //逆序直接翻转(从start开始)

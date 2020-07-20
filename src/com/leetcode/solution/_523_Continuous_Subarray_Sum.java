@@ -1,6 +1,9 @@
+package com.leetcode.solution;
+
 import java.util.*;
 
 class _523_Continuous_Subarray_Sum {
+    // O(n), O(min(n,k))
     public boolean checkSubarraySum(int[] nums, int k) {
         /**
          在每个索引位置i, 计算当前和对k的mod值, 假设在索引x处, sum[0~x] = m*k + mod_x;
@@ -35,6 +38,7 @@ class _523_Continuous_Subarray_Sum {
                 else
                     map.put(mod, i);// 不存在再更新
         }
+
         return false;
     }
 }

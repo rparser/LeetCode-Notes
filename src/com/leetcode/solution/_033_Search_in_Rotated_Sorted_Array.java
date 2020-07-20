@@ -12,6 +12,7 @@ package com.leetcode.solution;
 
 public class _033_Search_in_Rotated_Sorted_Array {
     public int search(int[] nums, int target) {
+        // 二分找反转前半部分还是后半部分
         int low = 0, high = nums.length - 1;
         while (low <= high) {
             int mid = low + (high - low) / 2;

@@ -17,6 +17,7 @@ import java.util.*;
  */
 
 public class _076_Minimum_Window_Substring {
+    //O(C*∣S∣+∣T∣), O(∣S∣+∣T∣)
     public static String minWindowMap(String str, String pattern) {
         int left = 0, matched = 0, minLength = Integer.MAX_VALUE, resSubStringStart = 0;
         Map<Character, Integer> map = new HashMap<>();

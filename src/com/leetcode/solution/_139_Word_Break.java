@@ -10,19 +10,18 @@ import java.util.*;
  * Complexity：O(N^2) for DP
  */
 
-public class _139_WordBreak {
+public class _139_Word_Break {
     public boolean wordBreakDP(String s, List<String> wordDict) {
         int n = s.length();
         boolean[] dp = new boolean[n + 1]; //dp[i+1] means the current s[0...i] check
         dp[0] = true;
-        for (int i = 1; i <= s.length(); i++) {
-            for (int j = 0; j < i; j++) {
+        for (int i = 1; i <= s.length(); i++)
+            for (int j = 0; j < i; j++)
                 if (dp[j] && wordDict.contains(s.substring(j, i))) {//s[j,i)
                     dp[i] = true;
                     break;
                 }
-            }
-        }
+
         return dp[n];
     }
 
@@ -37,7 +36,8 @@ public class _139_WordBreak {
                 for (int end = start + 1; end <= s.length(); end++) {
                     if (wordDictSet.contains(s.substring(start, end))) {
                         queue.add(end);
-                        if (end == s.length()) return true;
+                        if (end == s.length())
+                            return true;
                     }
                 }
                 visited[start] = 1;

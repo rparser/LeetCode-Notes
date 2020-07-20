@@ -15,35 +15,44 @@ import java.util.*;
  */
 
 public class _236_Lowest_Common_Ancestor_of_a_Binary_Tree {
-    //递归
+    //递归 可以是自己的祖先
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root == p || root == q) return root;
+        if (root == null || root == p || root == q)
+            return root;
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if (left == null) return right;
-        if (right == null) return left;
+
+        if (left == null)
+            return right;
+        if (right == null)
+            return left;
+
         return root;
     }
 
     //迭代
     public TreeNode lowestCommonAncestorIteative(TreeNode root, TreeNode p, TreeNode q) {
         Queue<TreeNode> queue = new LinkedList<>(); //队列存结果
-        Map<TreeNode, TreeNode> parent = new HashMap<>(); //key : value - node, node的父节点
+        //<key : value - node, node的父节点>
+        Map<TreeNode, TreeNode> parent = new HashMap<>();
 
         parent.put(root, null);
         queue.offer(root);
 
-        while (!parent.containsKey(p) || !parent.containsKey(q)) { //直到p,q的都压入
+        //直到p,q的都压入
+        while (!(parent.containsKey(p) && !parent.containsKey(q))) {
             TreeNode node = queue.poll();
             if (node.left != null) {
                 parent.put(node.left, node);
                 queue.offer(node.left);
             }
+
             if (node.right != null) {
                 parent.put(node.right, node);
                 queue.offer(node.right);
             }
         }
+
         Set<TreeNode> ancestors = new HashSet<>(); //存祖先节点
 
         while (p != null) { //先把p祖先节点都加入

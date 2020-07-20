@@ -5,23 +5,26 @@ package com.leetcode.solution;
  * find out the max of leftDepth & rightDepth while at each node, meanwhile update the total max.
  * Complexity: Time O(N) Space O(N)
  */
-
-public class _543_DiameterofBinaryTree {
+// O(N), O(N)实际问题，找到最大深度
+public class _543_Diameter_of_Binary_Tree {
     int max = 0;
+    int res;
 
     public int diameterOfBinaryTree(TreeNode root) {
         dfs(root);
         return max;
     }
 
-    // 函数dfs的作用是：找到以root为根节点的二叉树的最大深度
+    // dfs -> 找到以root为根节点的二叉树的最大深度
     public int dfs(TreeNode root) {
         if (root == null) return 0;
 
         int leftDepth = dfs(root.left);
-        int rigthDepth = dfs(root.right);
-        res = Math.max(res, leftDepth + rigthDepth);
-        return Math.max(leftDepth, rigthDepth) + 1;
+        int rightDepth = dfs(root.right);
+
+        res = Math.max(res, leftDepth + rightDepth);
+
+        return Math.max(leftDepth, rightDepth) + 1;
     }
 
     public class TreeNode {

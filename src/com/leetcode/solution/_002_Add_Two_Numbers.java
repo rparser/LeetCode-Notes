@@ -9,7 +9,7 @@ package com.leetcode.solution;
  */
 
 
-public class _002AddTwoNumbers {
+public class _002_Add_Two_Numbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result = new ListNode(0);
         ListNode p = l1, q = l2, curr = result;
@@ -21,8 +21,11 @@ public class _002AddTwoNumbers {
             carry = sum / 10; // 进位
             curr.next = new ListNode(sum % 10);
             curr = curr.next;
-            if (p != null) p = p.next;
-            if (q != null) q = q.next;
+
+            if (p != null)
+                p = p.next;
+            if (q != null)
+                q = q.next;
         }
 
         // 如果最后还有一位
