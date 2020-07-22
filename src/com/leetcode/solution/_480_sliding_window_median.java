@@ -6,9 +6,11 @@ import java.util.*;
 // O(log(n)) time for the enqueing and dequeing methods (offer, poll, remove() and add); linear time for the remove(Object) and contains(Object) methods;
 
 class _480_sliding_window_median {
+    // maxHeap是相对小的一组数
     PriorityQueue<Integer> maxHeap = new PriorityQueue<>((Collections.reverseOrder()));
+    // minHeap是相对大的一组数
     PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-
+    // maxHeap 大小是minHeap +1 或 +0
     public double[] medianSlidingWindow(int[] nums, int k) {
         double[] result = new double[nums.length - k + 1];
         for (int i = 0; i < nums.length; i++) {
@@ -19,12 +21,11 @@ class _480_sliding_window_median {
 
             balanceHeaps();
 
-            if (i - k + 1 >= 0)
+            if (i - k + 1 >= 0) {
                 if (maxHeap.size() == minHeap.size())
                     result[i - k + 1] = maxHeap.peek() / 2.0 + minHeap.peek() / 2.0;
                 else
                     result[i - k + 1] = maxHeap.peek();
-
 
                 int elementToBeRemoved = nums[i - k + 1];
 
@@ -34,13 +35,15 @@ class _480_sliding_window_median {
                     minHeap.remove(elementToBeRemoved);
 
                 balanceHeaps();
+            }
         }
         return result;
     }
-
+    // max 大小可能比min大
     private void balanceHeaps() {
         if (maxHeap.size() > minHeap.size() + 1)
             minHeap.add(maxHeap.poll());
+
         else if (maxHeap.size() < minHeap.size())
             maxHeap.add(minHeap.poll());
     }

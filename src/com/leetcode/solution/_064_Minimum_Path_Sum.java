@@ -10,7 +10,8 @@ import org.junit.runner.*;
  * Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
  */
 
-public class _064MinimumPathSum {
+public class _064_Minimum_Path_Sum {
+    // 只能向下或向右
     public int minPathSum(int[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) //null or 0 row or 0 column
             return 0;

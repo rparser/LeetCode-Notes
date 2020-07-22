@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _129_sum_root_to_leaf_numbers {
     public int sumNumbers(TreeNode root) {
         return findRootToLeafPathNumbers(root, 0);
     }

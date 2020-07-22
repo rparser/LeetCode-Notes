@@ -10,9 +10,9 @@ class _442_find_all_duplicates_in_an_array {
         List<Integer> res = new ArrayList<>();
 
         for (int i = 0; i < nums.length; i++) {
-            // 从1开始所以需要-1否则不需要-1, +1
+            // 1~n 从1开始所以需要-1否则不需要-1, +1
             int index = Math.abs(nums[i]) - 1;
-            // 如果负数则证明计算过，加入结果
+            // 如果负数则证明此index出现过，加入结果
             if (nums[index] < 0)
                 res.add(Math.abs(index + 1));
             // 把数字变为负数/正数
