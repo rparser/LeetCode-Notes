@@ -1,6 +1,14 @@
 package com.leetcode.solution;
 //给你一个字符串 s，「k 倍重复项删除操作」将会从 s 中选择 k 个相邻且相等的字母，并删除它们，使被删去的字符串的左侧和右侧连在一起。
 public class _1209_删除字符串中的所有相邻重复项_2 {
+    //当前字符与前一个不同时，往栈中压入 1。否则栈顶元素加 1。
+//    迭代字符串：
+//
+//    如果当前字符与前一个相同，栈顶元素加 1。
+//
+//    否则，往栈中压入 1。
+//    如果栈顶元素等于 k，则从字符串中删除这 k 个字符，并将 k 从栈顶移除。
+//    注意：因为在 Java 中 Integer 是不可变的，需要先弹出栈顶元素，然后加 1，再压入栈顶。
     public String removeDuplicates(String s, int k) {
         StringBuilder sb = new StringBuilder(s);
         Stack<Integer> counts = new Stack<>();
