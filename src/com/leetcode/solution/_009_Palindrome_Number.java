@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _009_Palindrome_Number {
     //    每次进行取余操作 （ %10），取出最低的数字：y = x % 10
 //    将最低的数字加到取出数的末尾：revertNum = revertNum * 10 + y
 //    每取一个最低位数字，x 都要自除以 10
@@ -26,7 +28,7 @@ class Solution {
 //    进行比较
 //    再将 22 取出来继续比较
 
-    public boolean isPalindrome(int x) {
+    public boolean isPalindrome2(int x) {
         //边界判断
         if (x < 0) return false;
         int div = 1;

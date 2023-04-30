@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _061_Rotate_List {
     public ListNode rotateRight(ListNode head, int k) {
         if (head == null || k == 0) {
             return head;
@@ -34,5 +36,14 @@ class Solution {
         tmp.next = node;
         return res;
 
+    }
+
+    public static class ListNode {
+        int val;
+        _061_Rotate_List.ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

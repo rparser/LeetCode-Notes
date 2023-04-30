@@ -10,7 +10,7 @@ import org.junit.runner.*;
  * Space Complexity: O(1). We are utilizing the obstacleGrid as the DP array. Hence, no extra space.
  */
 
-public class _063UniquePathsII {
+public class _063_UniquePathsII {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         if (obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0 || obstacleGrid[0][0] == 1) //null or 0 row or 0 column
             return 0;
@@ -33,7 +33,7 @@ public class _063UniquePathsII {
     }
 
     public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._063UniquePathsII");
+        JUnitCore.main("com.leetcode.solution._063_UniquePathsII");
     }
 
     @Test
