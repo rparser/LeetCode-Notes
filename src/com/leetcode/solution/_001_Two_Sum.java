@@ -10,7 +10,7 @@ import java.util.*;
  * 3.到结束依然没有则throw IllegalArgumentException
  */
 
-public class _001TwoSum {
+public class _001_Two_Sum {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
