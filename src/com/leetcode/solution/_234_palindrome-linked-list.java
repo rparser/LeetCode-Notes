@@ -37,13 +37,4 @@ public class _234PalindromeLinkedList {
         }
         return prev;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

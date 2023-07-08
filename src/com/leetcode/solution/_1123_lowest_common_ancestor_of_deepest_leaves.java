@@ -29,14 +29,4 @@ class _1123_lowest_common_ancestor_of_deepest_leaves {
         int right = depth(root.right);
         return 1 + Math.max(left, right);
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

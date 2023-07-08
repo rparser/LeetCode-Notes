@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _082_Remove_Duplicates_from_Sorted_List_II {
     public ListNode deleteDuplicates(ListNode head) {
 
         // 1.base cases
@@ -12,7 +14,7 @@ class Solution {
 
         while (fast != null) {
             // 楼下 Fitz 大神提示的对！
-            if ((fast.next != null && fast.val != = fast.next.val) || fast.next == null) {
+            if (fast.next == null || fast.val != fast.next.val) {
                 if (slow.next == fast)     //   3.2 & 3.3
                 {
                     slow = fast;

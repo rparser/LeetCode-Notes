@@ -50,15 +50,4 @@ public class _094_Binary_Tree_Inorder_Traversal {
                 helper(root.right, res);
         }
     }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

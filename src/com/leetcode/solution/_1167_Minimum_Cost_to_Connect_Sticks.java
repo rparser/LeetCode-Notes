@@ -1,4 +1,8 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.util.PriorityQueue;
+
+class _1167_Minimum_Cost_to_Connect_Sticks {
     public int connectSticks(int[] sticks) {
         if (sticks.length == 1) return 0;
         PriorityQueue<Integer> queue = new PriorityQueue<>();

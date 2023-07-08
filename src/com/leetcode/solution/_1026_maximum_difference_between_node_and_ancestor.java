@@ -29,14 +29,4 @@ class _1026_maximum_difference_between_node_and_ancestor {
         dfs(node.left, max, min);
         dfs(node.right, max, min);
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

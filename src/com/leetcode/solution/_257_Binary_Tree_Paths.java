@@ -4,8 +4,8 @@ import java.util.*;
 
 class _257_Binary_Tree_Paths {
     //O(N), O(N)
-    private List<String> result = new ArrayList<>();
-    private StringBuilder sb = new StringBuilder();
+    private final List<String> result = new ArrayList<>();
+    private final StringBuilder sb = new StringBuilder();
 
     public List<String> binaryTreePathsRecursive(TreeNode root) {
         //自己试一下
@@ -64,16 +64,5 @@ class _257_Binary_Tree_Paths {
             }
         }
         return paths;
-    }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

@@ -65,13 +65,4 @@ class _092_reverse_linked_list_ii {
         node.next = pre;
         return result.next;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

@@ -1,9 +1,17 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class _1268_Search_Suggestions_System {
     List<List<String>> ans = new ArrayList<>();
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Arrays.sort(products);
-        if (products == null || products.length == 0) return ans;
+        if (products.length == 0)
+            return ans;
+
         int len = searchWord.length();
         int n = products.length;
         boolean[] isMatch = new boolean[n];

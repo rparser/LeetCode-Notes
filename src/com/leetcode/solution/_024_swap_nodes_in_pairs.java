@@ -46,14 +46,5 @@ class _024_swap_nodes_in_pairs {
         }
         return node.next;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }
 

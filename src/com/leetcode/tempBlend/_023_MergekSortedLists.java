@@ -68,7 +68,7 @@ public class _023_MergekSortedLists {
         return l2;
     }
 
-    public ListNode mergeKLists(ListNode[] lists) {
+    public ListNode mergeKLists2(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
 
         PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
@@ -86,21 +86,5 @@ public class _023_MergekSortedLists {
             if (curr.next != null) queue.offer(curr.next); //把剩余部分加回pq
         }
         return dummy.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        ListNode() {
-        }
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hello World");
     }
 }

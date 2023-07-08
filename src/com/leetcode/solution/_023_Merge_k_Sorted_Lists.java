@@ -57,15 +57,6 @@ public class _023_Merge_k_Sorted_Lists {
         return l2;
     }
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
     //方法一PQ O(KNlogk), O(k)
     public ListNode mergeKListsPQ(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;

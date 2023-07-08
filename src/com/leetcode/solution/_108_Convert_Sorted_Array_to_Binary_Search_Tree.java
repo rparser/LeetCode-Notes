@@ -1,7 +1,9 @@
+package com.leetcode.solution;
+
 import java.util.*;
 
 // O(N),O(logN)递归栈的深度
-class Solution {
+class _108_Convert_Sorted_Array_to_Binary_Search_Tree {
     public TreeNode sortedArrayToBST(int[] nums) {
         return dfs(nums, 0, nums.length - 1);
     }
@@ -59,15 +61,4 @@ class Solution {
         }
         return root;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
 }

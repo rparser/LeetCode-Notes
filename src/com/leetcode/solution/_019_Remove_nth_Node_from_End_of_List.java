@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-class _019_remove_nth_node_from_end_of_list {
+class _019_Remove_nth_Node_from_End_of_List {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         // 开辟两个指针，且第二个指针距离第一个指针为n+1，
         // 因为要删除节点，必须获得该待删除节点的前一个节点。。。。。
@@ -29,14 +29,5 @@ class _019_remove_nth_node_from_end_of_list {
             node = node.next;
         }
         return node;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

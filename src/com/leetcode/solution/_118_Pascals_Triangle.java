@@ -1,4 +1,9 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class _118_Pascals_Triangle {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> dp = new ArrayList<>();
         if (numRows == 0) {

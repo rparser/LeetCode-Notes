@@ -38,15 +38,4 @@ public class _545_BoundaryofBinaryTree {
             res.add(node.val);
         }
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
 }

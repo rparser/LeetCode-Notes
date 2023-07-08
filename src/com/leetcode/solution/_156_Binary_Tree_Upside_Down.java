@@ -1,4 +1,8 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.util.Stack;
+
+class _156_Binary_Tree_Upside_Down {
     public TreeNode upsideDownBinaryTree(TreeNode root) {
         if (root == null || root.left == null) return root;
         TreeNode ans = helper(root.left, root);
@@ -19,10 +23,8 @@ class Solution {
         left.right = p;
         return ans;
     }
-}
 
-class Solution {
-    public TreeNode upsideDownBinaryTree(TreeNode root) {
+    public TreeNode upsideDownBinaryTree2(TreeNode root) {
         if (root == null) return null;
         Stack<TreeNode> stack = new Stack<>();
         TreeNode ans = null;
@@ -46,8 +48,3 @@ class Solution {
         return ans;
     }
 }
-
-作者：wayne_yn
-        链接：https://leetcode-cn.com/problems/binary-tree-upside-down/solution/java-di-gui-die-dai-liang-chong-fang-fa-by-wayne_y/
-        来源：力扣（LeetCode）
-        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

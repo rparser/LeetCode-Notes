@@ -17,14 +17,4 @@ class _270_closest_binary_search_tree_value {
         }
         return bestVal;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

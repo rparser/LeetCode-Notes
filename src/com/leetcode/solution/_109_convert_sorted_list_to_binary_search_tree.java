@@ -35,13 +35,4 @@ class _109_convert_sorted_list_to_binary_search_tree {
             val = x;
         }
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

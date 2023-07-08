@@ -69,14 +69,4 @@ class _105_construct_binary_tree_from_preorder_and_inorder_traversal {
         treeNode.right = help(preorder, pStart + index + 1, pEnd, inorder, iStart + index + 1, iEnd);
         return treeNode;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

@@ -1,7 +1,5 @@
 package com.leetcode.solution;
 
-import java.util.HashSet;
-
 /**
  * 是否为子树
  * 100的父题目+s空返F，st同反T，迭代看s子树
@@ -9,7 +7,7 @@ import java.util.HashSet;
  * Space complexity: O(max(n, m))
  */
 
-public class _572_SubtreeofAnotherTree {
+public class _572_Subtree_of_Another_Tree {
     public boolean isSubtree(TreeNode s, TreeNode t) { //t是s的子树
         if (s == null) return false;
         if (isSame(s, t)) return true; //相等返回true
@@ -22,15 +20,5 @@ public class _572_SubtreeofAnotherTree {
         if (s.val != t.val) return false; //数值不等返回false
 
         return isSame(s.left, t.left) && isSame(s.right, t.right); //继续看子树
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

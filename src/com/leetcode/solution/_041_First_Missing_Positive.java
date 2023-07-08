@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-public class _041_FirstMissingPositive {
+public class _041_First_Missing_Positive {
     //交换法 O(N) ~ O(1)
     public int firstMissingPositive2(int[] nums) {
         int len = nums.length;

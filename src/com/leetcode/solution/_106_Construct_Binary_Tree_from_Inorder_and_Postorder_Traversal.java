@@ -1,17 +1,9 @@
+package com.leetcode.solution;
+
 import java.util.HashMap;
 import java.util.Map;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
-
-public class Solution {
+public class _106_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal {
 
     /**
      * 让 postorder 成为全局变量，以免在递归方法中一直传递
@@ -40,6 +32,7 @@ public class Solution {
      * 使用中序遍历序列 inorder 的子区间 [inLeft, inRight]
      * 与后序遍历序列 postorder 的子区间 [postLeft, postRight] 构建二叉树
      * 时间复杂度：O(NlogN)
+     *
      * @param inLeft    中序遍历序列的左边界
      * @param inRight   中序遍历序列的右边界
      * @param postLeft  后序遍历序列的左边界

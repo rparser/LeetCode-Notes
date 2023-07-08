@@ -24,14 +24,4 @@ class _865_smallest_subtree_with_all_the_deepest_nodes {
 
         return Math.max(depth(root.left), depth(root.right)) + 1;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

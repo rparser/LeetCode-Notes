@@ -37,13 +37,4 @@ class _061_Rotate_List {
         return res;
 
     }
-
-    public static class ListNode {
-        int val;
-        _061_Rotate_List.ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

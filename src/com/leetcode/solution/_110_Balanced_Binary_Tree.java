@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _110_Balanced_Binary_Tree {
     public boolean isBalanced(TreeNode root) {
         return recur(root) != -1;
     }
@@ -12,15 +14,5 @@ class Solution {
         if (right == -1) return -1;
         //当节点root 左 / 右子树的高度差 \geq 2≥2 ：则返回 -1−1 ，代表 此子树不是平衡树
         return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
     }
 }

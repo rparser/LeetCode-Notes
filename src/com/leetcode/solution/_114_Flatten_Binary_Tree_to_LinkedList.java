@@ -51,14 +51,4 @@ public class _114_Flatten_Binary_Tree_to_LinkedList {
             pre = pre.right;
         }
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

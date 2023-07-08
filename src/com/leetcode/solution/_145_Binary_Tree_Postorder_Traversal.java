@@ -48,14 +48,4 @@ public class _145_Binary_Tree_Postorder_Traversal {
         helper(root.right, list);
         list.add(root.val);
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

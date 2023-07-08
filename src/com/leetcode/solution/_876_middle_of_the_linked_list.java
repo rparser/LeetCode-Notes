@@ -10,13 +10,4 @@ public class _876_middle_of_the_linked_list {
         }
         return slow;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

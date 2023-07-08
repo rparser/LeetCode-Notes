@@ -1,4 +1,8 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.util.Stack;
+
+class _099_Recover_Binary_Search_Tree {
     TreeNode first = null;
     TreeNode second = null;
 
@@ -16,19 +20,15 @@ class Solution {
             return;
         }
         inorderTraversal(root.left);
-        /*******************************************************/
         if (pre != null && root.val < pre.val) {
             //第一次遇到逆序对
             if (first == null) {
                 first = pre;
-                second = root;
                 //第二次遇到逆序对
-            } else {
-                second = root;
             }
+            second = root;
         }
         pre = root;
-        /*******************************************************/
         inorderTraversal(root.right);
     }
 
@@ -43,17 +43,14 @@ class Solution {
                 root = root.left;
             }
             root = stack.pop();
-            /*******************************************************/
             if (pre != null && root.val < pre.val) {
                 if (first == null) {
                     first = pre;
-                    second = root;
-                } else {
-                    second = root;
                 }
+                second = root;
             }
             pre = root;
-            /*******************************************************/
             root = root.right;
         }
     }
+}

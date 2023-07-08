@@ -33,14 +33,4 @@ public class _437_PathSumIII {
         return dfs(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
         //so total count will be countOf(hasRoot) + countOf(leftChild) + countOf(rightChild)
     }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

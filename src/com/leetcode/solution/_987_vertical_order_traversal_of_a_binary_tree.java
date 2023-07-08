@@ -3,16 +3,6 @@ package com.leetcode.solution;
 import java.util.*;
 
 class _987_vertical_order_traversal_of_a_binary_tree {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     class TreeNodeWithPositon {
         TreeNode node;
         int level;

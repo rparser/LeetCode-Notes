@@ -32,16 +32,6 @@ public class _124_Binary_Tree_Maximum_Path_Sum {
 
         maxPath = Math.max(maxPath, sum1 + sum2 + root.val); // update max_sum if it's better to start a new path
 
-        return root.val + Math.max(sum1, sum2); //返回当前分支的长度
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
+        return root.val + Math.max(sum1, sum2); //返回当前分支的长度 - root + 左子树或右子树，取较大值作为当前分支
     }
 }

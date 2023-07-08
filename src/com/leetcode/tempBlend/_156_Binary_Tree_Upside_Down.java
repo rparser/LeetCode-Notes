@@ -1,4 +1,10 @@
-class Solution {
+package com.leetcode.tempBlend;
+
+import com.leetcode.solution.TreeNode;
+
+import java.util.Stack;
+
+class _156_Binary_Tree_Upside_Down {
     public TreeNode upsideDownBinaryTree(TreeNode root) {
         if (root == null || root.left == null) return root;
         TreeNode ans = helper(root.left, root);
@@ -19,10 +25,8 @@ class Solution {
         left.right = p;
         return ans;
     }
-}
 
-class Solution {
-    public TreeNode upsideDownBinaryTree(TreeNode root) {
+    public TreeNode upsideDownBinaryTree2(TreeNode root) {
         if (root == null) return null;
         Stack<TreeNode> stack = new Stack<>();
         TreeNode ans = null;

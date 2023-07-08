@@ -33,14 +33,4 @@ public class _021_Merge_Two_Sorted_Lists {
         prev.next = l1 == null ? l2 : l1;
         return prehead.next;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 }

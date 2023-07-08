@@ -31,15 +31,6 @@ public class _206_Reverse_LinkedList {
         return node;
     }
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
     public static void main(String[] args) {
         JUnitCore.main("com.leetcode.solution._206ReverseLinkedList");
     }

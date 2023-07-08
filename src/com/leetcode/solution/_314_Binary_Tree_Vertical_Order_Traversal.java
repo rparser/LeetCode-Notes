@@ -53,14 +53,4 @@ public class _314_Binary_Tree_Vertical_Order_Traversal {
 
         return result;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

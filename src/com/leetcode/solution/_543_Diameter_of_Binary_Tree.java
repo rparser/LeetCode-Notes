@@ -26,14 +26,4 @@ public class _543_Diameter_of_Binary_Tree {
 
         return Math.max(leftDepth, rightDepth) + 1;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

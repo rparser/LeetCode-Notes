@@ -33,13 +33,4 @@ public class _002_Add_Two_Numbers {
 
         return result.next;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

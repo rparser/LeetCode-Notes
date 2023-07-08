@@ -42,14 +42,4 @@ public class _111_Minimum_Depth_of_Binary_Tree {
         //2.如果都不为空，返回较小深度+1 root
         return root.left == null || root.right == null ? m1 + m2 + 1 : Math.min(m1, m2) + 1;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

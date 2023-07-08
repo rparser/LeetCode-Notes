@@ -145,13 +145,4 @@ class _148_sort_list {
         }
         return pre.next;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

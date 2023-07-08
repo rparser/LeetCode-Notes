@@ -22,7 +22,7 @@ public class _341_Flatten_Nested_List_Iterator implements Iterator<Integer> {
     //当前指针
     int pointer = 0;
 
-    public NestedIterator(List<NestedInteger> nestedList) {
+    public void NestedIterator(List<NestedInteger> nestedList) {
         curList = nestedList;
     }
 
@@ -49,7 +49,7 @@ public class _341_Flatten_Nested_List_Iterator implements Iterator<Integer> {
         // 判断是Integer还是List，如果是Integer
         if (curList.get(pointer).isInteger())
             return true;
-        // 如果是List
+            // 如果是List
         else {
             // 元素要加进整个list
             elementStack.push(curList);
@@ -64,29 +64,29 @@ public class _341_Flatten_Nested_List_Iterator implements Iterator<Integer> {
     private List<Integer> list;
     private int index;
 
-    public NestedIterator预处理(List<NestedInteger> nestedList) {
-        list = integerIterator预处理(nestedList);
+    public void NestedIterator2(List<NestedInteger> nestedList) {
+        list = integerIterator2(nestedList);
         index = -1;
     }
 
-    @Override
-    public Integer next预处理() {
-        if (this.hasNext预处理())  return list.get(++index);
+    // @Override
+    public Integer next2() {
+        if (this.hasNext2()) return list.get(++index);
         return null;
     }
 
-    @Override
-    public boolean hasNext预处理() {
+    // @Override
+    public boolean hasNext2() {
         return index + 1 < list.size();
     }
 
-    private static List<Integer> integerIterator预处理(List<NestedInteger> nestedIntegerList) {
+    private static List<Integer> integerIterator2(List<NestedInteger> nestedIntegerList) {
         ArrayList<Integer> list = new ArrayList<>(nestedIntegerList.size());
         for (NestedInteger tmp : nestedIntegerList) {
             if (tmp.isInteger())
                 list.add(tmp.getInteger());
             else
-                list.addAll(integerIterator预处理(tmp.getList()));
+                list.addAll(integerIterator2(tmp.getList()));
         }
         return list;
     }

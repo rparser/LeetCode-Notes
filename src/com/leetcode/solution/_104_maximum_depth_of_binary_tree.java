@@ -1,6 +1,8 @@
+package com.leetcode.solution;
+
 import java.util.*;
 
-class _104_maximum_depth_of_binary_tree {
+public class _104_maximum_depth_of_binary_tree {
     // O(N) , O(N)
     public int maxDepthBFS(TreeNode root) {
         if (root == null) return 0;
@@ -32,15 +34,5 @@ class _104_maximum_depth_of_binary_tree {
         int right = maxDepthDfs(root.right);
         // +1逻辑是：即使没有左右，计算过自身就有一层要+1
         return Math.max(left, right) + 1;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

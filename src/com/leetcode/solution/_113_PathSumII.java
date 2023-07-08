@@ -26,14 +26,4 @@ public class _113_PathSumII {
         dfs(root, result, new ArrayList<>(), sum);
         return result;
     }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

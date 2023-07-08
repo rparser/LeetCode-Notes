@@ -23,14 +23,4 @@ class _958_check_completeness_of_a_binary_tree {
 
         return true;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }
