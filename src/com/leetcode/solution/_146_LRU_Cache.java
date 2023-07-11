@@ -1,9 +1,10 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
-import org.junit.*;
-import org.junit.runner.*;
+import java.util.HashMap;
 
 /**
  * 思路： use a HashMap + doubly linked List: (head)..(pre)<—>(cur)<—>(next)..(end)

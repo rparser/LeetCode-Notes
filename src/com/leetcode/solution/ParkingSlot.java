@@ -1,7 +1,5 @@
 package com.leetcode.solution;
 
-import java.util.List;
-
 public class ParkingSlot {
 
     enum ParkingStatus {

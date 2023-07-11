@@ -83,7 +83,7 @@ public class _044_Wildcard_Matching {
                 // 如果上一个p不是*，那么此时必然需要&& match才可以
                 if (p.charAt(j - 1) != '*')
                     dp[i][j] = dp[i - 1][j - 1] && (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?');
-                // 如果上一个p(j-1)是*，则不使用这个星号就是dp[i][j - 1]，使用这个星号就是dp[i - 1][j]
+                    // 如果上一个p(j-1)是*，则不使用这个星号就是dp[i][j - 1]，使用这个星号就是dp[i - 1][j]
                 else
                     dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
 

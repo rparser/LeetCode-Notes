@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 最长子串没有重复字符

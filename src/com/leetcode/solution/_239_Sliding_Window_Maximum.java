@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * amortized O(n)

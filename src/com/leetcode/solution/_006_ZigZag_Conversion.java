@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Time Complexity: O(n), where n==len(s). Each index is visited once.

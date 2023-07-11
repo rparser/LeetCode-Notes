@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * zigzag分层遍历
@@ -12,7 +15,7 @@ import java.util.*;
  */
 
 public class _103_BinaryTreeZigzagLevelOrderTraversal {
-     // O(N) - O(N)
+    // O(N) - O(N)
     public List<List<Integer>> zigzagLevelOrderbest(TreeNode root) { //BFS
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
@@ -66,15 +69,5 @@ public class _103_BinaryTreeZigzagLevelOrderTraversal {
             DFS(node.left, level + 1, results);
         if (node.right != null)
             DFS(node.right, level + 1, results);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

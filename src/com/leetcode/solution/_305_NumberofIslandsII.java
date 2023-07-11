@@ -1,13 +1,15 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * UNION operation is only changing the root parent so the running time is O(1).
  * FIND operation is proportional to the depth of the tree. If N is the number of points added,
  * the average running time is O(logN), and a sequence of 4N operations take O(NlogN).
  * If there is no balancing, the worse case could be O(N^2).
- *
+ * <p>
  * Remember that one island could have different roots[node] value for each node.
  * Because roots[node] is the parent of the node, not the highest root of the island.
  * To find the actually root, we have to climb up the tree by calling findIsland function.

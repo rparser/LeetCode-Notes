@@ -26,7 +26,7 @@ class _785_Is_Graph_Bipartite {
         // 未被染色(come from last color)，染成与相邻结点不同的颜色（lastColor为0时，就染成1）
         if (lastColor == 1)
             colors[i] = 2;
-        // 为0或2时，这个点染成1
+            // 为0或2时，这个点染成1
         else
             colors[i] = 1;
         //

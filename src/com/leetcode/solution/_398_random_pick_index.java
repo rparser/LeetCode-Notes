@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Random;
 
 class _398_random_pick_index {
     private int[] nums;
@@ -9,6 +9,7 @@ class _398_random_pick_index {
     public _398_random_pick_index(int[] nums) {
         this.nums = nums;
     }
+
     // O(N), O(N)
     public int pick(int target) {
         Random random = new Random();

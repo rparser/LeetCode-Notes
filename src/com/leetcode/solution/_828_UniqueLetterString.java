@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 假设输入的S为 XXXAXXXXAXXAXXXXX，X表示其他任意字符，现在我们来计算蓝A对最后的输出贡献了多少，很显然在两个红A之间的子串中，

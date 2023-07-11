@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 class Solution {
     //    维护一个单调递增的栈monotonic stack，就可以找到 left_i 和 right_i。left, right为当前index高度下矩形的左右边界

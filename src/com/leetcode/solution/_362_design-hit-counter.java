@@ -12,14 +12,19 @@ class HitCounter {
      **/
     private int tail;
 
-    /** Initialize your data structure here. */
+    /**
+     * Initialize your data structure here.
+     */
     public HitCounter() {
         // 301个秒帧，每秒记录2个数据，0：当前秒数，1：当前敲击次数
         cycle = new int[301][2];
     }
 
-    /** Record a hit.
-     @param timestamp - The current timestamp (in seconds granularity). */
+    /**
+     * Record a hit.
+     *
+     * @param timestamp - The current timestamp (in seconds granularity).
+     */
     public void hit(int timestamp) {
         // 最新秒数，如果秒数相同，则敲击次数+1，否则数组位置右移，敲击次数为之前敲击次数+1
         int[] item = cycle[head % 301];
@@ -32,8 +37,11 @@ class HitCounter {
         }
     }
 
-    /** Return the number of hits in the past 5 minutes.
-     @param timestamp - The current timestamp (in seconds granularity). */
+    /**
+     * Return the number of hits in the past 5 minutes.
+     *
+     * @param timestamp - The current timestamp (in seconds granularity).
+     */
     public int getHits(int timestamp) {
         // 用来和最大秒数求差的最小秒数
         int target = timestamp - 300;

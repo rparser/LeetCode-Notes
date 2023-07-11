@@ -1,8 +1,9 @@
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class MovingAverage {
     // O(1), O(N)
-    private final Queue<Integer> q  = new LinkedList<>();
+    private final Queue<Integer> q = new LinkedList<>();
     private int sum;
     private final int size;
 

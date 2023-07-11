@@ -4,11 +4,11 @@ public class _705 {
     // 数组加双向链表，y = x ％ length 作为哈希函数
     class MyHashSet {
 
-        class Node{
+        class Node {
             int val;
             Node prev, next;
 
-            Node (int val) {
+            Node(int val) {
                 this.val = val;
             }
         }
@@ -16,7 +16,9 @@ public class _705 {
         private int length = 100;
         private Node[] data = new Node[length];
 
-        /** Initialize your data structure here. */
+        /**
+         * Initialize your data structure here.
+         */
         public MyHashSet() {
 
         }
@@ -29,11 +31,11 @@ public class _705 {
                 data[index] = node;
                 return;
             }
-            while(true) {
+            while (true) {
                 if (curr.val == key) {
                     return;
                 }
-                if(curr.next == null) {
+                if (curr.next == null) {
                     Node node = new Node(key);
                     node.prev = curr;
                     curr.next = node;
@@ -55,7 +57,7 @@ public class _705 {
                 data[index] = next;
                 return;
             }
-            while(curr != null) {
+            while (curr != null) {
                 if (curr.val == key) {
                     Node next = curr.next;
                     Node prev = curr.prev;
@@ -71,11 +73,13 @@ public class _705 {
             }
         }
 
-        /** Returns true if this set contains the specified element */
+        /**
+         * Returns true if this set contains the specified element
+         */
         public boolean contains(int key) {
             int index = key % length;
             Node curr = data[index];
-            while(curr != null) {
+            while (curr != null) {
                 if (curr.val == key) {
                     return true;
                 }

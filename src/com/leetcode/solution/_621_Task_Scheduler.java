@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class _621_Task_Scheduler {
     public int leastInterval(char[] tasks, int n) {

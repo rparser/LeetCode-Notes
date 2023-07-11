@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  * 113子问题

@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 向上的行是u，向下的行是d，向左的列是l，向右的列是r。

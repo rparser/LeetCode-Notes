@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * 数组第K大值

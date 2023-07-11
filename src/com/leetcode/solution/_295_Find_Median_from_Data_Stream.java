@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * add(num): O(logn)
@@ -12,6 +13,7 @@ import java.util.*;
 public class _295_Find_Median_from_Data_Stream {
     PriorityQueue<Integer> minHeap;
     PriorityQueue<Integer> maxHeap;
+
     // add(num): O(logn), findMedian O(1), space O(N)
     public _295_Find_Median_from_Data_Stream() {
         minHeap = new PriorityQueue<>();

@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.List;
 
 class _1428_leftmost_column_with_at_least_a_one {
     // O(m+n), O(1)
@@ -31,7 +31,7 @@ class _1428_leftmost_column_with_at_least_a_one {
         //如果全为0
         if (!flag)
             return -1;
-        //count的下一列
+            //count的下一列
         else
             return count + 1;
     }

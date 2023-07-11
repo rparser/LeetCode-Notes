@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 求数组里两个数的和为某个固定值

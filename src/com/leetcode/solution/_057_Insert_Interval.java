@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 时间复杂度：O(N)。我们只遍历了一次输入元素。

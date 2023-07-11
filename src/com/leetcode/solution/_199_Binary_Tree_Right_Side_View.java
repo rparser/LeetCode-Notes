@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * 思路1： BFS, use level order traversal. key is to track each level size, and add the last one to list.
@@ -31,6 +34,7 @@ public class _199_Binary_Tree_Right_Side_View {
         }
         return result;
     }
+
     // 递归
     List<Integer> res = new ArrayList<>();
 
@@ -50,15 +54,5 @@ public class _199_Binary_Tree_Right_Side_View {
         depth++;
         dfs(root.right, depth);
         dfs(root.left, depth);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.List;
 
 class _636_exclusive_time_of_functions {
     // 输入需要根据时间戳排序，输出是任务号排序
@@ -15,6 +17,7 @@ class _636_exclusive_time_of_functions {
             this.isStart = log[1].equals("start");
         }
     }
+
     // O(N), O(N) 任务不能交叉完成，考察前一个就好
     public int[] exclusiveTime(int n, List<String> logs) {
         Deque<Task> stack = new ArrayDeque<>();
@@ -24,7 +27,7 @@ class _636_exclusive_time_of_functions {
             //任务开始推入stack
             if (task.isStart)
                 stack.push(task);
-            //如果这个任务是end
+                //如果这个任务是end
             else {
                 Task last = stack.pop();
                 int duration = task.time - last.time + 1;

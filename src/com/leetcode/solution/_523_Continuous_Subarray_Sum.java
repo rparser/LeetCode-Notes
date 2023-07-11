@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class _523_Continuous_Subarray_Sum {
     // O(n), O(min(n,k))

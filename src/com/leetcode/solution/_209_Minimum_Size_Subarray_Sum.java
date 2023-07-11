@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.util.Arrays;
 
@@ -30,7 +31,8 @@ public class _209_Minimum_Size_Subarray_Sum {
         }
         return result == Integer.MAX_VALUE ? 0 : result;
     }
-  //  O(nlogn), O(n)
+
+    //  O(nlogn), O(n)
     public int minSubArrayLenBinarySearch(int s, int[] nums) {
         int n = nums.length;
         if (n == 0) return 0;

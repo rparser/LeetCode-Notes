@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * 树分层遍历
@@ -53,15 +56,5 @@ public class _102_Binary_Tree_Level_Order_Traversal {
             dfs(index + 1, root.left, res);
         if (root.right != null)
             dfs(index + 1, root.right, res);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * 1.两个overload的方法，引用一个参数的方法
@@ -18,7 +18,7 @@ public class _339_Nested_List_Weight_Sum {
         for (NestedInteger n : list) {
             if (n.isInteger())  // 如果只有一个数, 值为当前值 * depth
                 sum += n.getInteger() * depth;
-            //否则递归拆开, depth + 1
+                //否则递归拆开, depth + 1
             else
                 sum += depthSum(n.getList(), depth + 1);
         }

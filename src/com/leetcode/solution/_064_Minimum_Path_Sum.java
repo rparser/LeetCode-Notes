@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * 动态规划，采蘑菇权重问题，相比62，63加入权重

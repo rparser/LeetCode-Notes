@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 public class _121_Best_Time_to_Buy_and_Sell_Stock {
 

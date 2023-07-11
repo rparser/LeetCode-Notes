@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class _104_maximum_depth_of_binary_tree {
     // O(N) , O(N)

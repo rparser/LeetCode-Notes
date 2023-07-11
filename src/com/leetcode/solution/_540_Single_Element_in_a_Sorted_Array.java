@@ -10,7 +10,7 @@ package com.leetcode.solution;
 
 public class _540_Single_Element_in_a_Sorted_Array {
     //O(log(n/2)), O(1)
-        // 对所有偶数索引进行搜索，直到遇到第一个其后元素不相同的索引。
+    // 对所有偶数索引进行搜索，直到遇到第一个其后元素不相同的索引。
     public int singleNonDuplicate(int[] nums) {
         int lo = 0;
         int hi = nums.length - 1;
@@ -22,7 +22,7 @@ public class _540_Single_Element_in_a_Sorted_Array {
             // 如果偶索引和后一个一样，说明单次数字出现在后半段
             if (nums[mid] == nums[mid + 1])
                 lo = mid + 2;
-            //否则前半段
+                //否则前半段
             else
                 hi = mid;
         }

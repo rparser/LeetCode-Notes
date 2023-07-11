@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class _315_count_of_smaller_numbers_after_self {
     private int[] index;

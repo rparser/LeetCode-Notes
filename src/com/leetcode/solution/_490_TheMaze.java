@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 这个题目是Leetcode 505 Maze II的简化版, 这里只需要返回能否访问到就可以。

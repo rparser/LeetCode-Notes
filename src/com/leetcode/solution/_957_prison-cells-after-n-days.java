@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * 监狱开灯

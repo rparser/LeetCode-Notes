@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * 1.使用两个栈，countStack存子串的重复次数，resStack存中间结果
@@ -15,7 +16,7 @@ import java.util.*;
  * * countStack: (3)  (3)   (3)    ()   (2)  (2)  (2)   (2 3)   (2 3)   (2 3)   (2)    (2)      ()
  * *   strStack: ()   ("")  ("")   ()   ()  (aaa) (aaa) (aaa)  (aaa b) (aaa b)  (aaa) (aaa)     ()
  * *        res: ""    ""    a     aaa  aaa   ""   b      b       ""     d      bddd  bdddc  aaabdddcbdddc
- *    2    [    b 时 把cur aaa加入strStack再清空
+ * 2    [    b 时 把cur aaa加入strStack再清空
  */
 
 public class _394_Decode_String {

@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Iterator;
+
 //284. 顶端迭代器
 public class _284_PeekingIterator implements Iterator<Integer> {
     Iterator<Integer> it;

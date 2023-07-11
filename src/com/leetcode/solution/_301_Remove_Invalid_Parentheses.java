@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 相关题： http://rainykat.blogspot.com/2017/01/leetcodeg-320-generalized.html
@@ -24,7 +27,7 @@ public class _301_Remove_Invalid_Parentheses {
                 //左括号还有剩余则有效
                 if (rmL > 0)
                     rmL--;
-                //没有匹配的左括号，此时右括号肯定无效
+                    //没有匹配的左括号，此时右括号肯定无效
                 else
                     rmR++;
             }
@@ -56,7 +59,7 @@ public class _301_Remove_Invalid_Parentheses {
             } else if (c == ')') {
                 dfs(s, i + 1, res, sb, rmL, rmR - 1, open); //remove ')'
                 dfs(s, i + 1, res, sb.append(')'), rmL, rmR, open - 1); //use ')'
-            // 如果是其他字母
+                // 如果是其他字母
             } else
                 dfs(s, i + 1, res, sb.append(c), rmL, rmR, open);// append non '(',')' char
         }

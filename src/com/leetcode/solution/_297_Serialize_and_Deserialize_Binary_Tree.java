@@ -1,10 +1,12 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
- * 思路： use 2 string marker: "X" for null - empty node, "," for spliter - spliting nodes
- * To Serialize, do pre-order traversal. Append node.val(sb可直接append数字) + spliter
+ * 思路： use 2 string marker: "#" for null - empty node, "," for splitter - splitting nodes
+ * To Serialize, do pre-order traversal. Append node.val(sb可直接append数字) + splitter
  * to StringBuilder recursively.
  * To Deserialize, create a queue to add nodes from string(need to 1st split 2nd convert to arraylist) .
  * Then recursively build the tree by pointing left & right children.
@@ -37,7 +39,7 @@ public class _297_Serialize_and_Deserialize_Binary_Tree {
     // Decodes your encoded data to tree.
     //将此时数据二叉树的先序遍历结果依次压入队列
     public TreeNode deserialize(String toProcess) {
-        Queue<String> nodes = new LinkedList<>(Arrays.asList(toProcess.split(SPLITTER)));
+        Queue<String> nodes = new LinkedList<>(Arrays.asList(toProcess.split(SPLITTER))); //不要忘Arrays.asList
         return buildTree(nodes);
     }
 
@@ -48,19 +50,9 @@ public class _297_Serialize_and_Deserialize_Binary_Tree {
         //若节点值不为空，将其由String转换回int
         //将其作为当前节点值新建当前节点
         TreeNode node = new TreeNode(Integer.parseInt(val));//Integer.parseInt()
-        //递归preorder,处理完左子树再处理右子树
+        //递归preorder,处理完左子树再处理右子树 - 下面这两步不要搞错 参数是queue
         node.left = buildTree(nodes);
         node.right = buildTree(nodes);
         return node;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

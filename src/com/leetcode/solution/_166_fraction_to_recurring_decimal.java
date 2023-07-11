@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class _166_fraction_to_recurring_decimal {
     public String fractionToDecimal(int numerator, int denominator) {
@@ -45,7 +46,7 @@ class _166_fraction_to_recurring_decimal {
             //如果没有小数
         } else if (decimal.toString().equals(""))
             return sign + integer;
-        //如果有小数
+            //如果有小数
         else
             return sign + integer + "." + decimal;
     }

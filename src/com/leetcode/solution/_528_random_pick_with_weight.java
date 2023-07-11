@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 class _528_random_pick_with_weight {
     // O(N)presum, O(logN)pick, O(N)

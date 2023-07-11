@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class _448_find_all_numbers_disappeared_in_an_array {
     public List<Integer> findDisappearedNumbers(int[] nums) {

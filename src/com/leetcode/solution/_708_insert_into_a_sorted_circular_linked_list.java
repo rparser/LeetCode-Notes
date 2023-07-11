@@ -20,7 +20,7 @@ class _708_insert_into_a_sorted_circular_linked_list {
             //找到了值
             if (insertVal >= curr.val && insertVal <= curr.next.val)
                 break;
-            //升序curr> curr.next说明curr到结尾，insert>curr说明插入最大值
+                //升序curr> curr.next说明curr到结尾，insert>curr说明插入最大值
             else if (curr.val > curr.next.val && insertVal >= curr.val)
                 break;
                 //升序curr> curr.next说明curr到结尾，insert<curr.next说明插入最小值

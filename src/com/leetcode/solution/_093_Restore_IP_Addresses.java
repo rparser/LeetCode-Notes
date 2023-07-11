@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * backtracking, 找出第一部分合法的IP, 剩余部分变成相似子问题。

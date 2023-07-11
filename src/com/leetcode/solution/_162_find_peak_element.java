@@ -26,6 +26,7 @@ class _162_find_peak_element {
         }
         return -1;
     }
+
     //找波谷
     public int findPeakElementDeep(int[] nums) {
         int len = nums.length;

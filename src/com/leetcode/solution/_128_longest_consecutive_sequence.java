@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 class _128_longest_consecutive_sequence {
     // O(N), O(N) 头尾都设成最长长度， 一次遍历
@@ -33,6 +35,7 @@ class _128_longest_consecutive_sequence {
         }
         return max;
     }
+
     // 两次遍历法
     public int longestConsecutiveSet(int[] nums) {
         Set<Integer> set = new HashSet<>();

@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 public class _460_LFUCache {
     private int min;

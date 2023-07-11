@@ -8,7 +8,7 @@ package com.leetcode.solution;
  * Space complexity : O(1).
  */
 
-public class _088_MergeSortedArray {
+public class _088_Merge_Sorted_Array {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int i = m - 1;
         int j = n - 1;

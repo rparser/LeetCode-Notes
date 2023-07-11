@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 
 class _503_next_greater_element_ii {
     //循环数组 Monotone stack单调增

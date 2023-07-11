@@ -1,6 +1,8 @@
+package com.leetcode.solution;
+
 import java.util.Arrays;
 
-class Solution {
+class _259_3sum_smaller {
     public int threeSumSmaller(int[] nums, int target) {
         if (nums == null || nums.length < 3)
             return 0;

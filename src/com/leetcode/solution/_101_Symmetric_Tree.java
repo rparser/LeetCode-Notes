@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 思路： use recursion to recursively find if nodes in left & right subtree match till leaves.
@@ -46,15 +47,5 @@ public class _101_Symmetric_Tree {
         if (leftN == null || rightN == null) return leftN == rightN;//need both be null
         if (leftN.val != rightN.val) return false;
         return helper(leftN.left, rightN.right) && helper(leftN.right, rightN.left);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

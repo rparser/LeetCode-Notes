@@ -25,6 +25,7 @@ public class _041_First_Missing_Positive {
         nums[index1] = nums[index2];
         nums[index2] = temp;
     }
+
     // O(N) ~ O(1)
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;

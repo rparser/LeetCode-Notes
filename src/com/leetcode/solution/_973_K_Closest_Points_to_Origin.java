@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * 距离原点最近的K点

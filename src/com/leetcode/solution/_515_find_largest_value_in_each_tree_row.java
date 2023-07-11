@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 class _515_find_largest_value_in_each_tree_row {
     public List<Integer> largestValues(TreeNode root) {
@@ -52,15 +55,5 @@ class _515_find_largest_value_in_each_tree_row {
         //下面两行是DFS的核心代码
         helper(root.left, res, level + 1);
         helper(root.right, res, level + 1);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

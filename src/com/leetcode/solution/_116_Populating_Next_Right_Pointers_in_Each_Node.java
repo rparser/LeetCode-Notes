@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 思路1： use recursion,
@@ -32,6 +33,7 @@ public class _116_Populating_Next_Right_Pointers_in_Each_Node {
         }
         return root;
     }
+
     // O(N), O(1)
     public Node connect2(Node root) {
         if (root == null) return root;

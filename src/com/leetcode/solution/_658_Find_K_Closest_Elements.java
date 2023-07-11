@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 离x最近的K个点，二分搜索

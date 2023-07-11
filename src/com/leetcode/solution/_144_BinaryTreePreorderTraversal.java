@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * 前序遍历
@@ -24,15 +26,5 @@ public class _144_BinaryTreePreorderTraversal {
             if (node.left != null) stack.push(node.left);
         }
         return new ArrayList<>(output);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

@@ -20,8 +20,8 @@ public class _081_Search_in_Rotated_Sorted_Array_II {
             // 排除重复值
             if (nums[mid] == nums[low])
                 low++;
-            // 先判断mid和low关系再if target和mid和low关系
-            // 否则如果mid > low，即翻转在后半部分
+                // 先判断mid和low关系再if target和mid和low关系
+                // 否则如果mid > low，即翻转在后半部分
             else if (nums[mid] > nums[low]) {
                 if (target < nums[mid] && target >= nums[low])
                     high = mid - 1; // 如果target值，在low和mid间，则在前半部分找（已排序好）

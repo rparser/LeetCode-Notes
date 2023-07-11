@@ -26,6 +26,7 @@ class _211_Add_and_Search_Word_Data_structure_design {
     public boolean search(String word) {
         return match(word.toCharArray(), 0, root);
     }
+
     //
     private boolean match(char[] chs, int cur, TrieNode node) {
         if (cur == chs.length)
@@ -35,7 +36,7 @@ class _211_Add_and_Search_Word_Data_structure_design {
             for (int i = 0; i < node.children.length; i++)
                 if (node.children[i] != null && match(chs, cur + 1, node.children[i]))
                     return true;
-        //如果没有.直接进这里
+            //如果没有.直接进这里
         } else
             return node.children[chs[cur] - 'a'] != null && match(chs, cur + 1, node.children[chs[cur] - 'a']);
 

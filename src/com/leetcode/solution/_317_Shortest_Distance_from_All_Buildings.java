@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*
  *  思路：
@@ -34,9 +36,10 @@ class _317_Shortest_Distance_from_All_Buildings {
             for (int j = 0; j < n; j++)
                 // (1) 从每一个建筑物开始进行BFS - 因为建筑物数量小于空地数量
                 if (grid[i][j] == 1) {
-                    result = bfs(grid, i, j, visitedCounter, totalDist);
-                    visitedCounter--;
+                    result = bfs(grid, i, j, visitedCounter, totalDist); // result每次都会增大
+                    visitedCounter--; // 最后会是建筑物1的数量
                 }
+        // System.out.println(Arrays.deepToString(grid));
         return result;
     }
 
@@ -54,7 +57,7 @@ class _317_Shortest_Distance_from_All_Buildings {
             for (int[] dir : dirs) {
                 int row = curr[0] + dir[0];
                 int col = curr[1] + dir[1];
-                //grid[row][col] == visitedCounter表示这round未被访问
+                // grid[row][col] == visitedCounter表示这round未被访问
                 // 2障碍不会被访问到，因为2不会等于负数
                 if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length && grid[row][col] == visitedCounter) {
                     if (grid[row][col] == 2)
@@ -65,7 +68,6 @@ class _317_Shortest_Distance_from_All_Buildings {
                     totalDist[row][col] += dist;
                     // (4) 取空格到所有建筑物的最小距离 - 历史最低和当前值相比
                     res = Math.min(res, totalDist[row][col]);
-
 
                     queue.add(new int[]{row, col, dist});
                     // 和 visitedCounter 标识对应

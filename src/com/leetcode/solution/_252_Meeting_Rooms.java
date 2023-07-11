@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class _252_Meeting_Rooms {
     // O(NlogN), O(1)

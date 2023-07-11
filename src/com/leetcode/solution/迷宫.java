@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class 迷宫 {
     public static boolean maze_path(int[][] maze, int[] start, int[] end) {

@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class _173_Binary_Search_Tree_Iterator {
     private Deque<TreeNode> stack;
@@ -35,16 +36,6 @@ public class _173_Binary_Search_Tree_Iterator {
         while (root != null) {
             stack.push(root);
             root = root.left;
-        }
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
         }
     }
 }

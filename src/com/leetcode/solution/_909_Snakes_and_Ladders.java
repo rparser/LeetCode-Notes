@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * BFS蛇和梯子棋盘
@@ -12,7 +13,7 @@ import java.util.*;
  * 跳跃值函数int getBoardValue(int[][] board, int num)
  */
 
-public class _909_SnakesandLadders {
+public class _909_Snakes_and_Ladders {
     public int snakesAndLadders(int[][] board) {
         int n = board.length;
         Queue<Integer> queue = new LinkedList<>();

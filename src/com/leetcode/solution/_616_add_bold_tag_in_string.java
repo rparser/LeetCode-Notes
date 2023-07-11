@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class _616_add_bold_tag_in_string {
     // O(S * N * K) K为单词长度, O(N)

@@ -26,7 +26,7 @@ class _1004_max_consecutive_ones_iii {
                 if (K > 0)
                     K--;
                     // 如果K已经用光（== 0）
-                //（必须还回一个0，因为right已经进入下一个loop且没有K可用）
+                    //（必须还回一个0，因为right已经进入下一个loop且没有K可用）
                 else {
                     //一直到left不为1为止,
                     while (A[left] == 1)

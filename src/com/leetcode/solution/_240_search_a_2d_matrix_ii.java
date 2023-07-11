@@ -14,7 +14,7 @@ class _240_search_a_2d_matrix_ii {
         //但由于左下没有值了，所以必然在左上或右上，即需要向上移动
         //同理，Target大于当前值向右移动
         while (row >= 0 && col < matrix[0].length)
-            if (target < matrix[row][col] )
+            if (target < matrix[row][col])
                 row--;
             else if (target > matrix[row][col])
                 col++;

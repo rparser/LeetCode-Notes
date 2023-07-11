@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class _873_LengthofLongestFibonacciSubsequence {
     public int lenLongestFibSubseq(int[] A) {

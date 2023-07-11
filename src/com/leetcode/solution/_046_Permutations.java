@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Time Complexity: O(n*n!) Note that there are n! permutations and it requires O(n) time to print a a permutation.

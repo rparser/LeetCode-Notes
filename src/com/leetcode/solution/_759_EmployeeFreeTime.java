@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class _759_EmployeeFreeTime {
     public int[][] employeeFreeTime(int[][][] schedule) {

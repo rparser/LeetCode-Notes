@@ -35,7 +35,7 @@ public class _1235_Maximum_Profit_in_Job_Scheduling {
             while (l <= r) {
                 int m = (l + r) / 2;
                 if (endTime[endTimeAscendingIds[m]] > s) { //如果这个m值对应的任务的结束时间，大于了需要查询的i的开始时间，也就是有了重叠Overlap
-                    r = m - 1; // 要从左半区找
+                    r = m - 1; // 要从左半区找 - 二分查找 - 因为返回l所以先放invalid的验证
                 } else { // 如果没有Overlap
                     l = m + 1; // 从右半区找
                 }

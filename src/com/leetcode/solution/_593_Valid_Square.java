@@ -117,7 +117,7 @@ public class _593_Valid_Square {
                 x3 = -(y0 - y1) + x1;
                 y3 = -(x1 - x0) + y1;
                 if (map.containsKey(x2 + "," + y2) && map.containsKey(x3 + "," + y3) && map.get(x2 + "," + y2) != i
-                        && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j)   {
+                        && map.get(x2 + "," + y2) != j && map.get(x3 + "," + y3) != i && map.get(x3 + "," + y3) != j) {
                     int[] arr = new int[]{i, j, map.get(x2 + "," + y2), map.get(x3 + "," + y3)};
                     Arrays.sort(arr);
                     StringBuilder curFind = new StringBuilder();

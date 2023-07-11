@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import java.util.Stack;
 
 /**
-参考144
+ * 参考144
  */
 
 public class _255_VerifyPreorderSequenceinBinarySearchTree {

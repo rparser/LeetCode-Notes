@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class _547_friend_circles {
     //O(n^2), O(n)
@@ -29,6 +30,7 @@ public class _547_friend_circles {
             }
         return count;
     }
+
     //O(n^2), O(n)
     public int findCircleNum(int[][] M) {
         int count = 0;

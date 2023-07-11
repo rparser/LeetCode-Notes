@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class _1047_remove_all_adjacent_duplicates_in_string {
     public String removeDuplicates(String S) {

@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * 两个函数要掌握，String.split(regex, limit) limit是把String分割为几段

@@ -2,7 +2,7 @@ package com.leetcode.solution;
 
 //后序遍历（深度优先）+减枝算法
 
-import java.util.*;
+import java.util.Stack;
 
 class _938_range_sum_of_bst {
     public int rangeSumBST(TreeNode root, int L, int R) {

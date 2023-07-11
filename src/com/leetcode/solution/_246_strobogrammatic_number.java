@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class _246_strobogrammatic_number {
     //O(N), O(N) ~O(1)

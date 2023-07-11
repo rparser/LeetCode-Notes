@@ -1,9 +1,10 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class _862_shortest_subarray_with_sum_at_least_k {
-//    O(N), O(N)
+    //    O(N), O(N)
     public int shortestSubarray(int[] nums, int k) {
         if (nums == null || nums.length == 0)
             return -1;

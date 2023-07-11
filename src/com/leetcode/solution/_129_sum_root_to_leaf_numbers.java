@@ -17,14 +17,4 @@ class _129_sum_root_to_leaf_numbers {
         return findRootToLeafPathNumbers(currentNode.left, pathSum) +
                 findRootToLeafPathNumbers(currentNode.right, pathSum);
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

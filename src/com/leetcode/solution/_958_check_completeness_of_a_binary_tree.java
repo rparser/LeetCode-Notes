@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 class _958_check_completeness_of_a_binary_tree {
     //   层序遍历,分别加入

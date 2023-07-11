@@ -2,6 +2,7 @@ package com.leetcode.solution;
 
 class _1026_maximum_difference_between_node_and_ancestor {
     int result = Integer.MIN_VALUE;
+
     // 使用全局变量保存最大差值，进行dfs，
     // 每次递归查找当前路径的最大值和最小值，到达叶子节点时使用当前路径的最大值和最小值更新全局变量。
     //O(N), O(N)

@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashSet;
 
 /**
  * Time complexity : O(81*3) ~ O(1) since all we do here is just one iteration over the board with 81 cells.

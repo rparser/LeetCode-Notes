@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.TreeSet;
 
 public class _855_exam_room {
     // TreeSet升序，为了找到left most和right most的学生  O(P)，其中 P 是当前入座学生的数目

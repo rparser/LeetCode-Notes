@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 class _105_construct_binary_tree_from_preorder_and_inorder_traversal {
     //没用重复元素 O(N), O(N)

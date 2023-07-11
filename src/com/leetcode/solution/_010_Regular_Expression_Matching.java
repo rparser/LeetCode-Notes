@@ -33,8 +33,8 @@ public class _010_Regular_Expression_Matching {
                     // *可以为空，所以如果pc是* 如果dp[i][j - 2] 是 true则必然dp[i][j]也是true
                     if (dp[i][j - 2])
                         dp[i][j] = true;//0 presence of pre letter
-                    // p需要能前移1个。（当前p指向的是j-1，前移1位就是j-2，因此为j>=2）
-                    // 如果dp[i][j - 2]是false
+                        // p需要能前移1个。（当前p指向的是j-1，前移1位就是j-2，因此为j>=2）
+                        // 如果dp[i][j - 2]是false
                     else if (p.charAt(j - 2) == s.charAt(i - 1) || p.charAt(j - 2) == '.')
                         dp[i][j] = dp[i - 1][j];
                 } //除此之外的情况都为false

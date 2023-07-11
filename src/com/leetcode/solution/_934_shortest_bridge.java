@@ -1,12 +1,14 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class _934_shortest_bridge {
     //先DFS把一座岛paint成2，之后BFS 1找2
     private static final int[][] DIRECTIONS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     private static final int SECOND_ISLAND = 2;
     private static final int VISITED = -1;
+
     // O(MN),O(MN)
     public int shortestBridge(int[][] grid) {
         //第二个岛已经dfs涂色完毕

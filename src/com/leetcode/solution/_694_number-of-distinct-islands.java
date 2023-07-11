@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 岛屿形状统计

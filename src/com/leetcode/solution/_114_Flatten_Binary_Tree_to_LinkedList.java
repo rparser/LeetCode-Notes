@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 //全指向右侧
 public class _114_Flatten_Binary_Tree_to_LinkedList {

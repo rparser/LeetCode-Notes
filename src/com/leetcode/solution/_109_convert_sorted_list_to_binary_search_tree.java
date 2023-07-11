@@ -25,14 +25,4 @@ class _109_convert_sorted_list_to_binary_search_tree {
         root.right = sortedListToBST(slow.next);
         return root;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.PriorityQueue;
 
 /**
  * time  O(NlogN + KlogN) at the most, all the projects will be pushed to both the heaps once

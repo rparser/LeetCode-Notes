@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * 最小堆minHeap，先按start排序，然后维护一个minHeap，堆顶元素是会议结束时间最早的区间，也就是end最小。

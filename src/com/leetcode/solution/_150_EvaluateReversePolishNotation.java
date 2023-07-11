@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * It’s trivial that we only use O(1) time for each iteration, so it will take O(n) time if n denotes to length of tokens.

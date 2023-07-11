@@ -1,7 +1,5 @@
 package com.leetcode.solution;
 
-import java.util.*;
-
 class _189_rotate_array {
     //O(N), O(1)
     // 当我们旋转数组 k 次， k%n 个尾部元素会被移动到头部，剩下的元素会被向后移动。

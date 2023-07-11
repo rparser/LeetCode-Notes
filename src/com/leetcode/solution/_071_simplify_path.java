@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * 首先定义栈用来存储路径信息，定义字符数组 str 来分隔字符串

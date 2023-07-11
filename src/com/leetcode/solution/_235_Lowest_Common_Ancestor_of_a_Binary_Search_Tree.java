@@ -40,14 +40,4 @@ public class _235_Lowest_Common_Ancestor_of_a_Binary_Search_Tree {
         else
             return root; //在pq之间则返回parent
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

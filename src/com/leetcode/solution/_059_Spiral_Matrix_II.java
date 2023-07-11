@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _059_Spiral_Matrix_II {
     public int[][] generateMatrix(int n) {
         //右、下、左、上
         int[][] direction = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};

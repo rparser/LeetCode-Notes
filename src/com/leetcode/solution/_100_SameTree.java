@@ -14,14 +14,4 @@ public class _100_SameTree {
 
         return isSameTree(s.left, t.left) && isSameTree(s.right, t.right); //继续看子树
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

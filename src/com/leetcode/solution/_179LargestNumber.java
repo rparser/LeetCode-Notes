@@ -1,9 +1,10 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
-import java.util.*;
+import java.util.Arrays;
 
 //按照字符串比较
 public class _179LargestNumber {

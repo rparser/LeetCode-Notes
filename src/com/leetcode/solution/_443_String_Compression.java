@@ -1,10 +1,10 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

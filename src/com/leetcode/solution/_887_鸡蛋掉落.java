@@ -1,7 +1,7 @@
 package com.leetcode.solution;
 
 public class _887_鸡蛋掉落 {
-//    你将获得 K 个鸡蛋，并可以使用一栋从 1 到 N  共有 N 层楼的建筑。
+    //    你将获得 K 个鸡蛋，并可以使用一栋从 1 到 N  共有 N 层楼的建筑。
 //
 //    每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。
 //
@@ -23,25 +23,25 @@ public class _887_鸡蛋掉落 {
 //    f(T, K) = 1 + f(T-1, K-1) + f(T-1, K)
 //    边界条件为：当 T≥1 的时候 f(T, 1) = T，当 K≥1 时，f(1,K)=1。
 //反过来想这个问题：如果我们可以做 TT 次操作，而且有 KK 个鸡蛋，那么我们能找到答案的最高的 NN 是多少
-public int superEggDrop(int K, int N) {
-    if (N == 1) {
-        return 1;
-    }
-    int[][] f = new int[N + 1][K + 1];
-    for (int i = 1; i <= K; ++i) {
-        f[1][i] = 1;
-    }
-    int ans = -1;
-    for (int i = 2; i <= N; ++i) {
-        for (int j = 1; j <= K; ++j) {
-            f[i][j] = 1 + f[i - 1][j - 1] + f[i - 1][j];
+    public int superEggDrop(int K, int N) {
+        if (N == 1) {
+            return 1;
         }
-        if (f[i][K] >= N) {
-            ans = i;
-            break;
+        int[][] f = new int[N + 1][K + 1];
+        for (int i = 1; i <= K; ++i) {
+            f[1][i] = 1;
         }
+        int ans = -1;
+        for (int i = 2; i <= N; ++i) {
+            for (int j = 1; j <= K; ++j) {
+                f[i][j] = 1 + f[i - 1][j - 1] + f[i - 1][j];
+            }
+            if (f[i][K] >= N) {
+                ans = i;
+                break;
+            }
+        }
+        return ans;
     }
-    return ans;
-}
 
 }

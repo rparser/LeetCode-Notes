@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 class _452_minimum_number_of_arrows_to_burst_balloons {
     // O(NlogN)排序，O(1) 类似合并区间

@@ -35,6 +35,7 @@ class _622_design_circular_queue {
 
         return true;
     }
+
     //删除队首的数值(poll)
     public boolean deQueue() {
         if (size == 0)
@@ -48,6 +49,7 @@ class _622_design_circular_queue {
         size--;
         return true;
     }
+
     //peek Front
     public int Front() {
         if (size == 0)
@@ -55,6 +57,7 @@ class _622_design_circular_queue {
 
         return arr[front];
     }
+
     //peek Rear
     public int Rear() {
         if (size == 0)
@@ -63,10 +66,12 @@ class _622_design_circular_queue {
         // 否则返回前一位, rear是直接插入的位置
         return rear == 0 ? arr[arr.length - 1] : arr[rear - 1];
     }
+
     // 查询空
     public boolean isEmpty() {
         return size == 0;
     }
+
     // 查询满
     public boolean isFull() {
         return size == arr.length;

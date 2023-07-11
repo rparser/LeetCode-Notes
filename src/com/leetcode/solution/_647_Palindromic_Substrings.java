@@ -8,7 +8,7 @@ public class _647_Palindromic_Substrings {
         A[1] = '#';
         A[A.length - 1] = '$';
         int t = 2;
-        for (char c: S.toCharArray()) {
+        for (char c : S.toCharArray()) {
             A[t++] = c;
             A[t++] = '#';
         }
@@ -28,7 +28,7 @@ public class _647_Palindromic_Substrings {
             }
         }
         int ans = 0;
-        for (int v: Z)
+        for (int v : Z)
             ans += (v + 1) / 2;
         return ans;
     }

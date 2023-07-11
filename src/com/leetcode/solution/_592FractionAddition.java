@@ -1,9 +1,10 @@
 package com.leetcode.solution;
 
-import java.util.stream.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
-import org.junit.*;
-import org.junit.runner.*;
+import java.util.stream.Stream;
 
 public class _592FractionAddition {
     public String fractionAddition(String expression) {

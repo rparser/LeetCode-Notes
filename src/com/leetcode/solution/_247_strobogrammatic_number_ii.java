@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 // 当n大于2的时候，都是将n等于2的结果，
 // 中间夹上n-2时的结果，这样就可以使用递归了,其中递归的中间值，可以使用List来保存。

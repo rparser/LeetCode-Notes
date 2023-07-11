@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 //O(N) 找重复文件
 public class _609_find_duplicate_file_in_system {
     public List<List<String>> findDuplicate(String[] paths) {

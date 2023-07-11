@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class _030_SubstringwithConcatenationofAllWords {
     public List<Integer> findSubstring(String s, String[] words) {
@@ -25,7 +28,7 @@ public class _030_SubstringwithConcatenationofAllWords {
         Map<String, Integer> seen = new HashMap<>();
         for (int i = 0; i < sub.length(); i += wordLen) {
             String sWord = sub.substring(i, i + wordLen);
-            if(!counts.containsKey(sWord)) return false; //找不到直接返回
+            if (!counts.containsKey(sWord)) return false; //找不到直接返回
             seen.put(sWord, seen.getOrDefault(sWord, 0) + 1);
         }
         return seen.equals(counts);

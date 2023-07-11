@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * 动态规划，走楼梯问题，包括两步三步

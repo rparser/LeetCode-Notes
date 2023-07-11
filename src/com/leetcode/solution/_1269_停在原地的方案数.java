@@ -2,7 +2,7 @@ package com.leetcode.solution;
 
 public class _1269_停在原地的方案数 {
 
-//    有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。
+    //    有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。
 //
 //    每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。
 //
@@ -12,7 +12,7 @@ public class _1269_停在原地的方案数 {
 //
 //    f[i][j] = f[i - 1][j - 1] + f[i - 1][j] + f[i - 1][j + 1]
 //    f[0][0] = 1
-private static int MOD = 1_000_000_007;
+    private static int MOD = 1_000_000_007;
 
     public int numWays(int steps, int arrLen) {
         /**
@@ -42,11 +42,11 @@ private static int MOD = 1_000_000_007;
          状态方程是两两相加就要求mod，而不是三个求和之后再求mod，之前结果总有用例不过
          就是因为三个求和之后再求的mod。
          */
-        int p[][] = new int[steps+1][steps+1];
+        int p[][] = new int[steps + 1][steps + 1];
 
         p[0][0] = 1;
-        for (int s=1; s<=steps; s++) {
-            for (int l=0; l < Math.min(steps+1, arrLen); l++) {
+        for (int s = 1; s <= steps; s++) {
+            for (int l = 0; l < Math.min(steps + 1, arrLen); l++) {
                 if (s == l) {
                     p[s][l] = 1;
                     break;
@@ -54,13 +54,13 @@ private static int MOD = 1_000_000_007;
                 if (s < l) {
                     break;
                 }
-                p[s][l] = p[s-1][l];
-                if (l-1 > -1) {
-                    p[s][l] += p[s-1][l-1];
+                p[s][l] = p[s - 1][l];
+                if (l - 1 > -1) {
+                    p[s][l] += p[s - 1][l - 1];
                     p[s][l] %= MOD;
                 }
-                if (l+1 < arrLen) {
-                    p[s][l] += p[s-1][l+1];
+                if (l + 1 < arrLen) {
+                    p[s][l] += p[s - 1][l + 1];
                     p[s][l] %= MOD;
                 }
             }

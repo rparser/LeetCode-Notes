@@ -1,9 +1,10 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class _698_partition_to_k_equal_sum_subsets {
-    enum Result { TRUE, FALSE }
+    enum Result {TRUE, FALSE}
+
     //nums下标、剩余的nums的和、memo数组、nums数组、每组的和
     // used 是整形、有32位， 而nums长度最长是16,所以used完全够用。used某一位是1代表nums[某一位]被用过
     boolean search(int used, int todo, Result[] memo, int[] nums, int target) {
@@ -15,13 +16,14 @@ public class _698_partition_to_k_equal_sum_subsets {
             for (int i = 0; i < nums.length; i++)
                 //这个位置的数没有用过、然后不大于target，就可用
                 if ((((used >> i) & 1) == 0) && nums[i] <= targ)
-                    if (search(used | (1<<i), todo - nums[i], memo, nums, target)) {
+                    if (search(used | (1 << i), todo - nums[i], memo, nums, target)) {
                         memo[used] = Result.TRUE;
                         break;
                     }
         }
         return memo[used] == Result.TRUE;
     }
+
     public boolean canPartitionKSubsets(int[] nums, int k) {
         //nums数组的总和
         int sum = Arrays.stream(nums).sum();

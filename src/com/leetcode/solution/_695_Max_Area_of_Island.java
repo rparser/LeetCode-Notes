@@ -8,6 +8,7 @@ package com.leetcode.solution;
 public class _695_Max_Area_of_Island {
     int curArea = 0;
     int maxArea = 0;
+
     // O(R * C), O(R∗C)
     public int maxAreaOfIsland(int[][] grid) {
         if (grid == null || grid.length < 1 || grid[0].length < 1)

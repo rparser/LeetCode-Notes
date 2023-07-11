@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Time Complexity: O(M + N), where M, N are the lengths of A and B respectively.

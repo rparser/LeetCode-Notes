@@ -13,19 +13,19 @@ class Solution {
 
     public int numRollsToTarget(int d, int f, int target) {
         if (target < d || target > d * f) {
-           /*这一步也很好理解，就是所有骰子的和的最小数为每个骰子的值都为1,既1*d，最大值为每个骰子的值都为f,既d*f*/
+            /*这一步也很好理解，就是所有骰子的和的最小数为每个骰子的值都为1,既1*d，最大值为每个骰子的值都为f,既d*f*/
             return 0;
         }
 
         int[][] result = new int[31][1001];
-       /* row为骰子数量、col为目标点数、int[row][col]为方法数量*/
+        /* row为骰子数量、col为目标点数、int[row][col]为方法数量*/
         int mod = 1000000007;
         result[0][0] = 1;
-       /*当前骰子数量*/
+        /*当前骰子数量*/
         for (int row = 1; row <= d; row++) {
-           /*目标值*/
+            /*目标值*/
             for (int num = row; num <= target && num <= f * row; num++) {
-               /*求当前骰子点数为curNum的时候，获得指定结果值的方法数量*/
+                /*求当前骰子点数为curNum的时候，获得指定结果值的方法数量*/
                 for (int i = 1; i <= f && num - i >= 0; i++) {
                     result[row][num] = (result[row][num] + result[row - 1][num - i]) % mod;
                 }

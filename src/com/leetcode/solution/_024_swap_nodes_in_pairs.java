@@ -17,6 +17,7 @@ class _024_swap_nodes_in_pairs {
         // 返回重新排序后的两个节点的靠前位置节点。
         return node2;
     }
+
     // O(N), O(1)
     public ListNode swapPairs(ListNode head) {
         // 如果传入节点为空或者传入节点的 next 为空，则直接返回传入节点。
@@ -47,4 +48,3 @@ class _024_swap_nodes_in_pairs {
         return node.next;
     }
 }
-

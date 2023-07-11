@@ -12,6 +12,7 @@ class _721_accounts_merge {
         String name;
         String email;
     }
+
     // <email, node> 一共多少个不同的email
     Map<String, Node> map = new HashMap<>();
 

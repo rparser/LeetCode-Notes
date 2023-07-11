@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 class _1249_Minimum_Remove_to_Make_Valid_Parentheses {
     //O(N) O(N) Asterisk
@@ -13,7 +14,7 @@ class _1249_Minimum_Remove_to_Make_Valid_Parentheses {
             if (sb.charAt(i) == ')') { //)如果里面已有（则弹出最近的（，否则标记
                 if (!stack.isEmpty())
                     stack.pop();
-                //需要删除的变成pound
+                    //需要删除的变成pound
                 else
                     sb.setCharAt(i, '#');
             }

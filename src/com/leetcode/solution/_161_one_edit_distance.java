@@ -14,7 +14,7 @@ class _161_one_edit_distance {
                 //如果长度不等，则必须t多一个字母，跳过这个字母后相等
                 if (ls != lt)
                     return s.substring(i).equals(t.substring(i + 1));
-                // 如果长度相等，必须是最后一个字符 || 跳过这个字母后相等
+                    // 如果长度相等，必须是最后一个字符 || 跳过这个字母后相等
                 else
                     return i == ls - 1 || s.substring(i + 1).equals(t.substring(i + 1));
 

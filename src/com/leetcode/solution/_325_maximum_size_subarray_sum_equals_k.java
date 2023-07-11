@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class _325_maximum_size_subarray_sum_equals_k {
     public static int maxSubArrayLen(int[] nums, int k) {

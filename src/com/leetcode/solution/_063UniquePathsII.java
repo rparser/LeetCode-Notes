@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * 动态规划，相比62为有障碍物的左上到右下

@@ -1,6 +1,9 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 要想寻找棋盘上所有的皇后，得从多个角度去遍历寻找，根据题目要求每行每列主副对角线不得有多个皇后

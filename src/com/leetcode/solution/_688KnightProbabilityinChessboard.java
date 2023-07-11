@@ -1,9 +1,10 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * Time Complexity: O(N^6log(K)) where N, KN,K are defined as in the problem. There are approximately N^2/8

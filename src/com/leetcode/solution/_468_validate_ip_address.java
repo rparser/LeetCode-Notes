@@ -32,7 +32,7 @@ class Solution {
                             || arr[i].length() > 4
                             || !arr[i].matches("([0-9]|[a-f]|[A-F])+"))
                         return "Neither";
-            // 都符合返回v6
+                // 都符合返回v6
                 return "IPv6";
             }
             return "Neither";

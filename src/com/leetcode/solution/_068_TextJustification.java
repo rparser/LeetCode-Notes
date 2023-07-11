@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 1、算出当前行能放的单词数和所用长度；2、如果当前行将包括最后一个单词或者只包含一个单词，则右边不全空格；

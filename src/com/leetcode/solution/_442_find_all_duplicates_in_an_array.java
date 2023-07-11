@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class _442_find_all_duplicates_in_an_array {
     // 出现过的数字的index变负数,本题是1 ~ N

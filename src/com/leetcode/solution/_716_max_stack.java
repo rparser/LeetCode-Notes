@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 //时间复杂度：O(logn)。top() 操作的时间复杂度为 O(1)，其余操作的时间复杂度为 O(logn)，因此总的时间复杂度为 O(logn)。
 //空间复杂度：O(n)。
 
@@ -10,6 +11,7 @@ public class _716_max_stack {
     LinkedList<Integer> linkedStacks = new LinkedList<>();
     // 排序的List
     ArrayList<Integer> maxStacks = new ArrayList<>();
+
     // push(x) -- 将元素 x 压入栈中。
     public void push(int x) {
         linkedStacks.add(x);
@@ -19,10 +21,10 @@ public class _716_max_stack {
             // 如果大于最后一个加到队尾
             if (x >= maxStacks.get(maxStacks.size() - 1))
                 maxStacks.add(x);
-            // 如果小于第一个加到队头
+                // 如果小于第一个加到队头
             else if (x < maxStacks.get(0))
                 maxStacks.add(0, x);
-            //否则加到相应的位置
+                //否则加到相应的位置
             else {
                 int maxIndex = binarySearch(maxStacks, x, 0, maxStacks.size());
                 maxStacks.add(maxIndex, x);
@@ -40,14 +42,17 @@ public class _716_max_stack {
         }
         return linkedStacks.remove(linkedStacks.size() - 1);
     }
+
     //top() -- 返回栈顶元素。
     public int top() {
         return linkedStacks.get(linkedStacks.size() - 1);
     }
+
     // peekMax() -- 返回栈中最大元素。
     public int peekMax() {
         return maxStacks.get(maxStacks.size() - 1);
     }
+
     // popMax() -- 返回栈中最大的元素，并将其删除。如果有多个最大元素，只要删除最靠近栈顶的那个。
     public int popMax() {
         for (int i = linkedStacks.size() - 1; i >= 0; --i) {

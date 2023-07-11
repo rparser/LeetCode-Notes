@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class _163_missing_ranges {
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
@@ -11,7 +12,7 @@ public class _163_missing_ranges {
             //如果只有一个数
             if (left + 1 == num)
                 res.add(String.valueOf(left));
-            // 如果有多个数
+                // 如果有多个数
             else if (left + 1 < num)
                 res.add(left + "->" + (num - 1));
 

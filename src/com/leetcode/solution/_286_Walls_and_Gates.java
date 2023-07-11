@@ -1,10 +1,15 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
-class _286_walls_and_gates {
+/**
+ * BFS不需要分层记录size,直接根据之前的值+
+ */
+class _286_Walls_and_Gates {
     // O(mn), O(mn)
     private final int[][] DIRS = {{-1, 0}, {0, 1}, {0, -1}, {1, 0}};
+
     public void wallsAndGates(int[][] rooms) {
         if (rooms.length == 0 || rooms[0].length == 0) return;
         int m = rooms.length;
@@ -12,6 +17,7 @@ class _286_walls_and_gates {
 
         Queue<int[]> queue = new LinkedList<>();
         // add all gates to the queue
+        // add对应offer，remove对应poll，element对应peek，后者不返回异常
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
                 if (rooms[i][j] == 0)

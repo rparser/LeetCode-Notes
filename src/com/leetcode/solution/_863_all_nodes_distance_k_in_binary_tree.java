@@ -118,14 +118,4 @@ class _863_all_nodes_distance_k_in_binary_tree {
         setParentTreeNode(root.left, parentTreeNodeMap, root); //记录父节点，变成无向图
         setParentTreeNode(root.right, parentTreeNodeMap, root);
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

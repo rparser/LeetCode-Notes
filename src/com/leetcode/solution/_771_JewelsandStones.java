@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class _771_JewelsandStones {
     public int numJewelsInStones(String J, String S) {

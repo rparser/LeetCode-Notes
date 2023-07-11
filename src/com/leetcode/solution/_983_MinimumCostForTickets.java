@@ -21,8 +21,8 @@ public class _983_MinimumCostForTickets {
                 continue;
             }
             minCost[day] = Math.min(Math.min(
-                    minCost[day - 1] + costs[0],
-                    minCost[Math.max(0, day - 7)] + costs[1]),
+                            minCost[day - 1] + costs[0],
+                            minCost[Math.max(0, day - 7)] + costs[1]),
                     minCost[Math.max(0, day - 30)] + costs[2]); //当前价格为1,7,30的最小值+对应cost
         }
         return minCost[365];

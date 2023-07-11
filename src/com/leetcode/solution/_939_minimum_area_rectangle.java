@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class _939_minimum_area_rectangle {
     //O(N ^2),O(N) 面积最小矩形，且边平行x,y轴

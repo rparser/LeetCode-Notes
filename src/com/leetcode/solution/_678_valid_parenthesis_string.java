@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 class _678_valid_parenthesis_string {
     //2-stack O(N), O(N)
@@ -45,7 +46,7 @@ class _678_valid_parenthesis_string {
             if (c == '(')
                 count++;
             else if (c == ')' && count-- == 0) {
-                    return false;
+                return false;
             } else if (c == '*')
                 return check(s, i + 1, count + 1) ||  // 作为 (
                         check(s, i + 1, count - 1) || // 作为 )，抵消一个左括号

@@ -1,6 +1,8 @@
 package com.leetcode.solution;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 class _824_goat_latin {
     // O(N), O(1)
@@ -13,7 +15,7 @@ class _824_goat_latin {
             //如果是原因开头直接加入
             if (vowel.contains(word.charAt(0)))
                 sb.append(word);
-            //否则辅音放到最后再加入第一个字母
+                //否则辅音放到最后再加入第一个字母
             else {
                 sb.append(word.substring(1));
                 sb.append(word, 0, 1);

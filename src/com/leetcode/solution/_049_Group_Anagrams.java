@@ -1,7 +1,8 @@
 package com.leetcode.solution;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.util.*;
 
@@ -43,6 +44,7 @@ public class _049_Group_Anagrams {
         }
         return new ArrayList<>(result.values());
     }
+
     //质数积做法xul
     public static List<List<String>> groupAnagrams(String[] strs) {
         int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,

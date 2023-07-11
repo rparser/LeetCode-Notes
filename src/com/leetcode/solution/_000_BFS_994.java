@@ -1,4 +1,9 @@
-public class _994_RottingOranges {
+package com.leetcode.solution;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class _000_BFS_994 {
     public int orangesRotting(int[][] grid) {
         if (grid == null || grid.length == 0) return 0;
         int rows = grid.length;
@@ -24,7 +29,7 @@ public class _994_RottingOranges {
             int size = queue.size();
             for (int i = 0; i < size; i++) { //BFS 检查每一层
                 int[] point = queue.poll(); //取出rotten
-                for (int dir[] : dirs) { //遍历四个方向
+                for (int[] dir : dirs) { //遍历四个方向
                     int x = point[0] + dir[0];
                     int y = point[1] + dir[1];
                     //超出范围，或空值，或已坏，不处理
@@ -40,6 +45,7 @@ public class _994_RottingOranges {
 }
 
 //DP//322
+
 /**
  * DP换零钱
  * 思路：-  use dp bottom up, memoization method
@@ -52,7 +58,7 @@ public class _994_RottingOranges {
  * 如果count==-1||cur<count,更新count=cur再赋给dp
  */
 
-public class _322_CoinChange {
+class _322_CoinChange {
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1]; //0,1,2,..,amount
         for (int i = 1; i <= amount; i++) {
