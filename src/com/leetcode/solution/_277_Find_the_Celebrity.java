@@ -8,7 +8,6 @@ package com.leetcode.solution;
  */
 
 public class _277_Find_the_Celebrity {
-
     public int findCelebrity(int n) {
         int candidate = 0;
         // 最多只有一个名人 - 下面验证i是不是名人
