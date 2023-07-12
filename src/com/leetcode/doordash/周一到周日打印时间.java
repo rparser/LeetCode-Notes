@@ -1,13 +1,12 @@
 package com.leetcode.doordash;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class doordashq {
+public class 周一到周日打印时间 {
     public static Map<String, Integer> dayToInt;
     public static void main(String[] args) throws ParseException {
         String startTimeString = "sun 11:32 pm";
