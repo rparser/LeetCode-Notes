@@ -1,7 +1,8 @@
 package com.leetcode.AmazonOA;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.util.*;
 
@@ -54,10 +55,10 @@ public class MinimumCostMST {
     }
 
     int getMinimumCostToConstruct2(int numTotalAvailableCities, int numTotalAvailableRoads, List<List<Integer>> roadsAvailable,
-                                  int numOfRoadsToRepair , List<List<Integer>> costNewRoadsConstruct) {
+                                   int numOfRoadsToRepair, List<List<Integer>> costNewRoadsConstruct) {
         if (numTotalAvailableCities < 2) return 0;
-        List<List<Integer>> roadsList=new ArrayList<>(roadsAvailable);
-        for(List<Integer> road:costNewRoadsConstruct){
+        List<List<Integer>> roadsList = new ArrayList<>(roadsAvailable);
+        for (List<Integer> road : costNewRoadsConstruct) {
             roadsList.remove(Arrays.asList(road.get(0), road.get(1)));
             roadsList.remove(Arrays.asList(road.get(1), road.get(0)));
         }
@@ -167,9 +168,9 @@ public class MinimumCostMST {
 //        Assert.assertEquals(7, getMinimumCostToConstruct(numTotalAvailableCities, numTotalAvailableRoads, roadsAvailable, numNewRoadsConstruct, costNewRoadsConstruct));
         int numTotalAvailableCities2 = 5;
         int numTotalAvailableRoads2 = 2;
-        List<List<Integer>> roadsAvailable2 = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(2, 3), Arrays.asList(3, 4),Arrays.asList(4, 5),Arrays.asList(5, 1));
-        int numOfRoadsToRepair  = 4;
+        List<List<Integer>> roadsAvailable2 = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(2, 3), Arrays.asList(3, 4), Arrays.asList(4, 5), Arrays.asList(5, 1));
+        int numOfRoadsToRepair = 4;
         List<List<Integer>> costNewRoadsConstruct2 = Arrays.asList(Arrays.asList(1, 2, 30), Arrays.asList(1, 5, 40), Arrays.asList(3, 4, 25));
-        Assert.assertEquals(55, getMinimumCostToConstruct2(numTotalAvailableCities2, numTotalAvailableRoads2, roadsAvailable2, numOfRoadsToRepair , costNewRoadsConstruct2));
+        Assert.assertEquals(55, getMinimumCostToConstruct2(numTotalAvailableCities2, numTotalAvailableRoads2, roadsAvailable2, numOfRoadsToRepair, costNewRoadsConstruct2));
     }
 }

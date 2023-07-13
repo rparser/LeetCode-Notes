@@ -96,7 +96,7 @@ public class Valid_Square {
         //加入到set
         Set<String> stringSet = new HashSet<>();
         for (int[] s : input)
-            stringSet.add(s[0] + "," +s[1]);
+            stringSet.add(s[0] + "," + s[1]);
 
         Set<String> result = new HashSet<>();
         for (int i = 0; i < input.size(); i++) { //n^2复杂度

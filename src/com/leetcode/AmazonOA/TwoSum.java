@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 import java.util.*;
+
 //卡车运货
 public class TwoSum {
     public List<Integer> IDsOfPackages(int truckSpace, List<Integer> packageSpace) {
@@ -35,7 +36,7 @@ public class TwoSum {
     @Test
     public void testSolution() {
         int truckSpace = 90;
-        List<Integer> packageSpace = Arrays.asList(1, 40, 30,20, 10, 25, 35, 60);
-        Assert.assertEquals(Arrays.asList(1,3), IDsOfPackages(truckSpace, packageSpace));
+        List<Integer> packageSpace = Arrays.asList(1, 40, 30, 20, 10, 25, 35, 60);
+        Assert.assertEquals(Arrays.asList(1, 3), IDsOfPackages(truckSpace, packageSpace));
     }
 }

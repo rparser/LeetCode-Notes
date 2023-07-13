@@ -10,7 +10,7 @@ package com.leetcode.solution;
  * Complexity：  Time O(n)
  * Space O(h)
  * 模板dfs,int(TreeNode)函数，左右max(0,递归(root.left),更新max=max(max,left+right+root)，返回root+max(left,right)
- *
+ * <p>
  * 当前节点的最大路径： max(自己，自己+左边，自己+右边，自己 + 左边 + 右边）
  * 当前节点作为子节点时的贡献：max(自己，自己+左边，自己+右边）
  * 后者相对前者，少了左右都存在的情况。因为作为子节点时，一条路如果同时包含左右，根就被包含了2次，不符合题目只出现一次的限制了。

@@ -1,7 +1,8 @@
 package com.leetcode.common;
 
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 public class stringToSet {
     public String notShowChar(String s) {

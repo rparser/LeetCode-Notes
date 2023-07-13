@@ -1,8 +1,11 @@
 package com.leetcode.PureStorage;
 
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.locks.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class EventFire {
     class CallBack {
@@ -69,6 +72,7 @@ public class EventFire {
         }
         isFired = true;
     }
+
     //无锁的问题 if say register finished if check(isFired = false) and then fire is run and finished(isFired = true),
     // then cb in register is left in the queue without anyone running.
     public void reg_cbtest(CallBack cb) {
@@ -205,7 +209,7 @@ public class EventFire {
     //合理的无锁
     public void fire() {
         fired = true;
-        while(!eventQueue.isEmpty()) {
+        while (!eventQueue.isEmpty()) {
             CallBack c = eventQueue.pollLast();
             c.call();
         }
@@ -218,7 +222,7 @@ public class EventFire {
                 // 1. loop is still running, so, event_fired will run your   - yes // remove cb from queue, run(cb)
                 // 2. loop finished, it already ran your callback - yes // check queue empty
                 // 3. loop finished, it did not run your callback - yes // run(cb);
-                if(!eventQueue.isEmpty()) {
+                if (!eventQueue.isEmpty()) {
                     CallBack cb = eventQueue.pollLast();
                     cb.call();
                 }

@@ -1,7 +1,5 @@
 package com.leetcode.common;
 
-import org.junit.runner.JUnitCore;
-
 public class test {
     public static int holes(int num) {
         String str = Integer.toString(num);

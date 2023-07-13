@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class 周一到周日打印时间 {
     public static Map<String, Integer> dayToInt;
+
     public static void main(String[] args) throws ParseException {
         String startTimeString = "sun 11:32 pm";
         String endTimeString = "tue 12:53 am";

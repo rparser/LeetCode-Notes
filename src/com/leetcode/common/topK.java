@@ -2,7 +2,7 @@ package com.leetcode.common;
 
 import java.util.*;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toMap;
 
 class Solution {
     public static void main(String[] args) {

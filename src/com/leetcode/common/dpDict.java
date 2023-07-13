@@ -1,7 +1,10 @@
 package com.leetcode.common;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class dpDict {
     //    public int dpDict(int[] dict) {
@@ -20,7 +23,7 @@ public class dpDict {
 //        return dp[0][n]; //长度和减去两个最长子串，即为所需的步数
     public static void main(String[] args) {
         List<int[]> test = new ArrayList<>();
-        int[] arr=new int[]{0, 2, 4};
+        int[] arr = new int[]{0, 2, 4};
         test.add(arr);
         int[] c = test.get(test.size() - 1);
         c[0] = 100;
@@ -33,12 +36,12 @@ public class dpDict {
         c2 = 101;
         System.out.println(test2.get(test2.size() - 1));
 
-        HashMap<Integer,Integer> map=new HashMap<>();
-        map.put(10,1);
-        map.put(9,0);
-        map.put(12,2);
-        map.put(11,0);
-        Map<Integer,Integer> collect=map.entrySet().stream()
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(10, 1);
+        map.put(9, 0);
+        map.put(12, 2);
+        map.put(11, 0);
+        Map<Integer, Integer> collect = map.entrySet().stream()
                 .filter(x -> x.getValue() > 0)
                 .collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
         System.out.println(collect);

@@ -1,6 +1,6 @@
 package com.leetcode.PureStorage;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class BuddySystem {
     //提问 clear是否要求下一层children全变为0还是只变一个为0
@@ -67,14 +67,15 @@ public class BuddySystem {
         System.out.println(Arrays.toString(arr));
     }
 
-    public static boolean continousEight1s(int[] arr){
+    public static boolean continousEight1s(int[] arr) {
         int n = arr.length;
-        int level = (int)(Math.log(n + 1) / Math.log(2)) + 1;
-        if(level < 3) return false;
-        if((n - 2 ^ level) < 8) return false;
+        int level = (int) (Math.log(n + 1) / Math.log(2)) + 1;
+        if (level < 3) return false;
+        if ((n - 2 ^ level) < 8) return false;
         // 第一层是1则下面全是1 或是从倒数第4层算起 时间复杂度一样都为2^k因为每行数量都是上面所有的数量和-1
         return true;
     }
+
     public static void clearBit(int[][] matrix, int offset, int length) {
         int curLevel = matrix.length - 1;
         int left = offset;

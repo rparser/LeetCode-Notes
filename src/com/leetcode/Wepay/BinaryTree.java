@@ -31,6 +31,7 @@ public class BinaryTree {
         // Finally convert right subtree
         BinaryTree2DoubleLinkedList(root.right);
     }
+
     /* Function to print nodes in a given doubly linked list */
     void printList(Node node) {
         while (node != null) {
@@ -38,6 +39,7 @@ public class BinaryTree {
             node = node.right;
         }
     }
+
     // Driver program to test above functions
     public static void main(String[] args) {
         // Let us create the tree as shown in above diagram

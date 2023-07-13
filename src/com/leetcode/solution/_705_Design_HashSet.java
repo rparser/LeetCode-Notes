@@ -5,6 +5,7 @@ public class _705_Design_HashSet {
     static class Node {
         int val;
         Node prev, next;
+
         Node(int val) {
             this.val = val;
         }

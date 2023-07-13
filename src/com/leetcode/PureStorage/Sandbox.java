@@ -1,10 +1,6 @@
 package com.leetcode.PureStorage;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
-
-import java.util.*;
+import java.util.HashMap;
 
 public class Sandbox {
 //    public List<Integer> IDsOfPackages(int truckSpace, List<Integer> packageSpace) {
@@ -51,11 +47,11 @@ public class Sandbox {
 //                hash_map.containsKey("Yo"+"u"));
 
         HashMap<int[], Integer> map2 = new HashMap<>();
-        int[] a=new int[]{1,2,3};
-        int[] b=new int[]{1,2,3};
-        map2.put(a,22);
-                System.out.println("Is b present? " +
-             hash_map.containsKey(b));
+        int[] a = new int[]{1, 2, 3};
+        int[] b = new int[]{1, 2, 3};
+        map2.put(a, 22);
+        System.out.println("Is b present? " +
+                hash_map.containsKey(b));
 //        JUnitCore.main("com.leetcode.AmazonOA.TwoSum");
     }
 

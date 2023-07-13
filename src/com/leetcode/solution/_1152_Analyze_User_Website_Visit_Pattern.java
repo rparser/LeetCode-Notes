@@ -1,7 +1,5 @@
 package com.leetcode.solution;
 
-import java.util.*;
-
 class _1152_Analyze_User_Website_Visit_Pattern {
 //    public int compareTo(List<String> a, List<String> b) {
 //        for (int i = 0; i < Math.min(a.size(), b.size()); i++) {

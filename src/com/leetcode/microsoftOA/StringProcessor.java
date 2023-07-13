@@ -1,6 +1,7 @@
 package com.leetcode.microsoftOA;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class StringProcessor {
     public static void main(String[] args) {
@@ -9,7 +10,7 @@ public class StringProcessor {
 //        System.out.println(no3char("aaa"));
 //        System.out.println(no3char("abbbbcc"));
 //        System.out.println(replaceQ("a?b?b?ac?"));
-              System.out.println(replaceQ("???????"));
+        System.out.println(replaceQ("???????"));
 //        System.out.println(no3du("aaabbbccc"));
         System.out.println(minduct("aaaaabbcdddddeeefff"));
     }

@@ -3,7 +3,9 @@ package com.leetcode.common;
 // Java program to print all words in the CamelCase
 // dictionary that matches with a given pattern
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Trie {
 
