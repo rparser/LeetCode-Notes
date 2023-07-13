@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution._common;
+
+class SelectionSort {
     /**
      * 选择排序
      *

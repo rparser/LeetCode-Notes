@@ -1,4 +1,8 @@
-class Solution {
+package com.leetcode.solution._common;
+
+import java.util.Arrays;
+
+class MergeSort {
 
     /**
      * 归并排序
