@@ -1,15 +1,17 @@
-public class SeqQueue<T> {
+package com.leetcode.solution._common;
+
+public class Queue<T> {
     private static final int DEFAULT_SIZE = 10;
     private T elementData[];
     private int front, rear;
     private int size;
 
-    public SeqQueue() {
+    public Queue() {
         elementData = (T[]) new Object[DEFAULT_SIZE];
         front = rear = 0;
     }
 
-    public SeqQueue(int capacity) {
+    public Queue(int capacity) {
         elementData = (T[]) new Object[capacity];
         front = rear = 0;
     }

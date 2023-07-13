@@ -3,18 +3,6 @@ package com.leetcode.doordash;
 import java.util.*;
 
 public class ClosestCity {
-    public static void main(String[] args) {
-        String[] names = new String[]{"p1", "p2", "p3", "p4"};
-        int[] xs = new int[]{0, 90, 10, 0};
-        int[] ys = new int[]{100, 0, 10, 0};
-        String[] queries = new String[]{"p1", "p2", "p3", "p4"};
-        // String[] names = new String[] {"p1","p2","p3","p4","p5"};
-        // int[] xs = new int[] {10,20,30,40,50};
-        // int[] ys = new int[] {10,20,30,40,50};
-        // String[] queries = new String[] {"p1","p2","p3","p4","p5"};
-        System.out.println(Arrays.toString(findNearestCities(names, xs, ys, queries)));
-    }
-
     public static String[] findNearestCities(String[] names, int[] xs, int[] ys, String[] queries) {
         Map<String, City> cities = new HashMap<>();
         for (int i = 0; i < names.length; i++) {
@@ -81,6 +69,14 @@ public class ClosestCity {
         } else {
             return lower.name.compareTo(higher.name) < 1 ? lower : higher;
         }
+    }
+
+    public static void main(String[] args) {
+        String[] names = new String[]{"p1", "p2", "p3", "p4"};
+        int[] xs = new int[]{0, 90, 10, 0};
+        int[] ys = new int[]{100, 0, 10, 0};
+        String[] queries = new String[]{"p1", "p2", "p3", "p4"};
+        System.out.println(Arrays.toString(findNearestCities(names, xs, ys, queries)));
     }
 }
 

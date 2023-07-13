@@ -1,4 +1,6 @@
-class solution {
+package com.leetcode.solution._common;
+
+class QuickSort {
     /**
      * 快速排序方法
      *

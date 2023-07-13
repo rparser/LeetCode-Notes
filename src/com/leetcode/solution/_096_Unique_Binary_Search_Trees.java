@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _096_Unique_Binary_Search_Trees {
     public int numTrees(int n) {
         int[] G = new int[n + 1];
         G[0] = G[1] = 1;

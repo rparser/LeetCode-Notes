@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution;
+
+class _086_Partition_List {
     public ListNode partition(ListNode head, int x) {
         ListNode minLink = new ListNode(0);//记录小值链表的头
         ListNode minP = minLink;//对小表操作用的指针

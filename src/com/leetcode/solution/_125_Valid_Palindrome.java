@@ -6,7 +6,7 @@ package com.leetcode.solution;
  * Time & Space complexity: O(n) time O(1) space
  */
 
-public class _125_ValidPalindrome {
+public class _125_Valid_Palindrome {
     public boolean isPalindrome(String s) {
         s = s.trim();
         int i = 0, j = s.length() - 1;

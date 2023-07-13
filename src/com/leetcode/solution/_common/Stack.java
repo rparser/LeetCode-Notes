@@ -1,8 +1,10 @@
-class ArrayStack {
+package com.leetcode.solution._common;
+
+class Stack {
     private int[] arrInt;//内置数组
     private int top;//栈顶指针
 
-    public ArrayStack(int size) {
+    public Stack(int size) {
         this.arrInt = new int[size];
         top = -1;
     }

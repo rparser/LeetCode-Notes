@@ -1,5 +1,6 @@
-public class Solution2 {
+package com.leetcode.solution;
 
+public class _1008_Construct_Binary_Search_Tree_from_Preorder_Traversal {
     // 889. Construct Binary Tree from Preorder and Postorder Traversal
     // 1028 就是更难点的题目了
     public TreeNode bstFromPreorder(int[] preorder) {

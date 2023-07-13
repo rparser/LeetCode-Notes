@@ -17,7 +17,7 @@ import java.util.List;
  * Space Complexity: O(N).
  */
 
-public class _763PartitionLabels {
+public class _763_Partition_Labels {
     public List<Integer> partitionLabels(String S) {
         int[] last = new int[26]; // 记录字母最后的位置
         for (int i = 0; i < S.length(); i++) // 遍历第一次记录位置

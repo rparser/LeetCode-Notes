@@ -1,4 +1,10 @@
-class Solution {
+package com.leetcode.solution;
+
+import java.awt.*;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class _097_Interleaving_String {
     public boolean isInterleaveDP(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length()) {
             return false;
@@ -25,7 +31,7 @@ class Solution {
         if (s1.length() + s2.length() != s3.length()) {
             return false;
         }
-        Queue<Point> queue = new LinkedList<Point>();
+        Queue<Point> queue = new LinkedList<>();
         queue.add(new Point(0, 0));
         //判断是否已经遍历过
         boolean[][] visited = new boolean[s1.length() + 1][s2.length() + 1];
@@ -53,15 +59,5 @@ class Solution {
             }
         }
         return false;
-    }
-}
-
-class Point {
-    int x;
-    int y;
-
-    Point(int x, int y) {
-        this.x = x;
-        this.y = y;
     }
 }

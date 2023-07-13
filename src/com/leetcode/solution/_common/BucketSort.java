@@ -1,4 +1,8 @@
-class Solution {
+package com.leetcode.solution._common;
+
+import java.util.ArrayList;
+
+class BucketSort {
     /**
      * 桶排序
      *

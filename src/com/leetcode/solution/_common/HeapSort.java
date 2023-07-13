@@ -1,4 +1,6 @@
-class Solution {
+package com.leetcode.solution._common;
+
+class HeapSort {
     //声明全局变量，用于记录数组array的长度；
     static int len;
 
@@ -53,5 +55,11 @@ class Solution {
             swap(array, maxIndex, i);
             adjustHeap(array, maxIndex);
         }
+    }
+
+    static void swap(int[] arr, int from, int to) {
+        int temp = arr[from];
+        arr[from] = arr[to];
+        arr[to] = temp;
     }
 }
