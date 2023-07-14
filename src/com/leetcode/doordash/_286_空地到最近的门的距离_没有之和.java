@@ -53,9 +53,8 @@ class _286_空地到最近的门的距离_没有之和 {
             return;
 
         rooms[i][j] = dis;
-        dfs(rooms, i + 1, j, dis + 1);
-        dfs(rooms, i - 1, j, dis + 1);
-        dfs(rooms, i, j + 1, dis + 1);
-        dfs(rooms, i, j - 1, dis + 1);
+        for (int[] dir : DIRS) {
+            dfs(rooms, i + dir[0], j + dir[1], dis + 1);
+        }
     }
 }

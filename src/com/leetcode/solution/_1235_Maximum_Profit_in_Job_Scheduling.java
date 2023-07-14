@@ -18,14 +18,10 @@ public class _1235_Maximum_Profit_in_Job_Scheduling {
             endTimeAscendingIds[i] = i;
         } // 制作ids数组 从0到n-1
         Arrays.sort(endTimeAscendingIds, Comparator.comparingInt(id -> endTime[id])); // 按endTime照时间，对ids数组下标进行排序
-        // System.out.println(
-        //     Arrays.stream(ids)
-        //         .map(String::valueOf)
-        //         .collect(Collectors.joining("-"))
-        // );
+
         int[] max = new int[n + 1]; //max[i](i > 0时)表示所有endTime排名小于等于i的任务的最大收益。max[0]作为一个辅助值为0。
         max[1] = profit[endTimeAscendingIds[0]]; //注意下标 - 只加入第一个完成的任务，是备注的情况2，因为情况1不存在
-        //  System.out.println("0:" + max[0]);
+
         for (int i = 2; i <= n; i++) {
             int id = endTimeAscendingIds[i - 1]; // 注意下标
             int s = startTime[id]; //endTime排名为i的任务的开始时间
@@ -42,7 +38,6 @@ public class _1235_Maximum_Profit_in_Job_Scheduling {
             }
             //此时，l就是endTime小于等于s的兼职的数目，注意l可以是0，max[0]恰好是0，省了一次if判断（但代价是每次求id时i都要i-1）
             max[i] = Math.max(max[i - 1], max[l] + profit[id]);
-            // System.out.println(i + "_" + r + "_" + max[i]);
         }
         return max[n]; // 最后一个值
     }

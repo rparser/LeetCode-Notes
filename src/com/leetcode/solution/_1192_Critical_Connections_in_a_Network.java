@@ -5,7 +5,7 @@ import java.util.List;
 
 class _1192_Critical_Connections_in_a_Network {
     //tarjan算法
-    private List<Integer>[] edges;
+    private List<List<Integer>> edges;
     private int[] DFN;
     private int[] LOW;
     private boolean[] visited;
@@ -13,19 +13,19 @@ class _1192_Critical_Connections_in_a_Network {
     private int t;
 
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
-        this.edges = new ArrayList[n];
+        this.edges = new ArrayList<>(n);
         this.DFN = new int[n];
         this.LOW = new int[n];
         this.visited = new boolean[n];
         this.ans = new ArrayList<>();
         this.t = 0;
         for (int i = 0; i < n; i++) {
-            edges[i] = new ArrayList<>();
+            edges.set(i, new ArrayList<>());
         }
         for (List<Integer> conn : connections) {
             int n1 = conn.get(0), n2 = conn.get(1);
-            edges[n1].add(n2);
-            edges[n2].add(n1);
+            edges.get(n1).add(n2);
+            edges.get(n2).add(n1);
         }
         tarjan(0, -1);
         return ans;
@@ -36,7 +36,7 @@ class _1192_Critical_Connections_in_a_Network {
         DFN[cur] = t;
         LOW[cur] = t;
         visited[cur] = true;
-        for (int node : edges[cur]) {
+        for (int node : edges.get(cur)) {
             if (node == pre) continue;
             if (!visited[node]) {
                 tarjan(node, cur);

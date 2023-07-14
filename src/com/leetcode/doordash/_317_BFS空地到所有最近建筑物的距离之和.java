@@ -38,7 +38,6 @@ class _317_BFS空地到所有最近建筑物的距离之和 {
                     result = bfs(grid, i, j, visitedCounter, totalDist); // result每次都会增大
                     visitedCounter--; // 最后会是建筑物1的数量
                 }
-        // System.out.println(Arrays.deepToString(grid));
         return result;
     }
 

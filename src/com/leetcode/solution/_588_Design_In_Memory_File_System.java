@@ -9,7 +9,6 @@ class _588_Design_In_Memory_File_System {
         AbstractFile(String name) {
             this.name = name;
         }
-
     }
 
     class Directory extends AbstractFile {
@@ -19,7 +18,6 @@ class _588_Design_In_Memory_File_System {
             super(name);
             this.children = new HashMap<>();
         }
-
     }
 
     class File extends AbstractFile {

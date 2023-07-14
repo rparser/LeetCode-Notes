@@ -19,8 +19,11 @@ package com.leetcode.solution;
 
 public class _124_Binary_Tree_Maximum_Path_Sum {
     int maxPath = Integer.MIN_VALUE;
-
-    // O(N), O(H)
+    int maxPath2 = Integer.MIN_VALUE;
+    public int maxPathSumLeafToLeaf(TreeNode root) {
+        dfsLeafToLeaf(root);
+        return maxPath;
+    }
     public int maxPathSum(TreeNode root) {
         dfsPath(root);
         return maxPath;
@@ -32,13 +35,73 @@ public class _124_Binary_Tree_Maximum_Path_Sum {
         if (root == null)
             return 0;
 
-        int sum1 = Math.max(0, dfsPath(root.left)); // 0代表如果负值就不继续
-        int sum2 = Math.max(0, dfsPath(root.right));
+        int leftSum = Math.max(0, dfsPath(root.left)); // 0代表如果负值就不继续
+        int rightSum = Math.max(0, dfsPath(root.right));
 
         // 更新的是总的最大路经
-        maxPath = Math.max(maxPath, sum1 + sum2 + root.val); // update max_sum if it's better to start a new path
+        maxPath = Math.max(maxPath, leftSum + rightSum + root.val); // update max_sum if it's better to start a new path
 
         // return的是指当前节点作为子节点（给parent）的最大贡献值
-        return root.val + Math.max(sum1, sum2); //返回当前分支的长度 - root + 左子树或右子树，取较大值作为当前分支
+        return root.val + Math.max(leftSum, rightSum); //返回当前分支的长度 - root + 左子树或右子树，取较大值作为当前分支
+    }
+
+    // ==========================Leaf to Leaf, 可以为负值
+    private int dfsLeafToLeaf(TreeNode root) {
+        if (root == null)
+            return 0;
+        // 由于必须是从叶节点到叶节点 ，所以是否是叶节点，应该有不同的处理方式
+        // 当前节点为叶节点时，返回节点值 - 不一样
+        if (root.left == null && root.right == null)
+            return root.val;
+
+        // 递归计算左右子树的路径和 -基本一样 除去不和0比较，因为负数也要接受
+        int leftSum = dfsLeafToLeaf(root.left);
+        int rightSum = dfsLeafToLeaf(root.right);
+
+        // 更新最大路径和 - 不一样 只有同时有左右子树才能有leftSum和rightSum才能更新maxPath
+        if (root.left != null && root.right != null) {
+            maxPath2 = Math.max(maxPath2, leftSum + rightSum + root.val);
+        }
+
+        // 返回当前节点值和左右子树中较大的路径和 - 一样
+        return root.val + Math.max(leftSum, rightSum);
+    }
+
+    // ==========================添加alive属性
+    static class TreeNode2 {
+        int val;
+        boolean alive;
+        TreeNode2 left;
+        TreeNode2 right;
+        TreeNode2(int x) {
+            val = x;
+        }
+    }
+
+    private int dfsAlive(TreeNode2 root) {
+        if (root == null)
+            return 0;
+
+        // 当前节点为叶节点时，只有 alive 节点才能作为路径起点或终点
+        if (root.left == null && root.right == null) {
+            if (!root.alive)
+                return 0;
+            return root.val;
+        }
+
+        // 递归计算左右子树的路径和
+        int leftSum = dfsAlive(root.left);
+        int rightSum = dfsAlive(root.right);
+
+        // 只有 alive 节点才能作为路径的起点或终点
+        if (!root.alive) {
+            return Math.max(leftSum, rightSum);
+        }
+
+        // 更新最大路径和
+        maxPath2 = Math.max(maxPath2, leftSum + rightSum + root.val);
+
+        // 返回当前节点值和左右子树中较大的路径和
+        return root.val + Math.max(leftSum, rightSum);
     }
 }

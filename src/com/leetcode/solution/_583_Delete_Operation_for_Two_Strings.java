@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
-public class _583DeleteOperationforTwoStrings {
+public class _583_Delete_Operation_for_Two_Strings {
     public int minDistance(String word1, String word2) {
         int m = word1.length();
         int n = word2.length();

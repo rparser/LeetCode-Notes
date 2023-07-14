@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-public class _202_HappyNumber {
+public class _202_Happy_Number {
     //快慢指针 时间O(logN) 空间O(1)
     public int getNext(int n) {
         int totalSum = 0;
@@ -24,7 +24,7 @@ public class _202_HappyNumber {
     }
 
     // 数学法
-    public boolean isHappy(int n) {
+    public boolean isHappy2(int n) {
         int[] mark = new int[8];
         while (n > 1) {
             n = convert(n);

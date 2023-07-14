@@ -5,16 +5,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-public class _773_SlidingPuzzle {
+public class _773_Sliding_Puzzle {
     public int slidingPuzzle(int[][] board) {
         int kRows = board.length;
         int kCols = board[0].length;
         StringBuilder startSb = new StringBuilder();
         StringBuilder goalSb = new StringBuilder();
         int num = 0;
-        for (int i = 0; i < kRows; ++i)
+        for (int[] ints : board)
             for (int j = 0; j < kCols; ++j) {
-                startSb.append(board[i][j]);
+                startSb.append(ints[j]);
                 goalSb.append(num);
                 num++;
             }
@@ -22,7 +22,8 @@ public class _773_SlidingPuzzle {
         String start = startSb.toString();
         String goal = goalSb.toString();
         goal = "123450";
-        if (start.equals(goal)) return 0;
+        if (start.equals(goal))
+            return 0;
 
         int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}; //four directions
 
@@ -46,7 +47,7 @@ public class _773_SlidingPuzzle {
                     if (tx < 0 || ty < 0 || tx >= kCols || ty >= kRows) continue;
                     int pp = ty * kCols + tx;
                     String t = s;
-                    char ch[] = t.toCharArray();
+                    char[] ch = t.toCharArray();
                     char temp = ch[p];
                     ch[p] = ch[pp];
                     ch[pp] = temp;

@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class _1197_minimum_knight_moves {
+class _1197_Minimum_Knight_Moves {
     private static final int[][] DIRECTIONS = {{-1, -2}, {-2, -1}, {-2, 1}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
 
     public int minKnightMoves(int x, int y) {
