@@ -100,4 +100,122 @@ https://www.51cto.com/article/640335.html
 https://doordash.engineering/2023/02/22/how-doordash-designed-a-successful-write-heavy-scalable-and-reliable-inventory-platform/
 
 
+1, 确定Product requirement document - PRD
+提出问题 - 需要登录吗？成功或失败的反馈？历史记录如何保存？
+
+估算RPS request per second - 巅峰流量 peak 10倍
+一天有86400秒 约等于100k -
+如果每天有1亿用户 - 100m/100k = 1000RPS  10倍是10k RPS
+如果每天有100万用户 1m / 100k = 10RPS 10倍是100RPS
+
+
+几个内容：
+1，availability (improved via redundancy) 可用性通过冗余改进
+2，latency (not super important here) 延迟
+3，throughput (improved via partitioning) 吞吐量通过分区改进
+4，consistency (eventual, read after write) 一致性 - 最终，写入后读取
+
+2. 确定data models/entities还有几个API
+ACID属性 - transactionality
+Single responsibility principle - 单一责任原则
+eventual state consistency  如何确定
+webhook/event
+
+3,设计system architecutre - component diagrams
+In-session
+
+4, Failure Scenarios -retries
+Timeouts 超时
+Database shutdown
+Monitor Data inconsistencies - 监控数据不一致
+Idempotency 幂等性 确保只发送一次(do not refresh the page - purchase is processing)
+Primary nodes fail - use replica
+Split-brain 是什么？
+Replication lag需要控制
+Kafka
+
+
+5, Scale
+Partitioning - by hash of user_id - 因为Range会带来hot spot -某个范围会hit同一个partition
+
+
+6,缓存 cache
+7, event streaming
+8, cache aside, read/write through caches/ read heavy
+9. serverless (lambda) / RDBMS and NOSQL 时间短 Lambda and nosql
+10,异步通信
+11，预写日志Write Ahead Log（WAL）-防止写入出错方便回退
+https://cloud.tencent.com/developer/article/1623123
+12, Back Pressure背压 - 队列填满返回503 - 异步
+
+
+Elasticsearch mapreduce
+
+CAP理论P是必须的
+所以要CP 比如Zookeeper -  出问题卡死-比如银行 - 分片（比如ABC保存不同的表格）的系统都是CP-因为ABC的不同任务必须一次性完成-必须回退
+或AP比如Eureka -出问题继续访问不同数据-迁就外部服务-replica可以是AP或CP（回退）
+整个系统并不一定完全C或A - 比如银行流水必须C但用户地址可以A
+
+BASE理论 - Basic Availability - Soft State - Eventual Consistency -NoSql数据库
+最终一致性
+
+
+
+https://1o24bbs.com/t/topic/4242
+设计推特
+
+
+
+
+
+
+
+只和doordash相关
+1, NGINX - 读音engine X 是web server - Application Hosting
+Nginx vs apache - 同步异步阻塞
+https://cloud.tencent.com/developer/article/1635326
+load balancing solutions
+
+2, Cloudflare - Assets and Media
+
+3, Redis - Data Store
+内存数据库 MongoDB是硬盘数据库
+https://developer.aliyun.com/article/38224
+https://juejin.cn/post/6844903997556408334
+Redis 内置对非阻塞、异步、主/副本复制的支持，以确保高水平的数据可用性
+基于内存的缓存比如 Memcached 和 Redis 是应用程序和数据存储之间的一种键值存储。
+Redis可以当消息队列？
+
+
+4, Django - jungo - d不发音 - Python based web框架 -前端
+
+5, Redux
+
+6, AWS Lambda - Application Hosting -serverless争取提到
+
+
+7, AWS CloudFront - Assets and Media
+
+8, Kotlin
+
+9, Retool - Application Hosting
+
+10, CockRoachDB - 数据库
+
+
+
+Utilities:
+1, Stripe - payment
+2, Twillo SendGrid - send email - 发邮件通知 加进系统设计名词-争取提到
+3, Optimizely - Analytics
+4, Segment - Analytics
+
+DevOps:
+1, Docker -devops
+2, Jenkins -devops
+3, Kubernetes -devops
+4, Webpack -devops
+5, New Relic - monitoring
+6, Yarn -devops
+7, Sentry - monitoring
 

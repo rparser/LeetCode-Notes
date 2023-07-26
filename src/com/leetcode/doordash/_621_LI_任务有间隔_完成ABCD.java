@@ -14,7 +14,7 @@ import java.util.Map;
  * O(M), O(1)
  */
 
-class _621_任务有间隔_完成ABCD {
+class _621_LI_任务有间隔_完成ABCD {
     public int leastInterval(char[] tasks, int n) {
         // <任务，统计>
         Map<Character, Integer> map = new HashMap<>();

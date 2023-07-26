@@ -1,0 +1,40 @@
+LC1790/1347字符串异构
+
+
+LC567. 字符串的排列
+给你两个字符串 s1 和 s2 ，写一个函数来判断 s2 是否包含 s1 的排列。如果是，返回 true ；否则，返回 false 。
+
+换句话说，s1 的排列之一是 s2 的 子串 。
+
+
+31, 第二轮是一道地里看到的题，还好前一天仔细思考了一下，直接给出了最优解，这一轮应该没啥问题。给一个数组 [2,5,4,9,1] 找到每一次最小的peak，拿出那个数后，会有新的peak出现，然后再从所有的peak中移除最小的peak，直到所有数都取出来。peak就是比左右都大的数，如果在数组的头尾就只比较有数的那边。 上面的例子输出是 5，9，4，2，1. 我用的是doubly linked list 和min heap。先loop一边把所有的peak放进heap，然后每移除一个node，这个node左右两边的node就有可能变成新的peak，就检测他们有没有符合条件变成新peak，再放进heap里，直到heap为空。+1
+
+
+32,LC1143 换皮的一亿思散，有点不同的是要你找出最长的string，不是只输出长度。我一开始没写出最优解，也是用的dp，不过把找的string存在了每个dp的node上。面试官不满意，后来在他的提示下做了不用存的方法，写完有bug也没时间改了。hr反馈说这轮也有点弱，不过应该不是致命的
+https://www.1point3acres.com/bbs/thread-942564-1-1.html
+
+33,Coding 2: Longest increasing substring and output the substring
+DP的同时加字符到result上，因为result只会在text1[i] == text2[j] 的时候变得更长，相等的时候把字符加到result上就行，注意判断：
+1. 一行能只加一次字符，否则result会有duplicate
+2. dp[i][j] >= 2 的时候才能加字符，否则取当前字符。
+
+34,套壳TOPK 蠡口伞寺器 347
+
+
+36,题目我认为是一个description有点复杂的DP，但最后写出来只过了一个test case，所以我也不知道是不是写错了。
+有一个直线的街道，街道上有n个餐厅，有一个array来表示餐厅的坐标，如：restaurant: [0, 3, 5, 10, 15]
+你是一个开车的外卖小哥，你要去每个餐厅取餐，起始点是第一个餐厅，终点是最后一个餐厅 （经过询问之后，面试官小哥告诉我取餐是从餐厅0->n-1按顺序取）
+你会开车，你也会走路，input给开车速度&走路速度
+每个餐厅有parking time，用一个array表示，如：parkingTime: [3, 3, 4, 5, 1]
+在每个餐厅取餐的时候，你可以选择：
+Option 1: 开车停到该餐厅（花费对应的driving time），Park（花费对应的Parking Time），取餐（不花时间）
+Option 2: 车子停在上一个餐厅，走路去该餐厅（花费walking time），取餐，再走回去上一个餐厅（再次花费walking time）
+Output:
+求取餐所需要的最小时间。
+Input example:
+restaurant: [0, 3, 5, 10, 15]
+parkingTime: [3, 3, 4, 5, 1]
+WalkingSpeed: 1
+DrivingSpeed: 2
+Hint: dri‍‌‌‌‍‍‍‍‍‌‌‍‌‌‌‌‌ving time我们不用太在意，因为不管怎么做选择， driving time都是distance between restaurant[0] and restaurant[n-1] / driving speed.
+
