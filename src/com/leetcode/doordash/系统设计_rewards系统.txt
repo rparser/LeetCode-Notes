@@ -1,0 +1,103 @@
+1，讨论设计需求
+
+FrontEnd->Restaurants List->Items List->Reviews List->Review details
+->Upvote/Downvote API->Vote API->RDBMS
+
+用户的偏好可以被记录
+user inputs are great assets for the company
+
+2, Entities
+User, Restaurant, Item, Review, Vote
+
+User
+user_id
+userName
+password- hash
+user_credit - int
+votes - int 零点清零 - userVotes可以单独建一个表格
+Redis 的INCR命令可用于跟踪用户已投的票数，并且 Redis 的EXPIRE命令可以设置过期时间以在指定的时间内强制执行投票配额。
+
+Restaurant
+restaurant_id
+name
+address
+description
+
+Item
+item_id -PK
+restaurant_id -FK
+name
+description
+
+Review
+review_id -PK
+user_id -FK
+item_id -FK
+stars - int
+vote_up - int
+vote_down - int
+content
+rewardSent - timestamp
+
+Vote
+vote_id -PK
+user_id -FK
+review_id -FK
+VoteType - boolean
+
+3, APIs
+User Management API(确保已登陆)
+Restaurant API(retrieve)
+Review API(create, retrieve) -GET /restaurants/{restaurant_id}/reviews -POST写评论 /restaurants/{restaurant_id}/review
+Vote API(provide vote) -POST /reviews/{review_id}/upvote -Vote API验证用户身份（是否能投票）-如果可以-POST /votes
+
+4,Security Considerations
+
+5, Database
+RDBMS存储
+Redis辅助cache hot reviews or vote information
+
+前端periodically poll
+
+
+
+
+几种方式
+1, 原子更新 update atomically
+2, 队列 Queue-Based Processing: Use a message queue to manage vote updates asynchronously. When a user casts a vote, the vote information is sent to a message queue. A separate worker process dequeues these vote messages and updates the vote counts in a controlled and consistent manner. This can help reduce contention on the vote count data and improve system performance.
+2,1Apache Kafka: A distributed event streaming platform known for its high throughput, fault-tolerance, and scalability. Kafka is suitable for handling large volumes of data and can be integrated with various programming languages and frameworks.
+
+2,2RabbitMQ: A mature and feature-rich message broker that follows the AMQP (Advanced Message Queuing Protocol) standard. RabbitMQ provides good support for various messaging patterns and is widely used in many applications.
+
+2,3 Amazon SQS (Simple Queue Service): A fully managed message queue service provided by AWS. It offers low latency, high scalability, and built-in redundancy, making it a convenient choice for applications hosted on the AWS cloud.
+
+Python with Celery: Celery is a popular distributed task queue for Python. It allows you to define tasks that can be processed asynchronously by distributed worker nodes. Celery supports various brokers, including RabbitMQ and Redis.
+
+Redis 作为消息队列有Pub/Sub (publish/subscribe) mechanism
+
+1，登录状况,登录之后投票
+2, 用户权限RBAC Role-Based Access Control
+3, 多个用户投票 加入锁 -乐观锁 -For example, add a version number or timestamp to the review record.
+4, SQL - Sharding - hash
+4, Redis缓存数据库 - incr
+
+要注意：
+投票时间 - 每天三次
+自己不能vote自己 - When a user casts a vote, the system should verify that the voter's UserID is different from the UserID associated with the review. - 前端是不够的 但可以通过禁用投票按钮 -While it's possible to implement some basic front-end restrictions to enhance user experience (e.g., disabling the vote button when the user is the review author), the core logic for ensuring that users cannot vote for themselves should be enforced on the back-end.
+
+简单的用Redis复杂的用RabbitMQ
+https://www.51cto.com/article/640335.html
+判断数据是否适合缓存到Redis中，可以从几个方面考虑：会经常查询么？命中率如何？写操作多么？数据大小？
+经常会被查询，但是不经常被修改或者删除的数据；比如数据字典，业务数据中的热点数据；这样不仅提升查询效率，还可以减少数据库的压力；
+
+经常被查询，实时性要求不高数据，比如网站的最新列表、排行榜之类的数据，只需要定时统计一次，然后把统计结果放到Redis中提供查询（请不要使用select top 10 from xxxx）。
+
+缓存可以方便数据共享，比如我先用电脑网页打开X东，选了两件商品放到购物车里面，再登录手机APP，也是可以看到购物车里面的商品的。
+查询的请求过来，现在Redis中查询，如果查询不到，就查询数据库拿到数据，再放到缓存中，这样第二次相同的查询请求过来，就可以直接在Redis中拿到数据；不过要注意【缓存穿透】的问题。
+缓存的刷新会比较复杂，通常是修改完数据库之后，还需要对Redis中的数据进行操作；代码很简单，但是需要保证这两步为同一事务，或最终的事务一致性。
+
+表格增加TTL,使用batch,Service-level agreement SLA
+https://doordash.engineering/2023/02/22/how-doordash-designed-a-successful-write-heavy-scalable-and-reliable-inventory-platform/
+
+
+

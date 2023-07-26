@@ -6,7 +6,7 @@ package com.leetcode.doordash;
  * 有0次不等 且 s中有出线数量>=2的字符 - 可以相同字符交换
  */
 
-public class _859_字符串异构交换 {
+public class _859_SS字符串异构交换 {
     public static boolean buddyStrings(String s, String goal) {
         //若s和goal的长度不相等直接返回false
         if (s.length() != goal.length())

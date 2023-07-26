@@ -10,7 +10,7 @@ package com.leetcode.doordash;
  * O(mn), O(mn)
  */
 
-class _329_矩阵最长递增 {
+class _329_2D矩阵最长递增 {
     private final int[][] DIRS = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     public int longestIncreasingPath(int[][] matrix) {

@@ -1,0 +1,102 @@
+1，讨论设计需求 - 捐款系统，是否登录前就需要？
+
+FrontEnd->Charity List->Donation Form->Payment Processing->Donation API->RDBMS
+
+2, Entities
+User
+user_id
+first_name
+last_name
+email
+password- hash
+
+Charity
+charity_id
+name
+description
+
+Donation
+donation_id
+charity_id - FK
+user_id / or email is no login is needed
+amount
+payment_status
+donation_time
+
+
+3, APIs
+Charity API - GET /charities - fetch a list of charities
+Donation API - POST /donations ->POST /payment/process(Braintree Payments API)
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john@example.com",
+  "charity_id": 101,
+  "amount": 50.00,
+  "payment_card": {
+    "card_number": "4111 1111 1111 1111",
+    "expiration_date": "12/25",
+    "cvv": "123"
+  }
+}
+
+if success ->PUT /donations/{donation_id}
+{
+  "status": "success",
+  "transaction_id": "BRAINTREE_TXN_ID_12345"
+}
+{
+  "status": "success",
+  "transaction_id": "BRAINTREE_TXN_ID_12345",
+  "donation_timestamp": "2023-01-01 10:30:00"
+}
+{
+  "status": "failure",
+  "error_message": "Insufficient funds"
+}
+
+4,Security Considerations
+
+5, Database
+RDBMS存储
+Redis辅助as the list of charities, to reduce database load.
+
+6,失败处理
+1. **Payment Processing Failure:** 支付失败
+   - Scenario: The Payment Processing service fails to process the payment due to network issues, server downtime, or other technical problems.
+   - Handling: Implement proper error handling and retries in the Payment Processing service to handle temporary failures. If the payment cannot be processed after a certain number of retries, inform the user about the issue and request them to try again later or use an alternative payment method.重试多次后如果依然失败，通知用户
+
+2. **Invalid Donation Data:**表单无效
+   - Scenario: The user submits invalid or incomplete donation data through the Donation Form.
+   - Handling: Validate the donation data on the client-side and server-side to ensure that all required fields are filled correctly. Provide meaningful error messages to guide the user in correcting the data. Additionally, perform data validation in the Donation API to reject invalid or malicious requests.在客户端就可以验证数据，服务器端也能验证，无效后通知用户。
+
+3. **Database Connection Error:**数据库连接超时
+   - Scenario: The Donation API is unable to establish a connection with the Database (RDBMS) due to database server issues or network problems.
+   - Handling: Implement proper error handling and retries for database connections. If the connection cannot be established, return an error response to the SPA, indicating a temporary issue. Log the error for further investigation and resolution.
+   不需要通知用户，记录错误 - 可以将信息先放入cache-异步处理数据库更新-数据库有自己的重试机制
+
+4. **Payment Processing Timeout:**付款超时
+   - Scenario: The Payment Processing service takes too long to respond, leading to a timeout.
+   - Handling: Set appropriate timeout limits for the API calls to the Payment Processing service. If the service does not respond within the specified time, consider it as a failure and inform the user that the payment could not be processed at the moment. Suggest retrying later or using an alternative payment method.
+   通知用户稍后重试
+
+5. **Duplicate Donation Submission:** 重复提交
+   - Scenario: The user accidentally submits the same donation multiple times due to a slow response or double-clicking the "Donate" button.
+   - Handling: Implement safeguards in the Donation API to prevent duplicate donations from being recorded. Use techniques like token-based request validation or Idempotency keys to identify duplicate requests and reject them without creating duplicate entries in the Database. 幂等技术Idempotency keys
+
+6. **Data Integrity Issues:**
+   - Scenario: Data integrity issues arise due to data corruption, failed transactions, or bugs in the system.
+   - Handling: Implement proper transaction handling in the Donation API and database operations to ensure data integrity. Use database constraints and validations to prevent inconsistent data. Monitor the system for potential issues, and perform regular data integrity checks and backups to detect and correct data problems if they occur.
+
+7. **API Rate Limiting:** API速度
+   - Scenario: The API receives an excessive number of requests from a single user or IP address, affecting system performance.
+   - Handling: Implement rate limiting mechanisms in the Donation API to prevent abuse and ensure fair usage. Limit the number of requests a user or IP address can make within a specific time window. Return appropriate error responses when rate limits are exceeded. -限制速度和ip地址的请求数量
+
+8. **Charity API Unavailability:** API不可用
+   - Scenario: The Charity API is unavailable due to server issues or maintenance.
+   - Handling: Implement proper error handling in the SPA to handle cases when the Charity API is down. Display a user-friendly message to inform users that charity information is currently unavailable and encourage them to try again later.
+   -提示友好消息告知不可用且稍后重试
+-可以设置成如果成功发邮件通知
+
+
+

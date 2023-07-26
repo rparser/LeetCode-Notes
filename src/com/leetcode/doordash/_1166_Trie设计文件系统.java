@@ -1,4 +1,4 @@
-package com.leetcode.solution;
+package com.leetcode.doordash;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
  * 基础的Trie操作
  */
 
-public class _1166_Design_File_System {
+public class _1166_Trie设计文件系统 {
     private final TrieNode trie = new TrieNode(-1);
 
     public boolean createPath(String path, int value) {

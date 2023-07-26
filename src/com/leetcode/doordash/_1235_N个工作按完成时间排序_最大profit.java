@@ -7,7 +7,9 @@ import java.util.Comparator;
  * 存在一个升序结果数组max，本数组每个数都是小于等于i时的任务最大收益
  * i的最大收益为下面两种可能之中的更大值
  * 1, i不值得加入任务，i-1比i更好，所以采用max[i-1]
- * 2，i值得加入任务，所以是i和的能加入i任务的最大的x（这里用二分法）,所以采用max[l] + profit[i]
+ * 2，i值得加入任务，所以是i和的能加入i任务的最大的x的和（这里用二分法找x）,所以采用max[x] + profit[i]
+ * T-(NlogN)
+ * S-(N)
  */
 
 public class _1235_N个工作按完成时间排序_最大profit {
@@ -23,7 +25,7 @@ public class _1235_N个工作按完成时间排序_最大profit {
         max[1] = profit[endTimeAscendingIds[0]]; //注意下标 - 只加入第一个完成的任务，是备注的情况2，因为情况1不存在
 
         for (int i = 2; i <= n; i++) {
-            int id = endTimeAscendingIds[i - 1]; // 注意下标
+            int id = endTimeAscendingIds[i - 1]; // id是任务编号 - 从第二个任务开始，比较第一个任务的开始时间
             int s = startTime[id]; //endTime排名为i的任务的开始时间
 
             //二分查找endTime小于等于s的任务的数目（也就是endTime大于s的最小值的下标）
@@ -38,7 +40,6 @@ public class _1235_N个工作按完成时间排序_最大profit {
             }
             //此时，l就是endTime小于等于s的兼职的数目，注意l可以是0，max[0]恰好是0，省了一次if判断（但代价是每次求id时i都要i-1）
             max[i] = Math.max(max[i - 1], max[l] + profit[id]);
-
         }
         return max[n]; // 最后一个值
     }

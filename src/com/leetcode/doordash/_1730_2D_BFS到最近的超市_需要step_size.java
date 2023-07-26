@@ -3,7 +3,7 @@ package com.leetcode.doordash;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class _1730_BFS到最近的超市_需要step_size {
+public class _1730_2D_BFS到最近的超市_需要step_size {
     private final int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     public int getFood(char[][] grid) {

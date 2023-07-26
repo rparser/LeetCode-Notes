@@ -6,7 +6,7 @@ import java.util.Queue;
 /**
  * BFS不需要分层记录size,直接根据之前的值+
  */
-class _286_空地到最近的门的距离_没有之和 {
+class _286_2D_空地到最近的门的距离_没有之和 {
     // O(mn), O(mn)
     private final int[][] DIRS = {{-1, 0}, {0, 1}, {0, -1}, {1, 0}};
 
