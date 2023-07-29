@@ -113,30 +113,30 @@ public class _124_树的最大路径2 {
     //现在，我们使用一个List currentPath 来在DFS过程中保存当前路径。在找到最大路径和时，将 currentPath 赋值给 maxPath，
 // 这样就可以在最后打印出路径上的每个节点。注意，我们在计算路径和时，只计算alive节点的value值。
 int maxSum = Integer.MIN_VALUE;
-    List<TreeNode> maxPath3 = new ArrayList<>();
+    List<TreeNode3> maxPath3 = new ArrayList<>();
 
-    public List<TreeNode> maxPathSum3(TreeNode root) {
-        List<TreeNode> currentPath = new ArrayList<>();
+    public List<TreeNode3> maxPathSum3(TreeNode3 root) {
+        List<TreeNode3> currentPath = new ArrayList<>();
         dfs(root, currentPath);
         return maxPath3;
     }
 
-    private void dfs(TreeNode node, List<TreeNode> currentPath) {
+    private void dfs(TreeNode3 node, List<TreeNode3> currentPath) {
         if (node == null) {
             return;
         }
 
         currentPath.add(node); // 添加当前节点到路径中
 
-        List<TreeNode> leftPath = new ArrayList<>(currentPath); // 创建左子树路径的拷贝
-        List<TreeNode> rightPath = new ArrayList<>(currentPath); // 创建右子树路径的拷贝
+        List<TreeNode3> leftPath = new ArrayList<>(currentPath); // 创建左子树路径的拷贝
+        List<TreeNode3> rightPath = new ArrayList<>(currentPath); // 创建右子树路径的拷贝
 
         dfs(node.left, leftPath); // 递归遍历左子树
         dfs(node.right, rightPath); // 递归遍历右子树
 
         int pathSum = 0;
         if (node.alive) {
-            for (TreeNode n : currentPath) {
+            for (TreeNode3 n : currentPath) {
                 pathSum += n.value; // 计算当前路径上alive节点的value值之和
             }
         }
@@ -147,13 +147,13 @@ int maxSum = Integer.MIN_VALUE;
             maxPath3 = new ArrayList<>(currentPath);
         }
     }
-    class TreeNode {
+    class TreeNode3 {
         int value;
         boolean alive;
-        TreeNode left;
-        TreeNode right;
+        TreeNode3 left;
+        TreeNode3 right;
 
-        public TreeNode(int value, boolean alive) {
+        public TreeNode3(int value, boolean alive) {
             this.value = value;
             this.alive = alive;
         }

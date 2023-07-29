@@ -1,0 +1,191 @@
+放松 - 最后一句总结关闭对话
+
+我看到
+
+我们是领导者WE ARE LEADERS
+做主人。Be an owner
+做大梦想，从小处着手。Dream big, start small
+选择乐观，并有计划。Choose optimism, and have a plan
+
+我们是执行者 WE ARE DOERS
+偏爱行动。Bias for action要聪明，但不要让分析阻碍你的决策。在快节奏的世界中，预测未来的唯一方法是创造未来。我们迅速推出解决方案，测试它们，并根据需要进行改进，因为成长是累积的。
+
+在最低层次的细节上操作。Operate at the lowest level of detail
+了解10,000英尺的视野很重要，但也要知道何时需要深入细节。我们渴望了解最低层次的细节，以便在对我们的业务和客户至关重要的事物上取得进展。
+并且，并非要么这个要么那个。And, not either/or 我们不满足于在选项之间进行选择，也不会为了牺牲一件事而选择另一件事。我们不陷入虚假的二分法，而是努力想办法两全其美。
+
+我们是学习者WE ARE LEARNERS
+探寻真相。Truth seek
+每天进步1%。1% better every day
+以顾客为中心，而不是关注竞争对手。Customer-obsessed, not competitor focused
+
+我们是一个团队WE ARE ONE TEAM
+在桌子上为别人腾出空间。Make room at the table
+超越狭隘的思维。Think outside the room
+一个团队，一个战斗。One team, one fight
+
+
+Hello, this is Tony. I have been working as a software engineer for more than 6 years. My interests are in Back End/Full Stack Engineering and I love to design and implement efficient back end systems/create beautiful performant products with delightful user experiences.
+
+I previously worked in eBay's SEO team. eBay is an international marketplace. My duty is to provide optimized search results for more than 140 million users. I built an automated workflow to store more than 100 millions of nodes and relationships in graph database. Before I joined eBay, I worked in Groupon and Citibank as a software engineer. Both of them provide services to millions of customers internationally.
+
+[My experience at eBay has built up my proficiency in building and cutting-edge technologies and allowed me to build strong relationships with local suppliers.]
+
+I'm interested in the Software Engineer role at [xxx] because I like working in this [] and creating products to benefit customers.
+
+ST:an issue that has been existed for 10 years of business team can’t trace uploaded or updated nodes that they provided for customer search result
+
+A: Work closely with business team and gather requirements, analyze all theses requirements with urgency and implementation difficulties to finalized workflow
+R: Node accuracy rate increased to nearly 100% after this project
+
+How to work with people/
+其他人不同意你的观点
+
+
+结尾需要加入::::add this to the company
+"I believe my technical skills and innovative mindset can bring substantial improvements to the company's products and services, and I am excited to contribute."
+"I am passionate about technology and continuously learning new skills. I am confident that my abilities can inject new vitality and innovation into the company's projects, and I look forward to joining the team."
+"With some experience in software engineering, I am confident that my technical skills can make a substantial contribution to the company's growth. Additionally, I am eager to learn new skills and grow within the team."
+
+
+Close the conversation::ending statement
+"My past experiences have prepared me well for this role, and I am excited to apply my skills to contribute to the company's mission of [insert company mission or goal here]."
+"I believe my previous experiences have given me a solid foundation to excel in this role and help the company achieve its goals. I am eager to use my skills to contribute to the team."
+"I am confident that my past experiences have equipped me with the necessary skills and mindset to help the company succeed. I look forward to working with the team and contributing to the company's growth and success."
+
+
+
+
+Ownership
+Background: Citi / ADA
+ST: There was a newly established ADA compliance team in Citi. This team is responsible for reviewing all pages to meet ADA compliance. The team created a lot of ADA tickets, but from the developer's perspective, there is no clear rule on how to complete it. I was working in  “homepage redesign” team. I was responsible for the development of the new Angular webpage and the maintenance of the old jsp pages.
+A: Since there was no guidance at that moment, I studied and researched ADA compliance and how they should be implemented with aria states and properties. I independently composed the Angular modules ADA Compliance handbook for Citi developers. At the same time, due to a large number of old jsp web pages with ADA issues. I also wrote the fix guidance for jsp, including common ADA issues and how to fix them.
+R: These two documents helped hundreds of developers in the company and millions of users who needed ADA support. The document is still in use now. And even after I left the team, the updated part will refer to my suggestions.
+
+Have backbone, disagree and commit
+Background:Groupon, UI
+ST: On the newly designed travel browse page where I developed, there is a line of numbers that say "100+ bought". I have questions about whether this line should be kept. First, because of the service api that I developed, I knew that this number is set by business not real bought amount. This number may seem strange in some cases, for example, when “the number of bought” is smaller than reviews. Moreover, this number occupies extra space in the UI, and will also bring higher network load. (我对当前的设计有疑问 - 自product team - 因为我同时在前端后端所以我清楚情况)
+A: So I asked my manager whether the new page would not retain this description. After discussion with the product team, I was asked to keep this content as is.
+R: To work with the principle of disagree and commit, I perfectly accomplished the development of the new page. But currently I still want to convince the management to look into this issue. (还是希望)
+
+Deliver Results
+Background: Groupon, MARIS
+ST: During my work in Groupon Getaways, there was a tight deadline for the upgrade of MARIS (Market Rate Inventory Service) to integrate with Expedia Rapid. Due to holidays such as Thanksgiving and Christmas, our work and communication with Expedia fell behind schedule.
+A: In order to ensure that all preparations are completed before the deployment deadline, I spent a lot of extra time to do various testing. Many problems were found, and we fixed them with the efforts of the whole team. (我具体做了什么 do my best/reschedule work to day schedule - that feature was used by millions of users) -
+R: As a result, I sacrificed a lot of personal time but there was no issue reported during or after deployment. We also received praises from the company.
+
+Dive Deep
+Background: Groupon, percentage off
+ST: When I came to Groupon and was still ramping up, I read through all the backlog tickets. I found a long-term bug reported a few months ago, which the percentage-off for certain dates in some hotels were incorrect. It seems to be a small problem for developers, but for actual users this will bring a bad experience.
+A: After I researched for the root causes, I found that this is a complex problem involving the front end and back end. There are both calculation errors in the front end and LARC service (lowest available rate calculator) which does not provide the lowest price correctly.
+R: Two days before this fix was about to be deployed to production, the CTO emailed our team again and said this has been found by one of his friends. However, the team replied that I have fixed the issue, and the fix will come to production two days later. (that give a good recognition of team)
+
+Earn Trust
+Background: Citi, remote
+ST: When I was working on the credit card redemption team, the most senior engineer of microservice in our team worked remotely in Europe. At that time, I needed to redesign the most important aggregator service to make it better compatible with many different credit cards. However, since we were in different time zones, it was difficult for him to keep synced with the other developers in the team. He is very smart and very experienced. But when he couldn't keep up completely, which made him unable to comprehend some of my designs. There has been a problem with our communication for a while. (why there’s lack of trust, he can’t catch up with our conversation flow)
+A: In order to solve this problem, I designed a form to track and record questions and answers between us in detail. Both of us can ask questions. This form is very useful. First, since then I did not miss any single detail.  Second, though we were in different time zones, it gave me more time to think about how to answer his questions and how to solve them. The answer could be more comprehensive than an instant yes or no.
+R: I earned his trust. Also, this form also played a very important role when I was documenting the service months later.
+
+Invent and Simplify
+Background: Citi, modules
+ST: There is a team in Citi that developed Angular modules. Once they changed a function of a form module. But days later, in the email they sent to all the consumers, they did not write down what specific changes were made on that module. This module was not the one that I was working on at the time. So after they were deployed to production, I had issues with the code with several other groups.
+A: I asked them why the module update email they sent did not specify what specific changes were made. They explained their workflow, but I found that their management actually has some problems. Communication between the developers inside of the group is not well structured, and the team lead who sends the email sometimes is not clear about the detailed work from their developers. To prevent similar incidents from happening again, since I cannot change their behavior. I decided to add a lot of new test cases to the previous code.
+R: Since then, other teams have experienced similar situations again, but my code is always reliable.
+
+learn and be curious
+Background: Groupon / React
+ST: When I joined Groupon, two frontend developers in our team transferred to the other team at the same time. I don't have a lot of experience with node.js and React, but I am willing to learn.
+A: Based on my work experience on Angular, I quickly picked up development tasks for A/B testing of both desktop and responsive web applications.
+R: New experiments were very successful, and the ratio of users completing the booking increased by 20%. It increased more than 50 thousands of revenue for the company in the first month.
+
+Customer Obsession
+Background: Citi / Fix the basics, POC
+ST: When I was on the credit card points redemption team, Citi formed a new team: Fix the Basics. This team was collecting user feedback from platforms such as Medallia, LivePerson, OpinionLab, App Store, Google Play Store. They built a machine learning model, but the results were not accurate, and often assigned user feedback to a different team.
+A: I know the importance and value of responding to user feedback. So I asked my manager to work with FTB to help them improve the model. I used my team as an example to data pre-processing, train, denoise and disambiguate the model with different keywords. With my efforts, most feedback can be correctly assigned to their team. As many long-term problems have been solved, the amount of negative feedback has drastically decreased, and user satisfaction rate has been greatly improved.
+
+Insist Highest standard
+Background: Citi, Bronze TDD
+ST: For a long time before I joined the team, no developer in the team stayed focused with the importance of test cases. Many codes do not have corresponding test cases. This leads to problems with the code, especially when it depends on APIs from other teams that have modified their module.
+A: So I proposed to the manager to spend some hours in each sprint to fill up the test cases of the previous code.
+R: After two months of hard work, we won the bronze medalist of Test-Driven Development (TDD) from the company that more than 80% of the code is covered by test cases. Moreover, the frequency of issue occurrences is greatly reduced, and the user experience is also improved.
+
+bias of action
+VCCS, the process is not clear, but it is still completed. Need to checkout before giving money (quickly act but there is not a big risk, even it’s wrong it could easily resolve)
+Fault tolerance Eureka
+Load balancer 三层
+一层Client and application servers Client A用户A
+一层application servers and database servers AD AD奶
+一层application servers and cache servers ACache A现金
+用户A，用A现金，买AD奶
+Weighted Round Robin 轮询
+Traffic estimates (k/s), Storage estimates (TB), Bandwidth estimates (MB/s), Memory estimates (GB) : CacheTrafficStorageBandwidth : CTSB陈涛sb
+Billions of rows and don’t need relationship between objects : NoSQL (DynamoDB, Cassandra, CaDy卡带)
+数据库分区 Data Partitioning : a. Range based Partitioning a,b,c字母排列 ; b. Hash based
+Cassandra : key - value
+Storage: HDFS Hadoop distributed file system, S3
+1. STAR的故事
+2. 系统设计图
+3. 前端题目打印
+4. dfs,bfs 模板,ladder之类的题目
+ Hive, Hadoop, Spark, and STORM.
+二分法，BFS,DFS, backtrack, union-find
+Single-responsibility
+
+
+1) Gathering Requirement
+- Find the exact scope of the problem
+- Identify the end goal of the system
+- Who is going to use the system? How they are going the system?
+
+2) System Interface
+- Defining what API’s are required from the system
+
+3) Estimate the scale of the System
+- What scale is expected from the system?
+- How much storage would we need?
+- What network bandwidth usage are we expecting? This would be crucial in deciding how would we manage traffic and balance load between servers.
+- Different types of scaling
+o Vertical Scaling: You scale by adding more power (CPU, RAM) to your existing machine.
+o Horizontal Scaling: you scale by adding more machines into your pool of resources.
+o Caching: Load balancing helps you scale horizontally across an ever-increasing number of servers, but caching will enable you to make vastly better use of the resources you already have, as well as making otherwise unattainable product requirements feasible.
+o Load Balancing: Public servers of a scalable web service are hidden behind a load balancer. This load balancer evenly distributes load (requests from your users) onto your group/cluster of application servers.
+o Database replication: Database replication is the frequent electronic copying data from a database in one computer or server to a database in another so that all users share the same level of information. The result is a distributed database in which users can access data relevant to their tasks without interfering with the work of others. The implementation of database replication for the purpose of eliminating data ambiguity or inconsistency among users is known as normalization.
+o Database Partitioning: Database replication is the frequent electronic copying data from a database in one computer or server to a database in another so that all users share the same level of information. The result is a distributed database in which users can access data relevant to their tasks without interfering with the work of others. The implementation of database replication for the purpose of eliminating data ambiguity or inconsistency among u. sers is known as normalization.
+o Map-Reduce: For sufficiently small systems you can often get away with adhoc queries on a SQL database, but that approach may not scale up trivially once the quantity of data stored or write-load requires sharding your database, and will usually require dedicated slaves for the purpose of performing these queries. Adding a map-reduce layer makes it possible to perform data and/or processing intensive operations in a reasonable amount of time
+
+4) Defining data model
+- Figure out how the data will flow among different components of the system which will also help in data partitioning and management
+- Identify various entities of the system, how they will interact with each other and different aspect of data management like storage, transfer, encryption, etc.
+
+5) High Level Architectural Design (Abstract Design)
+- Identify 5-6 components that is needed to solve this problem from end to end
+- Draw a block diagram on whiteboard representing core components of your system but don’t go in details
+- Sketch the important components and connections between them, but don't go into some details.
+o Application service layer (serves the requests)
+o List different services required.
+o Data Storage layer
+o eg. Usually a scalable system includes webserver (load balancer), service (service partition), database (master/slave database cluster) and caching systems.
+
+6) Detailed Design for selected components
+- Identify 2-3 components that are most critical and dive deeper. If you pick the wrong components or if the interviewer want you to discuss some other components, try to take the interviewers hint and dive deeper into those components
+- You should be able to provide different approaches, their pros and cons and why you choose this particular approach?
+
+7) Identifying & Resolving Bottlenecks
+- Discuss the bottlenecks and how you are planning to mitigate them
+- Is there any single point of failure in the system? How can we mitigate that?
+- If we receive more traffic than expected how we will handle that situation?
+- How we are monitoring the performance of our services? Do we get any alert?
+Note: Please also refer to the customer and address any operational issues such as metrics and logs if any.
+
+
+
+
+Ask for help
+在ebay刚来时，由于ebay的历史more than 25 years，有非常多legacy code处在看起来irrelevent的部门管理之下。所以我花了一定的时间，去整理不同的service和component的POC，我把这些整理出来放到wiki下，得到了所有人的赞赏。因为这省去了每个组员重新去寻找某个不常用的service的时间。
+
+
+Fix something messed up
+在eBay时，由我所说的，由于data ingestion workflow的规则和责任不清晰，曾经发现bussines team文件上传错误的情况。我是在周五临近下班时发现的，我迅速通知了其他组员，在manager不在的情况下，我们迅速达成一致，恢复最近一次的正确版本。整个处置非常准确和迅速，这也表明了需要及时升级ingestion workflow的必要性。
+
+放松
+

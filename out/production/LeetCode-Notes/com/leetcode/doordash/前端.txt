@@ -1,0 +1,53 @@
+前端设计要点：
+
+1,前端理念
+1.1,Intuitive UI and responsive design.
+1.2,Real-time feedback
+
+2, Angular 和 React的单页 - SPA single page application - 单页有助于SEO
+React 采用单向数据绑定
+当用户访问View时，通过触发Events进行交互，而在相应Event Handlers中，会触发对应的 Actions，而Actions 通过调用 setState 方法对View的State 进行更新，State更新后会触发View的重新渲染。
+可以看出，在 React 中，View 层是不能直接修改 State，必须通过相应的 Actions 来进行操作。
+
+单向数绑定的优缺点：
+优点：所有状态变化都可以被记录、跟踪，状态变化通过手动调用触发，源头易追溯。
+缺点：会有很多类似的样板代码，代码量会相应的上升。
+
+Angular Typescript 双向数据绑定的优缺点：
+优点：在操作表单时使用v-model方便简单，可以省略繁琐或重复的onChange事件去处理每个表单数据的变化（减少代码量）。
+缺点：属于暗箱操作，无法很好的追踪双向绑定的数据的变化。
+
+3，服务器端和客户端编程
+https://appmaster.io/zh/blog/shi-yao-shi-dan-ye-ying-yong
+Client side render
+Server side render
+Static
+
+Design a feature that accepts reviews from customers for an item orderded in a food delivery app. Also, show the average rating so far each item under a restaurant. Follow up : Return the average rating of a restaurant for the past 30 min and list refreshes every 5 mins
+
+4, session, cookie, uuid, uid的关系
+https://www.jianshu.com/p/a9645f34897d
+Https避免session hijacking/ HTTPS有SSL
+https://juejin.cn/s/springboot%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4%2C%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E5%94%AF%E4%B8%80UUID
+防止重复提交springboot
+
+Token是stateless
+uid识别用户 uuid识别设备 生成token
+
+
+5,前端节流（throttle）和防抖动（debounce）
+节流（Throttling）和防抖（Debouncing）是前端开发中常用的两种优化技术，用于控制事件触发的频率。它们的主要区别在于事件触发的时机和处理方式：
+
+1. 节流（Throttling）：
+   - 定义：节流是控制事件在一定时间间隔内最多执行一次。即，当事件触发时，只有在指定的时间间隔过去后，才会再次触发事件。
+   - 使用场景：适用于频繁触发的事件，比如窗口滚动、鼠标移动、按钮点击等，防止事件处理函数过于频繁地执行，降低资源消耗和性能开销。
+   - 示例：比如在页面上滚动触发某个函数，我们可以使用节流来限制该函数的触发频率，比如每200毫秒执行一次。
+
+2. 防抖（Debouncing）：AutoComplete
+   - 定义：防抖是控制事件触发后，在指定时间内没有再次触发事件时才会执行事件处理函数。如果在指定时间内事件又被触发了，将重新计时。
+   - 使用场景：适用于事件触发频率高、且只关心最后一次事件触发时刻的情况。比如在输入框搜索时，用户连续输入字符时，我们可以使用防抖来确保只在用户停止输入后执行搜索操作。
+   - 示例：比如在输入框中搜索时，我们可以使用防抖来限制搜索函数的触发频率，比如用户停止输入后的500毫秒再执行搜索。
+
+简而言之，节流用于限制事件的触发频率，确保事件在指定时间间隔内最多执行一次；而防抖用于防止事件过于频繁地触发，只关心最后一次事件的触发时刻。
+
+在实际开发中，可以根据不同的场景选择适合的节流或防抖策略，以提高前端交互的性能和用户体验。
