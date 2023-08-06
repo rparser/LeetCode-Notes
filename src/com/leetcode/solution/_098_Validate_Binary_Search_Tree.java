@@ -14,14 +14,19 @@ public class _098_Validate_Binary_Search_Tree {
 
     // inorder O(N), O(N)
     public boolean isValidBST(TreeNode root) {
-        if (root == null) return true;
+        if (root == null) {
+            return true;
+        }
         // 访问左子树
-        if (!isValidBST(root.left))
+        if (!isValidBST(root.left)) {
             return false;
-        // 实际就是inorder遍历
+        }
+        // 实际就是inorder遍历 - 找左下最小值
         // 当前节点必须大于inorder前一个节点，否则说明不满足BST，返回 false
-        if (root.val <= pre) return false;
-
+        if (pre >= root.val) {
+            return false;
+        }
+        // 更新pre值 第一个为左下的最小值
         pre = root.val;
         // 访问右子树
         return isValidBST(root.right);

@@ -13,27 +13,27 @@ package com.leetcode.solution;
 public class _033_Search_in_Rotated_Sorted_Array {
     public int search(int[] nums, int target) {
         // 二分找反转前半部分还是后半部分
-        int low = 0, high = nums.length - 1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        int left = 0, right = nums.length - 1;
+        while (left <= right) { // <=
+            int mid = left + (right - left) / 2;
             if (nums[mid] == target)
                 return mid;
             // 排除重复值,如果无重复值不需要这一句
-            if (nums[mid] == nums[low])
-                low++;
-                // 先判断mid和low关系再if target和mid和low关系
-                // 否则如果mid > low，即翻转在后半部分
-            else if (nums[mid] > nums[low]) {
-                if (target < nums[mid] && target >= nums[low])
-                    high = mid - 1; // 如果target值，在low和mid间，则在前半部分找（已排序好）
+            if (nums[mid] == nums[left])
+                left++;
+                // 先判断mid和left关系再if target和mid和left关系
+                // 如果mid > left，即翻转在后半部分 (比如2345678-01) - 则前半部分是排序好的(left to mid)
+            else if (nums[mid] > nums[left]) {
+                if (target < nums[mid] && target >= nums[left])
+                    right = mid - 1; // 如果target值，在left和mid间，则在前半部分找（已排序好）
                 else
-                    low = mid + 1; // 否则在后半部分找
-                // 否则如果mid < low，即翻转在前半部分
-            } else {
-                if (target > nums[mid] && target <= nums[high])
-                    low = mid + 1; // 如果target值，在mid和high间，则在后半部分找（已排序好）
+                    left = mid + 1; // 否则在后半部分找
+                // 否则如果mid < left，即翻转在前半部分
+            } else { // 后半部分是排序好的 (比如78-0123456) - 此时mid < left但mid > right
+                if (target > nums[mid] && target <= nums[right])
+                    left = mid + 1; // 如果target值，在mid和right间，则在后半部分找（已排序好）
                 else
-                    high = mid - 1;    // 否则在前半部分找
+                    right = mid - 1;  // 否则在前半部分找
             }
         }
         return -1;

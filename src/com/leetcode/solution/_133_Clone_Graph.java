@@ -11,23 +11,31 @@ import java.util.*;
 
 public class _133_Clone_Graph {
     // 已经处理 DFS O(N), O(N)
-    private HashMap<Node, Node> map = new HashMap<>();
+    private final Map<Node, Node> visited = new HashMap<>();
 
     public Node cloneGraph(Node node) {
-        map.put(node, new Node(node.val, new ArrayList<>()));
-
-        for (Node neighbor : node.neighbors) {
-            //不存在neighbor则递归add neighbor
-            if (!map.containsKey(neighbor))
-                map.get(node).neighbors.add(cloneGraph(neighbor));
-                //map已存在neighbor则直接加入neighbors
-            else
-                map.get(node).neighbors.add(map.get(neighbor));
+        if (node == null) {
+            return node;
         }
-        return map.get(node);
+
+        // 如果该节点已经被访问过了，则直接从哈希表中取出对应的克隆节点返回
+        if (visited.containsKey(node)) {
+            return visited.get(node);
+        }
+
+        // 克隆节点，注意到为了深拷贝我们不会克隆它的邻居的列表
+        Node cloneNode = new Node(node.val, new ArrayList<>());
+        // 哈希表存储
+        visited.put(node, cloneNode);
+
+        // 遍历该节点的邻居并更新克隆节点的邻居列表
+        for (Node neighbor : node.neighbors) {
+            cloneNode.neighbors.add(cloneGraph(neighbor));
+        }
+        return cloneNode;
     }
 
-    public Node cloneGraphItrative(Node node) {
+    public Node cloneGraphIterative(Node node) {
         if (node == null) return node;
         Queue<Node> queue = new LinkedList<>();
         Map<Integer, Node> map = new HashMap<>();
@@ -54,16 +62,16 @@ public class _133_Clone_Graph {
         return map.get(node.val);
     }
 
-    class Node {
+    public static class Node {
         public int val;
         public List<Node> neighbors;
 
         public Node() {
         }
 
-        public Node(int _val, List<Node> _neighbors) {
-            val = _val;
-            neighbors = _neighbors;
+        public Node(int val, List<Node> neighbors) {
+            this.val = val;
+            this.neighbors = neighbors;
         }
     }
 }

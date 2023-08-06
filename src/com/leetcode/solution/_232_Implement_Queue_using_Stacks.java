@@ -3,6 +3,18 @@ package com.leetcode.solution;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * For Deque,
+ * from queue
+ * add/offer -> addLast
+ * remove/poll/element/peek -> removeFirst
+ *
+ * from Stack
+ * push -> addFirst
+ * pop/peek ->removeFirst
+ */
+
+
 public class _232_Implement_Queue_using_Stacks {
     private final Deque<Integer> in;
     private final Deque<Integer> out;
@@ -26,12 +38,12 @@ public class _232_Implement_Queue_using_Stacks {
      * Removes the element from in front of queue and returns that element.
      */
     public int pop() {
+        // 要先检查out里有没有东西，除非out已经空了，否则先用out里的（已经排序好了）
         if (out.isEmpty()) {
-            int size = in.size();
-            for (int i = 0; i < size; i++)
-                out.push(in.pop());
+            inToOut();
         }
-        if (out.isEmpty()) return -1;
+        if (out.isEmpty())
+            return -1;
         else return out.pop();
     }
 
@@ -40,11 +52,11 @@ public class _232_Implement_Queue_using_Stacks {
      */
     public int peek() {
         if (out.isEmpty()) {
-            int size = in.size();
-            for (int i = 0; i < size; i++)
-                out.push(in.pop());
+            inToOut();
         }
-        return out.peek();
+        if (out.isEmpty())
+            return -1;
+        else return out.peek();
     }
 
     /**
@@ -52,5 +64,11 @@ public class _232_Implement_Queue_using_Stacks {
      */
     public boolean empty() {
         return in.isEmpty() && out.isEmpty();
+    }
+
+    private void inToOut(){
+        while(!in.isEmpty()){
+            out.push(in.pop());
+        }
     }
 }

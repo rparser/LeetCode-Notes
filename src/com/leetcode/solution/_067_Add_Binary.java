@@ -10,10 +10,10 @@ public class _067_Add_Binary {
         //从结尾开始
         int i = a.length() - 1, j = b.length() - 1;
         StringBuilder res = new StringBuilder();
-        int carry = 0;
+        int carry = 0; // 进位
         while (i >= 0 || j >= 0) {
             int sum = carry;
-            carry = 0;//set back carry
+            carry = 0; //carry值已经取得，变为0
 
             if (i >= 0)
                 sum += a.charAt(i) - '0';
@@ -23,10 +23,10 @@ public class _067_Add_Binary {
             i--;
             j--;
             // sum可能为3，有carry且都为1
-            if (sum >= 2)
+            if (sum == 2 || sum ==3)
                 carry = 1;
 
-            res.append(sum % 2);//only have 3 2 1 0
+            res.append(sum % 2); // 0或2是0（2有carry）；1或3是1（3有carry）
         }
         //加上最后一位
         if (carry == 1)

@@ -10,17 +10,17 @@ package com.leetcode.solution;
 public class _075_Sort_Colors {
     //O(N), O(1)
     public void sortColors1pass(int[] nums) {
-        //left左边和right右边是已经排好的
-        //i是正在排序的
+        // left左边和right右边是已经排好的
+        // i是正在排序的
         int i = 0, left = 0, right = nums.length - 1;
         while (i <= right) { //遍历完一次
             if (nums[i] == 0) {
-                swap(nums, i, left);
-                left++; //left以左都为0
-                i++; //left side is sorted already
-            } else if (nums[i] == 2) {
+                swap(nums, i, left); // i和left交换，把0放到left所以此时left以左都为0
+                left++; // left以左都为0
+                i++; // left side is sorted already
+            } else if (nums[i] == 2) { // i和right交换，把2放到right所以此时right右侧都是2
                 swap(nums, i, right); //right以右都为2
-                right--;
+                right--; // 不i++是因为不一定处理好了right
             } else
                 i++; //skip 1
         }

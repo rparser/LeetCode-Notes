@@ -6,10 +6,14 @@ package com.leetcode.solution;
  */
 
 public class _053_Maximum_Subarray {
-    //    O(N), O(1)
+    /**
+     * 到某个点的最大子数组(因为必须要用这个点)，所以只有两种可能性：
+     * 1,取用这个点curMax + nums[i] ->此时curMax是curMax[i-1]
+     * 2,只取这个点nums[i]
+     * O(N), O(1)
+     */
     public int maxSubArray(int[] nums) {
-        if (nums.length == 0)
-            return 0;
+        // 除非nums都是正，否则不能设curMax和allMax为Integer.MIN_VALUE，因为可能会被前几个负值击穿
         int curMax = nums[0];
         int allMax = nums[0];
         for (int i = 1; i < nums.length; i++) {

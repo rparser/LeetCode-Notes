@@ -22,5 +22,4 @@ public class _278_First_Bad_Version {
     private boolean isBadVersion(int mid) {
         return true;
     }
-
 }

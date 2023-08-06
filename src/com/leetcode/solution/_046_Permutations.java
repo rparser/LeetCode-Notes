@@ -19,12 +19,13 @@ public class _046_Permutations {
     private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums) {
         // 如果已经完成了
         if (tempList.size() == nums.length)
-            result.add(new ArrayList<>(tempList));
+            result.add(new ArrayList<>(tempList)); // 必须要新加ArrayList<>()
         else {
             for (int num : nums) {
                 //去重
-                if (tempList.contains(num))
+                if (tempList.contains(num)) {
                     continue; // element already exists, skip
+                }
                 tempList.add(num);
                 backtrack(result, tempList, nums);
                 tempList.remove(tempList.size() - 1);

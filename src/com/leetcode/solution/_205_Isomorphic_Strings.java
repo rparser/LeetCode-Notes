@@ -6,7 +6,7 @@ package com.leetcode.solution;
  * 2. 最后return true
  */
 
-public class _205IsomorphicStrings {
+public class _205_Isomorphic_Strings {
     public boolean isIsomorphic(String sString, String tString) {
         if (sString.length() != tString.length()) return false;
         char[] s = sString.toCharArray();

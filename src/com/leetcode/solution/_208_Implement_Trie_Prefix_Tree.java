@@ -12,7 +12,7 @@ package com.leetcode.solution;
 
 public class _208_Implement_Trie_Prefix_Tree {
     // O(M=key_length), O(alphabet(26)*M*N)
-    class TrieNode {
+    static class TrieNode {
         public boolean is_word;
         public TrieNode[] children;
 
@@ -53,8 +53,9 @@ public class _208_Implement_Trie_Prefix_Tree {
         TrieNode p = root;
         for (int i = 0; i < prefix.length(); i++) {
             int index = prefix.charAt(i) - 'a';
-            if (p.children[index] == null)
+            if (p.children[index] == null) {
                 return null; //找不到就返回
+            }
             // 找到符合这个prefix的TrieNode
             p = p.children[index];
         }
@@ -68,9 +69,10 @@ public class _208_Implement_Trie_Prefix_Tree {
         TrieNode p = root;
         for (int i = 0; i < word.length(); i++) {
             int index = word.charAt(i) - 'a';
-            if (p.children[index] == null)
+            if (p.children[index] == null) {
+                // 新建一个TrieNode然后重新指向这个TrieNode
                 p.children[index] = new TrieNode();
-            // 新建一个TrieNode然后重新指向这个TrieNode
+            }
             p = p.children[index];
         }
         // 在最后一步跳出for loop后添加is_word =true;

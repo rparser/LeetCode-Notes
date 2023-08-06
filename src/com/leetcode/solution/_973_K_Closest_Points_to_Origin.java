@@ -62,7 +62,7 @@ public class _973_K_Closest_Points_to_Origin {
     public int[][] kClosestPQ(int[][] points, int K) {
         if (points == null || points.length == 0 || K < 1) return points;
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> calculateDist(b) - calculateDist(a));
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> dist(b) - dist(a));
         for (int[] point : points) {
             pq.add(point);
             if (pq.size() > K) pq.poll();
@@ -72,9 +72,5 @@ public class _973_K_Closest_Points_to_Origin {
         for (int i = 0; i < K; i++) result[i] = pq.poll();
 
         return result;
-    }
-
-    public int calculateDist(int[] point) {
-        return point[0] * point[0] + point[1] * point[1];
     }
 }

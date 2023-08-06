@@ -11,14 +11,22 @@ import java.util.Queue;
  * 思路2： Iteration - level order traverse. keep swaping left child and right child of current node
  */
 
-public class _226_InvertBinaryTree {
+public class _226_Invert_Binary_Tree {
     public TreeNode invertTree(TreeNode root) {
-        if (root == null) return null;
-        if (root.left == null && root.right == null) return root;
-        TreeNode left = invertTree(root.left); //如果左右不为空
-        TreeNode right = invertTree(root.right); //1-23-4567 先翻转45再翻转67再翻转23
-        root.left = right;
-        root.right = left;
+        //递归函数的终止条件，节点为空时返回
+        if (root == null) {
+            return null;
+        }
+        //下面三句是将当前节点的左右子树交换
+        TreeNode tmp = root.right;
+        root.right = root.left;
+        root.left = tmp;
+        //递归交换当前节点的 左子树
+        invertTree(root.left);
+        //递归交换当前节点的 右子树
+        invertTree(root.right);
+        //函数返回时就表示当前这个节点，以及它的左右子树
+        //都已经交换完了
         return root;
     }
 

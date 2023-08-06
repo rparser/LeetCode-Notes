@@ -16,26 +16,27 @@ public class _015_3Sum {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums); //先排序
 
-        for (int i = 0; i < nums.length - 2; i++) { //从前两个开始
+        for (int i = 0; i < nums.length - 2; i++) { // i最多nums.length-3，因为left,right在i右侧
             if (i > 0 && nums[i] == nums[i - 1])
-                continue;  // skip same result
+                continue;  // 如果nums[i]是同一个值则跳过
 
-            int left = i + 1, right = nums.length - 1; //left从下一位开始,right从最后一位开始
-            int target = -nums[i]; // target为当前值的负值
-            while (left < right) {
-                if (nums[left] + nums[right] == target) {
+            int left = i + 1, right = nums.length - 1; // left从下一位开始,right从最后一位开始
+            while (left < right) { // left >=right时才会跳出循环(失败条件)
+                int sum = nums[i] + nums[left] + nums[right];
+                if (sum == 0) {
                     result.add(Arrays.asList(nums[i], nums[left], nums[right]));
                     left++;
                     right--;
-                    // skip same result
+                    // 如果nums[left]是同一个值则跳过
                     while (left < right && nums[left] == nums[left - 1])
                         left++;
+                    // 如果nums[right]是同一个值则跳过
                     while (left < right && nums[right] == nums[right + 1])
                         right--;
-                } else if (nums[left] + nums[right] > target)  // 如果超过target, right要左移
+                    // 超过target太大了, right要左移
+                } else if (sum >0)
                     right--;
-                else  //不到target,left右移
-                    left++;
+                else left++;
             }
         }
         return result;

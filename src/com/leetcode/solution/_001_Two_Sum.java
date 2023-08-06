@@ -9,6 +9,8 @@ import java.util.Map;
  * 1.建立map
  * 2.以此在map加入数字，并查找补值，如果有补值则返回
  * 3.到结束依然没有则throw IllegalArgumentException
+ *
+ * 要注意一次遍历即可，先查询，查询不到再加入map，可以保证不查询到自己
  */
 
 public class _001_Two_Sum {

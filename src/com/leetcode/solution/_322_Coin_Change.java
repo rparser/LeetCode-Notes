@@ -17,20 +17,21 @@ public class _322_Coin_Change {
         // dp数组是当前位置最小的硬币数, 0为空
         int[] dp = new int[amount + 1]; //0,1,2,..,amount
 
-        for (int i = 1; i <= amount; i++) {
+        for (int curAmount = 1; curAmount <= amount; curAmount++) {
             int count = -1; // 无法完成
             //key is min count, all solutions must be generated from existing coin
             for (int coin : coins) {
-                // 必须是可完成dp[i - coin] == -1证明不可完成
-                if (i >= coin && dp[i - coin] != -1) {
+                // 必须不能是不可完成dp[i - coin] == -1（因为dp[i-coin]如果不可完成 那dp[i-coin+coin]也不可完成了）
+                if (curAmount >= coin && dp[curAmount - coin] != -1) {
                     //重点，前一个+1,因为多了一个硬币
-                    int cur = dp[i - coin] + 1;
+                    int curCount = dp[curAmount - coin] + 1;
                     // 在此coin for loop里，count会被更新到最小的cur
-                    if (count == -1 || cur < count)
-                        count = cur; //如果之前无法达到，或当前cur更小
+                    if (count == -1 || curCount < count) {
+                        count = curCount; // 更新count - 只有在符合if才更新
+                    }
                 }
             }
-            dp[i] = count; //如果最后不能达到，会把-1加入dp,否则加入cur
+            dp[curAmount] = count; //如果最后不能达到，会把-1加入dp,否则加入cur(最小的count)
         }
         return dp[amount];
     }
