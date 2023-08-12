@@ -17,7 +17,7 @@ public class _008_String_to_Integer {
         str = str.trim();
 
         // 检查null
-        if (str.length() < 1)
+        if (str.isEmpty())
             return 0;
 
         // 检查正负号
@@ -31,8 +31,11 @@ public class _008_String_to_Integer {
 
         // 保存结果
         double result = 0;
-        while (str.length() > i && str.charAt(i) >= '0' && str.charAt(i) <= '9') { // 去掉非数字
-            result = result * 10 + (str.charAt(i) - '0');
+        while (i < str.length()) {
+            if (str.charAt(i) <= '9' && str.charAt(i) >= '0') {
+                int c = str.charAt(i) - '0';
+                result = result * 10 + c;
+            } else break;
             i++;
         }
 

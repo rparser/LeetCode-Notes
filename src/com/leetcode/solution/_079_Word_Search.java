@@ -18,32 +18,43 @@ package com.leetcode.solution;
  */
 
 public class _079_Word_Search {
+    private final int[][] DIRS = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     // time O(mn*4^k) where k is the length of the string ,space O(4mn)
     public boolean exist(char[][] board, String word) {
-        for (int i = 0; i < board.length; i++)
-            for (int j = 0; j < board[i].length; j++)
-                //先找到第一个字母, 没有charAt(0)也能通过，但加上后就不需要再进行下一步
-                if ((word.charAt(0) == board[i][j]) && dfsSearch(board, word, i, j, 0))
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                // 先找到第一个字母, 没有charAt(0)也能通过，但加上后就不需要再进行下一步
+                // word.charAt(0) == board[i][j]省略无效计算
+                if ((word.charAt(0) == board[i][j]) && dfs(board, word, i, j, 0)) {
                     return true;
+                }
+            }
+        }
         // for loop离开还没找到就是false
         return false;
     }
 
-    private boolean dfsSearch(char[][] board, String word, int r, int c, int index) {
+    private boolean dfs(char[][] board, String word, int r, int c, int index) {
         // 达到长度则为true
-        if (index == word.length()) return true;
+        if (index == word.length()) {
+            return true;
+        }
         // 不符合
-        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || word.charAt(index) != board[r][c])
+        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length
+                || word.charAt(index) != board[r][c]) {
             return false;
+        }
         // *代表已访问
         board[r][c] = '*';
         // 四个方向
-        boolean result = dfsSearch(board, word, r - 1, c, index + 1)
-                || dfsSearch(board, word, r + 1, c, index + 1)
-                || dfsSearch(board, word, r, c - 1, index + 1)
-                || dfsSearch(board, word, r, c + 1, index + 1);
-        //如果result没有成功，到了这一步，则还原字符
+        for (int[] dir : DIRS) {
+            if (dfs(board, word, r + dir[0], c + dir[1], index + 1)) {
+                return true;
+            }
+        }
+        // 如果没能true则还原字符
         board[r][c] = word.charAt(index);
-        return result;
+        return false;
     }
 }

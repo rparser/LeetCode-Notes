@@ -1,17 +1,15 @@
 package com.leetcode.solution;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
-class _105_construct_binary_tree_from_preorder_and_inorder_traversal {
+class _105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal {
     //没用重复元素 O(N), O(N)
     //level [1, 2,3,4, 5,6,7]的树
     //pre [1,2,4,5,3, 6, 7]
     //in [4,2,5,1, 6,3,7]
     public TreeNode buildTreeIterative(int[] preorder, int[] inorder) {
-        if (preorder.length == 0) return null;
-        Deque<TreeNode> roots = new ArrayDeque<>();
-
+        Deque<TreeNode> roots = new LinkedList<>();
         int preIndex = 0;
         int inIndex = 0;
         //先序遍历第一个值是root
@@ -47,27 +45,24 @@ class _105_construct_binary_tree_from_preorder_and_inorder_traversal {
     }
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder == null || inorder == null || preorder.length != inorder.length)
-            return null;
-
-        return help(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+        return dfs(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
-    private TreeNode help(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd) {
+    private TreeNode dfs(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd) {
         //递归的第一步：递归终止条件，避免死循环
-        if (pStart > pEnd || iStart > iEnd)
+        if (pStart > pEnd || iStart > iEnd) {
             return null;
-
+        }
         //重建根节点
         TreeNode treeNode = new TreeNode(preorder[pStart]);
-        int index = 0;  //index找到根节点在inorder的位置
-        while (inorder[iStart + index] != preorder[pStart])
+        int index = 0;  // 找到根节点在inorder的位置index - index也是左子树的节点数
+        while (inorder[iStart + index] != preorder[pStart]) {
             index++;
-
+        }
         //重建左子树
-        treeNode.left = help(preorder, pStart + 1, pStart + index, inorder, iStart, iStart + index - 1);
+        treeNode.left = dfs(preorder, pStart + 1, pStart + index, inorder, iStart, iStart + index - 1);
         //重建右子树
-        treeNode.right = help(preorder, pStart + index + 1, pEnd, inorder, iStart + index + 1, iEnd);
+        treeNode.right = dfs(preorder, pStart + index + 1, pEnd, inorder, iStart + index + 1, iEnd);
         return treeNode;
     }
 }

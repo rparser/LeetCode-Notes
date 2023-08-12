@@ -1,35 +1,52 @@
 package com.leetcode.solution;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.LinkedList;
 
-class _230_kth_smallest_element_in_a_bst {
+class _230_Kth_Smallest_Element_in_a_BST {
     //O(H+k), O(H+K)
     // Inorder BFS with counter 参考94
     public int kthSmallest(TreeNode root, int k) {
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Deque<TreeNode> stack = new LinkedList<>();
         int counter = 0;
-        int res = -1;
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
             // 不为空则一直左子树
             while (cur != null) {
                 stack.push(cur);
-                cur = cur.left; // 考虑左子树
+                cur = cur.left; // 先放左下因为左下最小
             }
             // 出栈时计数
             cur = stack.pop();
             counter++;
-            //counter到了跳出
+            // counter到了跳出
             if (counter == k) {
-                res = cur.val;
-                break;
+                return cur.val;
             }
             // 考虑右子树
             cur = cur.right;
         }
-        return res;
+        return -1;
+    }
+
+    public int kthSmallest2(TreeNode root, int k) {
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode cur = root;
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.left;
+        }
+        while (!stack.isEmpty() && k > 0) {
+            cur = stack.pop();
+            if (--k == 0) return cur.val;
+            cur = cur.right;
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+        }
+        return -1;
     }
 
     //O(N),O(N)

@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-class _311_sparse_matrix_multiplication {
+class _311_Sparse_Matrix_Multiplication {
     // O(MNK), O(MNK)
     public int[][] multiply(int[][] A, int[][] B) {
         // A的行 + B的列

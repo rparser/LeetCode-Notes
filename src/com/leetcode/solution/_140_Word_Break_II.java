@@ -13,16 +13,16 @@ import java.util.List;
 
 public class _140_Word_Break_II {
     //O(n * m) + O(n * num), O(n)
-    private HashMap<String, List<String>> map = new HashMap<>();
+    private final HashMap<String, List<String>> map = new HashMap<>();
 
     public List<String> wordBreak(String s, List<String> wordDict) {
         List<String> result = new ArrayList<>();
-        if (s == null || s.length() == 0)
-            return result;
-        if (map.containsKey(s))
+        if (map.containsKey(s)) {
             return map.get(s); //找到结果
-        if (wordDict.contains(s))
+        }
+        if (wordDict.contains(s)) {
             result.add(s); //把wordDict先加入map
+        }
 
         //遍历每个字母
         for (int i = 1; i < s.length(); i++) {
@@ -34,7 +34,7 @@ public class _140_Word_Break_II {
                 //看能不能找到前面的单词
                 List<String> subWordBreak = wordBreak(s.substring(0, i), wordDict);
                 //如果前面也有，则分别加入结果
-                if (subWordBreak.size() != 0)
+                if (!subWordBreak.isEmpty())
                     for (String subSubWord : subWordBreak)
                         result.add(subSubWord + " " + subWord);
             }

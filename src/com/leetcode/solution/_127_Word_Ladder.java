@@ -14,7 +14,9 @@ import java.util.*;
 public class _127_Word_Ladder {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
-        if (!wordSet.contains(endWord)) return 0;
+        if (!wordSet.contains(endWord)) {
+            return 0;
+        }
         Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
         int length = beginWord.length();
@@ -22,28 +24,22 @@ public class _127_Word_Ladder {
 
         while (!queue.isEmpty()) {
             steps++; //加入步数
-            for (int s = queue.size(); s > 0; s--) { //处理本层节点
-                String currWord = queue.poll();
-                char[] currWordChars = currWord.toCharArray();
-
+            for (int s = queue.size(); s > 0; s--) { //处理本层节点 - 用size从size到0可以不用再int size
+                String curWord = queue.poll();
                 for (int i = 0; i < length; i++) { //每个字母都可以变
-                    char currChar = currWordChars[i]; //保存这个字母
                     for (char c = 'a'; c <= 'z'; c++) {
-                        if (c == currChar)
-                            continue; //如果是原值则跳出
-
-                        currWordChars[i] = c;
-                        String newStr = new String(currWordChars); //否则设置为新单词
-
-                        if (newStr.equals(endWord))
-                            return steps + 1; //如果找到则返回
-
-                        if (wordSet.contains(newStr)) {//如果词典找到说明还没用过
-                            wordSet.remove(newStr);//移除这个单词
-                            queue.add(newStr);//把这个单词加入queue
+                        if (c == curWord.charAt(i)) {
+                            continue;
+                        } //如果是原值则跳出
+                        String newWord = curWord.substring(0, i) + c + curWord.substring(i + 1); // 变为新单词
+                        if (newWord.equals(endWord)) {
+                            return steps + 1; // +1是因为多换了一步
+                        } //如果找到则返回
+                        if (wordSet.contains(newWord)) {//如果词典找到说明还没用过
+                            wordSet.remove(newWord);//移除这个单词
+                            queue.add(newWord);//把这个单词加入queue
                         }
                     }
-                    currWordChars[i] = currChar; //重新还原单词，还原很重要
                 }
             }
         }

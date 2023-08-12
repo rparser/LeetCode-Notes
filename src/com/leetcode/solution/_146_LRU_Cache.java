@@ -19,11 +19,11 @@ public class _146_LRU_Cache {
     HashMap<Integer, Node> map = new HashMap<>(); //<val: node in list>
     private final int capacity;
 
-    class Node {
+    static class Node {
         Node pre;
         Node next;
         int val;
-        int key;//need key fields for look back to delete in Map
+        int key; //need key fields for look back to delete in Map
 
         public Node(int key, int value) {
             this.val = value;
@@ -36,8 +36,9 @@ public class _146_LRU_Cache {
     }
 
     public int get(int key) {
-        if (!map.containsKey(key))
+        if (!map.containsKey(key)) {
             return -1;
+        }
         Node cur = map.get(key);
         removeNode(cur);
         setHead(cur);
@@ -45,7 +46,7 @@ public class _146_LRU_Cache {
     }
 
     public void put(int key, int value) {
-        if (!map.containsKey(key)) {
+        if (!map.containsKey(key)) { // 不存在
             if (map.size() >= capacity) { //超过容量
                 map.remove(end.key); //map删除end
                 removeNode(end); //node删除end
@@ -67,17 +68,21 @@ public class _146_LRU_Cache {
         Node preN = node.pre;
         Node nextN = node.next;
         // 如果删除的是head，新head要指向下一个节点
-        if (node == head)
+        if (node == head) {
             head = nextN;
+        }
         // 如果删除的是end, 新end要指向前一个节点
-        if (node == end)
+        if (node == end) {
             end = preN;
+        }
         // 如果preN非空，证明删除点非head,前一个节点需要指向后一个
-        if (preN != null)
+        if (preN != null) {
             preN.next = nextN;
+        }
         // 如果nextN非空，证明删除点非end,后一个节点需要指向前一个
-        if (nextN != null)
+        if (nextN != null) {
             nextN.pre = preN;
+        }
     }
 
     //需要做：新node指到当前head,head.pre指回新node，head更新到新node
@@ -86,14 +91,16 @@ public class _146_LRU_Cache {
         node.next = head;
         node.pre = null;
         // 如果head非null（证明不是第一个加进去的）
-        if (head != null)
-            // head.pre需要指回新node
+        if (head != null) {
+            // head.pre需要指回新node (比如1<->2，新加0，1.pre=0)
             head.pre = node;
+        }
         // 然后把head pointer指到新node
         head = node;
         // 如果end为空证明此时是第一个加入的节点，则end和head需要指向同一个
-        if (end == null)
+        if (end == null) {
             end = head;
+        }
     }
 
 // LinkedHashMap方法

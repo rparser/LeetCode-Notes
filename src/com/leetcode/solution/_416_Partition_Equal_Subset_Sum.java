@@ -5,6 +5,33 @@ package com.leetcode.solution;
  */
 
 public class _416_Partition_Equal_Subset_Sum {
+    // O(NC), O(C) C 是数组元素的和的一半
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if (sum % 2 != 0) {
+            return false;
+        }
+        // 找到和的一半
+        sum /= 2;
+        // dp是：和等于这个值是否可以
+        boolean[] dp = new boolean[sum + 1];
+        // 和为0是可以
+        dp[0] = true;
+
+        for (int i = 1; i <= nums.length; i++) { //从1到length所以还是length个
+            // 因为i从1开始，所以是nums[i-1]
+            // j必须要>=对应的cur nums[i-1]，因为
+            for (int j = sum; j >= nums[i - 1]; j--) {
+                // dp[j-nums[i-1]]是指不考虑nums[i-1]时就可以为true
+                dp[j] = dp[j] || dp[j - nums[i - 1]];
+            }
+        }
+        return dp[sum];
+    }
+
     //2D 下面有一位数组 O(NC), O(NC)
     public boolean canPartition2D(int[] nums) {
         int len = nums.length;
@@ -37,29 +64,5 @@ public class _416_Partition_Equal_Subset_Sum {
             }
         }
         return dp[len - 1][target];
-    }
-
-    // O(NC), O(C) C 是数组元素的和的一半
-    public boolean canPartition(int[] nums) {
-        if (nums == null || nums.length == 0)
-            return true;
-        int sum = 0;
-        for (int num : nums)
-            sum += num;
-        if (sum % 2 != 0)
-            return false;
-        // 找到和的一半
-        sum /= 2;
-        //和等于这个值是否有可能
-        boolean[] dp = new boolean[sum + 1];
-        //和为0是可能
-        dp[0] = true;
-
-        for (int i = 1; i <= nums.length; i++)
-            for (int j = sum; j >= nums[i - 1]; j--)
-                // dp[j-nums[i-1]]是指不考虑nums[i-1]时就可以为true
-                dp[j] = dp[j] || dp[j - nums[i - 1]];
-
-        return dp[sum];
     }
 }

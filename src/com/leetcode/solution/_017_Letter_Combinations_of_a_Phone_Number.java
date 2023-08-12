@@ -21,7 +21,7 @@ public class _017_Letter_Combinations_of_a_Phone_Number {
     // java 9可以如此生成map
 //    Map<String, String> map2 = Map.of("key1", "value1", "key2", "value2");
     // O(3^N×4^M), O(3^N×4^M)
-    private final Map<String, String> phone = new HashMap<String, String>() {{
+    private final Map<String, String> phone = new HashMap<>() {{
         put("0", "0");
         put("1", "1");
         put("2", "abc");
@@ -35,27 +35,26 @@ public class _017_Letter_Combinations_of_a_Phone_Number {
     }};
 
 
-    private void backtrack(String current, String digitsLeft, List<String> result) {
+    private void backtrack(String curString, String digitsLeft, List<String> result) {
         // 已不剩余
-        if (digitsLeft.length() == 0)
-            result.add(current);
-        else {
+        if (digitsLeft.isEmpty()) {
+            result.add(curString);
+        } else {
             // 取当前digitsLeft第一个数字对应的字母集
-            String digit = digitsLeft.substring(0, 1);
-            String letters = phone.get(digit);
+            String letters = phone.get(digitsLeft.substring(0, 1));
             for (int i = 0; i < letters.length(); i++) {
                 // 对每个字母依次加入递归
-                String letter = phone.get(digit).substring(i, i + 1);
-                backtrack(current + letter, digitsLeft.substring(1), result);
+                backtrack(curString + letters.charAt(i), digitsLeft.substring(1), result);
+                // 不需要验证所以不需要remove
             }
         }
     }
 
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
-        if (digits.length() != 0)
+        if (!digits.isEmpty()) {
             backtrack("", digits, result);
-
+        }
         return result;
     }
 

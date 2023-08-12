@@ -11,38 +11,41 @@ import java.util.*;
  */
 
 public class _139_Word_Break {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordDictSet = new HashSet<>(wordDict); // 放到set search变O(1)
+        Queue<Integer> queue = new LinkedList<>(); // 队列里是index，代表已经处理到这个地方了
+        boolean[] visited = new boolean[s.length()];
+        queue.add(0);
+
+        while (!queue.isEmpty()) {
+            int start = queue.poll();
+            if (!visited[start]) {
+                for (int end = start + 1; end <= s.length(); end++) {
+                    if (wordDictSet.contains(s.substring(start, end))) {
+                        queue.add(end); // 出现这个单词则把index加入队列
+                        if (end == s.length()) {
+                            return true;
+                        }
+                    }
+                }
+                visited[start] = true;
+            }
+        }
+        return false;
+    }
+
     public boolean wordBreakDP(String s, List<String> wordDict) {
         int n = s.length();
         boolean[] dp = new boolean[n + 1]; //dp[i+1] means the current s[0...i] check
         dp[0] = true;
-        for (int i = 1; i <= s.length(); i++)
-            for (int j = 0; j < i; j++)
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
                 if (dp[j] && wordDict.contains(s.substring(j, i))) {//s[j,i)
                     dp[i] = true;
                     break;
                 }
-
-        return dp[n];
-    }
-
-    public boolean wordBreak(String s, List<String> wordDict) {
-        Set<String> wordDictSet = new HashSet<>(wordDict);
-        Queue<Integer> queue = new LinkedList<>();
-        int[] visited = new int[s.length()];
-        queue.add(0);
-        while (!queue.isEmpty()) {
-            int start = queue.remove();
-            if (visited[start] == 0) {
-                for (int end = start + 1; end <= s.length(); end++) {
-                    if (wordDictSet.contains(s.substring(start, end))) {
-                        queue.add(end);
-                        if (end == s.length())
-                            return true;
-                    }
-                }
-                visited[start] = 1;
             }
         }
-        return false;
+        return dp[n];
     }
 }

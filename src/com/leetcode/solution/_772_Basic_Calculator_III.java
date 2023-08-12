@@ -44,7 +44,9 @@ class _772_Basic_Calculator_III {
                 sign = c;
                 num = 0;//计数归位
             }
-            if (c == ')') break;//阶段，后面开始计算局部结果，返回
+            if (c == ')') {
+                break;
+            }//阶段，后面开始计算局部结果，返回
         }
 
         int res = 0;

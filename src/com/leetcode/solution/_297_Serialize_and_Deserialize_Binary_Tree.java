@@ -30,7 +30,6 @@ public class _297_Serialize_and_Deserialize_Binary_Tree {
             sb.append(NULL).append(SPLITTER);
             return;
         }
-
         sb.append(node.val).append(SPLITTER);
         buildString(node.left, sb);
         buildString(node.right, sb);
@@ -44,13 +43,14 @@ public class _297_Serialize_and_Deserialize_Binary_Tree {
     }
 
     private TreeNode buildTree(Queue<String> nodes) {
-        String val = nodes.remove();//return null
-        if (val.equals(NULL))
+        String val = nodes.remove();// return null
+        if (val.equals(NULL)) {
             return null;
+        }
         //若节点值不为空，将其由String转换回int
         //将其作为当前节点值新建当前节点
         TreeNode node = new TreeNode(Integer.parseInt(val));//Integer.parseInt()
-        //递归preorder,处理完左子树再处理右子树 - 下面这两步不要搞错 参数是queue
+        //递归preorder,处理完左子树再处理右子树 参数是queue
         node.left = buildTree(nodes);
         node.right = buildTree(nodes);
         return node;

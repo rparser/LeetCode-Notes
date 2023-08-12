@@ -10,13 +10,15 @@ package com.leetcode.solution;
 public class _005_Longest_Palindromic_Substring {
     // 中心扩展O(n^2), O(1)
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) return "";
-        int start = 0, end = 0;
+        int start = 0, end = 0; // 储存为当前的最大起点终点
         for (int i = 0; i < s.length(); i++) { //以每个字母作为中心点
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
+            int len1 = expandAroundCenter(s, i, i); // 奇数个aba
+            int len2 = expandAroundCenter(s, i, i + 1); // 偶数个abba
             int len = Math.max(len1, len2);
-            if (len > end - start) { //end, start为之前存储的最大起点终点
+            if (len > end - start) { // 更新end,start
+                // 如果len是奇数，start = i - len/2, end = i + len/2
+                // 如果len是偶数, start = i - len/2 + 1 = i - (len/2 -1), end = i + len/2
+                // end是一样的，但归纳一下，奇数时 len/2 == (len-1)/2, 偶数时 len/2 - 1 == (len-1)/2，都是(len-1)/2
                 start = i - (len - 1) / 2;
                 end = i + len / 2;
             }
@@ -30,7 +32,7 @@ public class _005_Longest_Palindromic_Substring {
             L--;
             R++;
         }
-        return R - L - 1; //返回长度
+        return R - L - 1; //返回长度 -必须-1是因为L和R多算了一次
     }
 
     /**
