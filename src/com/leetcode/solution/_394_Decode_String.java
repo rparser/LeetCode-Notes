@@ -1,7 +1,7 @@
 package com.leetcode.solution;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * 1.使用两个栈，countStack存子串的重复次数，resStack存中间结果
@@ -23,32 +23,34 @@ public class _394_Decode_String {
     // O(S), O(S)
     public String decodeString(String s) {
         // 存重复次数
-        Deque<Integer> countStack = new ArrayDeque<>();
+        Deque<Integer> countStack = new LinkedList<>();
         // 存中间结果
-        Deque<StringBuilder> strStack = new ArrayDeque<>();
+        Deque<StringBuilder> strStack = new LinkedList<>();
         StringBuilder cur = new StringBuilder();
 
         int k = 0;
         for (char ch : s.toCharArray()) {
             // 如果是数字则更新k
-            if (Character.isDigit(ch))
+            if (Character.isDigit(ch)) {
                 k = k * 10 + ch - '0';
-            else if (ch == '[') {
+            } else if (ch == '[') {
                 //加入后countStack清空
                 countStack.push(k);
                 k = 0;
-                //cur加入strStack后清空
+                //cur加入strStack后清空 - 要储存新的括号里的cur
                 strStack.push(cur);
                 cur = new StringBuilder();
             } else if (ch == ']') {
-                StringBuilder tmp = cur;
+                StringBuilder tmp = cur; // 当前的sb临时保存
                 cur = strStack.pop();
                 //打印k次
-                for (k = countStack.pop(); k > 0; k--)
+                for (int i = countStack.pop(); i > 0; i--) {
                     cur.append(tmp);
-            } else
+                }
+            } else {
                 // 是字母则加上
                 cur.append(ch);
+            }
         }
         return cur.toString();
     }
@@ -61,20 +63,20 @@ public class _394_Decode_String {
         StringBuilder res = new StringBuilder();
         int k = 0;
         while (i < s.length()) {
-            if (Character.isDigit(s.charAt(i)))
+            if (Character.isDigit(s.charAt(i))) {
                 k = k * 10 + s.charAt(i) - '0';
-            else if (s.charAt(i) == '[') {
+            } else if (s.charAt(i) == '[') {
                 String[] tmp = dfs(s, i + 1);
                 i = Integer.parseInt(tmp[0]);
                 while (k > 0) {
                     res.append(tmp[1]);
                     k--;
                 }
-            } else if (s.charAt(i) == ']')
+            } else if (s.charAt(i) == ']') {
                 return new String[]{String.valueOf(i), res.toString()};
-            else
+            } else {
                 res.append(s.charAt(i));
-
+            }
             i++;
         }
         return new String[]{res.toString()};

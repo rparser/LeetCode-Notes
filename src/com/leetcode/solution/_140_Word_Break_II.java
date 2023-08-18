@@ -34,9 +34,11 @@ public class _140_Word_Break_II {
                 //看能不能找到前面的单词
                 List<String> subWordBreak = wordBreak(s.substring(0, i), wordDict);
                 //如果前面也有，则分别加入结果
-                if (!subWordBreak.isEmpty())
-                    for (String subSubWord : subWordBreak)
+                if (!subWordBreak.isEmpty()) {
+                    for (String subSubWord : subWordBreak) {
                         result.add(subSubWord + " " + subWord);
+                    }
+                }
             }
         }
         // map最后保存各个片段，最后一个弹出的就是result

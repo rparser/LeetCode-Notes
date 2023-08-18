@@ -12,7 +12,7 @@ package com.leetcode.solution;
  * Make the visited node along the path invalid char by changing to '*', so we can avoid repeated search. Once return change back the letter to original.
  * (Or extra space -- Use a visited[][] matrix to mark each visited node along the path)
  * <p>
- * Complexity: time O(mn*4^k) where k is the length of the string; mn for for loop and for the dfs method its 4^k.Since the dfs method goes only as deep as the word length we have T(k)=4(T(k-1))=4*4T(k-2)=....=.. which will be 4^k.
+ * Complexity: time O(mn*4^k) where k is the length of the string; mn for loop and for the dfs method its 4^k.Since the dfs method goes only as deep as the word length we have T(k)=4(T(k-1))=4*4T(k-2)=....=.. which will be 4^k.
  * space O(4mn) if the function call stack is taken into account. In each cell, we recursively call its 4four neighbors and there are mn cells in total.
  * 模板dfs,主函数遍历，首字母和ij等则&&dfs,boolean(r,c,index)函数，index到长度返T,点不同返F，取点修改为*记录已访问，四方向递归or(相等一个就行)，还原回*字母
  */

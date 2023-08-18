@@ -13,7 +13,6 @@ import java.util.Queue;
  */
 
 public class _207_Course_Schedule {
-
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
         for (int i = 0; i < numCourses; ++i)
@@ -27,10 +26,11 @@ public class _207_Course_Schedule {
 
         int[] visited = new int[numCourses];
         // 有环返回true 没有环返回false
-        for (int i = 0; i < numCourses; ++i)
-            if (dfs(i, graph, visited))
+        for (int i = 0; i < numCourses; ++i) {
+            if (dfs(i, graph, visited)) {
                 return false;
-
+            }
+        }
         return true;
     }
 
@@ -39,16 +39,21 @@ public class _207_Course_Schedule {
         //想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1] 反的不要搞错
         //O(V+E), O(V+E) 课程安排图是否是 有向无环图(DAG) Directed acyclic graph
         int VISITED_THIS_LOOP = 1;
-        if (visited[curr] == VISITED_THIS_LOOP) return true;
+        if (visited[curr] == VISITED_THIS_LOOP) {
+            return true;
+        }
         int VISITED_PREVIOUS_LOOP = -1;
-        if (visited[curr] == VISITED_PREVIOUS_LOOP) return false;
+        if (visited[curr] == VISITED_PREVIOUS_LOOP) {
+            return false;
+        }
         // 标记为已访问
         visited[curr] = VISITED_THIS_LOOP;
 
-        for (int next : graph.get(curr))
-            if (dfs(next, graph, visited))
+        for (int next : graph.get(curr)) {
+            if (dfs(next, graph, visited)) {
                 return true;
-
+            }
+        }
         // 如果离开dfs没有return,标记为之前访问过，return false
         visited[curr] = VISITED_PREVIOUS_LOOP;
         return false;

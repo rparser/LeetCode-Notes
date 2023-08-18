@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 质数个数
- * Time Complexity:O(nloglogn)
+ * Time Complexity:O(nlogn)
  * <p>
  * Space Complexity:O(n)
  * bool[]全设为T,2loop(2:n)(2*i:n:j+i),为T则res+否则continue,内层loop,差值i直到n变为F，返回res

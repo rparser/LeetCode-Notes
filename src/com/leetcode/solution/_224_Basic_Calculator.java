@@ -1,6 +1,5 @@
 package com.leetcode.solution;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -22,15 +21,17 @@ public class _224_Basic_Calculator {
     //O(N), O(N)
     public int calculate(String s) {
         //保存之前的结果和正负
-        Deque<Integer> stack = new ArrayDeque<>();
+        Deque<Integer> stack = new LinkedList<>();
         // 当前同级别的总值
         int result = 0;
         int sign = 1; // 当前正负
         int temp = 0; // 当前数值
 
         for (char c : s.toCharArray()) {
-            if (Character.isDigit(c)) temp = temp * 10 + (c - '0');
-                // 看到+号-号要把之前的临时cur * sign加进总值, cur清零等待符号后的计算
+            if (Character.isDigit(c)) {
+                temp = temp * 10 + (c - '0');
+            }
+            // 看到+号-号要把之前的临时cur * sign加进总值, cur清零等待符号后的计算
             else if (c == '+') {
                 result += sign * temp;
                 sign = 1;

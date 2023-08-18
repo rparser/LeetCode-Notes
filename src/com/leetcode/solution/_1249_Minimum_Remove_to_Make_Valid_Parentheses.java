@@ -2,12 +2,13 @@ package com.leetcode.solution;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 class _1249_Minimum_Remove_to_Make_Valid_Parentheses {
     //O(N) O(N) Asterisk
     public String minRemoveToMakeValid(String s) {
         StringBuilder sb = new StringBuilder(s);
-        Deque<Integer> stack = new ArrayDeque<>();
+        Deque<Integer> stack = new LinkedList<>();
         for (int i = 0; i < sb.length(); i++) {
             if (sb.charAt(i) == '(')
                 stack.add(i); // (则加入stack的位置

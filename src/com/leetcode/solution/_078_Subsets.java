@@ -1,8 +1,5 @@
 package com.leetcode.solution;
 
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +26,38 @@ public class _078_Subsets {
         }
     }
 
-    public static void main(String[] args) {
-        JUnitCore.main("com.leetcode.solution._078Subsets");
+    public static List<List<Integer>> findSubsets(int[] nums, int K) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrackRange(nums, K, 0, new ArrayList<>(), result);
+        return result;
     }
 
-    @Test
-    public void testSolution() {
+    private static void backtrackRange(int[] nums, int K, int start, List<Integer> current, List<List<Integer>> result) {
+        if (!current.isEmpty()) {
+            int min = current.get(0);
+            int max = current.get(current.size() - 1);
+            if (min + max >= K) {
+                return; // If min + max exceeds K, stop recursion
+            }
+        }
+
+        result.add(new ArrayList<>(current));
+
+        for (int i = start; i < nums.length; i++) {
+            current.add(nums[i]);
+            backtrackRange(nums, K, i + 1, current, result);
+            current.remove(current.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5};
+        int K = 7;
+
+        List<List<Integer>> subsets = findSubsets(nums, K);
+
+        for (List<Integer> subset : subsets) {
+            System.out.println(subset);
+        }
     }
 }
