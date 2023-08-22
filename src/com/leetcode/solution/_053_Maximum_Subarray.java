@@ -35,8 +35,8 @@ public class _053_Maximum_Subarray {
     }
 
     private int maxSubArrayPart(int[] nums, int left, int right) {
-        if (left == right)
-            return nums[left];
+        if (left == right){
+            return nums[left];}
 
         int mid = (left + right) / 2;
         return Math.max(
@@ -54,8 +54,8 @@ public class _053_Maximum_Subarray {
         int sum = 0;
         for (int i = mid; i >= left; i--) {
             sum += nums[i];
-            if (sum > leftSum)
-                leftSum = sum;
+            if (sum > leftSum){
+                leftSum = sum;}
         }
 
         sum = 0;
@@ -63,8 +63,8 @@ public class _053_Maximum_Subarray {
         int rightSum = Integer.MIN_VALUE;
         for (int i = mid + 1; i <= right; i++) {
             sum += nums[i];
-            if (sum > rightSum)
-                rightSum = sum;
+            if (sum > rightSum){
+                rightSum = sum;}
         }
         return leftSum + rightSum;
     }

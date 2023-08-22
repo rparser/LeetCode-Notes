@@ -4,8 +4,12 @@ public class _2660_Determine_the_Winner_of_a_Bowling_Game {
     public int isWinner(int[] player1, int[] player2) {
         int sum1 = score(player1);
         int sum2 = score(player2);
-        if (sum1 > sum2) return 1;
-        if (sum1 < sum2) return 2;
+        if (sum1 > sum2) {
+            return 1;
+        }
+        if (sum1 < sum2) {
+            return 2;
+        }
         return 0;
     }
 

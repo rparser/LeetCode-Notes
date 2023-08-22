@@ -13,7 +13,9 @@ public class _253_Meeting_Rooms_II {
     // O(nlogn), O(n)
     public int minMeetingRooms(int[][] intervals) {
         int n = intervals.length;
-        if (n < 1) return 0;
+        if (n < 1) {
+            return 0;
+        }
         int[] begin = new int[n], end = new int[n];
         for (int i = 0; i < n; i++) {
             begin[i] = intervals[i][0];

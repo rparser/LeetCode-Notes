@@ -19,23 +19,26 @@ public class _239_Sliding_Window_Maximum {
         if (n == 0)
             return nums;
         int[] result = new int[n - k + 1]; // 一共是n-k+1个窗口
-        // dq 保存index - 不是值是index
+        // dq 保存index - 不是值 是index
         Deque<Integer> dq = new LinkedList<>();
 
         for (int i = 0; i < n; i++) {
             int idxFirst = i - k + 1; // 当前窗口的第一个元素
             // 1,移掉进入此loop时，队伍head（最早进入的） 且 超出index范围的（被挤出去的）
-            if (!dq.isEmpty() && dq.peekFirst() < idxFirst)
+            if (!dq.isEmpty() && dq.peekFirst() < idxFirst) {
                 dq.pollFirst();
+            }
             // 2,如果k范围内的，新来的值比前值更小，移去前值
             // 从队尾开始检查，所有当前值>=peekLast的都移出，直到当前值<peekLast，这样保证队尾到队首是升序->
-            while (!dq.isEmpty() && nums[i] >= nums[dq.peekLast()])
+            while (!dq.isEmpty() && nums[i] >= nums[dq.peekLast()]) {
                 dq.pollLast();
+            }
             // 3,当前值加入dq
             dq.offer(i);
             // 4,去队伍最头找最大值(因为head最大)
-            if (idxFirst >= 0)
+            if (idxFirst >= 0) {
                 result[idxFirst] = nums[dq.peekFirst()];
+            }
         }
         return result;
     }

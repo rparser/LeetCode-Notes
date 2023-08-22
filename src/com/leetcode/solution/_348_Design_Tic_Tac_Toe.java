@@ -1,10 +1,10 @@
 package com.leetcode.solution;
 
-class _348_design_tic_tac_toe {
+class _348_Design_Tic_Tac_Toe {
     int[][] arr;
     int n;
 
-    public _348_design_tic_tac_toe(int n) {
+    public _348_Design_Tic_Tac_Toe(int n) {
         this.arr = new int[n][n];
         this.n = n;
     }
@@ -23,39 +23,47 @@ class _348_design_tic_tac_toe {
     public int move(int row, int col, int player) {
         arr[row][col] = player;
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             //行不同则直接break
-            if (arr[row][i] != player)
+            if (arr[row][i] != player) {
                 break;
-                // 到最后一个还没break
-            else if (i == n - 1)
+            }
+            // 到最后一个还没break
+            else if (i == n - 1) {
                 return player;
+            }
+        }
 
-
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             // 列不同则直接break
-            if (arr[i][col] != player)
+            if (arr[i][col] != player) {
                 break;
-            else if (i == n - 1)
+            } else if (i == n - 1) {
                 return player;
+            }
+        }
 
         // 左上到右下，行列相等
-        if (row == col)
-            for (int i = 0; i < n; i++)
-                if (arr[i][i] != player)
+        if (row == col) {
+            for (int i = 0; i < n; i++) {
+                if (arr[i][i] != player) {
                     break;
-                else if (i == n - 1)
+                } else if (i == n - 1) {
                     return player;
-
+                }
+            }
+        }
 
         // 右上到左下，行+列 == n-1
-        if (row + col == n - 1)
-            for (int i = 0; i < n; i++)
-                if (arr[n - i - 1][i] != player)
+        if (row + col == n - 1) {
+            for (int i = 0; i < n; i++) {
+                if (arr[n - i - 1][i] != player) {
                     break;
-                else if (i == n - 1)
+                } else if (i == n - 1) {
                     return player;
-
+                }
+            }
+        }
         return 0;
     }
 }

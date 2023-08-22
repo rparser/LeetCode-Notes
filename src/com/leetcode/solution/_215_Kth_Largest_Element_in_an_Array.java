@@ -22,12 +22,13 @@ public class _215_Kth_Largest_Element_in_an_Array {
         while (true) {
             int index = partition(nums, left, right);
 
-            if (index == target)
+            if (index == target) {
                 return nums[index];
-            else if (index < target)
+            } else if (index < target) {
                 left = index + 1;
-            else
+            } else {
                 right = index - 1;
+            }
         }
     }
 
@@ -84,8 +85,9 @@ public class _215_Kth_Largest_Element_in_an_Array {
     }
 
     private int partition(int[] nums, int low, int high) {
-        if (low == high)
+        if (low == high) {
             return low;
+        }
 
         int median = medianOfMedians(nums, low, high);
         // find the median in the array and swap it with 'nums[high]' which will become our pivot
@@ -99,8 +101,9 @@ public class _215_Kth_Largest_Element_in_an_Array {
         int pivot = nums[high];
         for (int i = low; i < high; i++) {
             // all elements less than 'pivot' will be before the index 'low'
-            if (nums[i] < pivot)
+            if (nums[i] < pivot) {
                 swap(nums, low++, i);
+            }
         }
         // put the pivot in its correct place, remember nums[high] is our pivot
         swap(nums, low, high);
