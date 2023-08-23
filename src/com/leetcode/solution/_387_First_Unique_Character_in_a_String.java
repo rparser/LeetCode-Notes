@@ -12,19 +12,22 @@ import java.util.HashMap;
  * 遍历两次，第一次添加进hashmap，第二次从hashmap中取出值为1的
  * <p>
  * Time complexity : O(N) since we go through the string of length N two times.
- * Space complexity : O(N) since we have to keep a hash map with N elements.
+ * Space complexity : O(!) since we have to keep a hash map with N elements.
  */
 
-public class _387_first_unique_character_in_a_string {
-    // O(N), O(N)
+public class _387_First_Unique_Character_in_a_String {
+    // O(N), O(!)
     public int firstUniqChar(String s) {
         HashMap<Character, Integer> count = new HashMap<>();
-        for (char c : s.toCharArray()) //遍历第一次：遍历字符串
-            count.put(c, count.getOrDefault(c, 0) + 1);//如果空值则添加0再+1即为1
+        for (char c : s.toCharArray()) { //遍历第一次：遍历字符串
+            count.put(c, count.getOrDefault(c, 0) + 1);
+        }//如果空值则添加0再+1即为1
 
-        for (int i = 0; i < s.length(); i++)//遍历第二次，遍历hashmap
-            if (count.get(s.charAt(i)) == 1) return i;//查找对应值返回第一个为1的字母（unique）
-
+        for (int i = 0; i < s.length(); i++) {//遍历第二次，遍历hashmap
+            if (count.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }//查找对应值返回第一个为1的字母（unique）
         return -1;
     }
 

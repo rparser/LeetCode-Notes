@@ -7,7 +7,7 @@ package com.leetcode.solution;
 
 public class _013_Roman_to_Integer {
     public int romanToInt(String s) {
-        if (s == null || s.length() == 0)
+        if (s == null || s.isEmpty())
             return 0;
         int result = 0;
         //存在4，9的时候，减去两个当前值
@@ -28,27 +28,13 @@ public class _013_Roman_to_Integer {
 
         for (char c : s.toCharArray())
             switch (c) {
-                case 'M':
-                    result += 1000;
-                    break;
-                case 'D':
-                    result += 500;
-                    break;
-                case 'C':
-                    result += 100;
-                    break;
-                case 'L':
-                    result += 50;
-                    break;
-                case 'X':
-                    result += 10;
-                    break;
-                case 'V':
-                    result += 5;
-                    break;
-                case 'I':
-                    result += 1;
-                    break;
+                case 'M' -> result += 1000;
+                case 'D' -> result += 500;
+                case 'C' -> result += 100;
+                case 'L' -> result += 50;
+                case 'X' -> result += 10;
+                case 'V' -> result += 5;
+                case 'I' -> result += 1;
             }
         return result;
     }

@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 3. 如有非字母段，则非字母段（数字段）靠后，两个均为数字段，则返回原顺序
  */
 
-public class _937ReorderLogFiles {
+public class _937_Reorder_Log_Files {
     public String[] reorderLogFiles(String[] logs) {
         Arrays.sort(logs, (log1, log2) -> {
             String[] split1 = log1.split(" ", 2);   // String.split(regex, limit) limit是把String分割为几段
@@ -19,7 +19,9 @@ public class _937ReorderLogFiles {
             boolean isDigit2 = Character.isDigit(split2[1].charAt(0));
             if (!isDigit1 && !isDigit2) {   // 如果都是字母
                 int cmp = split1[1].compareTo(split2[1]);   // 按照字母排序第二段（正文）
-                if (cmp != 0) return cmp;   // 如果有正负则比较字典序lexicographical(lexico-graphical)
+                if (cmp != 0) {
+                    return cmp;
+                }   // 如果有正负则比较字典序lexicographical(lexico-graphical)
                 return split1[0].compareTo(split2[0]); //如果第二段一样，则比较第一段identifier
             }
             return isDigit1 ? (isDigit2 ? 0 : 1) : -1;  // 如果不都是字母（有数字）则：

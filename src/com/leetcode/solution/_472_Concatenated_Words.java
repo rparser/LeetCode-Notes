@@ -12,19 +12,25 @@ public class _472_Concatenated_Words {
         List<String> result = new ArrayList<>();
         Set<String> allWords = new HashSet<>(Arrays.asList(words));
 
-        for (String word : words)
-            if (checkConcatenated(word, 0, allWords, 0))
+        for (String word : words) {
+            if (checkConcatenated(word, 0, allWords, 0)) {
                 result.add(word);
+            }
+        }
         return result;
     }
 
     private boolean checkConcatenated(String word, int index, Set<String> words, int currentWordNum) {
-        if (index >= word.length() && currentWordNum >= 2) return true;
+        if (index >= word.length() && currentWordNum >= 2) {
+            return true;
+        }
 
-        for (int i = index; i < word.length(); i++) //遍历这个单词
+        for (int i = index; i < word.length(); i++) {//遍历这个单词
             // 如果
-            if (words.contains(word.substring(index, i + 1)) && checkConcatenated(word, i + 1, words, currentWordNum + 1))
+            if (words.contains(word.substring(index, i + 1)) && checkConcatenated(word, i + 1, words, currentWordNum + 1)) {
                 return true;
+            }
+        }
         return false;
     }
 }
