@@ -1,0 +1,176 @@
+Tree树
+T:T翻转226/TTT最近公共祖先236/A[I],A[I]前序中序建树105后序中序106
+B:T平衡110/TT是否存在这个子树
+I:T直径543/T深度104/T最大路径和124/T最大宽度662
+S:T,I,I二叉树从A到B每步的方向2096
+L<I>:T右侧图199/I,A2[I]树最小高度310?
+L<L<I>>:T层序遍历102,T垂直遍历314
+设:序列化反序列化297/BST序列化449
+
+BST
+T:3T最近公共祖先235
+B:T验证BST098
+I:TI第K小值230/T子树最大键值和1373
+
+区间:
+A2[I]:A2[I]合并区间056/A2[I],A[I]插入区间057
+I:A[I]A[I]A[I]工作最大报酬1235/A[C],I返回最短时间任务有间隔621
+B:A2[I]会议安排252/I-A2[I]最少需要多少会议室253
+
+链表:
+N:NN链表加法逆序002/NN正序445/NN合并双链021/A[N]合并K链023/N反转206,N,I,I两个值之间翻转092,N,I每次翻转K个025/N中间节点876/N,I删除倒数第N个点019/N删除重复值083/N,I删除某个值203/NN找到相交节点160/N,I根据x值放到前后086/N分割成奇偶链表328/N加一链表369/
+B:N环形141/N回文234
+V:N头尾头尾重排链表143
+I:L<I>,I扁平化339权值
+
+回溯:
+L<S>:S电话号码017/I括号生成022
+L<L<I>>:A[I]全排列046/A[I]子集078/A[I],I和为目标的组合039
+L<L<S>>:I-N皇后051
+B:A2[C],S网格找到单词搜索079/L<S>-A2[C],A[S]单词搜索2找到存在的单词
+
+设计:
+LRU-get-put146/数据流中位数-findMedian295/基于时间的map981/最小栈155/Trie-search-startWith208/栈实现队列232/Tic-Tac-Toe348/自动完成642?/栈最常见值895?
+
+BFS:
+I:SS,L<S>单词接龙最短转换序列127
+B:L<S>,S单词拆分139
+矩阵:
+I:MN岛屿数量200/橘子每分钟腐烂994
+MN:MN输入到最近0的距离01矩阵542/MN,I,I,I上色后的最终图像733
+L<I>:MN螺旋顺时针返回矩阵054
+
+栈:
+I:S计算器224不带括号带乘除227都包括[772]/A[S]逆波兰求值150
+B:S验证括号020
+S:S移除无效括号1249
+单调栈
+I:A[I]柱状图最大矩形084
+S:S,I移掉K个数字后最小402
+A[I]:A[I],I固定窗口的最大值239
+
+字符串:
+回文和异位
+B:S验证回文125
+I:S最长回文409
+S:S最长回文子串005
+B:SS验证异位242/SS验证长度不同383
+L<I>:SS找到所有异位词返回索引438
+
+I:S字符串变整数008-S罗马到整数013/S,I替换K次后的最长重复字符424/S数字解码成字母有几种091/S第一个独特字符387
+S:SS最短覆盖子串076/S字符串nest-2[a]解码394/A[S]字母顺排序外星词典返回字母顺序269
+I:S无重复字符最长子串003
+B:L<S>,S单词拆分139/L<S>-L<S>,S返回拆分后的句子140
+
+数字数组:
+I:A[I]多数元素超过一半169/A[I]最大连续子数组和053/A[I]容器最大水量011/A[I]3D接雨水042/A[I],I数组中第K大元素215/I平方根069/A2[I]直线上最多有多少点149/A[I],A[I]保龄球胜者2660/A[I]使数组唯一的最小增量945/A2[I]-AB城分配1029
+A[I]:A[I]除自身外的乘积238
+V:A[I]三色分类075/A[I],I,A[I],I合并两个有序数组088
+L<L<I>>:A[I]三数和为零015
+B:A[I]分割成两个等和子集DP416/A[I]元素为最远跳跃距离055/A[I]上一次跳k这次只能跳(k+-1)403
+
+柱状相关
+两个雨水，最大面积084
+I:A[I]容器最大水量011/A[I]3D接雨水042
+
+拓扑排序：
+B:I,A2I课程表207/返回A[I]课程表的顺序210
+L<S>:A[S],L<L<S>>,A[S]给定原材料找能做出的菜2115
+
+二分查找
+I:A[I],I目标值704/A[I],I旋转过的排序数组033/I最先错的版本278
+B:A[I],I033旋转的重复版本081
+D:A2[I]两个有序数组的中位数004
+A[I]:A[I],I有序数组两数之和为T167
+并查集合并
+L<L<S>>:L<L<S>>账户合并721
+
+DP:
+I:I楼梯1或2阶多少种方法070/A[I],I最少硬币数322/A[I],I硬币有几种组合518/MN不同路径左上到右下062/MN有权值最小064
+A[S],I切披萨至少包含一个苹果1444/
+D:I,I,I香槟塔某个杯子799
+
+二进制:
+S:SS二进制求和067
+
+K相关:
+I:A[I],I第K个最大元素215
+A[I]:A[I],I前K个高频347
+A2[I]:A2[I]最接近原点的K个点973
+
+图:
+I:A2[I],I,I从K发出信号多久传到每个点743
+N:N克隆图133
+L<I>:I,A2[I]返回最小高度树根节点310
+
+亚麻独特：
+A[S]:A[S]重排日志文件937/
+
+Array and Strings
+048 旋转矩阵 Rotate Image
+049 同构分类 Group Anagrams
+015 三加和 3Sum 016 3加和最接近 3Sum Closest
+165 比较版本号 Compare Version Numbers
+268 Missing Number
+012 罗马字符 Integer to Roman 013 Roman to Integer 数字变英文 273 Integer to English Words
+076 最短子串有target Minimum Window Substring
+387 首不重字符 First Unique Character in a String
+028 实现indexOf Implement strStr()
+OA:
+819 Most Common Word
+
+
+LinkedList
+权值总和 339_Nested List Weight Sum -并不是链表
+341 Flatten Nested List Iterator
+599 A[S]-A[S]A[S]两个列表最小索引Minimum Index Sum of Two Lists
+430 N:N扁平化链表Flatten a Multilevel Doubly Linked List
+707 Design Linked List
+1019 Next Greater Node In Linked List
+148 链表排序 Sort List
+Onsite:
+138 Copy List With Random Pointer
+
+
+Tree and Graph
+675 砍树BFS Cut Off Trees for Golf Event
+127 单词变换 Word Ladder 126    Word Ladder II
+545 树边界 Boundary of Binary Tree
+733 Flood Fill
+993 Cousins in Binary Tree
+572 Subtree of Another Tree
+863 All Nodes Distance K in Binary Tree
+101 Symmetric Tree
+428 Serialize and Deserialize N-ary Tree
+173 Binary Search Tree Iterator
+508 Most Frequent Subtree Sum
+652 Find Duplicate Subtrees
+366 Find Leaves of Binary Tree
+333 Largest BST Subtree
+272 Closest Binary Search Tree Value II
+099 Recover Binary Search Tree
+637 Average of Levels in Binary Tree
+096 Unique Binary Search Trees
+250 Count Univalue Subtrees
+987 Vertical Order Traversal of a Binary Tree
+261 Graph Valid Tree
+979 Distribute Coins in Binary Tree
+100 同一棵树 Same Tree
+114 Flatten Binary Tree to Linked List
+145 后序遍历 Binary Tree Postorder Traversal 094 前序遍历 Binary Tree Inorder Traversal
+095 Unique Binary Search Trees II
+538 Convert BST to Greater Tree
+108 Convert Sorted Array to Binary Search Tree
+654 Maximum Binary Tree 559 Maximum Depth of N-ary Tree
+701 插入  Insert into a Binary Search Tree
+Phone:
+103 Zigzag树遍历 Binary Tree Zigzag Level Order Traversal
+
+DP
+121 股票 Best Time to Buy and Sell Stock 188 Best Time to Buy and Sell Stock IV 122 Best Time to Buy and Sell Stock II
+
+Others
+957 监狱开灯 Prison Cells After N Days
+007 翻转整数 Reverse Integer
+763 字符串字母分组 Partition Labels
+176 Second Highest Salary
