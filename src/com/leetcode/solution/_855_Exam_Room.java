@@ -15,7 +15,7 @@ public class _855_Exam_Room {
     public int seat() {
         // toSit是即将要坐的位置
         int toSit = 0;
-        if (students.size() > 0) {
+        if (!students.isEmpty()) {
             // 找到最左的学生
             int distance = students.first();
             // 假设有学生坐 -1
@@ -30,8 +30,9 @@ public class _855_Exam_Room {
                 prev = s;
             }
             // 如果最后空了很多，-1是index所以-1,直接坐到最后一位
-            if (capacity - 1 - students.last() > distance)
+            if (capacity - 1 - students.last() > distance) {
                 toSit = capacity - 1;
+            }
         }
         // 学生入座
         students.add(toSit);

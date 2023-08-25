@@ -17,14 +17,17 @@ public class _540_Single_Element_in_a_Sorted_Array {
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
             // mid保持偶数
-            if (mid % 2 == 1)
+            if (mid % 2 == 1) {
                 mid--;
+            }
             // 如果偶索引和后一个一样，说明单次数字出现在后半段
-            if (nums[mid] == nums[mid + 1])
+            if (nums[mid] == nums[mid + 1]) {
                 lo = mid + 2;
-                //否则前半段
-            else
+            }
+            //否则前半段
+            else {
                 hi = mid;
+            }
         }
         return nums[lo];
     }

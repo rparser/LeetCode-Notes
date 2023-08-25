@@ -20,11 +20,12 @@ public class _658_Find_K_Closest_Elements {
         while (left < right) {
             int mid = left + (right - left) / 2;
 
-            if (x - arr[mid] > arr[mid + k] - x) //比较左右距离，如果左侧差更大
-                left = mid + 1; //mid右侧更好
-
-            else //如果右侧差大于等于
-                right = mid; //mid左侧更好
+            if (x - arr[mid] > arr[mid + k] - x) { //比较左右距离，如果左侧差更大
+                left = mid + 1;
+            } //mid右侧更好
+            else { //如果右侧差大于等于
+                right = mid;
+            } //mid左侧更好
         }
 //        return result = Arrays.copyOfRange(arr, left, left + k);
         return Arrays.stream(arr, left, left + k).boxed().collect(Collectors.toList());

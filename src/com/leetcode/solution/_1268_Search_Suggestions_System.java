@@ -9,8 +9,6 @@ class _1268_Search_Suggestions_System {
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Arrays.sort(products);
-        if (products.length == 0)
-            return ans;
 
         int len = searchWord.length();
         int n = products.length;
@@ -20,21 +18,26 @@ class _1268_Search_Suggestions_System {
             String temp1 = searchWord.substring(0, i + 1);
             List<String> temp = new ArrayList<>();
             for (int j = 0; j < n; j++) {
-                if (!isMatch[j]) continue;
+                if (!isMatch[j]) {
+                    continue;
+                }
                 int curr_len = products[j].length();
                 String temp2 = "";
-                if (i < curr_len)
+                if (i < curr_len) {
                     temp2 = products[j].substring(0, i + 1);
-                else
+                } else {
                     temp2 = products[j];
+                }
 
-                if (temp1.equals(temp2))
+                if (temp1.equals(temp2)) {
                     temp.add(products[j]);
-                else {
+                } else {
                     isMatch[j] = false;
                     continue;
                 }
-                if (temp.size() == 3) break;
+                if (temp.size() == 3) {
+                    break;
+                }
             }
             ans.add(new ArrayList<>(temp));
         }

@@ -17,12 +17,15 @@ public class _167_two_sum_ii_input_array_is_sorted {
         int i = 0, j = len - 1; //一个从头一个从尾
         while (i < len && j > 0) {
             int sum = numbers[i] + numbers[j];
-            if (sum == target)
+            if (sum == target) {
                 break;
-            if (sum < target)
-                i++; //小于则左指针右移
-            else
-                j--; //大于则右指针左移
+            }
+            if (sum < target) {
+                i++;
+            } //小于则左指针右移
+            else {
+                j--;
+            } //大于则右指针左移
         }
         res[0] = i + 1; //仅是这个题目（index从1开始），正常不需要+1
         res[1] = j + 1;

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-class _128_longest_consecutive_sequence {
+class _128_Longest_Consecutive_Sequence {
     // O(N), O(N) 头尾都设成最长长度， 一次遍历
     public int longestConsecutive(int[] nums) {
         //用一个 HashMap ，存储以当前 key 为边界(前后)的连续序列的长度。
