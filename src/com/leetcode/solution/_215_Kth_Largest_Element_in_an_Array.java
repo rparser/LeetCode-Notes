@@ -125,7 +125,6 @@ public class _215_Kth_Largest_Element_in_an_Array {
             Arrays.sort(nums, partitionStart, partitionStart + 5); // sort the 5 elements array
             medians[i] = nums[partitionStart + 2]; // get the middle element (or the median)
         }
-
         return partition(medians, 0, numOfPartitions - 1);
     }
 }

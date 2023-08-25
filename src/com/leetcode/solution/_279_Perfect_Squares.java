@@ -8,7 +8,7 @@ import java.util.Arrays;
  * 2loop(1~n)(i-j*j>=0)，内层min = min(min, dp[i - j * j] + 1);dp[i]=min;
  */
 
-public class _279_PerfectSquares {
+public class _279_Perfect_Squares {
     public int numSquares(int n) {
         //dp[n] = Min{ dp[n - i*i] + 1 },  n - i*i >=0 && i >= 1
         int[] dp = new int[n + 1];

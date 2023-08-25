@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-class _1060_missing_element_in_sorted_array {
+class _1060_Missing_Element_in_Sorted_Array {
     //O(logN), O(1)
     public int missingElement(int[] nums, int k) {
         if (k <= 0 || nums == null || nums.length == 0) throw new IllegalArgumentException("invalid param");
@@ -11,13 +11,14 @@ class _1060_missing_element_in_sorted_array {
             int mid = left + (right - left) / 2;
             // 对于以0开头，连续无缺失值数组，索引和数字相等，如果前面有缺失值，则必然num[idx] - idx > 0；
             // 对于缺失超过k个值的数字，必然有num[idx] - idx - k >= 0，由于本题数组开始值不为0，还需要减去最小值
-            if (nums[mid] - min - k >= mid)
+            if (nums[mid] - min - k >= mid) {
                 // 1、right设置为mid而不是mid-1，使得right始终保持缺失值超过k的位置
                 // 2、该策略的改变也使得循环条件变为left < right
                 // 3、考虑到如果整个数组缺失值不超过k，则最后left会停留在数组最后一位，这样会增加判断复杂度，可以设置初始right为数组长度，省去判断步骤
                 right = mid;
-            else
+            } else {
                 left = mid + 1;
+            }
         }
         // 最后结果分两步判断：
         // 1、如果整个数组缺失值不超过k，则left为nums.length，假设数组连续，

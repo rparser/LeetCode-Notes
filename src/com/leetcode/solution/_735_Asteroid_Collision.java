@@ -3,10 +3,16 @@ package com.leetcode.solution;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * 由于碰撞抵消总是从相邻行星之间发生，我们可以使用「栈」来模拟该过程。
+ * 从前往后处理所有的 asteroids[i]，使用栈存储当前未被抵消的行星，
+ * 当栈顶元素方向往右，当前 asteroids[i] 方向往左时，会发生抵消操作，抵消过程根据规则进行即可。
+ * O(N)~O(N)
+ */
 class _735_Asteroid_Collision {
     public int[] asteroidCollision(int[] asteroids) {
         Deque<Integer> stack = new LinkedList<>();
-        for (int ast : asteroids) {//对sateroids遍历取值
+        for (int ast : asteroids) {//对asteroids遍历取值
             collision:
             {
                 while (!stack.isEmpty() && ast < 0 && 0 < stack.peek()) {

@@ -3,7 +3,7 @@ package com.leetcode.solution;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class _934_shortest_bridge {
+public class _934_Shortest_Bridge {
     //先DFS把一座岛paint成2，之后BFS 1找2
     private static final int[][] DIRECTIONS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     private static final int SECOND_ISLAND = 2;
@@ -57,22 +57,26 @@ public class _934_shortest_bridge {
     }
 
     private void paint2ndBridge(int[][] A) {
-        for (int i = 0; i < A.length; i++)
-            for (int j = 0; j < A[0].length; j++)
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[0].length; j++) {
                 //找到1开始dfs
                 if (A[i][j] == 1) {
                     dfs(A, i, j);
                     return;
                 }
+            }
+        }
     }
 
     private void dfs(int[][] A, int r, int c) {
-        if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] != 1)
+        if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] != 1) {
             return;
+        }
         // 涂成2
         A[r][c] = SECOND_ISLAND;
         // 继续dfs
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++) {
             dfs(A, r + DIRECTIONS[i][0], c + DIRECTIONS[i][1]);
+        }
     }
 }

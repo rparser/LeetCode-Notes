@@ -14,8 +14,9 @@ class _442_find_all_duplicates_in_an_array {
             // 1~n 从1开始所以需要-1否则不需要-1, +1
             int index = Math.abs(nums[i]) - 1;
             // 如果负数则证明此index出现过，加入结果
-            if (nums[index] < 0)
+            if (nums[index] < 0) {
                 res.add(Math.abs(index + 1));
+            }
             // 把数字变为负数/正数
             nums[index] = -nums[index];
         }
@@ -26,17 +27,21 @@ class _442_find_all_duplicates_in_an_array {
     public static List<Integer> findNumbers(int[] nums) {
         int i = 0;
 
-        while (i < nums.length)
-            if (nums[i] != nums[nums[i] - 1])
+        while (i < nums.length) {
+            if (nums[i] != nums[nums[i] - 1]) {
                 swap(nums, i, nums[i] - 1);
-            else
+            } else {
                 i++;
+            }
+        }
 
         List<Integer> duplicateNumbers = new ArrayList<>();
 
-        for (i = 0; i < nums.length; i++)
-            if (nums[i] != i + 1)
+        for (i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
                 duplicateNumbers.add(nums[i]);
+            }
+        }
 
         return duplicateNumbers;
     }

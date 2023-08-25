@@ -18,8 +18,9 @@ public class _560_Subarray_Sum_Equals_K {
         map.put(0, 1);
         for (int num : nums) {
             sum += num;
-            if (map.containsKey(sum - k)) //a1a2a3a4a5,若a3a4为K，则sum计算到a4时，a1a2的sum必在map里
+            if (map.containsKey(sum - k)) { //a1a2a3a4a5,若a3a4为K，则sum计算到a4时，a1a2的sum必在map里
                 result += map.get(sum - k);
+            }
 
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }

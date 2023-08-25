@@ -22,29 +22,33 @@ class _622_design_circular_queue {
     // 插入，成功返回true
     public boolean enQueue(int value) {
         //已满
-        if (size == arr.length)
+        if (size == arr.length) {
             return false;
+        }
         //插入队尾
         arr[rear] = value;
         size++;
         //如果队尾是数组最后一位，变为0，否则++
-        if (rear == arr.length - 1)
+        if (rear == arr.length - 1) {
             rear = 0;
-        else
+        } else {
             rear++;
+        }
 
         return true;
     }
 
     //删除队首的数值(poll)
     public boolean deQueue() {
-        if (size == 0)
+        if (size == 0) {
             return false;
+        }
         //队首位置提前
-        if (front == arr.length - 1)
+        if (front == arr.length - 1) {
             front = 0;
-        else
+        } else {
             front++;
+        }
 
         size--;
         return true;
@@ -52,16 +56,18 @@ class _622_design_circular_queue {
 
     //peek Front
     public int Front() {
-        if (size == 0)
+        if (size == 0) {
             return -1;
+        }
 
         return arr[front];
     }
 
     //peek Rear
     public int Rear() {
-        if (size == 0)
+        if (size == 0) {
             return -1;
+        }
         // 如果0从enQueue证明是数组最后一位，返回最后一位
         // 否则返回前一位, rear是直接插入的位置
         return rear == 0 ? arr[arr.length - 1] : arr[rear - 1];

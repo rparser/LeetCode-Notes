@@ -1,6 +1,6 @@
 package com.leetcode.solution;
 
-class _189_rotate_array {
+class _189_Rotate_Array {
     //O(N), O(1)
     // 当我们旋转数组 k 次， k%n 个尾部元素会被移动到头部，剩下的元素会被向后移动。
     public void rotate2(int[] nums, int k) {
