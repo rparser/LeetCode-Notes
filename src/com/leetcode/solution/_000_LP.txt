@@ -1,0 +1,86 @@
+一,Deliver result - MARIS
+Background: I joined Groupon in early December 2019, and one of my first tasks was to contribute to the upgrade of MARIS (Market Rate Inventory Service) for integration with Expedia Rapid. The project had a tight deadline to be completed by the end of 2019, which added an extra layer of urgency.
+
+Situation & Task: With my limited time available due to the tight timeline, I knew that early and consistent contributions were vital. Therefore, from my second day at the company, I began actively submitting code and pull requests for the MARIS upgrade project. This was a significant task given the need to complete it within the short timeframe of just a few weeks.
+
+Action: I embarked on this task with determination and dedication. Recognizing that every day counted, I swiftly dove into the codebase, studying the project requirements, and understanding the complexities involved. Despite my recent onboarding, I collaborated with my colleagues to clarify doubts and gather insights. Starting from scratch, I methodically contributed code, adhering to best practices, and ensured that my work aligned seamlessly with the existing system.
+
+Additional Action: In addition to my contributions to the upgrade, I noticed that the Rapid API integration was a crucial component of the project's success. I took the initiative to thoroughly examine the Rapid API's functionality and requirements. Identifying the need for extensive testing, I developed and added several dozen new test cases that comprehensively covered various scenarios.
+
+Result: Thanks to the concerted efforts of the entire team, including my relentless contributions, the MARIS upgrade was successfully completed by the end of 2019. Additionally, my proactive approach to testing the Rapid API proved immensely valuable. By adding the new test cases well ahead of time, I ensured that the integration was thoroughly tested and stable before deployment. This proactive approach resulted in a smooth transition, and the project was successfully pushed to the PROD environment before Christmas. In the subsequent months with millions of transactions, the system performed flawlessly without any logic issues, validating the effectiveness of our comprehensive testing efforts.
+
+背景：我于2019年12月初加入Groupon，我加入公司的早期任务之一就是为MARIS（市场价格库存服务）的升级工作做出贡献，以与Expedia Rapid进行集成。这个项目有一个紧迫的截止日期，需要在2019年底之前完成，这增加了额外的紧迫感。
+
+情境与任务：由于时间紧迫，我知道早期和持续的贡献至关重要。因此，从我在公司的第二天开始，我就积极地为MARIS升级项目提交代码和拉取请求。在短短几周的时间内完成这个任务是一项重大挑战。
+
+行动：我充满决心和投入地着手完成这项任务。我意识到每一天都很重要，迅速深入代码库，研究项目需求，并理解其中的复杂性。尽管我刚刚入职不久，但我与同事合作，解决疑问，收集见解。我从零开始，有条不紊地贡献代码，遵循最佳实践，确保我的工作与现有系统无缝对接。
+
+附加行动：除了我对升级工作的贡献，我还注意到Rapid API的集成是项目成功的关键组成部分。我主动深入研究了Rapid API的功能和要求。鉴于测试的需要，我开发并添加了数十个新的测试案例，全面覆盖了各种情况。
+
+结果：在整个团队的共同努力下，包括我的不懈贡献，MARIS升级项目成功在2019年底前完成。此外，我积极主动地测试Rapid API的做法证明了其巨大价值。通过提前添加新的测试案例，我确保集成在部署之前经过了彻底的测试和稳定性验证。这种积极主动的方法导致了平稳的过渡，该项目成功地在圣诞节前推向了PROD环境。在随后的几个月里，经过数百万次的交易测试，系统表现出色，没有出现任何逻辑问题，验证了我们全面测试工作的有效性。
+
+二，Deep dive - Elastic search
+English Version:
+Background: During my tenure at eBay, I encountered a challenging situation within my team's Elasticsearch environment. The code for this segment had been written by a former employee who had left the company quite some time ago, leading to numerous issues. These issues included outdated data that couldn't be updated properly (resulting in errors during updates), the inability to validate data updates, confusion regarding the meanings and use cases of different indexes (creating chaos), occasional inability to connect to the correct Index, overlapping indexes across environments (DEV, QA, PREPROD, PROD), and version inconsistencies across different data centers, all of which affected the consistency.
+
+Situation & Task: Facing these intricate challenges, I embraced the leadership principle of "Dive Deep." I recognized that resolving these issues required a comprehensive understanding of the existing codebase, Elasticsearch's core principles, and its APIs. My task was to find a solution that would streamline the entire process, ensuring data integrity and consistency across indexes while automating many manual steps.
+
+Action: I began my initiative by thoroughly examining each aspect of the problem. I delved into Elasticsearch's documentation, whitepapers, and APIs to deeply understand its mechanisms and potential solutions. Recognizing the critical importance of the task, I meticulously crafted a plan to introduce an automated data ingestion (ingest) process. This process would also include thorough validation of indexes and the implementation of an automated alias update procedure to manage different indexes.
+
+Additional Action: With my plan in place, I embarked on the implementation phase. I collaborated closely with my team members, sharing insights and gathering feedback to refine the proposed solutions. I carefully coded the automated processes, ensuring they were robust and reliable. I also conducted thorough testing, simulating various scenarios to validate the effectiveness of the new workflows.
+
+Result: Upon completion of this project, the impact was substantial. The data ingestion process, which previously demanded over 24 hours of manual effort for each step, was now entirely automated, relying on scheduled batch jobs. This automation not only saved the team over a thousand hours in operation and maintenance but also ensured a high level of reliability in the data provided to over 140 million global users. The chaotic and inconsistent index situation was transformed into a streamlined, well-managed system that aligned with the principles of "Dive Deep" by addressing intricate details and enhancing overall efficiency.
+
+背景：在我在eBay的任职期间，我遇到了团队Elasticsearch环境中的一项棘手情况。这部分代码是由一名离职多时的前员工编写的，导致了诸多问题。这些问题包括数据过时无法适当更新（导致更新时出错），数据更新无法验证，不同索引的含义和使用场景混乱，有时无法连接到正确的索引，不同环境（DEV、QA、PREPROD、PROD）中的索引交叉，不同数据中心的索引版本不一致，所有这些都影响了数据的一致性。
+
+情境与任务：面对这些复杂的挑战，我秉持“深入挖掘”的领导原则。我意识到要解决这些问题，需要全面了解现有的代码库、Elasticsearch的核心原则以及其API。我的任务是找到一种解决方案，能够在自动化许多手动步骤的同时，简化整个流程，确保索引之间的数据完整性和一致性。
+
+行动：我首先深入研究了问题的每个方面。我深入研究了Elasticsearch的文档、白皮书和API，以深刻理解其机制和潜在解决方案。认识到任务的关键重要性，我仔细制定了一个计划，引入了自动化的数据注入流程。该流程还包括对索引的彻底验证，并实施了自动更新别名的过程，以管理不同的索引。
+
+附加行动：计划准备就绪后，我着手开始实施阶段。我与团队成员密切合作，分享见解，收集反馈，以完善所提出的解决方案。我仔细编写了自动化流程的代码，确保其稳健可靠。我还进行了彻底的测试，模拟各种场景，验证新工作流程的有效性。
+
+结果：完成这个项目后，其影响是巨大的。数据注入过程，之前需要每个步骤超过24小时的手动操作，现在完全自动化，依赖于计划的批处理作业。这种自动化不仅为团队节省了超过一千小时的操作和维护时间，还确保向超过一亿四千万全球用户提供了高度可靠的数据。混乱和不一致的索引情况被转变为一个精简、良好管理的系统，它符合“深入挖掘”的原则，通过解决微妙细节来增强整体效率。
+
+三, Earn Trust - Citi, remote
+Background: While working on the credit card redemption team, I encountered a situation that aligned with the principle of "Earn Trust." Our team had a highly experienced senior engineer responsible for a key microservice, but he worked remotely in Europe. The challenge arose when I needed to redesign a critical aggregator service to ensure its compatibility with a range of credit cards. Due to the time zone difference, maintaining seamless communication with him became challenging, and it was evident that there was a lack of trust in our collaboration.
+
+Situation & Task: Given the complexity of the project and the need for effective communication, I recognized the importance of building trust and facilitating open dialogue with the remote senior engineer. My task was to establish a method that would bridge the gap caused by time zone differences and communication barriers, fostering a deeper understanding and collaborative atmosphere.
+
+Action: To address the communication issue, I took the initiative to design a comprehensive tracking form. This form served as a repository for detailed questions and answers exchanged between the senior engineer and me. Both of us were encouraged to use this form to ask questions and provide answers, ensuring clarity and accuracy. The form had several significant benefits. First, it ensured that no detail was missed in our conversations. Second, it allowed both of us to have more time to reflect on the questions and formulate comprehensive responses, even given the time zone challenges. This way, the exchange of information was no longer limited to quick yes or no answers but facilitated a more thoughtful and thorough discussion.
+
+Result: The implementation of the tracking form significantly improved our communication and collaboration. Not only did I earn the trust of the remote senior engineer by actively engaging in a transparent and organized dialogue, but this form also proved to be an invaluable asset when documenting the service several months later. By adhering to the principle of "Earn Trust," I not only bridged the communication gap but also established a foundation of mutual respect and collaboration that extended beyond this specific project.
+
+背景：在我的信用卡赎回团队工作期间，我遇到了一个与“赢得信任”原则相关的情况。我们团队中的一位高级工程师负责着一个重要的微服务，但他在欧洲远程办公。当我需要重新设计一个关键的聚合器服务，以确保其与多种不同的信用卡兼容时，面临了挑战。由于时区差异，与他保持无缝沟通变得困难，并且很明显在我们的合作中存在着缺乏信任。
+
+情境与任务：鉴于项目的复杂性和有效沟通的需求，我意识到建立信任并促进与远程高级工程师的开放对话的重要性。我的任务是建立一种方法，以弥合由于时区差异和沟通障碍所引起的鸿沟，从而培养更深入的理解和协作氛围。
+
+行动：为解决沟通问题，我主动设计了一种全面的追踪表单。这个表单作为详细记录问题和答案的存储库，供远程高级工程师和我之间的交流使用。我们都被鼓励使用这个表单来提问和提供答案，以确保清晰和准确。这个表单有几个重要的好处。首先，它确保了我们对话中没有任何细节被忽略。其次，它让我们两人有更多的时间来思考问题，并制定综合性的回答，即使面临时区挑战。这样，信息的交流不再局限于快速的是或否答案，而是促进了更深思熟虑和全面的讨论。
+
+结果：追踪表单的实施显著改善了我们的沟通和协作。通过积极参与透明和有组织的对话，我不仅赢得了远程高级工程师的信任，而且在数月后的服务文档中，这个表单也证明是一项宝贵的资产。通过遵循“赢得信任”的原则，我不仅弥合了沟通差距，还建立了相互尊重和协作的基础，超越了这个特定项目。
+
+四，Have Backbone; Disagree and Commit：Neo4j的设计
+Background: Upon joining eBay, I encountered a scenario that aligned with the principle of "Have Backbone; Disagree and Commit." Our team was faced with the decision to transition to a new graph database, Neo4j, due to the growing size of our database. However, none of us in the team were familiar with this new database, prompting us to collectively enroll in a training course. The database was massive, with millions of nodes, and intricate communication with the Business team was essential. As a result, there were several contentious points in the database design process, particularly in defining relationships between nodes and categorizing various types of relationships.
+
+Situation & Task: Throughout this complex database design process, my task was to uphold the principle of respectfully challenging decisions and fostering open discussions, even when there was disagreement. I recognized that while disagreements were natural, once a consensus was reached within the team, it was imperative to fully commit to the agreed-upon decision. My aim was to maintain a conviction-driven approach and avoid compromising for the sake of consensus.
+
+Action: I actively participated in the discussions and debates surrounding the new database design, offering my perspective and raising questions whenever necessary. Even though I had differing opinions, I ensured that my stance was clear but respectful. I believed that an open exchange of ideas could lead to better solutions. To facilitate this, I proposed that we document all divergent opinions and ideas in a design document. This document served as a repository of discussions and decisions, capturing both the areas of agreement and disagreement.
+
+Result: Despite the initial disagreements, the commitment to the decisions made within the team was unwavering. While it was uncomfortable and sometimes exhausting to challenge and discuss, we collectively embraced the principle of "Have Backbone; Disagree and Commit." Over the course of several months, the ongoing discussions and debates led to a more refined database design. In the end, the project was a success, and the new database was successfully implemented with over five million data points. Moreover, this collaborative process resulted in the development of new services that extended user engagement on the platform by more than 15%, showcasing the positive impact of embracing disagreements and committing to decisions with backbone.
+
+背景：加入eBay后，我遇到了一个与“坚持原则；不同意并全力支持”原则相关的情境。我们团队面临着一个决策，即由于数据库规模不断增大，我们需要转向使用新的图数据库Neo4j。然而，我们团队中没有人熟悉这个新数据库，因此我们一起报名参加了培训课程。这个数据库非常庞大，有数百万个节点，并需要与业务团队进行复杂的沟通。由此，在数据库设计过程中出现了许多争议。例如，如何定义节点之间的关系，以及如何对各种关系进行分类等。
+
+情境与任务：在这个复杂的数据库设计过程中，我的任务是坚守尊重挑战决策并促进开放讨论的原则，即使存在分歧。我意识到，虽然存在分歧是自然的，但一旦团队内达成共识，就必须全力以赴地执行所达成的决策。我的目标是保持一个有信念的方法，避免为了达成共识而做出妥协。
+
+行动：我积极参与了关于新数据库设计的讨论和辩论，随时提出我的观点和问题。即使我有不同意见，我也确保自己的立场明确且尊重。我认为，开放的思想交流可以引导我们找到更好的解决方案。为了促进这一点，我建议我们将所有不同意见和想法记录在设计文档中。这个文档成为了讨论和决策的存储库，记录了共识和分歧的领域。
+
+结果：尽管最初存在分歧，但团队内对决策的承诺是坚定的。尽管挑战和讨论可能会令人感到不适和疲惫，但我们共同践行了“坚持原则；不同意并全力支持”的原则。在几个月的时间里，持续的讨论和辩论导致数据库设计变得更加完善。最终，这个项目取得了成功，新数据库成功实施，拥有超过五百万个数据点。此外，这个协作过程还带来了新服务的开发，将平台上用户的参与度延长了超过15%，展示了接受分歧并全力支持决策的原则带来的积极影响。
+
+五，Ownership - Neo4j and Elasticsearch expert
+
+六，Customoer obesssion 和实际的使用组沟通去完善他们的需求
+Resolved a 10-year business team issue of using untraceable and inefficient file processing by building a backend for
+the new BN Tools User Interface (UI) to leverage multiple functions of node data processing.
+
+七，Insist on the Highest Standards
+
+八，Learn & Be Curious
