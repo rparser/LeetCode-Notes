@@ -9,8 +9,9 @@ public class _198_House_Robber {
     // 如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
     // bottom up - DP O(N), O(1)
     public int robDP(int[] nums) {
-        if (nums.length == 0)
+        if (nums.length == 0) {
             return 0;
+        }
         // 子问题：
         // f(k) = 偷 [0..k) 房间中的最大金额
 
@@ -21,8 +22,9 @@ public class _198_House_Robber {
         int[] dp = new int[N + 1];
         dp[0] = 0;
         dp[1] = nums[0];
-        for (int k = 2; k <= N; k++)
+        for (int k = 2; k <= N; k++) {
             dp[k] = Math.max(dp[k - 1], nums[k - 1] + dp[k - 2]);
+        }
 
         return dp[N];
     }

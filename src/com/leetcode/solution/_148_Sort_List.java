@@ -4,7 +4,7 @@ package com.leetcode.solution;
 //定义first和second指针指向每一部分的头结点，每次事先保存每一部分的后继结点再将其断链送入Merge进行排序
 // 将排序好的链表用pre指针连接起来，再将剩下的remain部分链表挂到尾部进入下一轮翻倍循环
 //等到最后一轮for循环结束，如有剩余元素就挂在已排序链表尾部，如果恰好等分排好整条链表，就返回dummy.next即可。
-class _148_sort_list {
+class _148_Sort_List {
     // O(N*logN), O(1), 归并排序
     public ListNode sortList(ListNode head) {
         // 归并排序
@@ -25,7 +25,9 @@ class _148_sort_list {
                 // 开始都指向第一块的起点
                 // 然后second走n步指向第二块的起点
                 ListNode first = begin.next, second = first;
-                for (int k = 0; k < i; k++) second = second.next;
+                for (int k = 0; k < i; k++) {
+                    second = second.next;
+                }
 
                 // 遍历第一块和第二块进行归并
                 // 第一块的数量为i

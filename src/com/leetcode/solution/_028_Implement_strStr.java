@@ -6,10 +6,16 @@ package com.leetcode.solution;
 
 public class _028_Implement_strStr {
     public int strStr(String haystack, String needle) {
-        if (needle.isEmpty()) return 0; // edge case: "",""=>0  "a",""=>0
-        for (int i = 0; i <= haystack.length() - needle.length(); i++) // 直到找到两个长度差值
-            for (int j = 0; j < needle.length() && haystack.charAt(i + j) == needle.charAt(j); j++) //必须找到相同的字母才开始这个for
-                if (j == needle.length() - 1) return i; //如果已经到了最后一个
+        if (needle.isEmpty()) {
+            return 0;
+        } // edge case: "",""=>0  "a",""=>0
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) { // 直到找到两个长度差值
+            for (int j = 0; j < needle.length() && haystack.charAt(i + j) == needle.charAt(j); j++) { //必须找到相同的字母才开始这个for
+                if (j == needle.length() - 1) {
+                    return i;
+                }
+            }
+        } //如果已经到了最后一个
 
         return -1;
     }
@@ -17,10 +23,12 @@ public class _028_Implement_strStr {
     //    时间复杂度是O(n+k)
     public int strStrKMP(String haystack, String needle) {
         int strLen = haystack.length(), subLen = needle.length();
-        if (subLen == 0)
+        if (subLen == 0) {
             return 0;
-        if (strLen == 0)
+        }
+        if (strLen == 0) {
             return -1;
+        }
         // 构建状态机
         int[][] FSM = new int[subLen][256];
         int X = 0, match = 0;

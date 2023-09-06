@@ -77,10 +77,14 @@ Result: Despite the initial disagreements, the commitment to the decisions made 
 
 五，Ownership - Neo4j and Elasticsearch expert
 
-六，Customoer obesssion 和实际的使用组沟通去完善他们的需求
+六，Customoer obesssion 和实际的使用组沟通去完善他们的需求 -SEOTools team
 Resolved a 10-year business team issue of using untraceable and inefficient file processing by building a backend for
 the new BN Tools User Interface (UI) to leverage multiple functions of node data processing.
 
 七，Insist on the Highest Standards
 
 八，Learn & Be Curious
+Background: Groupon / React
+ST: When I joined Groupon, two frontend developers in our team transferred to the other team at the same time. I don't have a lot of experience with node.js and React, but I am willing to learn.
+A: Based on my work experience on Angular, I quickly picked up development tasks for A/B testing of both desktop and responsive web applications.
+R: New experiments were very successful, and the ratio of users completing the booking increased by 20%. It increased more than 50 thousands of revenue for the company in the first month.

@@ -29,10 +29,11 @@ public class _341_Flatten_Nested_List_Iterator implements Iterator<Integer> {
     @Override
     public Integer next() {
         // hasNext()后，指针一定是指在下一个Integer上的，所以直接取就好了
-        if (hasNext())
+        if (hasNext()) {
             return curList.get(pointer++).getInteger();
-        else
+        } else {
             return null;
+        }
     }
 
     @Override
@@ -43,13 +44,15 @@ public class _341_Flatten_Nested_List_Iterator implements Iterator<Integer> {
             curList = elementStack.pop();
         }
         // 遍历完最后一个curList里的元素，返回false
-        if (pointer == curList.size())
+        if (pointer == curList.size()) {
             return false;
+        }
 
         // 判断是Integer还是List，如果是Integer
-        if (curList.get(pointer).isInteger())
+        if (curList.get(pointer).isInteger()) {
             return true;
-            // 如果是List
+        }
+        // 如果是List
         else {
             // 元素要加进整个list
             elementStack.push(curList);

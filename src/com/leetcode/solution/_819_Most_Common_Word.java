@@ -16,9 +16,11 @@ public class _819_Most_Common_Word {
         Map<String, Integer> count = new HashMap<>(); // 单词统计map
         String[] words = paragraph.replaceAll("[^a-zA-Z]+", " ").toLowerCase().split("\\s+");
         // "\\W+" : 所有不是字母数字下划线的字符， "\\s+" ： 所有空白字符
-        for (String w : words)
-            if (!ban.contains(w))
-                count.put(w, count.getOrDefault(w, 0) + 1);// 不在ban列表则加入HashMap
+        for (String w : words) {
+            if (!ban.contains(w)) {
+                count.put(w, count.getOrDefault(w, 0) + 1);
+            }
+        }// 不在ban列表则加入HashMap
 
         return Collections.max(count.entrySet(), Map.Entry.comparingByValue()).getKey(); //HashMap取结果，按value排列
         //Map.Entry.comparingByValue() 固定用法

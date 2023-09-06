@@ -22,16 +22,18 @@ package com.leetcode.solution;
 class _188_Best_Time_to_Buy_and_Sell_Stock_IV {
     public int maxProfit(int k, int[] prices) {
         int len = prices.length;
-        if (k <= 0 || len < 2)
+        if (k <= 0 || len < 2) {
             return 0;
+        }
         int maxProfit = 0;
 
         if (k >= len / 2) {
             //直接当作贪心处理，也就是问题2的答案,可以无限次
             for (int i = 1; i < len; i++) {
                 int diff = prices[i] - prices[i - 1];
-                if (diff > 0)
+                if (diff > 0) {
                     maxProfit += diff;
+                }
             }
             return maxProfit;
         }

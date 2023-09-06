@@ -10,7 +10,7 @@ package com.leetcode.solution;
  * if get 0 j and k skip duplicates, j-- &k++, seek for next answer where i fixed
  */
 
-public class _167_two_sum_ii_input_array_is_sorted {
+public class _167_Two_Sum_II_Input_Array_is_Sorted {
     public int[] twoSum(int[] numbers, int target) {
         int[] res = new int[2];
         int len = numbers.length;
