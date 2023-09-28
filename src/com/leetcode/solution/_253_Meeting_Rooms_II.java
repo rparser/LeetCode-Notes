@@ -8,7 +8,6 @@ import java.util.Arrays;
  * 说明该room可以结束接下来被当前会议区间使用。最后返回堆的大小就是所需的房间数。
  */
 
-
 public class _253_Meeting_Rooms_II {
     // O(nlogn), O(n)
     public int minMeetingRooms(int[][] intervals) {
